@@ -64,3 +64,4 @@ syscall调用过程
 每个syscall最多有六个参数
 ebx, ecx, edx, esi, edi, epb
 如果需要超过六个参数的时候，把所有的参数放到一个结构体然后结构体赋给ebx
+

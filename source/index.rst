@@ -14,7 +14,7 @@
    basic/index
    cwe/index
    attack/index
-   osrelated/index
+   protection/index
    tools/index
 
 
