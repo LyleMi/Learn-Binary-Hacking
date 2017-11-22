@@ -8,5 +8,6 @@
    list
    gcc
    gdb
+   gflags
    pwntools
    ulimit

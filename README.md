@@ -33,3 +33,10 @@ this repo is my note about binary security
     - gdb
     - pwntools
     - ulimit
+
+### Generate HTML
+
+```shell
+pip install sphinx
+make html
+```

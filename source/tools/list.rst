@@ -1,7 +1,7 @@
 列表
 ================================
 
-- strace
+- Strace
 - Process Explorer
 - Windbg
 
