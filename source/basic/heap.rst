@@ -55,7 +55,7 @@ bin在内存中用来管理free chunk，bin为带有头结点（链表头部不�
 - unsortedbin
     - 双向循环链表
     - 不排序
-    - 暂时存储free后的chunk，一段时间后会将chunk放入对应的bin中
+    - 暂时存储free后的chunk，一段时间后将chunk放入对应的bin中
     - 只有一个链表
 - smallbin
     - 双向循环链表
