@@ -158,3 +158,42 @@ This section holds a symbol table, as ''Symbol Table'' in this section describes
 .text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This section holds the ''text,'' or executable instructions, of a program.
+
+内存布局
+--------------------------------------
+
+::
+
+    ----------------------------------
+    |        Kernel Space            |    1GB
+    ----------------------------------
+    |                                |    Random Stack offset
+    ----------------------------------
+    |       Stack (growth down)      |    RLIMIT_STACK
+    ----------------------------------
+    |                                |    Random mmap offset
+    ----------------------------------
+    |       Memory Map Segement      |
+    |  (including dynamic libraries) |
+    |      e.g. /lib/libc.so         |  
+    |         (growth down)          |    
+    ----------------------------------
+    |                                |  
+    ----------------------------------
+    |        Heap (growth up)        |   
+    ----------------------------------
+    |                                |  Random brk offset
+    ----------------------------------
+    |          BSS Segement          |   
+    | Uninitalized static variables, | 
+    |       filled with zeros.       | 
+    |  e.g. static char *userName;   |   
+    ----------------------------------
+    |          Data Segement         |
+    |  Static variables initialized  |
+    |    by the programmer.          |
+    ----------------------------------
+    |          Text Segement         |
+    ----------------------------------
+
+

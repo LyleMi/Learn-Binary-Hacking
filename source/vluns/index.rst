@@ -1,4 +1,4 @@
-攻击方式
+漏洞
 ================================
 
 
@@ -9,3 +9,7 @@
    rop
    offByOne
    fmtstr
+   typeConfusion
+   uaf
+   stackoverflow
+   heapoverflow

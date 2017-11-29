@@ -12,8 +12,7 @@
    :caption: Contents:
 
    basic/index
-   cwe/index
-   attack/index
+   vluns/index
    protection/index
    tools/index
 
