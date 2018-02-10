@@ -1,9 +1,10 @@
-# learn binary security
+# 二进制安全知识整理
 
-this repo is my note about binary security
+该仓库用于学习二进制安全相关知识，作者水平有限，尚有缺漏或未完成的部分，持续更新中。在完成的过程中参考了一些blog，皆在文末给出相应链接，感谢blog作者的分享。
 
-# index
+该仓库仅供学习和交流使用，请勿使用相关内容进行非法行为。
 
+### 目录结构
 
 - 基础知识
     - dll
@@ -34,9 +35,16 @@ this repo is my note about binary security
     - pwntools
     - ulimit
 
-### Generate HTML
+### 生成 HTML 格式的文档
 
 ```shell
-pip install sphinx
-make html
+$ sudo pip install sphinx
+$ sudo pip install sphinx-rtd-theme
+$ make html
 ```
+
+### 反馈
+
+欢迎大家提出各种意见和建议，不胜感激。
+
+反馈邮箱 ``lylemi@126.com``
