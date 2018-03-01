@@ -10,3 +10,5 @@
    gdb
    ulimit
    windbg
+   objdump
+   readelf
