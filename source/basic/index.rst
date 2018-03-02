@@ -10,4 +10,5 @@
    pe
    dll
    heap
+   stack
    llvm
