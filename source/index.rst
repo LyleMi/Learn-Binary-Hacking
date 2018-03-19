@@ -12,7 +12,7 @@
    :caption: Contents:
 
    basic/index
-   vluns/index
+   vulns/index
    protection/index
    tools/index
 
