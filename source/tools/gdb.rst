@@ -4,21 +4,52 @@ gdb
 gdb
 --------------------------------
 
-- ``break *0x080483d0`` 在内存0x080483d0处下断点
-- ``break <func name>`` 在函数处下断点
-- ``c`` 从断点处继续运行
-- ``checksec`` 查看保护
-- ``d 1`` 删除第一个断点
+- BreakPoint 断点
+    - ``break [PROBE_MODIFIER] [LOCATION] [thread THREADNUM] [if CONDITION]``
+    - 设置断点
+        - ``break *0x080483d0`` 在内存0x080483d0处下断点
+        - ``break <func name>`` 在函数处下断点
+        - ``break *<func name> + 4`` 在函数偏移处下断点
+    - 相关操作
+        - ``c`` 从断点处继续运行
+        - ``d[elete] 1`` 删除断点1
+        - ``d 1 2`` 删除断点1 2
+        - ``d`` 删除所有断点
+        - ``dis[able] 1`` Disable breakpoint 1
+        - ``en[able] 1`` Enable breakpoint 1
+- ``c[ontinue]`` 运行至下一个断点或程序结束
+- ``command`` 设置断点的命令
 - ``disas <func name>`` 反汇编函数
+- ``fin[ish]`` 跳出当前函数 / 循环
 - ``i`` info
     - ``i b`` breakpoints info
     - ``i f`` frame info
     - ``i s`` stack info
-- ``n`` 单步运行
+- ``ignore <break_list> count``
+    - break_list所指定的断点号将被忽略count次
+- ``n`` / ``next`` 单步运行
 - ``p <func name>`` 找函数地址
 - ``r <param>`` 从头开始运行
-- ``s`` 单步运行
-- ``x/20x $esp`` 打印esp变量
+- ``s`` / ``step`` 单步运行 遇到调用时深入
+- ``x/nfu address`` 打印内存
+    - ``n`` 表示要显示的内存单元的个数
+    - ``f`` 表示显示方式
+        - ``x`` 按十六进制格式显示变量。
+        - ``d`` 按十进制格式显示变量。
+        - ``u`` 按十进制格式显示无符号整型。
+        - ``o`` 按八进制格式显示变量。
+        - ``t`` 按二进制格式显示变量。
+        - ``a`` 按十六进制格式显示变量。
+        - ``i`` 指令地址格式
+        - ``c`` 按字符格式显示变量。
+        - ``f`` 按浮点数格式显示变量。
+    - ``u`` 表示一个地址单元的长度
+        - ``b`` 表示单字节
+        - ``h`` 表示双字节
+        - ``w`` 表示四字节
+        - ``g`` 表示八字节
+    - 地址可以是内存地址或者是寄存器
+
 
 gdb-peda
 --------------------------------
