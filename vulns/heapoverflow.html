@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.7. 堆溢出 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. 保护机制" href="../mitigations/index.html" />
+    <link rel="prev" title="2.6. 栈溢出" href="stackoverflow.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 漏洞</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rop.html">2.1. rop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">2.2. off-by-one</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">2.3. 格式化字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">2.4. Type Confusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">2.5. User After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stackoverflow.html">2.6. 栈溢出</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. 堆溢出</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.7.1. 第一部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.7.2. 第二部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.7.3. 参考链接</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">3. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">2. 漏洞</a> &raquo;</li>
+        
+      <li>2.7. 堆溢出</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/vulns/heapoverflow.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>2.7. 堆溢出<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>2.7.1. 第一部分<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>首先简要介绍一下堆chunk的结构
+在malloc.c中找到关于堆chunk结构的代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">malloc_chunk</span> <span class="p">{</span>
+
+  <span class="n">INTERNAL_SIZE_T</span> <span class="n">prev_size</span><span class="p">;</span>
+  <span class="o">/*</span> <span class="n">Size</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">chunk</span> <span class="p">(</span><span class="k">if</span> <span class="n">free</span><span class="p">)</span><span class="o">.</span>  <span class="o">*/</span>
+
+  <span class="n">INTERNAL_SIZE_T</span> <span class="n">size</span><span class="p">;</span>
+  <span class="o">/*</span> <span class="n">Size</span> <span class="ow">in</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">including</span> <span class="n">overhead</span><span class="o">.</span> <span class="o">*/</span>
+
+  <span class="n">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">fd</span><span class="p">;</span>
+  <span class="o">/*</span> <span class="n">double</span> <span class="n">links</span> <span class="o">--</span> <span class="n">used</span> <span class="n">only</span> <span class="k">if</span> <span class="n">free</span><span class="o">.</span> <span class="o">*/</span>
+  <span class="n">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">bk</span><span class="p">;</span>
+
+  <span class="o">/*</span> <span class="n">Only</span> <span class="n">used</span> <span class="k">for</span> <span class="n">large</span> <span class="n">blocks</span><span class="p">:</span> <span class="n">pointer</span> <span class="n">to</span> <span class="nb">next</span> <span class="n">larger</span> <span class="n">size</span><span class="o">.</span>  <span class="o">*/</span>
+  <span class="n">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">fd_nextsize</span><span class="p">;</span>
+  <span class="o">/*</span> <span class="n">double</span> <span class="n">links</span> <span class="o">--</span> <span class="n">used</span> <span class="n">only</span> <span class="k">if</span> <span class="n">free</span><span class="o">.</span> <span class="o">*/</span>
+  <span class="n">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">bk_nextsize</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>这指明了一个heap chunk是如下的结构</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----------+---------+------+------+-------------+</span>
+<span class="o">|</span>           <span class="o">|</span>         <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>             <span class="o">|</span>
+<span class="o">|</span>           <span class="o">|</span>         <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>             <span class="o">|</span>
+<span class="o">|</span> <span class="n">prev_size</span> <span class="o">|</span><span class="n">size</span><span class="o">&amp;</span><span class="n">Flag</span><span class="o">|</span>  <span class="n">fd</span>  <span class="o">|</span>  <span class="n">bk</span>  <span class="o">|</span>             <span class="o">|</span>
+<span class="o">|</span>           <span class="o">|</span>         <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>             <span class="o">|</span>
+<span class="o">|</span>           <span class="o">|</span>         <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>             <span class="o">|</span>
+<span class="o">+-----------+---------+------+------+-------------+</span>
+</pre></div>
+</div>
+<p>如果本chunk前面的chunk是空闲的，那么第一部分prev_size会记录前面一个chunk的大小，第二部分是本chunk的size,因为它的大小需要8字节对齐，所以size的低三位一定会空闲出来，这时候这三个位置就用作三个Flag(最低位:指示前一个chunk是否正在使用;倒数第二位:指示这个chunk是否是通过mmap方式产生的;倒数第三位:这个chunk是否属于一个线程的arena)。之后的FD和BK部分在此chunk是空闲状态时会发挥作用。FD指向下一个空闲的chunk，BK指向前一个空闲的chunk，由此串联成为一个空闲chunk的双向链表。如果不是空闲的。那么从fd开始，就是用户数据了。(详细信息请参考glibc的malloc.c部分，在此不再多做解释。)</p>
+<p>引用一位外国博主的漏洞示例程序解释</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+ <span class="n">Heap</span> <span class="n">overflow</span> <span class="n">vulnerable</span> <span class="n">program</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="c1">#include &lt;stdlib.h&gt;</span>
+<span class="c1">#include &lt;string.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span> <span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">char</span> <span class="o">*</span> <span class="n">first</span><span class="p">,</span> <span class="o">*</span> <span class="n">second</span><span class="p">;</span>
+
+    <span class="o">/*</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*/</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span> <span class="mi">666</span> <span class="p">);</span>
+    <span class="o">/*</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*/</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span> <span class="mi">12</span> <span class="p">);</span>
+    <span class="o">/*</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*/</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">argc</span><span class="o">!=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">strcpy</span><span class="p">(</span> <span class="n">first</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">);</span>
+    <span class="o">/*</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">*/</span>
+    <span class="n">free</span><span class="p">(</span> <span class="n">first</span> <span class="p">);</span>
+    <span class="o">/*</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">*/</span>
+    <span class="n">free</span><span class="p">(</span> <span class="n">second</span> <span class="p">);</span>
+    <span class="o">/*</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">*/</span>
+    <span class="k">return</span><span class="p">(</span> <span class="mi">0</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这个程序在[3]处有很明显的堆溢出漏洞，argv[1]中的内容若过长则会越界覆盖到second部分。</p>
+<p>程序堆结构如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---------------------+</span>   <span class="o">&lt;--</span><span class="n">first</span> <span class="n">chunk</span> <span class="n">ptr</span>
+<span class="o">|</span>     <span class="n">prev_size</span>       <span class="o">|</span>
+<span class="o">+---------------------+</span>
+<span class="o">|</span>     <span class="n">size</span><span class="o">=</span><span class="mh">0x201</span>      <span class="o">|</span>
+<span class="o">+---------------------+</span>   <span class="o">&lt;--</span><span class="n">first</span>
+<span class="o">|</span>                     <span class="o">|</span>
+<span class="o">|</span>     <span class="n">allocated</span>       <span class="o">|</span>
+<span class="o">|</span>      <span class="n">chunk</span>          <span class="o">|</span>
+<span class="o">+---------------------+</span>   <span class="o">&lt;--</span><span class="n">second</span> <span class="n">chunk</span> <span class="n">ptr</span>
+<span class="o">|</span>    <span class="n">prev_size</span>        <span class="o">|</span>
+<span class="o">+---------------------+</span>
+<span class="o">|</span>    <span class="n">size</span><span class="o">=</span><span class="mh">0x11</span>        <span class="o">|</span>
+<span class="o">+---------------------+</span>   <span class="o">&lt;--</span><span class="n">second</span>
+<span class="o">|</span>     <span class="n">Allocated</span>       <span class="o">|</span>
+<span class="o">|</span>       <span class="n">chunk</span>         <span class="o">|</span>
+<span class="o">+---------------------+</span>   <span class="o">&lt;--</span> <span class="n">top</span>
+<span class="o">|</span>     <span class="n">prev_size</span>       <span class="o">|</span>
+<span class="o">+---------------------+</span>
+<span class="o">|</span>    <span class="n">size</span><span class="o">=</span><span class="mh">0x205d1</span>     <span class="o">|</span>
+<span class="o">+---------------------+</span>
+<span class="o">|</span>                     <span class="o">|</span>
+<span class="o">|</span>                     <span class="o">|</span>
+<span class="o">|</span>                     <span class="o">|</span>
+<span class="o">|</span>        <span class="n">TOP</span>          <span class="o">|</span>
+<span class="o">|</span>                     <span class="o">|</span>
+<span class="o">|</span>       <span class="n">CHUNK</span>         <span class="o">|</span>
+<span class="o">|</span>                     <span class="o">|</span>
+<span class="o">+---------------------+</span>
+</pre></div>
+</div>
+<p>此时利用方法为通过溢出构造，使得second chunk</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>prev_size=任意值
+size=-4(因为最低位的flag没有设置，所以prev_size可以任意)
+fd=free@got-12
+bk=shellcode地址
+</pre></div>
+</div>
+<p>在我们的payload将指定位置的数值改好后。下面介绍在[4][5]行代码执行时发生的详细情况。</p>
+<p>第四行执行free(first)发生如下操作</p>
+<p>1).检查是否可以向后合并</p>
+<p>首先需要检查previous chunk是否是空闲的（通过当前chunk size部分中的flag最低位去判断），当然在这个例子中，前一个chunk是正在使用的，不满足向后合并的条件。</p>
+<p>2).检查是否可以向前合并</p>
+<p>在这里需要检查next chunk是否是空闲的(通过下下个chunk的flag的最低位去判断)，在找下下个chunk(这里的下、包括下下都是相对于chunk first而言的)的过程中，首先当前chunk+当前size可以引导到下个chunk，然后从下个chunk的开头加上下个chunk的size就可以引导到下下个chunk。但是我们已经把下个chunk的size覆盖为了-4，那么它会认为下个chunk从prev_size开始就是下下个chunk了，既然已经找到了下下个chunk，那就就要去看看size的最低位以确定下个chunk是否在使用，当然这个size是-4，所以它指示下个chunk是空闲的。</p>
+<p>在这个时候，就要发生向前合并了。即first chunk会和 first chunk的下个chunk(即second chunk)发生合并。在此时会触发unlink(second)宏，想将second从它所在的bin list中解引用。</p>
+<p>但是执行unlink宏之后，再调用free其实就是调用shellcode，这时就可以执行任意命令了。</p>
+</div>
+<div class="section" id="id3">
+<h2>2.7.2. 第二部分<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Take a chunk off a bin list */
+#define unlink(AV, P, BK, FD) {
+    FD = P-&gt;fd;
+    BK = P-&gt;bk;
+    if (__builtin_expect (FD-&gt;bk != P || BK-&gt;fd != P, 0))
+      malloc_printerr (check_action, &quot;corrupted double-linked list&quot;, P, AV);
+    else {
+        FD-&gt;bk = BK;
+        BK-&gt;fd = FD;
+        if (!in_smallbin_range (P-&gt;size)
+            &amp;&amp; __builtin_expect (P-&gt;fd_nextsize != NULL, 0)) {
+            if (__builtin_expect (P-&gt;fd_nextsize-&gt;bk_nextsize != P, 0)
+                || __builtin_expect (P-&gt;bk_nextsize-&gt;fd_nextsize != P, 0))
+              malloc_printerr (check_action,
+                               &quot;corrupted double-linked list (not small)&quot;,
+                               P, AV);
+            if (FD-&gt;fd_nextsize == NULL) {
+                if (P-&gt;fd_nextsize == P)
+                  FD-&gt;fd_nextsize = FD-&gt;bk_nextsize = FD;
+                else {
+                    FD-&gt;fd_nextsize = P-&gt;fd_nextsize;
+                    FD-&gt;bk_nextsize = P-&gt;bk_nextsize;
+                    P-&gt;fd_nextsize-&gt;bk_nextsize = FD;
+                    P-&gt;bk_nextsize-&gt;fd_nextsize = FD;
+                  }
+              } else {
+                P-&gt;fd_nextsize-&gt;bk_nextsize = P-&gt;bk_nextsize;
+                P-&gt;bk_nextsize-&gt;fd_nextsize = P-&gt;fd_nextsize;
+              }
+          }
+      }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>2.7.3. 参考链接<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://wooyun.jozxing.cc/static/drops/tips-7326.html">堆溢出的unlink利用方法</a></li>
+<li><a class="reference external" href="http://wooyun.jozxing.cc/static/drops/binary-7958.html">Double Free浅析</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../mitigations/index.html" class="btn btn-neutral float-right" title="3. 保护机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stackoverflow.html" class="btn btn-neutral" title="2.6. 栈溢出" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

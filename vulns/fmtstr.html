@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.3. 格式化字符串 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.4. Type Confusion" href="typeConfusion.html" />
+    <link rel="prev" title="2.2. off-by-one" href="offByOne.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 漏洞</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rop.html">2.1. rop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">2.2. off-by-one</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. 格式化字符串</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.3.2. 攻击原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ref">2.3.3. ref</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">2.4. Type Confusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">2.5. User After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stackoverflow.html">2.6. 栈溢出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html">2.7. 堆溢出</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">3. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">2. 漏洞</a> &raquo;</li>
+        
+      <li>2.3. 格式化字符串</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/vulns/fmtstr.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>2.3. 格式化字符串<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>2.3.1. 概述<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>类printf函数的最大的特点就是，在函数定义的时候无法知道函数实参的数目和类型。</p>
+<p>对于这种情况，可以使用省略号指定参数表。</p>
+<p>带有省略号的函数定义中，参数表分为两部分，前半部分是确定个数、确定类型的参数，第二部分就是省略号，代表数目和类型都不确定的参数表，省略号参数表中参数的个数和参数的类型是事先的约定计算出来的，每个实参的地址（指针）是根据确定参数表中最后一个实参的地址算出来的。</p>
+<p>这里涉及到函数调用时的栈操作。函数栈的栈底是高地址，栈顶是底地址。在函数调用时函数实参是从最后一个参数（最右边的参数）到第一个参数（最左边的参数）依次被压入栈顶方向。也就是说函数调用时，函数实参的地址是相连的，并且从左到右地址是依次增加的。</p>
+</div>
+<div class="section" id="id3">
+<h2>2.3.2. 攻击原理<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>因为类printf函数中省略号参数表中参数的个数和类型都是由类printf函数中的那个格式化字符串来决定的，所以攻击者可以利用编程者的疏忽或漏洞，巧妙构造格式化字符串，达到攻击目的。</p>
+<p>举一个简单的例子，如果想输出一个字符串，可以使用 <code class="docutils literal notranslate"><span class="pre">printf(&quot;%s&quot;,</span> <span class="pre">str)</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">printf(&quot;%s&quot;,</span> <span class="pre">str)</span></code> 。但第二种写法是有漏洞的，如果攻击者输入 <code class="docutils literal notranslate"><span class="pre">%d</span></code> <code class="docutils literal notranslate"><span class="pre">%x</span></code> 等格式化字符，那么一个变量的参数值就从堆栈中取出。</p>
+</div>
+<div class="section" id="ref">
+<h2>2.3.3. ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
+<p>格式化字符串攻击原理及示例 <a class="reference external" href="http://blog.csdn.net/immcss/article/details/6267849">http://blog.csdn.net/immcss/article/details/6267849</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="typeConfusion.html" class="btn btn-neutral float-right" title="2.4. Type Confusion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="offByOne.html" class="btn btn-neutral" title="2.2. off-by-one" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.2. 执行流保护（CFG） &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.3. Non-Executable Stack" href="nx.html" />
+    <link rel="prev" title="3.1. ASLR" href="aslr.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">2. 漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 保护机制</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">3.1. ASLR</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. 执行流保护（CFG）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.2.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.2. CFG原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ref">3.2.3. Ref</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nx.html">3.3. Non-Executable Stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. 保护机制</a> &raquo;</li>
+        
+      <li>3.2. 执行流保护（CFG）</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/mitigations/cfg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cfg">
+<h1>3.2. 执行流保护（CFG）<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>3.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>攻击者常常溢出覆盖或者直接篡改寄存器EIP的值，篡改间接调用的地址，进而控制了程序的执行流程。执行流保护（CFG，Control Flow Guard）是微软从Windows 8.1 update 3及Windows 10技术预览版开始，默认启用的一项缓解技术。这项技术通过在间接跳转前插入校验代码，检查目标地址的有效性，进而可以阻止执行流跳转到预期之外的地点， 最终及时并有效的进行异常处理，避免引发相关的安全问题。</p>
+<p>这种思想及技术在业界有了较为成熟的应用，此次Windows 10将其引入，以便提高其安全性。但是绿盟科技安全团队（NSFST）在分析CFG的实现机制过程中，发现了CFG存在全面绕过的方法，随即向微软提报，并在随后的一段时间内，配合微软修复了这个问题。</p>
+</div>
+<div class="section" id="id2">
+<h2>3.2.2. CFG原理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在编译启用了CFG的模块时，编译器会分析出该模块中所有间接函数调用可达的目标地址，并将这一信息保存在Guard CF Function Table中。</p>
+<p>同时，编译器还会在所有间接函数调用之前插入一段校验代码，以确保调用的目标地址是预期中的地址</p>
+<p>操作系统在创建支持CFG的进程时，将CFG Bitmap映射到其地址空间中，并将其基址保存在ntdll!LdrSystemDllInitBlock+0x60中。</p>
+<p>CFG Bitmap是记录了所有有效的间接函数调用目标地址的位图，出于效率方面的考虑，平均每1位对应8个地址（偶数位对应1个0x10对齐的地址，奇数位对应剩下的15个非0x10对齐的地址）。</p>
+<p>提取目标地址对应位的过程如下：</p>
+<ul class="simple">
+<li>取目标地址的高24位作为索引i；</li>
+<li>将CFG-Bitmap当作32位整数的数组，用索引i取出一个32位整数bits；</li>
+<li>取目标地址的第4至8位作为偏移量n；</li>
+<li>如果目标地址不是0x10对齐的，则设置n的最低位；</li>
+<li>取32位整数bits的第n位即为目标地址的对应位。</li>
+</ul>
+<p>操作系统在加载支持CFG的模块时，根据其Guard CF Function Table来更新CFG Bitmap中该模块所对应的位。同时，将函数指针_guard_check_icall_fptr初始化为指向 ntdll!LdrpValidateUserCallTarget。</p>
+<p>ntdll!LdrpValidateUserCallTarget从CFG Bitmap中取出目标地址所对应的位，根据该位是否设置来判断目标地址是否有效。若目标地址有效，则该函数返回进而执行间接函数调用；否则，该函数将抛出异常而终止当前进程。</p>
+</div>
+<div class="section" id="ref">
+<h2>3.2.3. Ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://blog.csdn.net/yingzheng1983/article/details/47340985">http://blog.csdn.net/yingzheng1983/article/details/47340985</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nx.html" class="btn btn-neutral float-right" title="3.3. Non-Executable Stack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aslr.html" class="btn btn-neutral" title="3.1. ASLR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
