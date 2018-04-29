@@ -4,6 +4,7 @@
 - Strace
 - Process Explorer
 - Windbg
+- Z3
 
 安装
 -------------------------------

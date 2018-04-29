@@ -1,9 +1,4 @@
-.. bin-sec documentation master file, created by
-   sphinx-quickstart on Thu Jul 13 15:22:19 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-二进制安全知识整理
+二进制安全学习笔记
 ===================================
 
 .. toctree::
@@ -13,7 +8,7 @@
 
    basic/index
    vulns/index
-   protection/index
+   mitigations/index
    tools/index
 
 
