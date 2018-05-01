@@ -6,5 +6,6 @@
    :caption: Contents:
 
    aslr
+   canary
    cfg
-   nx
+   dep
