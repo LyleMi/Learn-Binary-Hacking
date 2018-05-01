@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.3. Non-Executable Stack &mdash; bin-sec 1.0.0 documentation</title>
+  <title>3.4. Date Execution Prevetion &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. 工具" href="../tools/index.html" />
-    <link rel="prev" title="3.2. 执行流保护（CFG）" href="cfg.html" /> 
+    <link rel="prev" title="3.3. 执行流保护（CFG）" href="cfg.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,11 +88,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">2. 漏洞</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 保护机制</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">3.1. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfg.html">3.2. 执行流保护（CFG）</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Non-Executable Stack</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.3.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#w-x-either-writable-or-executable-memory">3.3.2. W ^ X (Either Writable or Executable) Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">3.1. ASLR (Address Space Layout Randomization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">3.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">3.3. 执行流保护（CFG）</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. Date Execution Prevetion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.4.1. 简介</a></li>
 </ul>
 </li>
 </ul>
@@ -145,13 +145,13 @@
         
           <li><a href="index.html">3. 保护机制</a> &raquo;</li>
         
-      <li>3.3. Non-Executable Stack</li>
+      <li>3.4. Date Execution Prevetion</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/mitigations/nx.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/mitigations/dep.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -164,22 +164,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="non-executable-stack">
-<h1>3.3. Non-Executable Stack<a class="headerlink" href="#non-executable-stack" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="date-execution-prevetion">
+<h1>3.4. Date Execution Prevetion<a class="headerlink" href="#date-execution-prevetion" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>即使在今天，栈溢出也是一个很常见的安全问题。而其最常见的攻击方式则是覆盖返回地址，并跳转至shellcode。设置栈不可执行，可以让这种payload无用。</p>
-<p>在nx提出之后，也出现了相当多的绕过方式，几乎所有的绕过方式都基于一个事实：只有栈被标记为不可执行，但是其他地方仍然可以执行代码，而且，覆写返回地址几乎一直有效而且很难被发现。</p>
-<p>最开始的绕过方法是return-into-libc，而后则扩展到ret2plt, ret2strpy, ret2gets, ret2syscall, ret2data, ret2text, ret2code, ret2dl-resolve等。</p>
+<h2>3.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>即使在今天，栈溢出也是一个很常见的安全问题。而其最常见的攻击方式则是覆盖返回地址，并跳转至shellcode。</p>
+<p>DEP通常会去掉堆栈的可执行权限（Non-Executable Stack）并设置代码段为不可写来使得这种payload无法生效。</p>
+<p>在DEP提出之后，也出现了相当多的绕过方式，几乎所有的绕过方式都基于一个事实：即使堆栈被标记为不可执行，但是其他地方仍然可以执行代码，而且，基于覆写返回地址的攻击几乎一直有效。</p>
+<p>最开始的绕过方法是return-into-libc，而后则扩展到ret2plt, ret2strpy, ret2gets, ret2syscall, ret2data, ret2text, ret2code, ret2dl-resolve等方法。</p>
 <ul class="simple">
 <li>ret2data: 很常见的一种方式，把shellcode放到data段中，然后跳至data段执行</li>
 <li>ret2libc: 栈溢出攻击对栈有完全的控制权，即可以完全覆写返回地址和参数</li>
 <li>ret2strcpy：这个方式也是基于ret2libc，但是几乎可以执行任意代码。在这里，返回到strcpy，src指向栈上的shellcode，dst指向选择好的可写可执行的内存地址</li>
 <li>ret2gets：类似strcpy</li>
 </ul>
-</div>
-<div class="section" id="w-x-either-writable-or-executable-memory">
-<h2>3.3.2. W ^ X (Either Writable or Executable) Memory<a class="headerlink" href="#w-x-either-writable-or-executable-memory" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -194,7 +192,7 @@
         <a href="../tools/index.html" class="btn btn-neutral float-right" title="4. 工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cfg.html" class="btn btn-neutral" title="3.2. 执行流保护（CFG）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cfg.html" class="btn btn-neutral" title="3.3. 执行流保护（CFG）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
