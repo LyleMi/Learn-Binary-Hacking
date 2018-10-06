@@ -92,7 +92,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">1.4. Heap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.4.1. 历史</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#chunk">1.4.2. Chunk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bin">1.4.3. Bin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bins">1.4.3. Bins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#malloc">1.4.4. Malloc逻辑</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">1.4.4.1. malloc检查</a></li>
 </ul>
@@ -179,10 +179,10 @@
 <h1>1.4. Heap<a class="headerlink" href="#heap" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2>1.4.1. 历史<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>ptmalloc2来自于dlmalloc的分支。此后，添加线程支持并于2006年发布。正式发布后，patmalloc2集成到glibc源码中。随着源码集成，代码修改便直接在glibc malloc源码里进行。因此ptmalloc2与glibc之间的malloc实现有很多不同。</p>
-<p>在早期的Linux里，dlmalloc被用做默认的内存分配器。但之后因为ptmalloc2添加了线程支持，ptmalloc2成为了Linux默认内存分配器。线程支持可帮助提升内存分配器以及应用程序的性能。</p>
-<p>在dlmalloc里，当两个线程同时调用malloc时，只有一个线程能进入到临界段，因为这里的空闲列表数据结构是所有可用线程共用的。因此内存分配器要在多线程应用里耗费时间，从而导致性能降低。</p>
-<p>然而在ptmalloc2里，当两个线程同时调用malloc时，会立即分配内存。因为每个线程维护一个单独的堆分段，因此空闲列表数据结构正在维护的这些堆也是独立的。这种维护独立堆以及每一个线程享有空闲列表数据结构的行为被称为Per Thread Arena。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 来自于 <code class="docutils literal notranslate"><span class="pre">dlmalloc</span></code> 的分支。此后，添加线程支持并于2006年发布。正式发布后， <code class="docutils literal notranslate"><span class="pre">patmalloc2</span></code> 集成到glibc源码中。随着源码集成，代码修改便直接在glibc <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 源码里进行。因此 <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 与glibc之间的 <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 实现有很多不同。</p>
+<p>在早期的Linux里， <code class="docutils literal notranslate"><span class="pre">dlmalloc</span></code> 被用做默认的内存分配器。但之后因为 <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 添加了线程支持， <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 成为了Linux默认内存分配器。线程支持可帮助提升内存分配器以及应用程序的性能。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">dlmalloc</span></code> 里，当两个线程同时调用 <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 时，只有一个线程能进入到临界段，因为这里的空闲列表数据结构是所有可用线程共用的。因此内存分配器要在多线程应用里耗费时间，从而导致性能降低。</p>
+<p>然而在 <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 里，当两个线程同时调用 <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 时，会立即分配内存。因为每个线程维护一个单独的堆分段，因此空闲列表数据结构正在维护的这些堆也是独立的。这种维护独立堆以及每一个线程享有空闲列表数据结构的行为被称为Per Thread Arena。</p>
 </div>
 <div class="section" id="chunk">
 <h2>1.4.2. Chunk<a class="headerlink" href="#chunk" title="Permalink to this headline">¶</a></h2>
@@ -191,8 +191,8 @@
 <li>mmap: 当申请的size大于128kb时，由mmap分配</li>
 <li>brk: 当申请的size小于128kb时，由brk分配，第一次分配132KB（main arena），第二次在brk下分配，不够则执行系统调用，向系统申请</li>
 </ul>
-<p>在内存中进行堆的管理时，系统基本是以 chunk 作为基本单位，chunk的结构在源码中有定义</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">malloc_chunk</span> <span class="p">{</span>
+<p>在内存中进行堆的管理时，系统基本是以chunk作为基本单位，chunk的结构在源码中有定义</p>
+<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">malloc_chunk</span> <span class="p">{</span>
 
   <span class="n">INTERNAL_SIZE_T</span>      <span class="n">mchunk_prev_size</span><span class="p">;</span>  <span class="o">/*</span> <span class="n">Size</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">chunk</span> <span class="p">(</span><span class="k">if</span> <span class="n">free</span><span class="p">)</span><span class="o">.</span>  <span class="o">*/</span>
   <span class="n">INTERNAL_SIZE_T</span>      <span class="n">mchunk_size</span><span class="p">;</span>       <span class="o">/*</span> <span class="n">Size</span> <span class="ow">in</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">including</span> <span class="n">overhead</span><span class="o">.</span> <span class="o">*/</span>
@@ -208,9 +208,9 @@
 </div>
 <p>chunk的状态可以分为三种：allocated chunk、free chunk、top chunk</p>
 </div>
-<div class="section" id="bin">
-<h2>1.4.3. Bin<a class="headerlink" href="#bin" title="Permalink to this headline">¶</a></h2>
-<p>bin在内存中用来管理free chunk，bin为带有头结点（链表头部不是chunk）的链表数组，根据特点，将bin分为四种，分别为：fastbin、unsortedbin、smallbin、largebin</p>
+<div class="section" id="bins">
+<h2>1.4.3. Bins<a class="headerlink" href="#bins" title="Permalink to this headline">¶</a></h2>
+<p>Bin在内存中用来管理free chunk，bin为带有头结点（链表头部不是chunk）的链表数组，根据特点，将bin分为四种，分别为：fastbin、unsortedbin、smallbin、largebin</p>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>fastbin</dt>
@@ -241,7 +241,7 @@
 <li>双向循环链表</li>
 <li>sizeof(chunk) &lt; 512 (bytes)</li>
 <li>先进先出（类似队列）</li>
-<li>16,24…64,72…508 bytes(62个链表)</li>
+<li>16,24,…,64,72,…,508 bytes(62个链表)</li>
 </ul>
 </dd>
 </dl>
@@ -314,7 +314,7 @@
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>长度位于 largebin 时:</dt>
+<dt>长度位于 largebin 时</dt>
 <dd><ul class="first last">
 <li>根据大小获得largebin的index</li>
 <li>将fastbin中chunk合并，加入到unsortbin中</li>
@@ -456,6 +456,9 @@
 <li><a class="reference external" href="http://www.malloc.de/en/">malloc homepage</a></li>
 <li><a class="reference external" href="http://g.oswego.edu/dl/html/malloc.html">Memory Allocator</a></li>
 <li><a class="reference external" href="http://www.freebuf.com/articles/system/151372.html">Dance in Heap 1</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/alisecurity/p/5486458.html">Linux堆管理分析</a></li>
+<li><a class="reference external" href="https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/comment-page-1/">Understanding glibc malloc</a></li>
+<li><a class="reference external" href="https://sploitfun.wordpress.com/2015/02/11/syscalls-used-by-malloc/">syscalls-used-by-malloc</a></li>
 </ul>
 </div>
 </div>

@@ -7,5 +7,5 @@
 
    aslr
    canary
-   cfg
+   cfi
    dep

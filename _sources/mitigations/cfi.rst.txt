@@ -41,3 +41,4 @@ Ref
 --------------------------------
 - `Let's talk about CFI: clang edition <https://blog.trailofbits.com/2016/10/17/lets-talk-about-cfi-clang-edition/>`_
 - `分析及防护 Win10 执行流保护绕过问题 <http://blog.csdn.net/yingzheng1983/article/details/47340985>`_
+- `Enforcing Forward-Edge Control-Flow Integrity in GCC & LLVM <http://www.pcc.me.uk/~peter/acad/usenix14.pdf>`_

@@ -1,17 +1,16 @@
 Heap
 ===========================================
 
-
 历史
 -------------------------------------------
 
-ptmalloc2来自于dlmalloc的分支。此后，添加线程支持并于2006年发布。正式发布后，patmalloc2集成到glibc源码中。随着源码集成，代码修改便直接在glibc malloc源码里进行。因此ptmalloc2与glibc之间的malloc实现有很多不同。
+``ptmalloc2`` 来自于 ``dlmalloc`` 的分支。此后，添加线程支持并于2006年发布。正式发布后， ``patmalloc2`` 集成到glibc源码中。随着源码集成，代码修改便直接在glibc ``malloc`` 源码里进行。因此 ``ptmalloc2`` 与glibc之间的 ``malloc`` 实现有很多不同。
 
-在早期的Linux里，dlmalloc被用做默认的内存分配器。但之后因为ptmalloc2添加了线程支持，ptmalloc2成为了Linux默认内存分配器。线程支持可帮助提升内存分配器以及应用程序的性能。
+在早期的Linux里， ``dlmalloc`` 被用做默认的内存分配器。但之后因为 ``ptmalloc2`` 添加了线程支持， ``ptmalloc2`` 成为了Linux默认内存分配器。线程支持可帮助提升内存分配器以及应用程序的性能。
 
-在dlmalloc里，当两个线程同时调用malloc时，只有一个线程能进入到临界段，因为这里的空闲列表数据结构是所有可用线程共用的。因此内存分配器要在多线程应用里耗费时间，从而导致性能降低。
+在 ``dlmalloc`` 里，当两个线程同时调用 ``malloc`` 时，只有一个线程能进入到临界段，因为这里的空闲列表数据结构是所有可用线程共用的。因此内存分配器要在多线程应用里耗费时间，从而导致性能降低。
 
-然而在ptmalloc2里，当两个线程同时调用malloc时，会立即分配内存。因为每个线程维护一个单独的堆分段，因此空闲列表数据结构正在维护的这些堆也是独立的。这种维护独立堆以及每一个线程享有空闲列表数据结构的行为被称为Per Thread Arena。
+然而在 ``ptmalloc2`` 里，当两个线程同时调用 ``malloc`` 时，会立即分配内存。因为每个线程维护一个单独的堆分段，因此空闲列表数据结构正在维护的这些堆也是独立的。这种维护独立堆以及每一个线程享有空闲列表数据结构的行为被称为Per Thread Arena。
 
 Chunk
 -------------------------------------------
@@ -21,9 +20,9 @@ Chunk
 - mmap: 当申请的size大于128kb时，由mmap分配
 - brk: 当申请的size小于128kb时，由brk分配，第一次分配132KB（main arena），第二次在brk下分配，不够则执行系统调用，向系统申请
 
-在内存中进行堆的管理时，系统基本是以 chunk 作为基本单位，chunk的结构在源码中有定义
+在内存中进行堆的管理时，系统基本是以chunk作为基本单位，chunk的结构在源码中有定义
 
-::
+.. code:: c
 
     struct malloc_chunk {
 
@@ -41,10 +40,10 @@ Chunk
 chunk的状态可以分为三种：allocated chunk、free chunk、top chunk
 
 
-Bin
+Bins
 ---------------------------------
 
-bin在内存中用来管理free chunk，bin为带有头结点（链表头部不是chunk）的链表数组，根据特点，将bin分为四种，分别为：fastbin、unsortedbin、smallbin、largebin
+Bin在内存中用来管理free chunk，bin为带有头结点（链表头部不是chunk）的链表数组，根据特点，将bin分为四种，分别为：fastbin、unsortedbin、smallbin、largebin
 
 - fastbin
     - 根据chunk大小维护多个单向链表
@@ -61,14 +60,14 @@ bin在内存中用来管理free chunk，bin为带有头结点（链表头部不�
     - 双向循环链表
     - sizeof(chunk) < 512 (bytes)
     - 先进先出（类似队列）
-    - 16,24...64,72...508 bytes(62个链表)
+    - 16,24,...,64,72,...,508 bytes(62个链表)
 - largebin
     - 双向循环链表
     - sizeof(chunk) >= 512 (bytes)
     - free chunk中多两个指针分别指向前后的large chunk
     - 63个链表
-        - 0-31(512+64*i)
-        - 32-48(2496+512*i)
+        - 0-31(512+64\*i)
+        - 32-48(2496+512\*i)
         - ...
     - 链表中chunk大小不固定，先大后小
 
@@ -93,14 +92,14 @@ Malloc逻辑
         - 其他情况取出victim,设置inuse
     - 检查victim是否为main_arena,设置标志位
     - 返回除去chunk_header的地址
-- 长度位于 largebin 时:
+- 长度位于 largebin 时
     - 根据大小获得largebin的index
     - 将fastbin中chunk合并，加入到unsortbin中
 
 进一步处理
 
 - unsortedbin
-    - 反向遍历unsortedbin,检查 2*size_t<chunk_size<内存总分配量
+    - 反向遍历unsortedbin,检查 2\*size_t<chunk_size<内存总分配量
     - unsortedbin的特殊分配
         - 如果前一步smallbin分配未完成
         - 并且 unsortedbin中只有一个chunk
@@ -125,7 +124,7 @@ malloc检查
 
 - 从fastbin中取出chunk后，检查size是否属于fastbin
 - 从smallbin中除去chunk后，检查victim->bk->fd == victim
-- 从unsortbin取chunk时，要检查2*size_t<chunk_size<内存总分配量
+- 从unsortbin取chunk时，要检查2\*size_t<chunk_size<内存总分配量
 - 从largebin取chunk时，切分后的chunk要加入unsortedbin,需要检查 unsortedbin的第一个chunk的bk是否指向unsortedbin
 
 free机制
@@ -136,13 +135,13 @@ free机制
     - chunk的指针地址不能溢出
     - chunk 的大小 >= MINSIZE(最小分配大小)，并且检查地址是否对齐
 - 大小为fastbin时
-    - 检查下一个chunk的size：2*size_t<chunk_size<内存总分配量
+    - 检查下一个chunk的size：2\*size_t<chunk_size<内存总分配量
     - double free检查：检查当前free的chunk是否与fastbin中的第一个chunk相同，相同则报错
 
 其他情况
 ---------------------------------
 - 检查下一个chunk的size
-    - 2*size_t<chunk_size<内存总分配量
+    - 2\*size_t<chunk_size<内存总分配量
     - 如果当前 chunk 为 sbrk()分配，那么它相邻的下一块 chunk 超过了分配区的地址，会报错
 - double free检查
     - 检查当前free的chunk是否为top chunk，是则报错
@@ -165,3 +164,6 @@ References
 - `malloc homepage <http://www.malloc.de/en/>`_
 - `Memory Allocator <http://g.oswego.edu/dl/html/malloc.html>`_
 - `Dance in Heap 1 <http://www.freebuf.com/articles/system/151372.html>`_
+- `Linux堆管理分析 <https://www.cnblogs.com/alisecurity/p/5486458.html>`_
+- `Understanding glibc malloc <https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/comment-page-1/>`_
+- `syscalls-used-by-malloc <https://sploitfun.wordpress.com/2015/02/11/syscalls-used-by-malloc/>`_
