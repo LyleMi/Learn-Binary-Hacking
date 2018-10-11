@@ -7,6 +7,7 @@
    :caption: Contents:
 
    basic/index
+   pc/index
    vulns/index
    mitigations/index
    tools/index
