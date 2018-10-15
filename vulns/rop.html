@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.1. rop &mdash; bin-sec 1.0.0 documentation</title>
+  <title>3.1. rop &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. off-by-one" href="offByOne.html" />
-    <link rel="prev" title="2. 漏洞" href="index.html" /> 
+    <link rel="next" title="3.2. off-by-one" href="offByOne.html" />
+    <link rel="prev" title="3. 漏洞" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,21 +86,22 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 漏洞</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. rop</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">2.1.1. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 漏洞</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. rop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.1.1. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">2.2. off-by-one</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">2.3. 格式化字符串</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">2.4. Type Confusion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html">2.5. User After Free</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stackoverflow.html">2.6. 栈溢出</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html">2.7. 堆溢出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">3.2. off-by-one</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">3.3. 格式化字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">3.4. Type Confusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">3.5. User After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stackoverflow.html">3.6. 栈溢出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html">3.7. 堆溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">3. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">4. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">5. 工具</a></li>
 </ul>
 
             
@@ -146,9 +147,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">2. 漏洞</a> &raquo;</li>
+          <li><a href="index.html">3. 漏洞</a> &raquo;</li>
         
-      <li>2.1. rop</li>
+      <li>3.1. rop</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,10 +169,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="rop">
-<h1>2.1. rop<a class="headerlink" href="#rop" title="Permalink to this headline">¶</a></h1>
+<h1>3.1. rop<a class="headerlink" href="#rop" title="Permalink to this headline">¶</a></h1>
 <p>Return Orientated Programming</p>
 <div class="section" id="id1">
-<h2>2.1.1. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>3.1.1. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://www.freebuf.com/articles/system/94198.html">rop</a></li>
 </ul>
@@ -186,10 +187,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="offByOne.html" class="btn btn-neutral float-right" title="2.2. off-by-one" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="offByOne.html" class="btn btn-neutral float-right" title="3.2. off-by-one" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="2. 漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="3. 漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

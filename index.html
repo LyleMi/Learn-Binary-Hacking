@@ -85,9 +85,12 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">2. 漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">3. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/index.html">4. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack/index.html">3. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heap/index.html">4. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">5. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">6. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">7. 工具</a></li>
 </ul>
 
             
@@ -166,32 +169,42 @@
 <li class="toctree-l2"><a class="reference internal" href="basic/llvm.html">1.6. LLVM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">2. 漏洞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vulns/rop.html">2.1. rop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/offByOne.html">2.2. off-by-one</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/fmtstr.html">2.3. 格式化字符串</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/typeConfusion.html">2.4. Type Confusion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/uaf.html">2.5. User After Free</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/stackoverflow.html">2.6. 栈溢出</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/heapoverflow.html">2.7. 堆溢出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc/index.html">2. 计算机体系结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pc/organization.html">2.1. 计算机系统构成</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">3. 保护机制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/aslr.html">3.1. ASLR (Address Space Layout Randomization)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/canary.html">3.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/cfi.html">3.3. 控制流完整性（CFI）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/dep.html">3.4. Date Execution Prevetion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack/index.html">3. 栈相关漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stack/rop.html">3.1. rop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack/overflow.html">3.2. 栈溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tools/index.html">4. 工具</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tools/list.html">4.1. 列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/gcc.html">4.2. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/gdb.html">4.3. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/ulimit.html">4.4. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/windbg.html">4.5. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/ida.html">4.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/objdump.html">4.7. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/readelf.html">4.8. readelf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heap/index.html">4. 堆相关漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="heap/offByOne.html">4.1. off-by-one</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heap/uaf.html">4.2. User After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heap/unlink.html">4.3. 堆溢出</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">5. 其他漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vulns/fmtstr.html">5.1. 格式化字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vulns/typeConfusion.html">5.2. Type Confusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">6. 保护机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/aslr.html">6.1. ASLR (Address Space Layout Randomization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/canary.html">6.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/cfi.html">6.3. 控制流完整性（CFI）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/dep.html">6.4. Date Execution Prevetion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">7. 工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/list.html">7.1. 列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/gcc.html">7.2. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/gdb.html">7.3. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/ulimit.html">7.4. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/windbg.html">7.5. Windbg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/ida.html">7.6. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/objdump.html">7.7. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/readelf.html">7.8. readelf</a></li>
 </ul>
 </li>
 </ul>

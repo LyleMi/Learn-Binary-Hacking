@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.5. User After Free &mdash; bin-sec 1.0.0 documentation</title>
+  <title>4.2. User After Free &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.6. 栈溢出" href="stackoverflow.html" />
-    <link rel="prev" title="3.4. Type Confusion" href="typeConfusion.html" /> 
+    <link rel="next" title="4.3. 堆溢出" href="unlink.html" />
+    <link rel="prev" title="4.1. off-by-one" href="offByOne.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,26 +87,24 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 漏洞</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="rop.html">3.1. rop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">3.2. off-by-one</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">3.3. 格式化字符串</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">3.4. Type Confusion</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.5. User After Free</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.5.1. 概述</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">3.5.1.1. 基本概念</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">3.5.1.2. 危害</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 堆相关漏洞</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">4.1. off-by-one</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. User After Free</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.2.1. 概述</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">4.2.1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">4.2.1.2. 危害</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.5.2. 检测工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.2.2. 检测工具</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="stackoverflow.html">3.6. 栈溢出</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html">3.7. 堆溢出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html">4.3. 堆溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">4. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">5. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">6. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">7. 工具</a></li>
 </ul>
 
             
@@ -152,15 +150,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">3. 漏洞</a> &raquo;</li>
+          <li><a href="index.html">4. 堆相关漏洞</a> &raquo;</li>
         
-      <li>3.5. User After Free</li>
+      <li>4.2. User After Free</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/vulns/uaf.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/heap/uaf.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,11 +172,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="user-after-free">
-<h1>3.5. User After Free<a class="headerlink" href="#user-after-free" title="Permalink to this headline">¶</a></h1>
+<h1>4.2. User After Free<a class="headerlink" href="#user-after-free" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.5.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>3.5.1.1. 基本概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.1.1. 基本概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>UAF的产生涉及到两个事件，产生和使用悬垂指针。</p>
 <p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针，Dangling pointer）。</p>
 <p>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针（Wild pointer）。</p>
@@ -200,7 +198,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h3>3.5.1.2. 危害<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.1.2. 危害<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>可以概括为三方面：</p>
 <ul class="simple">
 <li>破坏完整性：例如对已经释放的内存进行的操作可能破坏正常的数据</li>
@@ -210,7 +208,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>3.5.2. 检测工具<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.2. 检测工具<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>SEA</li>
 <li>VSA</li>
@@ -228,10 +226,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="stackoverflow.html" class="btn btn-neutral float-right" title="3.6. 栈溢出" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unlink.html" class="btn btn-neutral float-right" title="4.3. 堆溢出" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="typeConfusion.html" class="btn btn-neutral" title="3.4. Type Confusion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="offByOne.html" class="btn btn-neutral" title="4.1. off-by-one" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

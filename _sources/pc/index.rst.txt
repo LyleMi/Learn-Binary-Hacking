@@ -1,4 +1,4 @@
-基础知识
+计算机体系结构
 ========================================
 
 
@@ -6,9 +6,4 @@
    :maxdepth: 2
    :caption: Contents:
 
-   elf
-   pe
-   dll
-   heap
-   stack
-   llvm
+   organization

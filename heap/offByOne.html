@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. 保护机制 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>4.1. off-by-one &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.1. ASLR (Address Space Layout Randomization)" href="aslr.html" />
-    <link rel="prev" title="5.2. Type Confusion" href="../vulns/typeConfusion.html" /> 
+    <link rel="next" title="4.2. User After Free" href="uaf.html" />
+    <link rel="prev" title="4. 堆相关漏洞" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,15 +88,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. 保护机制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">6.1. ASLR (Address Space Layout Randomization)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">6.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html">6.3. 控制流完整性（CFI）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dep.html">6.4. Date Execution Prevetion</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 堆相关漏洞</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. off-by-one</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.1.1. 参考链接</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">4.2. User After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html">4.3. 堆溢出</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">6. 保护机制</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">7. 工具</a></li>
 </ul>
 
@@ -143,13 +145,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>6. 保护机制</li>
+          <li><a href="index.html">4. 堆相关漏洞</a> &raquo;</li>
+        
+      <li>4.1. off-by-one</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/mitigations/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/heap/offByOne.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -162,32 +166,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>6. 保护机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="aslr.html">6.1. ASLR (Address Space Layout Randomization)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aslr.html#id1">6.1.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aslr.html#id2">6.1.2. 爆破</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="canary.html">6.2. Canary</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="canary.html#id1">6.2.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html#id2">6.2.2. 特点</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cfi.html">6.3. 控制流完整性（CFI）</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#id1">6.3.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#cfi-on-window">6.3.2. CFI On Window</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#cfg">6.3.3. CFG原理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#ref">6.3.4. Ref</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="dep.html">6.4. Date Execution Prevetion</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dep.html#id1">6.4.1. 简介</a></li>
-</ul>
-</li>
+  <div class="section" id="off-by-one">
+<h1>4.1. off-by-one<a class="headerlink" href="#off-by-one" title="Permalink to this headline">¶</a></h1>
+<p>一个字节溢出被称为off-by-one，曾经的一段时间里，off-by-one被认为是不可以利用的，但是后来研究发现在堆上哪怕只有一个字节的溢出也会导致任意代码的执行。同时堆的off-by-one利用也出现在国内外的各类CTF竞赛中。</p>
+<div class="section" id="id1">
+<h2>4.1.1. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://blog.csdn.net/nibiru_holmes/article/details/62040763">Linux下堆漏洞利用 off by one</a></li>
 </ul>
 </div>
 </div>
@@ -200,10 +185,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="aslr.html" class="btn btn-neutral float-right" title="6.1. ASLR (Address Space Layout Randomization)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="uaf.html" class="btn btn-neutral float-right" title="4.2. User After Free" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../vulns/typeConfusion.html" class="btn btn-neutral" title="5.2. Type Confusion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="4. 堆相关漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

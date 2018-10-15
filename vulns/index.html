@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. 漏洞 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>5. 其他漏洞 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.1. rop" href="rop.html" />
-    <link rel="prev" title="1.6. LLVM" href="../basic/llvm.html" /> 
+    <link rel="next" title="5.1. 格式化字符串" href="fmtstr.html" />
+    <link rel="prev" title="4.3. 堆溢出" href="../heap/unlink.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,18 +86,16 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 漏洞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rop.html">2.1. rop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">2.2. off-by-one</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">2.3. 格式化字符串</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">2.4. Type Confusion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html">2.5. User After Free</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stackoverflow.html">2.6. 栈溢出</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html">2.7. 堆溢出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. 其他漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">5.1. 格式化字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html">5.2. Type Confusion</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">3. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">6. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">7. 工具</a></li>
 </ul>
 
             
@@ -143,7 +141,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>2. 漏洞</li>
+      <li>5. 其他漏洞</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,39 +161,19 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>2. 漏洞<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>5. 其他漏洞<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rop.html">2.1. rop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rop.html#id1">2.1.1. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmtstr.html">5.1. 格式化字符串</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html#id2">5.1.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html#id3">5.1.2. 攻击原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html#id4">5.1.3. 常用字符</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="offByOne.html">2.2. off-by-one</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html#id1">2.2.1. 参考链接</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fmtstr.html">2.3. 格式化字符串</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html#id2">2.3.1. 概述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html#id3">2.3.2. 攻击原理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html#id4">2.3.3. 常用字符</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="typeConfusion.html">2.4. Type Confusion</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html#id1">2.4.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html#id2">2.4.2. 示例</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="uaf.html">2.5. User After Free</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html#id1">2.5.1. 概述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html#id4">2.5.2. 检测工具</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="stackoverflow.html">2.6. 栈溢出</a></li>
-<li class="toctree-l1"><a class="reference internal" href="heapoverflow.html">2.7. 堆溢出</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html#id2">2.7.1. 第一部分</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html#id3">2.7.2. 第二部分</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heapoverflow.html#id4">2.7.3. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typeConfusion.html">5.2. Type Confusion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html#id1">5.2.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typeConfusion.html#id2">5.2.2. 示例</a></li>
 </ul>
 </li>
 </ul>
@@ -210,10 +188,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="rop.html" class="btn btn-neutral float-right" title="2.1. rop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fmtstr.html" class="btn btn-neutral float-right" title="5.1. 格式化字符串" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../basic/llvm.html" class="btn btn-neutral" title="1.6. LLVM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../heap/unlink.html" class="btn btn-neutral" title="4.3. 堆溢出" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

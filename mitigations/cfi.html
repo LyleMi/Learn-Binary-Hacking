@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.3. 控制流完整性（CFI） &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.3. 控制流完整性（CFI） &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.4. Date Execution Prevetion" href="dep.html" />
-    <link rel="prev" title="3.2. Canary" href="canary.html" /> 
+    <link rel="next" title="6.4. Date Execution Prevetion" href="dep.html" />
+    <link rel="prev" title="6.2. Canary" href="canary.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,21 +86,24 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">2. 漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 保护机制</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">3.1. ASLR (Address Space Layout Randomization)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">3.2. Canary</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. 控制流完整性（CFI）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.3.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cfi-on-window">3.3.2. CFI On Window</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cfg">3.3.3. CFG原理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ref">3.3.4. Ref</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 保护机制</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">6.1. ASLR (Address Space Layout Randomization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">6.2. Canary</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. 控制流完整性（CFI）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cfi-on-window">6.3.2. CFI On Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cfg">6.3.3. CFG原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ref">6.3.4. Ref</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dep.html">3.4. Date Execution Prevetion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep.html">6.4. Date Execution Prevetion</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">7. 工具</a></li>
 </ul>
 
             
@@ -146,9 +149,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">3. 保护机制</a> &raquo;</li>
+          <li><a href="index.html">6. 保护机制</a> &raquo;</li>
         
-      <li>3.3. 控制流完整性（CFI）</li>
+      <li>6.3. 控制流完整性（CFI）</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,20 +171,20 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cfi">
-<h1>3.3. 控制流完整性（CFI）<a class="headerlink" href="#cfi" title="Permalink to this headline">¶</a></h1>
+<h1>6.3. 控制流完整性（CFI）<a class="headerlink" href="#cfi" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>攻击者常常溢出覆盖或者直接篡改寄存器EIP的值，篡改间接调用的地址，进而控制了程序的执行流程。</p>
 <p>CFI是一种漏洞利用的缓解措施。CFI用于降低攻击的可能性。最简单的理解CFI的概念，在运行时强制要求程序按编译时希望的想法去执行。</p>
 <p>一个程序的控制流可以用一张图来呈现，这张图被称为控制流图（CFG，control flow graph）。CFG是一个每个节点都是程序基本块的有向图，图中的每一条有向边都是可能的控制流路径。CFI则用来保证CFG在运行时和编译时相同。</p>
 </div>
 <div class="section" id="cfi-on-window">
-<h2>3.3.2. CFI On Window<a class="headerlink" href="#cfi-on-window" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.2. CFI On Window<a class="headerlink" href="#cfi-on-window" title="Permalink to this headline">¶</a></h2>
 <p>执行流保护（CFG，Control Flow Guard）是微软从Windows 8.1 update 3及Windows 10技术预览版开始，默认启用的一项缓解技术。这项技术通过在间接跳转前插入校验代码，检查目标地址的有效性，进而可以阻止执行流跳转到预期之外的地点， 最终及时并有效的进行异常处理，避免引发相关的安全问题。</p>
 <p>这种思想及技术在业界有了较为成熟的应用，此次Windows 10将其引入，以便提高其安全性。但是绿盟科技安全团队（NSFST）在分析CFG的实现机制过程中，发现了CFG存在全面绕过的方法，随即向微软提报，并在随后的一段时间内，配合微软修复了这个问题。</p>
 </div>
 <div class="section" id="cfg">
-<h2>3.3.3. CFG原理<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.3. CFG原理<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h2>
 <p>在编译启用了CFG的模块时，编译器会分析出该模块中所有间接函数调用可达的目标地址，并将这一信息保存在Guard CF Function Table中。</p>
 <p>同时，编译器还会在所有间接函数调用之前插入一段校验代码，以确保调用的目标地址是预期中的地址</p>
 <p>操作系统在创建支持CFG的进程时，将CFG Bitmap映射到其地址空间中，并将其基址保存在ntdll!LdrSystemDllInitBlock+0x60中。</p>
@@ -198,7 +201,7 @@
 <p>ntdll!LdrpValidateUserCallTarget从CFG Bitmap中取出目标地址所对应的位，根据该位是否设置来判断目标地址是否有效。若目标地址有效，则该函数返回进而执行间接函数调用；否则，该函数将抛出异常而终止当前进程。</p>
 </div>
 <div class="section" id="ref">
-<h2>3.3.4. Ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.4. Ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://blog.trailofbits.com/2016/10/17/lets-talk-about-cfi-clang-edition/">Let’s talk about CFI: clang edition</a></li>
 <li><a class="reference external" href="http://blog.csdn.net/yingzheng1983/article/details/47340985">分析及防护 Win10 执行流保护绕过问题</a></li>
@@ -215,10 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dep.html" class="btn btn-neutral float-right" title="3.4. Date Execution Prevetion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dep.html" class="btn btn-neutral float-right" title="6.4. Date Execution Prevetion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="canary.html" class="btn btn-neutral" title="3.2. Canary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="canary.html" class="btn btn-neutral" title="6.2. Canary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
