@@ -1,4 +1,4 @@
-其他漏洞
+堆相关漏洞
 ================================
 
 
@@ -6,5 +6,6 @@
    :maxdepth: 2
    :caption: Contents:
 
-   fmtstr
-   typeConfusion
+   offByOne
+   uaf
+   unlink
