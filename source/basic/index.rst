@@ -6,7 +6,6 @@
    :maxdepth: 2
    :caption: Contents:
 
-   cpu
    elf
    pe
    dll

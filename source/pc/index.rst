@@ -7,3 +7,4 @@
    :caption: Contents:
 
    organization
+   cpu

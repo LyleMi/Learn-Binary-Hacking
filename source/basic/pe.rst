@@ -1,36 +1,33 @@
-PE(portable executable)
+PE
 ================================
 
-每个pe文件在文件最开始的地方都有一个import 和 export table
-import table包含所有从dll中读取的函数
-有一个.reloc 段来保存dll在内存中信息
+每个pe(portable executable)文件在文件最开始的地方都有一个 import 和 export table。import table包含所有从dll中读取的函数，有一个.reloc 段来保存dll在内存中信息。
 
-和linux不同
-pe会优先加载同一个文件夹内的dll而不是去其他地方找
-在开发者看来这省去了修改PATH的烦恼，避免了dll-hell
-但是在攻击者看来这为一些绕过提供了方便
+和linux不同，pe会优先加载同一个文件夹内的dll而不是去其他地方找。在开发者看来这省去了修改PATH的烦恼，避免了dll-hell，但是在攻击者看来这为一些绕过提供了方便。
 
 RVAs
 --------------------------------------------
 PE-COFF的一个比较重要的概念是Relative Virtual Address(RVAs)
 RVAs是用来减少一些PE Loader需要做的工作的，简单的说，每个DLL都被加载到内存中的某个位置，
-可以把RVA加到一个基址上去找想要的东西
+可以把RVA加到一个基址上去找想要的东西。
 
 Heaps
 --------------------------------------------
 在dll加载的时候，会调用一些初始函数，这些函数会用HeapCreate()来设置其自身的栈，然后用一个全局变量的指针来指向它。
-大多数dll在内存中也有一个.data段来记录全局变量，因为有这么多的heap，堆溢出攻击会有点麻烦
+
+大多数dll在内存中也有一个.data段来记录全局变量，因为有这么多的heap，堆溢出攻击会有点麻烦。
+
 在linux中只会有一个栈溢出，但是在win中可能有几个栈同时溢出，这就增加了分析的难度
 
-每个进程都有一个默认的堆，可以用GetDefaultHeap()来找到它，尽管这个heap并不一定是溢出的那一个
+每个进程都有一个默认的堆，可以用GetDefaultHeap()来找到它，尽管这个heap并不一定是溢出的那一个。
 
 Thread
 --------------------------------------------
-windows没有fork()，而是用CreateProcess，这个函数会起一个新的有自己内存空间的进程，子进程会继承父进程所有可继承的属性
+windows没有fork()，而是用CreateProcess，这个函数会起一个新的有自己内存空间的进程，子进程会继承父进程所有可继承的属性。
 
 DCOM
 --------------------------------------------
-Distributed Common Object Model(DCOM)
-windows有一个特点的是分发程序一般都是用binary，使得几乎所有程序都支持COM
+Distributed Common Object Model(DCOM)。windows有一个特点的是分发程序一般都是用binary，使得几乎所有程序都支持COM。
+
 COM可以用COM支持的任何一种语言完成，而且可以在其中进行无缝转换
-要深入的了解DOM，需要了解IDL（Interface Description Language）文件
+要深入的了解DOM，需要了解IDL（Interface Description Language）文件。

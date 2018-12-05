@@ -7,27 +7,30 @@
 ### 目录结构
 
 - 基础知识
-    - dll
-    - Linux
-    - heap
-    - 指令
     - ELF
-    - PE(portable executable)
-    - 寄存器
+    - PE
+    - DLL
+    - Heap
+    - Stack
     - LLVM
-- Common Weakness Enumeration: CWE
-    - Type Confusion
-    - User After Free
+    - Sandbox
+- 计算机体系结构
+    - 计算机系统构成
+    - CPU
+- 操作系统
+    - Linux
+- 栈相关漏洞
+    - ROP
     - 栈溢出
+- 堆相关漏洞
+    - User After Free
+    - Off By One
     - 堆溢出
-- 攻击方式
-    - rop
-    - off-by-one
-    - 格式化字符串
 - 保护机制
     - ASLR
-    - 执行流保护（CFG）
-    - Non-Executable Stack
+    - Canary
+    - CFI
+    - NX
 - 工具
     - 列表
     - gcc
