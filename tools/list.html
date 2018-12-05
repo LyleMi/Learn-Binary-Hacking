@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.1. 列表 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>8.1. 推荐列表 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. gcc" href="gcc.html" />
-    <link rel="prev" title="7. 工具" href="index.html" /> 
+    <link rel="next" title="8.2. gcc" href="gcc.html" />
+    <link rel="prev" title="8. 工具与资源" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,19 +87,31 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">6. 保护机制</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 工具</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.1. 列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">7.2. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">7.3. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">7.4. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html">7.5. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">7.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">7.7. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">7.8. readelf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">5. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. 工具与资源</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. 推荐列表</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">8.1.1. 工具列表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">8.1.1.1. 编译工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">8.1.1.2. 静态分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">8.1.1.3. 动态分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">8.1.1.4. 漏洞利用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">8.1.1.5. 其他</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">8.1.2. 书单</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gcc.html">8.2. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdb.html">8.3. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">8.4. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windbg.html">8.5. Windbg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ida.html">8.6. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objdump.html">8.7. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readelf.html">8.8. readelf</a></li>
 </ul>
 </li>
 </ul>
@@ -147,9 +159,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">7. 工具</a> &raquo;</li>
+          <li><a href="index.html">8. 工具与资源</a> &raquo;</li>
         
-      <li>7.1. 列表</li>
+      <li>8.1. 推荐列表</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,12 +181,53 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>7.1. 列表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>8.1. 推荐列表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>8.1.1. 工具列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>8.1.1.1. 编译工具<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Strace</li>
-<li>Process Explorer</li>
-<li>Z3</li>
+<li><a class="reference external" href="https://github.com/llvm-mirror/llvm">llvm</a></li>
+<li><a class="reference external" href="https://github.com/Kitware/CMake">cmake</a></li>
+<li><a class="reference external" href="https://github.com/ninja-build/ninja">ninja</a></li>
 </ul>
+</div>
+<div class="section" id="id4">
+<h3>8.1.1.2. 静态分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/radare/radare2">radare2</a></li>
+<li><a class="reference external" href="https://github.com/aquynh/capstone">capstone</a></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>8.1.1.3. 动态分析<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer">Process Explorer</a></li>
+<li><a class="reference external" href="https://github.com/longld/peda">peda</a></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>8.1.1.4. 漏洞利用<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Gallopsled/pwntools">pwntools</a></li>
+<li><a class="reference external" href="https://github.com/JonathanSalwan/ROPgadget">ROPgadget</a></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>8.1.1.5. 其他<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Z3Prover/z3">Z3</a></li>
+<li><a class="reference external" href="https://github.com/mirrorer/afl">afl</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>8.1.2. 书单<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>0day安全 软件漏洞分析技术</li>
+<li>恶意代码分析实战</li>
+</ul>
+</div>
 </div>
 
 
@@ -185,10 +238,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gcc.html" class="btn btn-neutral float-right" title="7.2. gcc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gcc.html" class="btn btn-neutral float-right" title="8.2. gcc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="7. 工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="8. 工具与资源" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

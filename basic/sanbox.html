@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.2. Off By One &mdash; bin-sec 1.0.0 documentation</title>
+  <title>沙箱机制 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -28,9 +28,7 @@
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.3. 堆溢出" href="unlink.html" />
-    <link rel="prev" title="5.1. User After Free" href="uaf.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -84,23 +82,14 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 堆相关漏洞</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="uaf.html">5.1. User After Free</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. Off By One</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">5.2.1. 参考链接</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html">5.3. 堆溢出</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">6. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">7. 工具与资源</a></li>
 </ul>
 
             
@@ -146,15 +135,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">5. 堆相关漏洞</a> &raquo;</li>
-        
-      <li>5.2. Off By One</li>
+      <li>沙箱机制</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/heap/offByOne.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/basic/sanbox.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,13 +154,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="off-by-one">
-<h1>5.2. Off By One<a class="headerlink" href="#off-by-one" title="Permalink to this headline">¶</a></h1>
-<p>一个字节溢出被称为off-by-one，曾经的一段时间里，off-by-one被认为是不可以利用的，但是后来研究发现在堆上哪怕只有一个字节的溢出也会导致任意代码的执行。同时堆的off-by-one利用也出现在国内外的各类CTF竞赛中。</p>
-<div class="section" id="id1">
-<h2>5.2.1. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="id1">
+<h1>沙箱机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>命名空间<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Linux中支持namespace（命名空间）机制，这是一种轻量级的虚拟化形式。命名空间建立系统的不同视图，对于每一个命名空间看来，都像是一台独立的Linux机器。目前Linux支持六种命名空间，分别为：</p>
 <ul class="simple">
-<li><a class="reference external" href="http://blog.csdn.net/nibiru_holmes/article/details/62040763">Linux下堆漏洞利用 off by one</a></li>
+<li>mnt (mount points, file systems)</li>
+<li>pid (processes)</li>
+<li>net (network stack)</li>
+<li>ipc (system V IPC)</li>
+<li>uts (host name)</li>
+<li>user (UIDs)</li>
+</ul>
+</div>
+<div class="section" id="chroot">
+<h2>chroot<a class="headerlink" href="#chroot" title="Permalink to this headline">¶</a></h2>
+<p>chroot是较老的沙箱实现方式，其内部的机制和文件系统的命名空间类似。</p>
+</div>
+<div class="section" id="id3">
+<h2>参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://opensourceforu.com/2016/07/many-approaches-sandboxing-linux/amp/">Many approaches to sandboxing in Linux</a></li>
 </ul>
 </div>
 </div>
@@ -183,15 +185,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="unlink.html" class="btn btn-neutral float-right" title="5.3. 堆溢出" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="uaf.html" class="btn btn-neutral" title="5.1. User After Free" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

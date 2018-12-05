@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.3. gdb &mdash; bin-sec 1.0.0 documentation</title>
+  <title>8.3. gdb &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.4. ulimit" href="ulimit.html" />
-    <link rel="prev" title="7.2. gcc" href="gcc.html" /> 
+    <link rel="next" title="8.4. ulimit" href="ulimit.html" />
+    <link rel="prev" title="8.2. gcc" href="gcc.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,23 +87,24 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">6. 保护机制</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 工具</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="list.html">7.1. 列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">7.2. gcc</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. gdb</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">7.3.1. gdb</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gdb-peda">7.3.2. gdb-peda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">5. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. 工具与资源</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="list.html">8.1. 推荐列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc.html">8.2. gcc</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.3. gdb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">8.3.1. gdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdb-peda">8.3.2. gdb-peda</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">7.4. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html">7.5. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">7.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">7.7. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">7.8. readelf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">8.4. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windbg.html">8.5. Windbg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ida.html">8.6. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objdump.html">8.7. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readelf.html">8.8. readelf</a></li>
 </ul>
 </li>
 </ul>
@@ -151,9 +152,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">7. 工具</a> &raquo;</li>
+          <li><a href="index.html">8. 工具与资源</a> &raquo;</li>
         
-      <li>7.3. gdb</li>
+      <li>8.3. gdb</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,9 +174,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="gdb">
-<h1>7.3. gdb<a class="headerlink" href="#gdb" title="Permalink to this headline">¶</a></h1>
+<h1>8.3. gdb<a class="headerlink" href="#gdb" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>7.3.1. gdb<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>8.3.1. gdb<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>BreakPoint 断点</dt>
@@ -273,7 +274,7 @@
 </ul>
 </div>
 <div class="section" id="gdb-peda">
-<h2>7.3.2. gdb-peda<a class="headerlink" href="#gdb-peda" title="Permalink to this headline">¶</a></h2>
+<h2>8.3.2. gdb-peda<a class="headerlink" href="#gdb-peda" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">aslr</span></code> show aslr setting</li>
 <li><code class="docutils literal notranslate"><span class="pre">checksec</span></code> Check for various security options of binary</li>
@@ -315,10 +316,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ulimit.html" class="btn btn-neutral float-right" title="7.4. ulimit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ulimit.html" class="btn btn-neutral float-right" title="8.4. ulimit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gcc.html" class="btn btn-neutral" title="7.2. gcc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gcc.html" class="btn btn-neutral" title="8.2. gcc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

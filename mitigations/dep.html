@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.4. Date Execution Prevetion &mdash; bin-sec 1.0.0 documentation</title>
+  <title>7.4. NX &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. 工具" href="../tools/index.html" />
-    <link rel="prev" title="6.3. 控制流完整性（CFI）" href="cfi.html" /> 
+    <link rel="next" title="8. 工具与资源" href="../tools/index.html" />
+    <link rel="prev" title="7.3. CFI" href="cfi.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,20 +87,21 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">3. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">4. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">5. 其他漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 保护机制</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">6.1. ASLR (Address Space Layout Randomization)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">6.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html">6.3. 控制流完整性（CFI）</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Date Execution Prevetion</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">6.4.1. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">5. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 保护机制</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">7.1. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">7.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html">7.3. CFI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. NX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.4.1. 简介</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">7. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
 </ul>
 
             
@@ -146,9 +147,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">6. 保护机制</a> &raquo;</li>
+          <li><a href="index.html">7. 保护机制</a> &raquo;</li>
         
-      <li>6.4. Date Execution Prevetion</li>
+      <li>7.4. NX</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,10 +168,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="date-execution-prevetion">
-<h1>6.4. Date Execution Prevetion<a class="headerlink" href="#date-execution-prevetion" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="nx">
+<h1>7.4. NX<a class="headerlink" href="#nx" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>6.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>7.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>即使在今天，栈溢出也是一个很常见的安全问题。而其最常见的攻击方式则是覆盖返回地址，并跳转至shellcode。</p>
 <p>DEP通常会去掉堆栈的可执行权限（Non-Executable Stack）并设置代码段为不可写来使得这种payload无法生效。</p>
 <p>在DEP提出之后，也出现了相当多的绕过方式，几乎所有的绕过方式都基于一个事实：即使堆栈被标记为不可执行，但是其他地方仍然可以执行代码，而且，基于覆写返回地址的攻击几乎一直有效。</p>
@@ -192,10 +193,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tools/index.html" class="btn btn-neutral float-right" title="7. 工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../tools/index.html" class="btn btn-neutral float-right" title="8. 工具与资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cfi.html" class="btn btn-neutral" title="6.3. 控制流完整性（CFI）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cfi.html" class="btn btn-neutral" title="7.3. CFI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

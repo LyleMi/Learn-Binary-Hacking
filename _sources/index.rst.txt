@@ -8,6 +8,7 @@
 
    basic/index
    pc/index
+   os/index
    stack/index
    heap/index
    vulns/index

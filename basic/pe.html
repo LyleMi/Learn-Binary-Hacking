@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.2. PE(portable executable) &mdash; bin-sec 1.0.0 documentation</title>
+  <title>1.2. PE &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -87,7 +87,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">1. 基础知识</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="elf.html">1.1. ELF</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.2. PE(portable executable)</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.2. PE</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rvas">1.2.1. RVAs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#heaps">1.2.2. Heaps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#thread">1.2.3. Thread</a></li>
@@ -98,11 +98,16 @@
 <li class="toctree-l2"><a class="reference internal" href="heap.html">1.4. Heap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stack.html">1.5. 栈</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llvm.html">1.6. LLVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox.html">1.7. 沙箱机制</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">2. 漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">3. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">4. 工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">5. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
 </ul>
 
             
@@ -150,7 +155,7 @@
         
           <li><a href="index.html">1. 基础知识</a> &raquo;</li>
         
-      <li>1.2. PE(portable executable)</li>
+      <li>1.2. PE</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,38 +174,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pe-portable-executable">
-<h1>1.2. PE(portable executable)<a class="headerlink" href="#pe-portable-executable" title="Permalink to this headline">¶</a></h1>
-<p>每个pe文件在文件最开始的地方都有一个import 和 export table
-import table包含所有从dll中读取的函数
-有一个.reloc 段来保存dll在内存中信息</p>
-<p>和linux不同
-pe会优先加载同一个文件夹内的dll而不是去其他地方找
-在开发者看来这省去了修改PATH的烦恼，避免了dll-hell
-但是在攻击者看来这为一些绕过提供了方便</p>
+  <div class="section" id="pe">
+<h1>1.2. PE<a class="headerlink" href="#pe" title="Permalink to this headline">¶</a></h1>
+<p>每个pe(portable executable)文件在文件最开始的地方都有一个 import 和 export table。import table包含所有从dll中读取的函数，有一个.reloc 段来保存dll在内存中信息。</p>
+<p>和linux不同，pe会优先加载同一个文件夹内的dll而不是去其他地方找。在开发者看来这省去了修改PATH的烦恼，避免了dll-hell，但是在攻击者看来这为一些绕过提供了方便。</p>
 <div class="section" id="rvas">
 <h2>1.2.1. RVAs<a class="headerlink" href="#rvas" title="Permalink to this headline">¶</a></h2>
 <p>PE-COFF的一个比较重要的概念是Relative Virtual Address(RVAs)
 RVAs是用来减少一些PE Loader需要做的工作的，简单的说，每个DLL都被加载到内存中的某个位置，
-可以把RVA加到一个基址上去找想要的东西</p>
+可以把RVA加到一个基址上去找想要的东西。</p>
 </div>
 <div class="section" id="heaps">
 <h2>1.2.2. Heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
-<p>在dll加载的时候，会调用一些初始函数，这些函数会用HeapCreate()来设置其自身的栈，然后用一个全局变量的指针来指向它。
-大多数dll在内存中也有一个.data段来记录全局变量，因为有这么多的heap，堆溢出攻击会有点麻烦
-在linux中只会有一个栈溢出，但是在win中可能有几个栈同时溢出，这就增加了分析的难度</p>
-<p>每个进程都有一个默认的堆，可以用GetDefaultHeap()来找到它，尽管这个heap并不一定是溢出的那一个</p>
+<p>在dll加载的时候，会调用一些初始函数，这些函数会用HeapCreate()来设置其自身的栈，然后用一个全局变量的指针来指向它。</p>
+<p>大多数dll在内存中也有一个.data段来记录全局变量，因为有这么多的heap，堆溢出攻击会有点麻烦。</p>
+<p>在linux中只会有一个栈溢出，但是在win中可能有几个栈同时溢出，这就增加了分析的难度</p>
+<p>每个进程都有一个默认的堆，可以用GetDefaultHeap()来找到它，尽管这个heap并不一定是溢出的那一个。</p>
 </div>
 <div class="section" id="thread">
 <h2>1.2.3. Thread<a class="headerlink" href="#thread" title="Permalink to this headline">¶</a></h2>
-<p>windows没有fork()，而是用CreateProcess，这个函数会起一个新的有自己内存空间的进程，子进程会继承父进程所有可继承的属性</p>
+<p>windows没有fork()，而是用CreateProcess，这个函数会起一个新的有自己内存空间的进程，子进程会继承父进程所有可继承的属性。</p>
 </div>
 <div class="section" id="dcom">
 <h2>1.2.4. DCOM<a class="headerlink" href="#dcom" title="Permalink to this headline">¶</a></h2>
-<p>Distributed Common Object Model(DCOM)
-windows有一个特点的是分发程序一般都是用binary，使得几乎所有程序都支持COM
-COM可以用COM支持的任何一种语言完成，而且可以在其中进行无缝转换
-要深入的了解DOM，需要了解IDL（Interface Description Language）文件</p>
+<p>Distributed Common Object Model(DCOM)。windows有一个特点的是分发程序一般都是用binary，使得几乎所有程序都支持COM。</p>
+<p>COM可以用COM支持的任何一种语言完成，而且可以在其中进行无缝转换
+要深入的了解DOM，需要了解IDL（Interface Description Language）文件。</p>
 </div>
 </div>
 
