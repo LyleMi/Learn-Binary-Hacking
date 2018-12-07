@@ -7,3 +7,5 @@
    :caption: Contents:
 
    linux
+   macos
+   windows
