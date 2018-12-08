@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.1. User After Free &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.1. User After Free &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2. Off By One" href="offByOne.html" />
-    <link rel="prev" title="5. 堆相关漏洞" href="index.html" /> 
+    <link rel="next" title="6.2. Off By One" href="offByOne.html" />
+    <link rel="prev" title="6. 堆相关漏洞" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,26 +86,27 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 堆相关漏洞</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. User After Free</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">5.1.1. 概述</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">5.1.1.1. 基本概念</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">5.1.1.2. 成因</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">5.1.1.3. 危害</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 堆相关漏洞</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. User After Free</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.1.1. 概述</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.1.1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.1.1.2. 成因</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.1.1.3. 危害</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">5.2. Off By One</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html">5.3. 堆溢出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">6.2. Off By One</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html">6.3. 堆溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
 </ul>
 
             
@@ -151,9 +152,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">5. 堆相关漏洞</a> &raquo;</li>
+          <li><a href="index.html">6. 堆相关漏洞</a> &raquo;</li>
         
-      <li>5.1. User After Free</li>
+      <li>6.1. User After Free</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,17 +174,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="user-after-free">
-<h1>5.1. User After Free<a class="headerlink" href="#user-after-free" title="Permalink to this headline">¶</a></h1>
+<h1>6.1. User After Free<a class="headerlink" href="#user-after-free" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>5.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>6.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>5.1.1.1. 基本概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.1.1. 基本概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>UAF的产生涉及到两个事件，产生和使用悬垂指针。</p>
 <p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针，Dangling pointer）。</p>
 <p>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针（Wild pointer）。</p>
 </div>
 <div class="section" id="id3">
-<h3>5.1.1.2. 成因<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.1.2. 成因<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>在许多编程语言中（比如C），显示地从内存中删除一个对象或者返回时通过销毁栈帧，并不会改变相关的指针的值。该指针仍旧指向内存中相同的位置，即使引用已经被删除，现在可能已经挪作他用。</p>
 <p>举例来说</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">512</span><span class="p">);</span>
@@ -198,7 +199,7 @@
 <p>因为glibc使用首次适应（FirstFit）来选取合适的chunk，当a被free后，调用相近大小的malloc，则会分配a的地址。此时没有设置a的地址为 <code class="docutils literal notranslate"><span class="pre">null</span></code> ，则可以通过a来访问和修改c指向的空间的内容。</p>
 </div>
 <div class="section" id="id4">
-<h3>5.1.1.3. 危害<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.1.3. 危害<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>可以概括为三方面：</p>
 <ul class="simple">
 <li>破坏完整性：例如对已经释放的内存进行的操作可能破坏正常的数据</li>
@@ -217,10 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="offByOne.html" class="btn btn-neutral float-right" title="5.2. Off By One" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="offByOne.html" class="btn btn-neutral float-right" title="6.2. Off By One" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="5. 堆相关漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="6. 堆相关漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

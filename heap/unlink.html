@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.3. 堆溢出 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.3. 堆溢出 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. 其他漏洞" href="../vulns/index.html" />
-    <link rel="prev" title="5.2. User After Free" href="uaf.html" /> 
+    <link rel="next" title="7. 其他漏洞" href="../vulns/index.html" />
+    <link rel="prev" title="6.2. Off By One" href="offByOne.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,23 +86,24 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 堆相关漏洞</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">5.1. off-by-one</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html">5.2. User After Free</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. 堆溢出</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">5.3.1. 第一部分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">5.3.2. 第二部分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">5.3.3. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 堆相关漏洞</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">6.1. User After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">6.2. Off By One</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. 堆溢出</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.3.1. 第一部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.3.2. 第二部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.3.3. 参考链接</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
 </ul>
 
             
@@ -148,9 +149,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">5. 堆相关漏洞</a> &raquo;</li>
+          <li><a href="index.html">6. 堆相关漏洞</a> &raquo;</li>
         
-      <li>5.3. 堆溢出</li>
+      <li>6.3. 堆溢出</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,9 +171,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>5.3. 堆溢出<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.3. 堆溢出<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>5.3.1. 第一部分<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.1. 第一部分<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>首先简要介绍一下堆chunk的结构
 在malloc.c中找到关于堆chunk结构的代码</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">malloc_chunk</span> <span class="p">{</span>
@@ -281,7 +282,7 @@ bk=shellcode地址
 <p>但是执行unlink宏之后，再调用free其实就是调用shellcode，这时就可以执行任意命令了。</p>
 </div>
 <div class="section" id="id3">
-<h2>5.3.2. 第二部分<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.2. 第二部分<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Take a chunk off a bin list */
 #define unlink(AV, P, BK, FD) {
     FD = P-&gt;fd;
@@ -318,7 +319,7 @@ bk=shellcode地址
 </div>
 </div>
 <div class="section" id="id4">
-<h2>5.3.3. 参考链接<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.3. 参考链接<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://wooyun.jozxing.cc/static/drops/tips-7326.html">堆溢出的unlink利用方法</a></li>
 <li><a class="reference external" href="http://wooyun.jozxing.cc/static/drops/binary-7958.html">Double Free浅析</a></li>
@@ -334,10 +335,10 @@ bk=shellcode地址
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../vulns/index.html" class="btn btn-neutral float-right" title="6. 其他漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../vulns/index.html" class="btn btn-neutral float-right" title="7. 其他漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="uaf.html" class="btn btn-neutral" title="5.2. User After Free" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="offByOne.html" class="btn btn-neutral" title="6.2. Off By One" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

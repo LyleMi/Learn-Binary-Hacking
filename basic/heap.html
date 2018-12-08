@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.4. Heap &mdash; bin-sec 1.0.0 documentation</title>
+  <title>1.1. Heap &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.5. 栈" href="stack.html" />
-    <link rel="prev" title="1.3. DLL" href="dll.html" /> 
+    <link rel="next" title="1.2. Stack" href="stack.html" />
+    <link rel="prev" title="1. 基础知识" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,34 +86,32 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">1. 基础知识</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elf.html">1.1. ELF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html">1.2. PE(portable executable)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dll.html">1.3. DLL</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.4. Heap</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1.4.1. 历史</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#chunk">1.4.2. Chunk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bins">1.4.3. Bins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#malloc">1.4.4. Malloc逻辑</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">1.4.4.1. malloc检查</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.1. Heap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.1.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chunk">1.1.2. Chunk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bins">1.1.3. Bins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#malloc">1.1.4. Malloc逻辑</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.1.4.1. malloc检查</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#free">1.4.5. free机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">1.4.6. 其他情况</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#references">1.4.7. References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#free">1.1.5. free机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.1.6. 其他情况</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">1.1.7. References</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="stack.html">1.5. 栈</a></li>
-<li class="toctree-l2"><a class="reference internal" href="llvm.html">1.6. LLVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html">1.7. 沙箱机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">1.2. Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llvm.html">1.3. LLVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox.html">1.4. 沙箱机制</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">5. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">7. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
 </ul>
 
             
@@ -161,7 +159,7 @@
         
           <li><a href="index.html">1. 基础知识</a> &raquo;</li>
         
-      <li>1.4. Heap</li>
+      <li>1.1. Heap</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,16 +179,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="heap">
-<h1>1.4. Heap<a class="headerlink" href="#heap" title="Permalink to this headline">¶</a></h1>
+<h1>1.1. Heap<a class="headerlink" href="#heap" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>1.4.1. 历史<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>1.1.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>目前各平台有dlmalloc、ptmalloc2、jemalloc、tcmalloc、libumem等堆内存管理机制。</p>
 <p><code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 来自于 <code class="docutils literal notranslate"><span class="pre">dlmalloc</span></code> 的分支。此后，添加线程支持并于2006年发布。正式发布后， <code class="docutils literal notranslate"><span class="pre">patmalloc2</span></code> 集成到glibc源码中。随着源码集成，代码修改便直接在glibc <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 源码里进行。因此 <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 与glibc之间的 <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 实现有很多不同。</p>
 <p>在早期的Linux里， <code class="docutils literal notranslate"><span class="pre">dlmalloc</span></code> 被用做默认的内存分配器。但之后因为 <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 添加了线程支持， <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 成为了Linux默认内存分配器。线程支持可帮助提升内存分配器以及应用程序的性能。</p>
 <p>在 <code class="docutils literal notranslate"><span class="pre">dlmalloc</span></code> 里，当两个线程同时调用 <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 时，只有一个线程能进入到临界段，因为这里的空闲列表数据结构是所有可用线程共用的。因此内存分配器要在多线程应用里耗费时间，从而导致性能降低。</p>
 <p>然而在 <code class="docutils literal notranslate"><span class="pre">ptmalloc2</span></code> 里，当两个线程同时调用 <code class="docutils literal notranslate"><span class="pre">malloc</span></code> 时，会立即分配内存。因为每个线程维护一个单独的堆分段，因此空闲列表数据结构正在维护的这些堆也是独立的。这种维护独立堆以及每一个线程享有空闲列表数据结构的行为被称为Per Thread Arena。</p>
+<p>在下文中，主要对glibc使用的ptmalloc2进行介绍。</p>
 </div>
 <div class="section" id="chunk">
-<h2>1.4.2. Chunk<a class="headerlink" href="#chunk" title="Permalink to this headline">¶</a></h2>
+<h2>1.1.2. Chunk<a class="headerlink" href="#chunk" title="Permalink to this headline">¶</a></h2>
 <p>在内存中，堆（低地址到高地址，属性RW）有两种分配方式（与malloc申请chunk做区分）:</p>
 <ul class="simple">
 <li>mmap: 当申请的size大于128kb时，由mmap分配</li>
@@ -214,8 +214,8 @@
 <p>chunk的状态可以分为三种：allocated chunk、free chunk、top chunk</p>
 </div>
 <div class="section" id="bins">
-<h2>1.4.3. Bins<a class="headerlink" href="#bins" title="Permalink to this headline">¶</a></h2>
-<p>Bin在内存中用来管理free chunk，bin为带有头结点（链表头部不是chunk）的链表数组，根据特点，将bin分为四种，分别为：fastbin、unsortedbin、smallbin、largebin</p>
+<h2>1.1.3. Bins<a class="headerlink" href="#bins" title="Permalink to this headline">¶</a></h2>
+<p>Bin在内存中用来管理free chunk，bin为带有头结点（链表头部不是chunk）的链表数组，根据特点，将bin分为四种，分别为：fastbin、unsortedbin、smallbin、largebin。</p>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>fastbin</dt>
@@ -275,7 +275,7 @@
 </ul>
 </div>
 <div class="section" id="malloc">
-<h2>1.4.4. Malloc逻辑<a class="headerlink" href="#malloc" title="Permalink to this headline">¶</a></h2>
+<h2>1.1.4. Malloc逻辑<a class="headerlink" href="#malloc" title="Permalink to this headline">¶</a></h2>
 <p>当接收到申请内存的请求时，malloc的处理逻辑如下</p>
 <ul class="simple">
 <li><dl class="first docutils">
@@ -371,7 +371,7 @@
 <p>如果这之后还未找到合适的chunk，就会使用top chunk进行分配，还是没有的话，如果在多线程环境中，fastbin可能会有新的chunk，再次执行合并，并向unsortedbin中重复上面的步骤，之后还是没有的话，就只能向系统申请。</p>
 <p>以上为malloc分配的经过</p>
 <div class="section" id="id2">
-<h3>1.4.4.1. malloc检查<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>1.1.4.1. malloc检查<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>从fastbin中取出chunk后，检查size是否属于fastbin</li>
 <li>从smallbin中除去chunk后，检查victim-&gt;bk-&gt;fd == victim</li>
@@ -381,7 +381,7 @@
 </div>
 </div>
 <div class="section" id="free">
-<h2>1.4.5. free机制<a class="headerlink" href="#free" title="Permalink to this headline">¶</a></h2>
+<h2>1.1.5. free机制<a class="headerlink" href="#free" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>使用 chunksize(p) 宏获取p的size</li>
 <li><dl class="first docutils">
@@ -405,7 +405,7 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2>1.4.6. 其他情况<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>1.1.6. 其他情况<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>检查下一个chunk的size</dt>
@@ -455,7 +455,7 @@
 </ul>
 </div>
 <div class="section" id="references">
-<h2>1.4.7. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2>1.1.7. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://wps2015.org/drops/drops/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20glibc%20malloc.html">深入理解</a></li>
 <li><a class="reference external" href="http://www.malloc.de/en/">malloc homepage</a></li>
@@ -476,10 +476,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="stack.html" class="btn btn-neutral float-right" title="1.5. 栈" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stack.html" class="btn btn-neutral float-right" title="1.2. Stack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dll.html" class="btn btn-neutral" title="1.3. DLL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="1. 基础知识" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -6,9 +6,6 @@
    :maxdepth: 2
    :caption: Contents:
 
-   elf
-   pe
-   dll
    heap
    stack
    llvm

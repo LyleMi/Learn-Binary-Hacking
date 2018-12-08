@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.1. Linux &mdash; bin-sec 1.0.0 documentation</title>
+  <title>4.3. DLL &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.2. Mac OS" href="macos.html" />
-    <link rel="prev" title="3. 操作系统" href="index.html" /> 
+    <link rel="next" title="5. 栈相关漏洞" href="../stack/index.html" />
+    <link rel="prev" title="4.2. PE" href="pe.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,17 +87,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 操作系统</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Linux</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.1.1. 版本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.2. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 二进制文件</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elf.html">4.1. ELF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html">4.2. PE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.3. DLL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.3.1. 简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#svchost-exe">4.3.1.1. svchost.exe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dllhost-exe">4.3.1.2. dllhost.exe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rundll32-exe">4.3.1.3. rundll32.exe</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="macos.html">3.2. Mac OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html">3.3. Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ref">4.3.2. ref</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
@@ -148,15 +153,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">3. 操作系统</a> &raquo;</li>
+          <li><a href="index.html">4. 二进制文件</a> &raquo;</li>
         
-      <li>3.1. Linux</li>
+      <li>4.3. DLL</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/os/linux.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/binary/dll.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,19 +174,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="linux">
-<h1>3.1. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dll">
+<h1>4.3. DLL<a class="headerlink" href="#dll" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.1.1. 版本<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Linux的版本以 <code class="docutils literal notranslate"><span class="pre">kernel_version.major_revision.minor_revision</span></code> 的格式表示，其中偶数 <code class="docutils literal notranslate"><span class="pre">major_revision</span></code> 代表稳定版，奇数代表开发版。</p>
-<p>Linux的所有历史版本都可以在 <a class="reference external" href="https://mirrors.edge.kernel.org/pub/linux/kernel/">这里</a> 找到。</p>
+<h2>4.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>dll是被映射到exe进程的地址空间中去，换句话说，它可以被认为寄生在exe之上，自己并不独立存在。
+而对于需要独立执行的dll，Windows使用svchost.exe、dllhost.exe和rundll32.exe来执行这些dll。</p>
+<div class="section" id="svchost-exe">
+<h3>4.3.1.1. svchost.exe<a class="headerlink" href="#svchost-exe" title="Permalink to this headline">¶</a></h3>
+<p>官方的解释是 <code class="docutils literal notranslate"><span class="pre">svchost.exe</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">generic</span> <span class="pre">host</span> <span class="pre">process</span> <span class="pre">name</span> <span class="pre">for</span> <span class="pre">services</span> <span class="pre">that</span> <span class="pre">run</span> <span class="pre">from</span> <span class="pre">dynamic-link</span> <span class="pre">libraries.</span></code></p>
 </div>
-<div class="section" id="id3">
-<h2>3.1.2. 参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://xz.aliyun.com/t/2024">Linux内核调试</a></li>
-<li><a class="reference external" href="http://blog.nsfocus.net/gdb-kgdb-debug-application/">利用KGDB调试内核驱动模块</a></li>
-</ul>
+<div class="section" id="dllhost-exe">
+<h3>4.3.1.2. dllhost.exe<a class="headerlink" href="#dllhost-exe" title="Permalink to this headline">¶</a></h3>
+<p>它的存在是为了容纳COM组件。</p>
+</div>
+<div class="section" id="rundll32-exe">
+<h3>4.3.1.3. rundll32.exe<a class="headerlink" href="#rundll32-exe" title="Permalink to this headline">¶</a></h3>
+<p>rundll是Windows系统自带的一个直接执行DLL中导出函数的小工具</p>
+</div>
+</div>
+<div class="section" id="ref">
+<h2>4.3.2. ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://zhuanlan.zhihu.com/p/30000572">https://zhuanlan.zhihu.com/p/30000572</a></p>
 </div>
 </div>
 
@@ -193,10 +207,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="macos.html" class="btn btn-neutral float-right" title="3.2. Mac OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../stack/index.html" class="btn btn-neutral float-right" title="5. 栈相关漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="3. 操作系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pe.html" class="btn btn-neutral" title="4.2. PE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

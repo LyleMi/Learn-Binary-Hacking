@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.1. ELF &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.2. PE" href="pe.html" />
+    <link rel="prev" title="4. 二进制文件" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 二进制文件</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. ELF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.1.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.1.2. 对象文件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relocatable-file">4.1.2.1. 可重定位的对象文件(Relocatable file)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#executable-file">4.1.2.2. 可执行的对象文件(Executable file)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-object-file">4.1.2.3. 可被共享的对象文件(Shared object file)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.3. ELF格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.4. 段</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bss">4.1.4.1. .bss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-and-data1">4.1.4.2. .data and .data1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rodata">4.1.4.3. .rodata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text">4.1.4.4. .text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment">4.1.4.5. .comment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debug">4.1.4.6. .debug</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamic">4.1.4.7. .dynamic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynstr">4.1.4.8. .dynstr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynsym">4.1.4.9. .dynsym</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#got">4.1.4.10. .got</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plt">4.1.4.11. .plt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hash">4.1.4.12. .hash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#init">4.1.4.13. .init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fini">4.1.4.14. .fini</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interp">4.1.4.15. .interp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.1.5. 内存布局</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html">4.2. PE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dll.html">4.3. DLL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">4. 二进制文件</a> &raquo;</li>
+        
+      <li>4.1. ELF</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/binary/elf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elf">
+<h1>4.1. ELF<a class="headerlink" href="#elf" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>4.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>ELF(Executable and Linking Format)是一种对象文件的格式，用于定义不同类型的对象文件(Object files)中存放的对象、以及存放对象的格式。最初ELF由UNIX系统实验室（USL）开发和发布，作为应用程序二进制接口（ABI）的一部分。</p>
+<p>ELF标准旨在通过为开发人员提供一套简化的软件开发流程二进制接口定义，可以在多种环境下运行。</p>
+</div>
+<div class="section" id="id2">
+<h2>4.1.2. 对象文件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>对象文件(Object files)有如下三个种类</p>
+<div class="section" id="relocatable-file">
+<h3>4.1.2.1. 可重定位的对象文件(Relocatable file)<a class="headerlink" href="#relocatable-file" title="Permalink to this headline">¶</a></h3>
+<p>这是由汇编器汇编生成的 .o 文件。后面的链接器(link editor)拿一个或一些 Relocatable object files 作为输入，经链接处理后，生成一个可执行的对象文件 (Executable file) 或者一个可被共享的对象文件(Shared object file)。</p>
+</div>
+<div class="section" id="executable-file">
+<h3>4.1.2.2. 可执行的对象文件(Executable file)<a class="headerlink" href="#executable-file" title="Permalink to this headline">¶</a></h3>
+<p>在Linux系统里面，存在两种可执行的东西。除了Executable file，另外一种就是可执行的脚本(如shell脚本)。注意这些脚本不是Executable file，它们只是文本文件，但是执行这些脚本所用的解释器就是 Executable file，比如 bash shell 程序。</p>
+</div>
+<div class="section" id="shared-object-file">
+<h3>4.1.2.3. 可被共享的对象文件(Shared object file)<a class="headerlink" href="#shared-object-file" title="Permalink to this headline">¶</a></h3>
+<p>这些就是所谓的动态库文件，也即.so文件。如果拿前面的静态库来生成可执行程序，那每个生成的可执行程序中都会有一份库代码的拷贝。如果在磁盘中存储这些可执行程序，那就会占用额外的磁盘空间；另外如果拿它们放到Linux系统上一起运行，也会浪费掉宝贵的物理内存。如果将静态库换成动态库，那么这些问题都不会出现。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>4.1.3. ELF格式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>ELF格式有两种</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">Linking</span> <span class="n">View</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>       <span class="n">ELF</span> <span class="n">header</span>         <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>   <span class="n">Program</span> <span class="n">header</span> <span class="n">table</span>   <span class="o">|</span>
+<span class="o">|</span>        <span class="p">(</span><span class="n">optional</span><span class="p">)</span>        <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>        <span class="n">Section</span> <span class="mi">1</span>         <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>           <span class="o">...</span>            <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>        <span class="n">Section</span> <span class="n">n</span>         <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>           <span class="o">...</span>            <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>   <span class="n">Section</span> <span class="n">header</span> <span class="n">table</span>   <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+
+       <span class="n">Execution</span> <span class="n">View</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>        <span class="n">ELF</span> <span class="n">header</span>        <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>   <span class="n">Program</span> <span class="n">header</span> <span class="n">table</span>   <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>       <span class="n">Segment</span> <span class="mi">1</span>          <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>           <span class="o">...</span>            <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>       <span class="n">Segment</span> <span class="n">n</span>          <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>           <span class="o">...</span>            <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+<span class="o">|</span>   <span class="n">Section</span> <span class="n">header</span> <span class="n">table</span>   <span class="o">|</span>
+<span class="o">|</span>        <span class="p">(</span><span class="n">optional</span><span class="p">)</span>        <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>4.1.4. 段<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bss">
+<h3>4.1.4.1. .bss<a class="headerlink" href="#bss" title="Permalink to this headline">¶</a></h3>
+<p>bss段保存未初始化的全局变量和局部静态变量</p>
+</div>
+<div class="section" id="data-and-data1">
+<h3>4.1.4.2. .data and .data1<a class="headerlink" href="#data-and-data1" title="Permalink to this headline">¶</a></h3>
+<p>data段保存已初始化的全局变量和局部静态变量</p>
+</div>
+<div class="section" id="rodata">
+<h3>4.1.4.3. .rodata<a class="headerlink" href="#rodata" title="Permalink to this headline">¶</a></h3>
+<p>存放只读数据</p>
+</div>
+<div class="section" id="text">
+<h3>4.1.4.4. .text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<p>程序代码段</p>
+</div>
+<div class="section" id="comment">
+<h3>4.1.4.5. .comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
+<p>存放编译器版本信息等</p>
+</div>
+<div class="section" id="debug">
+<h3>4.1.4.6. .debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
+<p>存放调试信息</p>
+</div>
+<div class="section" id="dynamic">
+<h3>4.1.4.7. .dynamic<a class="headerlink" href="#dynamic" title="Permalink to this headline">¶</a></h3>
+<p>该段中保存了动态链接器所需要的基本信息，是一个结构数组，可以看做动态链接下ELF文件的文件头。存储了动态链接会用到的各个表的位置等信息。</p>
+</div>
+<div class="section" id="dynstr">
+<h3>4.1.4.8. .dynstr<a class="headerlink" href="#dynstr" title="Permalink to this headline">¶</a></h3>
+<p>该段是 .dynsym 段的辅助段</p>
+</div>
+<div class="section" id="dynsym">
+<h3>4.1.4.9. .dynsym<a class="headerlink" href="#dynsym" title="Permalink to this headline">¶</a></h3>
+<p>该段与 <code class="docutils literal notranslate"><span class="pre">.symtab</span></code> 段类似，但只保存了与动态链接相关的符号</p>
+</div>
+<div class="section" id="got">
+<h3>4.1.4.10. .got<a class="headerlink" href="#got" title="Permalink to this headline">¶</a></h3>
+<p>程序全局入口表</p>
+</div>
+<div class="section" id="plt">
+<h3>4.1.4.11. .plt<a class="headerlink" href="#plt" title="Permalink to this headline">¶</a></h3>
+<p>动态链接的跳转表</p>
+</div>
+<div class="section" id="hash">
+<h3>4.1.4.12. .hash<a class="headerlink" href="#hash" title="Permalink to this headline">¶</a></h3>
+<p>在动态链接下，需要在程序运行时查找符号，为了加快符号查找过程，增加了辅助的符号哈希表</p>
+</div>
+<div class="section" id="init">
+<h3>4.1.4.13. .init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
+<p>程序初始化代码段</p>
+</div>
+<div class="section" id="fini">
+<h3>4.1.4.14. .fini<a class="headerlink" href="#fini" title="Permalink to this headline">¶</a></h3>
+<p>程序终结代码段</p>
+</div>
+<div class="section" id="interp">
+<h3>4.1.4.15. .interp<a class="headerlink" href="#interp" title="Permalink to this headline">¶</a></h3>
+<p>该段里保存的是一个字符串，这个字符串就是可执行文件所需要的动态链接器的位置</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>4.1.5. 内存布局<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------</span>
+<span class="o">|</span>        <span class="n">Kernel</span> <span class="n">Space</span>            <span class="o">|</span>    <span class="mi">1</span><span class="n">GB</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>                                <span class="o">|</span>    <span class="n">Random</span> <span class="n">Stack</span> <span class="n">offset</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>       <span class="n">Stack</span> <span class="p">(</span><span class="n">growth</span> <span class="n">down</span><span class="p">)</span>      <span class="o">|</span>    <span class="n">RLIMIT_STACK</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>                                <span class="o">|</span>    <span class="n">Random</span> <span class="n">mmap</span> <span class="n">offset</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>       <span class="n">Memory</span> <span class="n">Map</span> <span class="n">Segement</span>      <span class="o">|</span>
+<span class="o">|</span>  <span class="p">(</span><span class="n">including</span> <span class="n">dynamic</span> <span class="n">libraries</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span>      <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libc</span><span class="o">.</span><span class="n">so</span>         <span class="o">|</span>
+<span class="o">|</span>         <span class="p">(</span><span class="n">growth</span> <span class="n">down</span><span class="p">)</span>          <span class="o">|</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>                                <span class="o">|</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>        <span class="n">Heap</span> <span class="p">(</span><span class="n">growth</span> <span class="n">up</span><span class="p">)</span>        <span class="o">|</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>                                <span class="o">|</span>  <span class="n">Random</span> <span class="n">brk</span> <span class="n">offset</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>          <span class="n">BSS</span> <span class="n">Segement</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="n">Uninitalized</span> <span class="n">static</span> <span class="n">variables</span><span class="p">,</span> <span class="o">|</span>
+<span class="o">|</span>       <span class="n">filled</span> <span class="k">with</span> <span class="n">zeros</span><span class="o">.</span>       <span class="o">|</span>
+<span class="o">|</span>  <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">static</span> <span class="n">char</span> <span class="o">*</span><span class="n">userName</span><span class="p">;</span>   <span class="o">|</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>          <span class="n">Data</span> <span class="n">Segement</span>         <span class="o">|</span>
+<span class="o">|</span>  <span class="n">Static</span> <span class="n">variables</span> <span class="n">initialized</span>  <span class="o">|</span>
+<span class="o">|</span>    <span class="n">by</span> <span class="n">the</span> <span class="n">programmer</span><span class="o">.</span>          <span class="o">|</span>
+<span class="o">----------------------------------</span>
+<span class="o">|</span>          <span class="n">Text</span> <span class="n">Segement</span>         <span class="o">|</span>
+<span class="o">----------------------------------</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pe.html" class="btn btn-neutral float-right" title="4.2. PE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="4. 二进制文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

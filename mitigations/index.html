@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7. 保护机制 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>8. 保护机制 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. ASLR" href="aslr.html" />
-    <link rel="prev" title="6.2. Type Confusion" href="../vulns/typeConfusion.html" /> 
+    <link rel="next" title="8.1. ASLR" href="aslr.html" />
+    <link rel="prev" title="7.2. Type Confusion" href="../vulns/typeConfusion.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,19 +86,20 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">4. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">5. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">6. 其他漏洞</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. 保护机制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">7.1. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">7.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html">7.3. CFI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dep.html">7.4. NX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. 保护机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">8.1. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">8.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html">8.3. CFI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep.html">8.4. NX</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">8. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
 </ul>
 
             
@@ -144,7 +145,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>7. 保护机制</li>
+      <li>8. 保护机制</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,29 +165,29 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>7. 保护机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>8. 保护机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="aslr.html">7.1. ASLR</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aslr.html#id1">7.1.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aslr.html#id2">7.1.2. 爆破</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aslr.html">8.1. ASLR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aslr.html#id1">8.1.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aslr.html#id2">8.1.2. 爆破</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="canary.html">7.2. Canary</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="canary.html#id1">7.2.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html#id2">7.2.2. 特点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canary.html">8.2. Canary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canary.html#id1">8.2.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html#id2">8.2.2. 特点</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cfi.html">7.3. CFI</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#id1">7.3.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#cfi-on-window">7.3.2. CFI On Window</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#cfg">7.3.3. CFG原理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html#ref">7.3.4. Ref</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfi.html">8.3. CFI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html#id1">8.3.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html#cfi-on-window">8.3.2. CFI On Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html#cfg">8.3.3. CFG原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html#ref">8.3.4. Ref</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dep.html">7.4. NX</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dep.html#id1">7.4.1. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dep.html">8.4. NX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dep.html#id1">8.4.1. 简介</a></li>
 </ul>
 </li>
 </ul>
@@ -201,10 +202,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="aslr.html" class="btn btn-neutral float-right" title="7.1. ASLR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="aslr.html" class="btn btn-neutral float-right" title="8.1. ASLR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../vulns/typeConfusion.html" class="btn btn-neutral" title="6.2. Type Confusion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../vulns/typeConfusion.html" class="btn btn-neutral" title="7.2. Type Confusion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
