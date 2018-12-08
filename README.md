@@ -28,7 +28,7 @@
     - ROP
     - 栈溢出
 - 堆相关漏洞
-    - User After Free
+    - Use After Free
     - Off By One
     - 堆溢出
 - 保护机制
