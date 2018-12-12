@@ -32,5 +32,24 @@
 
 书单
 ----------------------------------------
+
+操作系统
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Linux内核设计与实现 - Linux Kernel Development
+- Linux系统编程
+- Linux内核情景分析
+- Linux内核完全注释
+- CSAPP
+- 深入理解Mac OS X & iOS操作系统
+- `Unix环境高级编程 <https://book.douban.com/subject/25900403/>`_
+- `现代操作系统 <https://book.douban.com/subject/1390650/>`_
+- `自己动手写操作系统 <https://book.douban.com/subject/1422377/>`_
+
+安全
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - 0day安全 软件漏洞分析技术
 - 恶意代码分析实战
+
+学习资源
+----------------------------------------
+- `reverse engineering reference manual <https://github.com/yellowbyte/reverse-engineering-reference-manual>`_
