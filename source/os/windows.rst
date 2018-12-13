@@ -126,3 +126,5 @@ Code Signing（代码签名）检查机制需要加载到系统内核中运行�
 参考链接
 ----------------------------------------
 - `windows kernel exploit tutorial <https://www.redog.me/tags/windows-kernel-exploit-tutorial/>`_
+- `HEVD <https://github.com/hacksysteam/HackSysExtremeVulnerableDriver>`_
+- `HolicPOC <https://github.com/leeqwind/HolicPOC>`_
