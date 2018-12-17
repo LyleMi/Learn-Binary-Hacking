@@ -8,3 +8,4 @@
 
    organization
    cpu
+   assembly
