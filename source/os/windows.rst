@@ -1,6 +1,18 @@
 Windows
 ========================================
 
+Windows NT
+----------------------------------------
+Windows NT是Microsoft发行的一系列操作系统，其第一个版本于1993年7月发布。它是一个独立于处理器的多处理和多用户操作系统。
+
+Windows NT的第一个版本是Windows NT 3.1，是为工作站和服务器计算机生成的。它旨在补充基于MS-DOS（包括Windows 1.0到Windows 3.1x）的Windows的消费者版本。
+
+渐渐地，Windows NT系列已经扩展到微软针对所有个人计算机的通用操作系统产品线，不再使用Windows 9x系列。
+
+NT是第一个纯粹的32位Windows版本，而面向消费者的对应产品Windows 3.1x和Windows 9x则是16位/32位的混合版本。它是一种多架构操作系统。最初，它支持多种指令集架构，包括IA-32，MIPS和DEC Alpha;稍后添加了对PowerPC，Itanium，x64和ARM的支持。
+
+最新版本支持x86（更具体地说是IA-32和x64）和ARM。 Windows NT系列的主要功能包括Windows Shell，Windows API，Native API，Active Directory，组策略，硬件抽象层，NTFS，BitLocker，Windows应用商店，Windows Update和Hyper-V。
+
 运行模式
 ----------------------------------------
 Windows支持Intel x86/x64 的两种处理器模式内核模式（Ring 0）和用户模式（Ring 3）。
