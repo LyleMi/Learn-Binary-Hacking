@@ -1,14 +1,30 @@
 Linux
 ========================================
 
-版本
+简介
 ----------------------------------------
+Linux内核在1991年首次被Linus发布，采用GPL(GNU General Public License)许可证开源。
+
+Linux内核采用单内核结构，也借鉴类微内核的优点：模块、抢占式内核、支持内核线程以及动态装载内核模块。
+
 Linux的版本以 ``kernel_version.major_revision.minor_revision`` 的格式表示，其中偶数 ``major_revision`` 代表稳定版，奇数代表开发版。
 
 Linux的所有历史版本都可以在 `这里 <https://mirrors.edge.kernel.org/pub/linux/kernel/>`_ 找到。
 
 防御措施
 ----------------------------------------
+
+kptr_restrict
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+在Linux内核漏洞利用中常常使用 ``commit_creds`` 和 ``prepare_kernel_cred`` 来完成提权，其地址可以从/proc/kallsyms中读取。
+
+因此Linux启用了kptr_restrict，其值和对应的功能如下：
+
+- 0: root和普通用户都可以读取
+- 1: root用户有权限读取, 普通用户没有权限
+- 2: 内核将符号地址打印为全0, root和普通用户都没有权限
+
+该值可以通过 ``sysctl kernel.kptr_restrict`` 查看和修改
 
 SMEP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
