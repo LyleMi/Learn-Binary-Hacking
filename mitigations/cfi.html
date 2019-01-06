@@ -86,9 +86,9 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
@@ -97,9 +97,10 @@
 <li class="toctree-l2"><a class="reference internal" href="canary.html">8.2. Canary</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">8.3. CFI</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">8.3.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cfi-on-window">8.3.2. CFI On Window</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cfg">8.3.3. CFG原理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ref">8.3.4. Ref</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">8.3.2. 粒度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cfi-on-window">8.3.3. CFI On Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cfg">8.3.4. CFG原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">8.3.5. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dep.html">8.4. NX</a></li>
@@ -180,30 +181,35 @@
 <p>CFI（控制流完整性）是一种漏洞利用的缓解措施。CFI用于降低攻击的可能性。最简单的理解CFI的概念，在运行时强制要求程序按编译时希望的想法去执行。</p>
 <p>一个程序的控制流可以用一张图来呈现，这张图被称为控制流图（CFG，control flow graph）。CFG是一个每个节点都是程序基本块的有向图，图中的每一条有向边都是可能的控制流路径。CFI则用来保证CFG在运行时和编译时相同。</p>
 </div>
+<div class="section" id="id2">
+<h2>8.3.2. 粒度<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>较细粒度的CFI通过一些方法严格控制每一个间接跳转指令的转移目标。对于由间接跳转指令或者间接分支跳转指令引起的前向控制流，CFI根据CFG在每一个目标地址前插入标记，在控制流转移前插入检查标记的指令，如果检查成功，则控制流转移合法。</p>
+<p>细粒度的CFI存在性能开销较大的问题，因此有人提出了粗粒度的CFI，基于攻击特征做检查。</p>
+</div>
 <div class="section" id="cfi-on-window">
-<h2>8.3.2. CFI On Window<a class="headerlink" href="#cfi-on-window" title="Permalink to this headline">¶</a></h2>
-<p>执行流保护（CFG，Control Flow Guard）是微软从Windows 8.1 update 3及Windows 10技术预览版开始，默认启用的一项缓解技术。这项技术通过在间接跳转前插入校验代码，检查目标地址的有效性，进而可以阻止执行流跳转到预期之外的地点， 最终及时并有效的进行异常处理，避免引发相关的安全问题。</p>
-<p>这种思想及技术在业界有了较为成熟的应用，此次Windows 10将其引入，以便提高其安全性。但是绿盟科技安全团队（NSFST）在分析CFG的实现机制过程中，发现了CFG存在全面绕过的方法，随即向微软提报，并在随后的一段时间内，配合微软修复了这个问题。</p>
+<h2>8.3.3. CFI On Window<a class="headerlink" href="#cfi-on-window" title="Permalink to this headline">¶</a></h2>
+<p>执行流保护（CFG，Control Flow Guard）是微软从Windows 8.1 update 3及Windows 10技术预览版开始，默认启用的一项缓解技术。该技术是对CGI的一个实现。</p>
+<p>这项技术通过在间接跳转前插入校验代码，检查目标地址的有效性，进而可以阻止执行流跳转到预期之外的地点，最终及时并有效的进行异常处理，避免引发相关的安全问题。</p>
 </div>
 <div class="section" id="cfg">
-<h2>8.3.3. CFG原理<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h2>
+<h2>8.3.4. CFG原理<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h2>
 <p>在编译启用了CFG的模块时，编译器会分析出该模块中所有间接函数调用可达的目标地址，并将这一信息保存在Guard CF Function Table中。</p>
 <p>同时，编译器还会在所有间接函数调用之前插入一段校验代码，以确保调用的目标地址是预期中的地址</p>
-<p>操作系统在创建支持CFG的进程时，将CFG Bitmap映射到其地址空间中，并将其基址保存在ntdll!LdrSystemDllInitBlock+0x60中。</p>
+<p>操作系统在创建支持CFG的进程时，将CFG Bitmap映射到其地址空间中，并将其基址保存在ntdll!LdrSystemDllInitBlock中。</p>
 <p>CFG Bitmap是记录了所有有效的间接函数调用目标地址的位图，出于效率方面的考虑，平均每1位对应8个地址（偶数位对应1个0x10对齐的地址，奇数位对应剩下的15个非0x10对齐的地址）。</p>
 <p>提取目标地址对应位的过程如下：</p>
 <ul class="simple">
-<li>取目标地址的高24位作为索引i；</li>
-<li>将CFG-Bitmap当作32位整数的数组，用索引i取出一个32位整数bits；</li>
-<li>取目标地址的第4至8位作为偏移量n；</li>
-<li>如果目标地址不是0x10对齐的，则设置n的最低位；</li>
-<li>取32位整数bits的第n位即为目标地址的对应位。</li>
+<li>取目标地址的高24位作为索引i</li>
+<li>将CFG-Bitmap当作32位整数的数组，用索引i取出一个32位整数bits</li>
+<li>取目标地址的第4至8位作为偏移量n</li>
+<li>如果目标地址不是0x10对齐的，则设置n的最低位</li>
+<li>取32位整数bits的第n位即为目标地址的对应位</li>
 </ul>
 <p>操作系统在加载支持CFG的模块时，根据其Guard CF Function Table来更新CFG Bitmap中该模块所对应的位。同时，将函数指针_guard_check_icall_fptr初始化为指向 ntdll!LdrpValidateUserCallTarget。</p>
 <p>ntdll!LdrpValidateUserCallTarget从CFG Bitmap中取出目标地址所对应的位，根据该位是否设置来判断目标地址是否有效。若目标地址有效，则该函数返回进而执行间接函数调用；否则，该函数将抛出异常而终止当前进程。</p>
 </div>
-<div class="section" id="ref">
-<h2>8.3.4. Ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>8.3.5. 参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://blog.trailofbits.com/2016/10/17/lets-talk-about-cfi-clang-edition/">Let’s talk about CFI: clang edition</a></li>
 <li><a class="reference external" href="http://blog.csdn.net/yingzheng1983/article/details/47340985">分析及防护 Win10 执行流保护绕过问题</a></li>

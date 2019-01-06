@@ -45,3 +45,9 @@ x86架构
 权限
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ring0到ring3，ring0为最高权限，ring3最低，一般ring0为内核权限，ring3为用户权限，很少用ring1和ring2。
+
+参考链接
+------------------------------------
+- `List of Intel microprocessors <https://en.wikipedia.org/wiki/List_of_Intel_microprocessors>`_
+- `List of ARM microarchitectures <https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures>`_
+- `List of AMD microprocessors <https://en.wikipedia.org/wiki/List_of_AMD_microprocessors>`_

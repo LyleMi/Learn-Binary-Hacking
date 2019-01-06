@@ -89,9 +89,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 操作系统</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Linux</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.1.1. 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.1.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">3.1.2. 防御措施</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#smep">3.1.2.1. SMEP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kptr-restrict">3.1.2.1. kptr_restrict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smep">3.1.2.2. SMEP</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">3.1.3. 内存管理</a><ul>
@@ -180,14 +181,27 @@
   <div class="section" id="linux">
 <h1>3.1. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.1.1. 版本<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>3.1.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Linux内核在1991年首次被Linus发布，采用GPL(GNU General Public License)许可证开源。</p>
+<p>Linux内核采用单内核结构，也借鉴类微内核的优点：模块、抢占式内核、支持内核线程以及动态装载内核模块。</p>
 <p>Linux的版本以 <code class="docutils literal notranslate"><span class="pre">kernel_version.major_revision.minor_revision</span></code> 的格式表示，其中偶数 <code class="docutils literal notranslate"><span class="pre">major_revision</span></code> 代表稳定版，奇数代表开发版。</p>
 <p>Linux的所有历史版本都可以在 <a class="reference external" href="https://mirrors.edge.kernel.org/pub/linux/kernel/">这里</a> 找到。</p>
 </div>
 <div class="section" id="id3">
 <h2>3.1.2. 防御措施<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kptr-restrict">
+<h3>3.1.2.1. kptr_restrict<a class="headerlink" href="#kptr-restrict" title="Permalink to this headline">¶</a></h3>
+<p>在Linux内核漏洞利用中常常使用 <code class="docutils literal notranslate"><span class="pre">commit_creds</span></code> 和 <code class="docutils literal notranslate"><span class="pre">prepare_kernel_cred</span></code> 来完成提权，其地址可以从/proc/kallsyms中读取。</p>
+<p>因此Linux启用了kptr_restrict，其值和对应的功能如下：</p>
+<ul class="simple">
+<li>0: root和普通用户都可以读取</li>
+<li>1: root用户有权限读取, 普通用户没有权限</li>
+<li>2: 内核将符号地址打印为全0, root和普通用户都没有权限</li>
+</ul>
+<p>该值可以通过 <code class="docutils literal notranslate"><span class="pre">sysctl</span> <span class="pre">kernel.kptr_restrict</span></code> 查看和修改</p>
+</div>
 <div class="section" id="smep">
-<h3>3.1.2.1. SMEP<a class="headerlink" href="#smep" title="Permalink to this headline">¶</a></h3>
+<h3>3.1.2.2. SMEP<a class="headerlink" href="#smep" title="Permalink to this headline">¶</a></h3>
 <p>SMEP（Supervisor Mode Execution Protection）是一种减缓内核利用的cpu策略，禁止内核态到用户态内存页的代码执行，每一页都有smep标识来标明是否允许ring0的代码执行。</p>
 </div>
 </div>
