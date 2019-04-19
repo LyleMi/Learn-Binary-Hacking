@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.5. 内核 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>2.4. 内核 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. 操作系统" href="../os/index.html" />
-    <link rel="prev" title="2.4. 固件" href="firmware.html" /> 
+    <link rel="next" title="3. 汇编基础" href="../assembly.html" />
+    <link rel="prev" title="2.3. 固件" href="firmware.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,22 +89,24 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assembly.html">2.3. 汇编基础</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firmware.html">2.4. 固件</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. 内核</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2.5.1. 宏内核</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.5.2. 微内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">2.3. 固件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. 内核</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.4.1. 宏内核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.4.2. 微内核</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
 </ul>
 
             
@@ -152,7 +154,7 @@
         
           <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
         
-      <li>2.5. 内核</li>
+      <li>2.4. 内核</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,15 +174,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>2.5. 内核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>2.4. 内核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>2.5.1. 宏内核<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>2.4.1. 宏内核<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>宏内核（Monolithic Kernel）是操作系统核心架构的一种，此架构的特性是整个核心程序都是以核心空间（Kernel Space）的身份及监管者模式（Supervisor Mode）来运行。</p>
 <p>宏内核通常是以单一静态二进制文件的方式被存储在磁盘，或是高速缓存上，在开机之后被加载存储器中的核心空间，并开始运作。</p>
 <p>宏内核的优点是效率高、反应快，但是耦合度高、灵活性差。</p>
 </div>
 <div class="section" id="id3">
-<h2>2.5.2. 微内核<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>2.4.2. 微内核<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>微内核只有最基本的操作系统功能。非基本的服务和应用都在微内核之外构造。</p>
 <p>微内核有着扩展性强、灵活、可移植、支持分布式系统等优势。</p>
 </div>
@@ -194,10 +196,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../os/index.html" class="btn btn-neutral float-right" title="3. 操作系统" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../assembly.html" class="btn btn-neutral float-right" title="3. 汇编基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="firmware.html" class="btn btn-neutral" title="2.4. 固件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="firmware.html" class="btn btn-neutral" title="2.3. 固件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

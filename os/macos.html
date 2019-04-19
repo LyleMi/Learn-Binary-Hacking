@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.2. Mac OS &mdash; bin-sec 1.0.0 documentation</title>
+  <title>5.2. Mac OS &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.3. Windows" href="windows.html" />
-    <link rel="prev" title="3.1. Linux" href="linux.html" /> 
+    <link rel="next" title="5.3. Windows" href="windows.html" />
+    <link rel="prev" title="5.1. Linux" href="linux.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,21 +87,25 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 操作系统</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="linux.html">3.1. Linux</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. Mac OS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.2.1. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux.html">5.1. Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. Mac OS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.2.1. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html">3.3. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">5.3. Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -147,9 +151,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">3. 操作系统</a> &raquo;</li>
+          <li><a href="index.html">5. 操作系统</a> &raquo;</li>
         
-      <li>3.2. Mac OS</li>
+      <li>5.2. Mac OS</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,9 +173,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mac-os">
-<h1>3.2. Mac OS<a class="headerlink" href="#mac-os" title="Permalink to this headline">¶</a></h1>
+<h1>5.2. Mac OS<a class="headerlink" href="#mac-os" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.2.1. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>5.2.1. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/KernelProgramming/Architecture/Architecture.html">Kernel Architecture Overview</a></li>
 <li><a class="reference external" href="https://github.com/zhengmin1989/MyArticles/tree/master/iOS%E5%86%B0%E4%B8%8E%E7%81%AB%E4%B9%8B%E6%AD%8C">iOS冰与火之歌</a></li>
@@ -187,10 +191,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="windows.html" class="btn btn-neutral float-right" title="3.3. Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="windows.html" class="btn btn-neutral float-right" title="5.3. Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="linux.html" class="btn btn-neutral" title="3.1. Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="linux.html" class="btn btn-neutral" title="5.1. Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

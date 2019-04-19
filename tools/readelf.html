@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.8. readelf &mdash; bin-sec 1.0.0 documentation</title>
+  <title>12.8. readelf &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,7 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="9.7. objdump" href="objdump.html" /> 
+    <link rel="next" title="13. 其他" href="../misc/index.html" />
+    <link rel="prev" title="12.7. objdump" href="objdump.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -85,24 +86,28 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">9. 工具与资源</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="list.html">9.1. 推荐列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">9.2. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">9.3. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">9.4. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html">9.5. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">9.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">9.7. objdump</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.8. readelf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">12. 工具与资源</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="list.html">12.1. 推荐列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc.html">12.2. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdb.html">12.3. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">12.4. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windbg.html">12.5. Windbg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ida.html">12.6. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objdump.html">12.7. objdump</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.8. readelf</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -148,9 +153,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">9. 工具与资源</a> &raquo;</li>
+          <li><a href="index.html">12. 工具与资源</a> &raquo;</li>
         
-      <li>9.8. readelf</li>
+      <li>12.8. readelf</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,7 +175,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="readelf">
-<h1>9.8. readelf<a class="headerlink" href="#readelf" title="Permalink to this headline">¶</a></h1>
+<h1>12.8. readelf<a class="headerlink" href="#readelf" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">-h</span></code> 打印ELF的header</li>
 <li><code class="docutils literal notranslate"><span class="pre">-S</span></code> 打印ELF的Section</li>
@@ -186,8 +191,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../misc/index.html" class="btn btn-neutral float-right" title="13. 其他" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="objdump.html" class="btn btn-neutral" title="9.7. objdump" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="objdump.html" class="btn btn-neutral" title="12.7. objdump" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

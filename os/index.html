@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. 操作系统 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>5. 操作系统 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Linux" href="linux.html" />
-    <link rel="prev" title="2.5. 内核" href="../pc/kernel.html" /> 
+    <link rel="next" title="5.1. Linux" href="linux.html" />
+    <link rel="prev" title="4.1. LLVM" href="../compile/llvm.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,18 +87,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. 操作系统</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linux.html">3.1. Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macos.html">3.2. Mac OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html">3.3. Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. 操作系统</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linux.html">5.1. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos.html">5.2. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">5.3. Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -144,7 +148,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>3. 操作系统</li>
+      <li>5. 操作系统</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,31 +168,31 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>3. 操作系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>5. 操作系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="linux.html">3.1. Linux</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linux.html#id1">3.1.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux.html#id3">3.1.2. 防御措施</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux.html#id4">3.1.3. 内存管理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux.html#id6">3.1.4. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux.html">5.1. Linux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linux.html#id1">5.1.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html#id3">5.1.2. 防御措施</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html#id4">5.1.3. 内存管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html#id6">5.1.4. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="macos.html">3.2. Mac OS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="macos.html#id1">3.2.1. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macos.html">5.2. Mac OS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="macos.html#id1">5.2.1. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">3.3. Windows</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#windows-nt">3.3.1. Windows NT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id1">3.3.2. 运行模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id2">3.3.3. 基本模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id3">3.3.4. 系统进程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id4">3.3.5. 管理机制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id5">3.3.6. 进程与线程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id8">3.3.7. 防护机制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id9">3.3.8. 其他</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#id10">3.3.9. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">5.3. Windows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#windows-nt">5.3.1. Windows NT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id1">5.3.2. 运行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id2">5.3.3. 基本模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id3">5.3.4. 系统进程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id4">5.3.5. 管理机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id5">5.3.6. 进程与线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id8">5.3.7. 防护机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id9">5.3.8. 其他</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html#id10">5.3.9. 参考链接</a></li>
 </ul>
 </li>
 </ul>
@@ -203,10 +207,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="linux.html" class="btn btn-neutral float-right" title="3.1. Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linux.html" class="btn btn-neutral float-right" title="5.1. Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../pc/kernel.html" class="btn btn-neutral" title="2.5. 内核" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../compile/llvm.html" class="btn btn-neutral" title="4.1. LLVM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

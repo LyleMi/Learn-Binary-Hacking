@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.5. Windbg &mdash; bin-sec 1.0.0 documentation</title>
+  <title>12.5. Windbg &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.6. IDA" href="ida.html" />
-    <link rel="prev" title="9.4. ulimit" href="ulimit.html" /> 
+    <link rel="next" title="12.6. IDA" href="ida.html" />
+    <link rel="prev" title="12.4. ulimit" href="ulimit.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,28 +86,32 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">9. 工具与资源</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="list.html">9.1. 推荐列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">9.2. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">9.3. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">9.4. ulimit</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.5. Windbg</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.5.1. 命令行启动参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">9.5.2. 调试命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">12. 工具与资源</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="list.html">12.1. 推荐列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc.html">12.2. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdb.html">12.3. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">12.4. ulimit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.5. Windbg</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">12.5.1. 命令行启动参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">12.5.2. 调试命令</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">9.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">9.7. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">9.8. readelf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ida.html">12.6. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objdump.html">12.7. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readelf.html">12.8. readelf</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -153,9 +157,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">9. 工具与资源</a> &raquo;</li>
+          <li><a href="index.html">12. 工具与资源</a> &raquo;</li>
         
-      <li>9.5. Windbg</li>
+      <li>12.5. Windbg</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,16 +179,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="windbg">
-<h1>9.5. Windbg<a class="headerlink" href="#windbg" title="Permalink to this headline">¶</a></h1>
+<h1>12.5. Windbg<a class="headerlink" href="#windbg" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>9.5.1. 命令行启动参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>12.5.1. 命令行启动参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">g</span></code> 忽视第一个debug断点</li>
 <li><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&lt;pid&gt;</span></code> attach到pid为&lt;pid&gt;的程序</li>
 </ul>
 </div>
 <div class="section" id="id2">
-<h2>9.5.2. 调试命令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>12.5.2. 调试命令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>单步调试</dt>
@@ -266,6 +270,62 @@
 </dd>
 </dl>
 </li>
+<li>重载 <cite>.reload</cite></li>
+<li>帮助 <cite>.help</cite></li>
+<li>清屏 <cite>.cls</cite></li>
+<li>开启DML帮助 <cite>.prefer_dml  1</cite></li>
+<li><dl class="first docutils">
+<dt>设置符号地址</dt>
+<dd><ul class="first last">
+<li><cite>.sympath &lt;path&gt;</cite></li>
+<li><cite>.sympath+ srv*&lt;path&gt;*http://msdl.microsoft.com/download/symbols</cite></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>进程信息</dt>
+<dd><ul class="first last">
+<li><cite>.tlist</cite></li>
+<li><cite>!process</cite> 显示调试器当前运行进程信息</li>
+<li><cite>!process 0</cite> 显示进程列表</li>
+<li><cite>!process &lt;pid&gt;</cite> 显示进程信息</li>
+<li><cite>!peb &lt;address&gt;</cite> 查看Process Enviroment Block</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>线程信息</dt>
+<dd><ul class="first last">
+<li><cite>~</cite> 显示线程信息</li>
+<li><cite>~ &lt;thread id&gt;</cite> 切换</li>
+<li><cite>!teb &lt;address&gt;</cite> 查看TEB信息</li>
+<li><cite>.ttime</cite> 查看线程时间</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>异常信息</dt>
+<dd><ul class="first last">
+<li><cite>.exr</cite></li>
+<li><cite>.exr -1</cite> 约等于 <cite>.lastevent</cite></li>
+<li><cite>.bugcheck</cite> 显示当前bug check的详细信息，用于调试crash</li>
+<li><cite>!analyze</cite> 分析最近的异常事件</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>错误信息</dt>
+<dd><ul class="first last">
+<li><cite>!error &lt;eid&gt;</cite> 获取错误码为eid的Win32错误信息</li>
+<li><cite>!gle</cite> get last error</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
@@ -278,10 +338,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ida.html" class="btn btn-neutral float-right" title="9.6. IDA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ida.html" class="btn btn-neutral float-right" title="12.6. IDA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ulimit.html" class="btn btn-neutral" title="9.4. ulimit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ulimit.html" class="btn btn-neutral" title="12.4. ulimit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

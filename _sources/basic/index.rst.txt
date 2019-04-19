@@ -6,7 +6,4 @@
    :maxdepth: 2
    :caption: Contents:
 
-   heap
-   stack
-   llvm
-   sandbox
+   history

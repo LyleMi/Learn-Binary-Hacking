@@ -8,6 +8,5 @@
 
    organization
    cpu
-   assembly
    firmware
    kernel

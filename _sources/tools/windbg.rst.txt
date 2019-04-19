@@ -1,16 +1,13 @@
 Windbg
 ================================
 
-
 命令行启动参数
 --------------------------------
 - ``g`` 忽视第一个debug断点
 - ``p <pid>`` attach到pid为<pid>的程序
 
-
 调试命令
 --------------------------------
-
 - 单步调试
     - ``F11`` 单步，遇到函数跟进 (Step Into)
     - ``F10`` 单步，遇到函数跳过 (Step Over)
@@ -43,3 +40,29 @@ Windbg
     - ``u`` 反汇编当前执行的后几条指令并显示
     - ``u [起始地址]`` 从指定的地址开始反汇编
     - ``u [起始地址] [终止地址]`` 反汇编指定区间的汇编代码
+- 重载 `.reload`
+- 帮助 `.help`
+- 清屏 `.cls`
+- 开启DML帮助 `.prefer_dml  1`
+- 设置符号地址
+    - `.sympath <path>`
+    - `.sympath+ srv*<path>*http://msdl.microsoft.com/download/symbols`
+- 进程信息
+    - `.tlist`
+    - `!process` 显示调试器当前运行进程信息
+    - `!process 0` 显示进程列表
+    - `!process <pid>` 显示进程信息
+    - `!peb <address>` 查看Process Enviroment Block
+- 线程信息
+    - `~` 显示线程信息
+    - `~ <thread id>` 切换
+    - `!teb <address>` 查看TEB信息
+    - `.ttime` 查看线程时间
+- 异常信息
+    - `.exr`
+    - `.exr -1` 约等于 `.lastevent`
+    - `.bugcheck` 显示当前bug check的详细信息，用于调试crash
+    - `!analyze` 分析最近的异常事件
+- 错误信息
+    - `!error <eid>` 获取错误码为eid的Win32错误信息
+    - `!gle` get last error

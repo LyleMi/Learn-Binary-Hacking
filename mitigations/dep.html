@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.4. NX &mdash; bin-sec 1.0.0 documentation</title>
+  <title>11.4. NX &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. 工具与资源" href="../tools/index.html" />
-    <link rel="prev" title="8.3. CFI" href="cfi.html" /> 
+    <link rel="next" title="11.5. 沙箱机制" href="sandbox.html" />
+    <link rel="prev" title="11.3. CFI" href="cfi.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,23 +86,28 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">2. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">3. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">4. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. 保护机制</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">8.1. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">8.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html">8.3. CFI</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.4. NX</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">8.4.1. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. 防御策略</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">11.1. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">11.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html">11.3. CFI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.4. NX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">11.4.1. 简介</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox.html">11.5. 沙箱机制</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -148,9 +153,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">8. 保护机制</a> &raquo;</li>
+          <li><a href="index.html">11. 防御策略</a> &raquo;</li>
         
-      <li>8.4. NX</li>
+      <li>11.4. NX</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,9 +175,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="nx">
-<h1>8.4. NX<a class="headerlink" href="#nx" title="Permalink to this headline">¶</a></h1>
+<h1>11.4. NX<a class="headerlink" href="#nx" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>8.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>11.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>即使在今天，栈溢出也是一个很常见的安全问题。而其最常见的攻击方式则是覆盖返回地址，并跳转至shellcode。</p>
 <p>DEP通常会去掉堆栈的可执行权限（Non-Executable Stack）并设置代码段为不可写来使得这种payload无法生效。</p>
 <p>在DEP提出之后，也出现了相当多的绕过方式，几乎所有的绕过方式都基于一个事实：即使堆栈被标记为不可执行，但是其他地方仍然可以执行代码，而且，基于覆写返回地址的攻击几乎一直有效。</p>
@@ -194,10 +199,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tools/index.html" class="btn btn-neutral float-right" title="9. 工具与资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sandbox.html" class="btn btn-neutral float-right" title="11.5. 沙箱机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cfi.html" class="btn btn-neutral" title="8.3. CFI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cfi.html" class="btn btn-neutral" title="11.3. CFI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

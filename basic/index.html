@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. Heap" href="heap.html" />
+    <link rel="next" title="1.1. 计算机发展简史" href="history.html" />
     <link rel="prev" title="二进制安全学习笔记" href="../index.html" /> 
 
   
@@ -86,20 +86,20 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. 基础知识</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="heap.html">1.1. Heap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stack.html">1.2. Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="llvm.html">1.3. LLVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html">1.4. 沙箱机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">1.1. 计算机发展简史</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
 </ul>
 
             
@@ -169,33 +169,7 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="heap.html">1.1. Heap</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#id1">1.1.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#chunk">1.1.2. Chunk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#bins">1.1.3. Bins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#malloc">1.1.4. Malloc逻辑</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#free">1.1.5. free机制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#id3">1.1.6. 其他情况</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap.html#references">1.1.7. References</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="stack.html">1.2. Stack</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stack.html#id1">1.2.1. 函数调用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stack.html#id2">1.2.2. 栈结构</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="llvm.html">1.3. LLVM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="llvm.html#id1">1.3.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="llvm.html#id2">1.3.2. 组件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="llvm.html#ref">1.3.3. Ref</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sandbox.html">1.4. 沙箱机制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id2">1.4.1. 命名空间</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#chroot">1.4.2. chroot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id3">1.4.3. 参考链接</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">1.1. 计算机发展简史</a></li>
 </ul>
 </div>
 </div>
@@ -208,7 +182,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="heap.html" class="btn btn-neutral float-right" title="1.1. Heap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="history.html" class="btn btn-neutral float-right" title="1.1. 计算机发展简史" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="二进制安全学习笔记" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

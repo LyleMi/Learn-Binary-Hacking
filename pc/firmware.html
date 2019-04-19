@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.4. 固件 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>2.3. 固件 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.5. 内核" href="kernel.html" />
-    <link rel="prev" title="2.3. 汇编基础" href="assembly.html" /> 
+    <link rel="next" title="2.4. 内核" href="kernel.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,26 +88,28 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assembly.html">2.3. 汇编基础</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. 固件</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2.4.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bios">2.4.2. BIOS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">2.4.2.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uefi">2.4.2.2. UEFI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. 固件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bios">2.3.2. BIOS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.3.2.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uefi">2.3.2.2. UEFI</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.5. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.4. 内核</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">3. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../binary/index.html">4. 二进制文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">5. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">6. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">7. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">8. 保护机制</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">9. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">3. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
 </ul>
 
             
@@ -156,7 +157,7 @@
         
           <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
         
-      <li>2.4. 固件</li>
+      <li>2.3. 固件</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,21 +177,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>2.4. 固件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>2.3. 固件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>2.4.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>2.3.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>固件是一种特定的计算机软件，一般指设备的驱动程序。</p>
 <p>包含固件的设备的典型例子是嵌入式系统、计算机、计算机外设等。</p>
 </div>
 <div class="section" id="bios">
-<h2>2.4.2. BIOS<a class="headerlink" href="#bios" title="Permalink to this headline">¶</a></h2>
+<h2>2.3.2. BIOS<a class="headerlink" href="#bios" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>2.4.2.1. 简介<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>2.3.2.1. 简介<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>BIOS(Basic Input Output System)是固化到计算机内主板上一个ROM芯片上的程序，它保存着计算机最重要的基本输入输出的程序、开机后自检程序和系统自启动程序。</p>
 <p>BIOS的主要功能有开机自检、系统初始化、提供运行时服务、系统设置、引导操作系统等。</p>
 </div>
 <div class="section" id="uefi">
-<h3>2.4.2.2. UEFI<a class="headerlink" href="#uefi" title="Permalink to this headline">¶</a></h3>
+<h3>2.3.2.2. UEFI<a class="headerlink" href="#uefi" title="Permalink to this headline">¶</a></h3>
 <p>UEFI(Unified Extensible Firmware Interface)，是近代BIOS的行业规范，是一种描述类型接口的标准。</p>
 <p>和之前的BIOS相比，UEFI最大的区别在于编码几乎都是用C语言完成，只使用少量的汇编。运行使用32位的保护模式，不再使用16位的实模式。</p>
 </div>
@@ -205,10 +206,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kernel.html" class="btn btn-neutral float-right" title="2.5. 内核" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="kernel.html" class="btn btn-neutral float-right" title="2.4. 内核" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="assembly.html" class="btn btn-neutral" title="2.3. 汇编基础" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
