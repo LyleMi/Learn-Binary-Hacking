@@ -8,13 +8,17 @@
 
    basic/index
    pc/index
+   assembly/index
+   compile/index
    os/index
-   binary/index
+   reverse/index
+   exploit/index
    stack/index
    heap/index
    vulns/index
    mitigations/index
    tools/index
+   misc/index
 
 
 目录

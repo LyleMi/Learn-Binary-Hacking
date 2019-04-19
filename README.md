@@ -1,48 +1,65 @@
 # 二进制安全学习笔记
 
-一些常见的二进制安全相关知识，来自于本人学习过程中做的总结，尚有缺漏或未完成的部分，持续更新中，如有错误请不吝指出。在线版本可点击[此处](https://lylemi.github.io/Learn-Binary-Hacking/)查看。
+记录了一些常见的二进制安全相关知识，所学浅薄、精力有限，因此这份笔记有一些错误或是还没完成的部分，正在逐渐补充或修正。如果存在错误欢迎各位读者以Issue或者PR的方式批评指正。
 
-在完成的过程中参考了一些blog，皆在文末给出相应链接，感谢blog作者的分享。
+在编写笔记的过程中参考、摘抄了很多资料，都在文末留下了相应的链接，感谢文章作者的分享。
+
+笔记的在线版本可以点击[这里](https://lylemi.github.io/Learn-Binary-Hacking/)查看。
 
 ### 目录结构
 
 - 基础知识
-    - Heap
-    - Stack
-    - LLVM
-    - Sandbox
+    - 计算机发展简史
 - 计算机体系结构
-    - 计算机系统构成
     - CPU
-    - 汇编基础
     - 固件
     - 内核
+- 汇编基础
+- 编译原理
+    - LLVM
+    - JIT
 - 操作系统
     - Linux
     - Windows
     - Mac OS
-- 二进制文件
+- 逆向工程
     - ELF
     - PE
     - DLL
+- 漏洞利用基础
+    - Shellcode编写
+    - Heap
+    - Stack
 - 栈相关漏洞
-    - ROP
     - 栈溢出
+    - ROP
 - 堆相关漏洞
+    - 堆溢出
     - Use After Free
     - Off By One
-    - 堆溢出
-- 保护机制
+- 其他漏洞
+    - 格式化字符串
+    - 类型混淆
+    - 整形溢出
+- 防御策略
+    - DEP
     - ASLR
     - Canary
     - CFI
     - NX
+    - Sandbox
+    - 反调试
+- 漏洞挖掘
+    - Fuzz
+    - 符号执行
 - 工具
     - 列表
     - gcc
     - gdb
     - pwntools
     - ulimit
+- 其他
+    - 垃圾回收
 
 ### 生成 HTML 格式的文档
 

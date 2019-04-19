@@ -1,9 +1,8 @@
-基础知识
+汇编基础
 ========================================
-
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   history
+   diff
