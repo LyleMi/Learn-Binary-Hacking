@@ -99,6 +99,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">11.1. ASLR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">11.1.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">11.1.2. 爆破</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">11.1.3. 关闭</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="canary.html">11.2. Canary</a></li>
@@ -185,6 +186,10 @@
 <div class="section" id="id2">
 <h2>11.1.2. 爆破<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>ASLR只在exec时生效，fork时并不会改变，因此在一些情况下可以爆破。在32位的程序中，可随机化的范围为8bit，在64位的程序中，可随机化的范围为22bit。</p>
+</div>
+<div class="section" id="id3">
+<h2>11.1.3. 关闭<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在Linux下可以通过 <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">/proc/sys/kernel/randomize_va_space</span></code> 关闭。</p>
 </div>
 </div>
 

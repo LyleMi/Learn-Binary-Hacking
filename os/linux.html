@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.1. Linux &mdash; bin-sec 1.0.0 documentation</title>
+  <title>5.3. Linux &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2. Mac OS" href="macos.html" />
-    <link rel="prev" title="5. 操作系统" href="index.html" /> 
+    <link rel="next" title="5.4. Mac OS" href="macos.html" />
+    <link rel="prev" title="5.2. Boot" href="boot.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -90,22 +90,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 操作系统</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Linux</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">5.1.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">5.1.2. 防御措施</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#kptr-restrict">5.1.2.1. kptr_restrict</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#smep">5.1.2.2. SMEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">5.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot.html">5.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.3.2. 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.3.3. 防御措施</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kptr-restrict">5.3.3.1. kptr_restrict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smep">5.3.3.2. SMEP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">5.1.3. 内存管理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">5.1.3.1. 内存回收</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5.3.4. 内存管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">5.3.4.1. 内存回收</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">5.1.4. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.3.5. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="macos.html">5.2. Mac OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html">5.3. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos.html">5.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">5.5. Windows</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
@@ -163,7 +166,7 @@
         
           <li><a href="index.html">5. 操作系统</a> &raquo;</li>
         
-      <li>5.1. Linux</li>
+      <li>5.3. Linux</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,18 +186,24 @@
            <div itemprop="articleBody">
             
   <div class="section" id="linux">
-<h1>5.1. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<h1>5.3. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>5.1.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>5.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Linux内核在1991年首次被Linus发布，采用GPL(GNU General Public License)许可证开源。</p>
 <p>Linux内核采用单内核结构，也借鉴类微内核的优点：模块、抢占式内核、支持内核线程以及动态装载内核模块。</p>
 <p>Linux的版本以 <code class="docutils literal notranslate"><span class="pre">kernel_version.major_revision.minor_revision</span></code> 的格式表示，其中偶数 <code class="docutils literal notranslate"><span class="pre">major_revision</span></code> 代表稳定版，奇数代表开发版。</p>
 <p>Linux的所有历史版本都可以在 <a class="reference external" href="https://mirrors.edge.kernel.org/pub/linux/kernel/">这里</a> 找到。</p>
 </div>
 <div class="section" id="id3">
-<h2>5.1.2. 防御措施<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>5.3.2. 启动<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>接通电源后，计算机加载BIOS或UEFI，进行相应的启动程序。</p>
+<p>而后BIOS/UEFI加载Linux内核，执行init作为所有系统进程的起点。 init 读取配置文件 <code class="docutils literal notranslate"><span class="pre">/etc/inittab</span></code> ，并根据 <code class="docutils literal notranslate"><span class="pre">inittab</span></code> 执行相应程序。</p>
+<p>然后根据不同的运行级别执行 <code class="docutils literal notranslate"><span class="pre">/etc/rcX.d/</span></code> 目录下的文件， 例如运行级别为5时，执行 <code class="docutils literal notranslate"><span class="pre">/etc/rc5.d/</span></code> 下的文件，接着执行 <code class="docutils literal notranslate"><span class="pre">/etc/rc.d/rc.local</span></code> ，最后设置好tty，为用户登录做准备。</p>
+</div>
+<div class="section" id="id4">
+<h2>5.3.3. 防御措施<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="kptr-restrict">
-<h3>5.1.2.1. kptr_restrict<a class="headerlink" href="#kptr-restrict" title="Permalink to this headline">¶</a></h3>
+<h3>5.3.3.1. kptr_restrict<a class="headerlink" href="#kptr-restrict" title="Permalink to this headline">¶</a></h3>
 <p>在Linux内核漏洞利用中常常使用 <code class="docutils literal notranslate"><span class="pre">commit_creds</span></code> 和 <code class="docutils literal notranslate"><span class="pre">prepare_kernel_cred</span></code> 来完成提权，其地址可以从/proc/kallsyms中读取。</p>
 <p>因此Linux启用了kptr_restrict，其值和对应的功能如下：</p>
 <ul class="simple">
@@ -205,14 +214,14 @@
 <p>该值可以通过 <code class="docutils literal notranslate"><span class="pre">sysctl</span> <span class="pre">kernel.kptr_restrict</span></code> 查看和修改</p>
 </div>
 <div class="section" id="smep">
-<h3>5.1.2.2. SMEP<a class="headerlink" href="#smep" title="Permalink to this headline">¶</a></h3>
+<h3>5.3.3.2. SMEP<a class="headerlink" href="#smep" title="Permalink to this headline">¶</a></h3>
 <p>SMEP（Supervisor Mode Execution Protection）是一种减缓内核利用的cpu策略，禁止内核态到用户态内存页的代码执行，每一页都有smep标识来标明是否允许ring0的代码执行。</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>5.1.3. 内存管理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3>5.1.3.1. 内存回收<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h2>5.3.4. 内存管理<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>5.3.4.1. 内存回收<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>在运行时需要回收一些很少使用的内存页面来保证系统持续有内存使用。页面回收的方式有页回写、页交换和页丢弃三种方式。</p>
 <p>页回写指一个很少使用的页的后备存储器是一个块设备（例如文件映射），则可以将内存直接同步到块设备，腾出的页面可以被重用。</p>
 <p>页交换指页面没有后备存储器，则可以交换到特定swap分区，再次被访问时再交换回内存。</p>
@@ -220,8 +229,8 @@
 <p>回收时间一般在内存紧缺时回收，或者周期性回收，或者由用户触发回收。</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>5.1.4. 参考链接<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>5.3.5. 参考链接<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.kernel.org">The Linux Kernel Archives</a></li>
 <li><a class="reference external" href="https://www.kernel.org/doc/html/latest/">The Linux Kernel documentation</a></li>
@@ -243,10 +252,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="macos.html" class="btn btn-neutral float-right" title="5.2. Mac OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="macos.html" class="btn btn-neutral float-right" title="5.4. Mac OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="5. 操作系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="boot.html" class="btn btn-neutral" title="5.2. Boot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

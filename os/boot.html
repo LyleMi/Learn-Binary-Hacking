@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>13. 其他 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>5.2. Boot &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13.1. 垃圾回收" href="gc.html" />
-    <link rel="prev" title="12.8. readelf" href="../tools/readelf.html" /> 
+    <link rel="next" title="5.3. Linux" href="linux.html" />
+    <link rel="prev" title="5.1. 概述" href="overview.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,7 +89,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">5.1. 概述</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. Boot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bios">5.2.1. BIOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uefi">5.2.2. UEFI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.2.3. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html">5.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos.html">5.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">5.5. Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
@@ -97,11 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">13. 其他</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gc.html">13.1. 垃圾回收</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html">13.2. 沙箱</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -147,13 +155,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>13. 其他</li>
+          <li><a href="index.html">5. 操作系统</a> &raquo;</li>
+        
+      <li>5.2. Boot</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/misc/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/os/boot.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,18 +176,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>13. 其他<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gc.html">13.1. 垃圾回收</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sandbox.html">13.2. 沙箱</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id2">13.2.1. 虚拟环境检测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id7">13.2.2. 沙箱环境检测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id8">13.2.3. 参考链接</a></li>
-</ul>
-</li>
+  <div class="section" id="boot">
+<h1>5.2. Boot<a class="headerlink" href="#boot" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bios">
+<h2>5.2.1. BIOS<a class="headerlink" href="#bios" title="Permalink to this headline">¶</a></h2>
+<p>BIOS (Basic Input/Output System) 是基本输入输出系统，提供了一种载入操作系统的方式。</p>
+<p>在电源启动后做自检，如果硬件有问题，则发出蜂鸣，没问题则根据设定好的启动顺序把控制权转交给下一阶段的启动程序。</p>
+<p>转交给下阶段启动程序后，计算机会读取设备的第一个扇区，如果扇区的最后两个字节是 <code class="docutils literal notranslate"><span class="pre">0x55AA</span></code> 则表明设备可以用于启动，否则将控制权转移给下一个设备。</p>
+<p>扇区共512字节，其中第1-446字节记录调用操作系统的机器码，第447-510字节记录分区表（Partition table），将硬盘分为多个分区，第511-512字节为主引导记录签名（0x55AA）。</p>
+</div>
+<div class="section" id="uefi">
+<h2>5.2.2. UEFI<a class="headerlink" href="#uefi" title="Permalink to this headline">¶</a></h2>
+<p>UEFI，全称是统一的可扩展固件接口 (Unified Extensible Firmware Interface)，是计算机操作系统和平台固件之间的接口规范，提供了灵活的配置。在UEFI之后，BIOS也被称作Legacy。</p>
+<p>BIOS标准将bootlloader存放在主引导记录（MBR）中，容量有限，而UEFI中引入了新的系统分区来存储bootloader以及驱动等数据。</p>
+<p>另外，UEFI通过固件签名验证提供了安全的启动加载，拒绝不合法的UEFI执行程序和驱动程序。</p>
+</div>
+<div class="section" id="id1">
+<h2>5.2.3. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.osdev.org/UEFI">UEFI</a></li>
+<li><a class="reference external" href="http://www.ruanyifeng.com/blog/2013/02/booting.html">计算机是如何启动的</a></li>
 </ul>
 </div>
 </div>
@@ -190,10 +208,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gc.html" class="btn btn-neutral float-right" title="13.1. 垃圾回收" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linux.html" class="btn btn-neutral float-right" title="5.3. Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tools/readelf.html" class="btn btn-neutral" title="12.8. readelf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral" title="5.1. 概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

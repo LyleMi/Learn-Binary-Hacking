@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>13. 其他 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>5.1. 概述 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13.1. 垃圾回收" href="gc.html" />
-    <link rel="prev" title="12.8. readelf" href="../tools/readelf.html" /> 
+    <link rel="next" title="5.2. Boot" href="boot.html" />
+    <link rel="prev" title="5. 操作系统" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,7 +89,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 操作系统</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. 概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1.1. 什么是操作系统</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="boot.html">5.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html">5.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos.html">5.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">5.5. Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
@@ -97,11 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">13. 其他</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gc.html">13.1. 垃圾回收</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html">13.2. 沙箱</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
 </ul>
 
             
@@ -147,13 +153,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>13. 其他</li>
+          <li><a href="index.html">5. 操作系统</a> &raquo;</li>
+        
+      <li>5.1. 概述</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/misc/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/os/overview.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,18 +175,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>13. 其他<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gc.html">13.1. 垃圾回收</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sandbox.html">13.2. 沙箱</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id2">13.2.1. 虚拟环境检测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id7">13.2.2. 沙箱环境检测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html#id8">13.2.3. 参考链接</a></li>
-</ul>
-</li>
-</ul>
+<h1>5.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>5.1.1. 什么是操作系统<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>通常把操作系统定义为用以控制和管理计算机系统资源，方便用户使用的程序和数据结构的集合。</p>
+<p>在所有的系统软件中，操作系统是一种首要的、最基本、最重要的系统程序，也是最庞大、最复杂的系统软件。</p>
+<p>从系统的视角看计算机是系统的控制中心，是系统的大脑。CPU是计算机硬件的核心，是计算机系统的心脏；操作系统则是计算机软件的核心，是计算机系统的大脑，从而操作系统是整个系统的控制中心，是计算机或智能控制管理系统中首要的、最重要的、最复杂的系统软件。</p>
+<p>操作系统的作用类似于城市交通的决策、指挥、控制和调度中心，它组织和管理整个计算机系统的硬件和软件资源，在用户和程序之间分配系统资源，使之协调一致地、高效地完成各种复杂的任务。</p>
+<p>从用户的视角看，用户几乎不可能使用裸机。如果在裸机之上覆盖一层I/O设备管理软件，就能使用户较方便地使用外部设备；如果在其上再覆盖一层文件管理软件，用户就很容易存取系统文件和用户文件；每覆盖一层新的软件，就构造了一台功能更强的虚拟机器。通过OS，计算机能提供种类更多，质量更高的服务。</p>
 </div>
 </div>
 
@@ -190,10 +194,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gc.html" class="btn btn-neutral float-right" title="13.1. 垃圾回收" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="boot.html" class="btn btn-neutral float-right" title="5.2. Boot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tools/readelf.html" class="btn btn-neutral" title="12.8. readelf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="5. 操作系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

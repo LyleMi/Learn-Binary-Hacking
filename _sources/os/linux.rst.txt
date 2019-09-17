@@ -11,6 +11,14 @@ Linux的版本以 ``kernel_version.major_revision.minor_revision`` 的格式表�
 
 Linux的所有历史版本都可以在 `这里 <https://mirrors.edge.kernel.org/pub/linux/kernel/>`_ 找到。
 
+启动
+----------------------------------------
+接通电源后，计算机加载BIOS或UEFI，进行相应的启动程序。
+
+而后BIOS/UEFI加载Linux内核，执行init作为所有系统进程的起点。 init 读取配置文件 ``/etc/inittab`` ，并根据 ``inittab`` 执行相应程序。
+
+然后根据不同的运行级别执行 ``/etc/rcX.d/`` 目录下的文件， 例如运行级别为5时，执行 ``/etc/rc5.d/`` 下的文件，接着执行 ``/etc/rc.d/rc.local`` ，最后设置好tty，为用户登录做准备。
+
 防御措施
 ----------------------------------------
 
