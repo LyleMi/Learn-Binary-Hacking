@@ -15,6 +15,10 @@
 - `radare2 <https://github.com/radare/radare2>`_
 - `capstone <https://github.com/aquynh/capstone>`_
 
+Diff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `diaphora <https://github.com/joxeankoret/diaphora>`_
+
 动态分析
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Process Explorer <https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>`_

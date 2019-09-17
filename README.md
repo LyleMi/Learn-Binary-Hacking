@@ -10,6 +10,7 @@
 
 - 基础知识
     - 计算机发展简史
+    - 布尔代数
 - 计算机体系结构
     - CPU
     - 固件
@@ -19,6 +20,7 @@
     - LLVM
     - JIT
 - 操作系统
+    - Boot
     - Linux
     - Windows
     - Mac OS
