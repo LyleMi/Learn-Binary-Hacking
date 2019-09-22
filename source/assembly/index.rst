@@ -3,7 +3,10 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 目录:
 
    diff
+   x86
+   arm
    mips
+   ppc

@@ -1,0 +1,25 @@
+x86
+========================================
+
+寄存器
+----------------------------------------
+- ESP
+    - Extended Stack Pointer 栈指针寄存器
+    - 指向最上面帧的栈顶
+- EBP
+    - Extended Base Pointer 基址指针寄存器
+    - 指向最上面帧的栈底
+- EIP
+    - Extended Instruction Pointer 指令寄存器
+    - 指向当前的指令地址
+- EFLAGS
+    - 保存当前执行状态的所有Flag
+- CR0-CR7
+    - 控制寄存器
+    - 保存系统的控制位
+- IDTR
+    - Interrupt Descriptor Table Register
+    - 中断寄存器，记录当前中断处理函数的地址
+- IDTR
+    - Global Descriptor Table Register
+    - 记录段表

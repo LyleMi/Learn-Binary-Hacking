@@ -3,7 +3,9 @@ Boot
 
 BIOS
 ----------------------------------------
-BIOS (Basic Input/Output System) 是基本输入输出系统，提供了一种载入操作系统的方式。
+BIOS (Basic Input/Output System) 是固化到计算机内主板上一个ROM芯片上的程序，它保存着计算机最重要的基本输入输出的程序、开机后自检程序和系统自启动程序，提供了一种载入操作系统的方式。
+
+BIOS的主要功能有开机自检、系统初始化、提供运行时服务、系统设置、引导操作系统等。
 
 在电源启动后做自检，如果硬件有问题，则发出蜂鸣，没问题则根据设定好的启动顺序把控制权转交给下一阶段的启动程序。
 
@@ -13,7 +15,9 @@ BIOS (Basic Input/Output System) 是基本输入输出系统，提供了一种�
 
 UEFI
 ----------------------------------------
-UEFI，全称是统一的可扩展固件接口 (Unified Extensible Firmware Interface)，是计算机操作系统和平台固件之间的接口规范，提供了灵活的配置。在UEFI之后，BIOS也被称作Legacy。
+UEFI，全称是统一的可扩展固件接口 (Unified Extensible Firmware Interface)，是计算机操作系统和平台固件之间的接口规范，提供了灵活的配置。
+
+在UEFI之后，BIOS也被称作Legacy。和之前的BIOS相比，UEFI最大的区别在于编码几乎都是用C语言完成，只使用少量的汇编。运行使用32位的保护模式，不再使用16位的实模式。
 
 BIOS标准将bootlloader存放在主引导记录（MBR）中，容量有限，而UEFI中引入了新的系统分区来存储bootloader以及驱动等数据。
 
