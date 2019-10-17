@@ -11,6 +11,74 @@ Linux的版本以 ``kernel_version.major_revision.minor_revision`` 的格式表�
 
 Linux的所有历史版本都可以在 `这里 <https://mirrors.edge.kernel.org/pub/linux/kernel/>`_ 找到。
 
+目录结构
+----------------------------------------
+通常来说，Linux的目录结构如下:
+
+- /bin
+    - 必要的一些二进制文件
+- /boot
+    - boot loader的静态文件
+- /etc
+    - 各种config文件
+- /usr
+    - 共享的一些只读文件
+- /usr/local
+    - 本地文件
+- /usr/share
+    - 所有架构的静态共享文件
+- /usr/share/man
+    - 手册文件
+    - man1 user program
+    - man2 system calls
+    - man3 lib functions
+    - man4 special file
+    - man5 file formats 
+    - man6 games
+    - man7 misc
+    - man8 system admin
+- /usr/bin
+    - 常用的用户命令
+- /usr/include
+    - C程序标准库
+- /usr/lib
+    - 程序obj / bin / lib文件
+- /usr/sbin
+    - 非必须文件
+- /var
+    - 各种变量数据文件
+- /var/cache
+    - 应用cache
+- /var/lib
+- /var/yp
+    - NIS服务
+- /var/lock
+    - 共享文件的锁
+- /var/opt
+    - 安装包的数据
+- /var/run
+    - 系统启动后的数据
+- /var/tmp
+- /var/spool
+    - 待处理数据
+- /var/log
+    - 日志
+- /sbin
+    - 系统程序
+- /tmp
+    - 临时文件，重启后删除
+- /dev
+- /home
+    - 用户文件
+- /lib
+    - 库和内核模块
+- /mnt
+    - 挂载目录
+- /opt
+    - 应用程序
+- /root
+    - root用户
+
 启动
 ----------------------------------------
 接通电源后，计算机加载BIOS或UEFI，进行相应的启动程序。
