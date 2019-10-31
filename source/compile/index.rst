@@ -7,5 +7,12 @@
    :caption: 目录:
 
    basic
+   lexical
+   syntax
+   semantic
+   intermediate
+   optimization
+   generation
    llvm
    jit
+   terminology

@@ -11,3 +11,5 @@
    linux
    macos
    windows
+   android
+   ios
