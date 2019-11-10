@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>12.5. Windbg &mdash; bin-sec 1.0.0 documentation</title>
+  <title>13.7. Windbg &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12.6. IDA" href="ida.html" />
-    <link rel="prev" title="12.4. ulimit" href="ulimit.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="13.8. IDA" href="ida.html" />
+    <link rel="prev" title="13.6. ulimit" href="ulimit.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,35 +84,38 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">12. 工具与资源</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="list.html">12.1. 推荐列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">12.2. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">12.3. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">12.4. ulimit</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">12.5. Windbg</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">12.5.1. 命令行启动参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">12.5.2. 调试命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">13. 工具与资源</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="list.html">13.1. 工具列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html">13.2. 书单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document.html">13.3. 文档资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc.html">13.4. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdb.html">13.5. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.6. ulimit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13.7. Windbg</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">13.7.1. 命令行启动参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">13.7.2. 调试命令</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">12.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">12.7. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">12.8. readelf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ida.html">13.8. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objdump.html">13.9. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readelf.html">13.10. readelf</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -157,9 +161,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">12. 工具与资源</a> &raquo;</li>
+          <li><a href="index.html">13. 工具与资源</a> &raquo;</li>
         
-      <li>12.5. Windbg</li>
+      <li>13.7. Windbg</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,149 +183,136 @@
            <div itemprop="articleBody">
             
   <div class="section" id="windbg">
-<h1>12.5. Windbg<a class="headerlink" href="#windbg" title="Permalink to this headline">¶</a></h1>
+<h1>13.7. Windbg<a class="headerlink" href="#windbg" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>12.5.1. 命令行启动参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>13.7.1. 命令行启动参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">g</span></code> 忽视第一个debug断点</li>
-<li><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&lt;pid&gt;</span></code> attach到pid为&lt;pid&gt;的程序</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g</span></code> 忽视第一个debug断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&lt;pid&gt;</span></code> attach到pid为&lt;pid&gt;的程序</p></li>
 </ul>
 </div>
 <div class="section" id="id2">
-<h2>12.5.2. 调试命令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>13.7.2. 调试命令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>单步调试</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">F11</span></code> 单步，遇到函数跟进 (Step Into)</li>
-<li><code class="docutils literal notranslate"><span class="pre">F10</span></code> 单步，遇到函数跳过 (Step Over)</li>
-<li><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">F11</span></code> 跳出当前函数 (Step Out)</li>
+<li><dl class="simple">
+<dt>单步调试</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">F11</span></code> 单步，遇到函数跟进 (Step Into)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F10</span></code> 单步，遇到函数跳过 (Step Over)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">F11</span></code> 跳出当前函数 (Step Out)</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>执行到指定位置</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">[地址|函数名]</span></code> 执行到指定位置</li>
-<li><code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">[地址|函数名]</span></code> 执行到指定位置，如遇到异常则中断</li>
-<li><code class="docutils literal notranslate"><span class="pre">gn</span> <span class="pre">[地址|函数名]</span></code> 执行到指定位置，如遇到异常则忽略</li>
+<li><dl class="simple">
+<dt>执行到指定位置</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">[地址|函数名]</span></code> 执行到指定位置</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">[地址|函数名]</span></code> 执行到指定位置，如遇到异常则中断</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gn</span> <span class="pre">[地址|函数名]</span></code> 执行到指定位置，如遇到异常则忽略</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>断点</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">Ctrl+Break</span></code> 中断当前运行</li>
-<li><code class="docutils literal notranslate"><span class="pre">bl</span></code> 列出已设置断点</li>
-<li><code class="docutils literal notranslate"><span class="pre">be</span> <span class="pre">[断点ID]</span></code> 激活断点</li>
-<li><code class="docutils literal notranslate"><span class="pre">bd</span> <span class="pre">[断点ID]</span></code> 禁用断点</li>
-<li><code class="docutils literal notranslate"><span class="pre">bc</span> <span class="pre">[断点ID]</span></code> 清除断点</li>
-<li><code class="docutils literal notranslate"><span class="pre">bp</span> <span class="pre">[地址|函数名]</span></code> 设置断点</li>
+<li><dl class="simple">
+<dt>断点</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Break</span></code> 中断当前运行</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bl</span></code> 列出已设置断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">be</span> <span class="pre">[断点ID]</span></code> 激活断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bd</span> <span class="pre">[断点ID]</span></code> 禁用断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bc</span> <span class="pre">[断点ID]</span></code> 清除断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bp</span> <span class="pre">[地址|函数名]</span></code> 设置断点</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>数据展示</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">[地址]</span></code> 显示内存数据</li>
-<li><code class="docutils literal notranslate"><span class="pre">db</span> <span class="pre">[地址]</span></code> 按字节显示内存数据</li>
-<li><code class="docutils literal notranslate"><span class="pre">dd</span> <span class="pre">[地址]</span></code> 按双字节显示内存数据</li>
+<li><dl class="simple">
+<dt>数据展示</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">[地址]</span></code> 显示内存数据</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db</span> <span class="pre">[地址]</span></code> 按字节显示内存数据</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dd</span> <span class="pre">[地址]</span></code> 按双字节显示内存数据</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>数据编辑</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">e</span> <span class="pre">[地址]</span> <span class="pre">[数据]</span></code> 修改任意内存地址的值</li>
+<li><dl class="simple">
+<dt>数据编辑</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span> <span class="pre">[地址]</span> <span class="pre">[数据]</span></code> 修改任意内存地址的值</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>栈的显示</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">[x]</span></code> 打印调用栈，x为需要回溯的栈帧数</li>
-<li><code class="docutils literal notranslate"><span class="pre">kb</span> <span class="pre">[x]</span></code> 打印调用栈，并额外显示3个传递给函数的参数</li>
+<li><dl class="simple">
+<dt>栈的显示</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">[x]</span></code> 打印调用栈，x为需要回溯的栈帧数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb</span> <span class="pre">[x]</span></code> 打印调用栈，并额外显示3个传递给函数的参数</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>模块显示</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">lm</span></code> 列出已经读入的所有模块</li>
-<li><code class="docutils literal notranslate"><span class="pre">lmvm</span> <span class="pre">[name]</span></code> 查看模块的详细信息</li>
-<li><code class="docutils literal notranslate"><span class="pre">x</span></code> 查找符号的二进制地址</li>
+<li><dl class="simple">
+<dt>模块显示</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lm</span></code> 列出已经读入的所有模块</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lmvm</span> <span class="pre">[name]</span></code> 查看模块的详细信息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> 查找符号的二进制地址</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>反汇编功能</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">u</span></code> 反汇编当前执行的后几条指令并显示</li>
-<li><code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">[起始地址]</span></code> 从指定的地址开始反汇编</li>
-<li><code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">[起始地址]</span> <span class="pre">[终止地址]</span></code> 反汇编指定区间的汇编代码</li>
+<li><dl class="simple">
+<dt>反汇编功能</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code> 反汇编当前执行的后几条指令并显示</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">[起始地址]</span></code> 从指定的地址开始反汇编</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">[起始地址]</span> <span class="pre">[终止地址]</span></code> 反汇编指定区间的汇编代码</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>重载 <cite>.reload</cite></li>
-<li>帮助 <cite>.help</cite></li>
-<li>清屏 <cite>.cls</cite></li>
-<li>开启DML帮助 <cite>.prefer_dml  1</cite></li>
-<li><dl class="first docutils">
-<dt>设置符号地址</dt>
-<dd><ul class="first last">
-<li><cite>.sympath &lt;path&gt;</cite></li>
-<li><cite>.sympath+ srv*&lt;path&gt;*http://msdl.microsoft.com/download/symbols</cite></li>
+<li><p>重载 <cite>.reload</cite></p></li>
+<li><p>帮助 <cite>.help</cite></p></li>
+<li><p>清屏 <cite>.cls</cite></p></li>
+<li><p>开启DML帮助 <cite>.prefer_dml  1</cite></p></li>
+<li><dl class="simple">
+<dt>设置符号地址</dt><dd><ul>
+<li><p><cite>.sympath &lt;path&gt;</cite></p></li>
+<li><p><cite>.sympath+ srv*&lt;path&gt;*http://msdl.microsoft.com/download/symbols</cite></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>进程信息</dt>
-<dd><ul class="first last">
-<li><cite>.tlist</cite></li>
-<li><cite>!process</cite> 显示调试器当前运行进程信息</li>
-<li><cite>!process 0</cite> 显示进程列表</li>
-<li><cite>!process &lt;pid&gt;</cite> 显示进程信息</li>
-<li><cite>!peb &lt;address&gt;</cite> 查看Process Enviroment Block</li>
+<li><dl class="simple">
+<dt>进程信息</dt><dd><ul>
+<li><p><cite>.tlist</cite></p></li>
+<li><p><cite>!process</cite> 显示调试器当前运行进程信息</p></li>
+<li><p><cite>!process 0</cite> 显示进程列表</p></li>
+<li><p><cite>!process &lt;pid&gt;</cite> 显示进程信息</p></li>
+<li><p><cite>!peb &lt;address&gt;</cite> 查看Process Enviroment Block</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>线程信息</dt>
-<dd><ul class="first last">
-<li><cite>~</cite> 显示线程信息</li>
-<li><cite>~ &lt;thread id&gt;</cite> 切换</li>
-<li><cite>!teb &lt;address&gt;</cite> 查看TEB信息</li>
-<li><cite>.ttime</cite> 查看线程时间</li>
+<li><dl class="simple">
+<dt>线程信息</dt><dd><ul>
+<li><p><cite>~</cite> 显示线程信息</p></li>
+<li><p><cite>~ &lt;thread id&gt;</cite> 切换</p></li>
+<li><p><cite>!teb &lt;address&gt;</cite> 查看TEB信息</p></li>
+<li><p><cite>.ttime</cite> 查看线程时间</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>异常信息</dt>
-<dd><ul class="first last">
-<li><cite>.exr</cite></li>
-<li><cite>.exr -1</cite> 约等于 <cite>.lastevent</cite></li>
-<li><cite>.bugcheck</cite> 显示当前bug check的详细信息，用于调试crash</li>
-<li><cite>!analyze</cite> 分析最近的异常事件</li>
+<li><dl class="simple">
+<dt>异常信息</dt><dd><ul>
+<li><p><cite>.exr</cite></p></li>
+<li><p><cite>.exr -1</cite> 约等于 <cite>.lastevent</cite></p></li>
+<li><p><cite>.bugcheck</cite> 显示当前bug check的详细信息，用于调试crash</p></li>
+<li><p><cite>!analyze</cite> 分析最近的异常事件</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>错误信息</dt>
-<dd><ul class="first last">
-<li><cite>!error &lt;eid&gt;</cite> 获取错误码为eid的Win32错误信息</li>
-<li><cite>!gle</cite> get last error</li>
+<li><dl class="simple">
+<dt>错误信息</dt><dd><ul>
+<li><p><cite>!error &lt;eid&gt;</cite> 获取错误码为eid的Win32错误信息</p></li>
+<li><p><cite>!gle</cite> get last error</p></li>
 </ul>
 </dd>
 </dl>
@@ -338,10 +329,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ida.html" class="btn btn-neutral float-right" title="12.6. IDA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ida.html" class="btn btn-neutral float-right" title="13.8. IDA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ulimit.html" class="btn btn-neutral" title="12.4. ulimit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ulimit.html" class="btn btn-neutral float-left" title="13.6. ulimit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -350,7 +341,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -367,37 +358,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

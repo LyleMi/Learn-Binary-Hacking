@@ -4,10 +4,11 @@
 .. toctree::
    :numbered:
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 目录:
 
    basic/index
-   pc/index
+   architecture/index
+   firmware/index
    assembly/index
    compile/index
    os/index

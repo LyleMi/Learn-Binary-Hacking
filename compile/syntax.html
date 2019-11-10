@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.3. 语法分析 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.4. 语义分析" href="semantic.html" />
+    <link rel="prev" title="5.2. 词法分析" href="lexical.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 编译原理</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic.html">5.1. 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lexical.html">5.2. 词法分析</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. 语法分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.3.2. 分析方法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">5.3.2.1. 自上而下</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">5.3.2.2. 自下而上</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.3.3. 语法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">5.3.3.1. 上下文无关语法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.3.3.2. 二义性文法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">5.3.4. 错误处理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#panic-mode-recovery">5.3.4.1. Panic-Mode Recovery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phrase-level-recovery">5.3.4.2. Phrase-Level Recovery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-productions">5.3.4.3. Error Productions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#global-corrections">5.3.4.4. Global Corrections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="semantic.html">5.4. 语义分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intermediate.html">5.5. 中间代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">5.6. 代码优化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation.html">5.7. 代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llvm.html">5.8. LLVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit.html">5.9. JIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminology.html">5.10. 相关术语</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 编译原理</a> &raquo;</li>
+        
+      <li>5.3. 语法分析</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/compile/syntax.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.3. 语法分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>5.3.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>语法分析以词法分析生成的单词符号序列作为输入，根据语法规则识别出语法成分。</p>
+</div>
+<div class="section" id="id3">
+<h2>5.3.2. 分析方法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>5.3.2.1. 自上而下<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>自上而下的分析法从文法开始符号开始，正向推导。</p>
+</div>
+<div class="section" id="id5">
+<h3>5.3.2.2. 自下而上<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>自下而上的分析法从给定的输入串开始，逐步归约。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>5.3.3. 语法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>5.3.3.1. 上下文无关语法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>上下文无关语法（context-free grammar）有四个模块</p>
+<ul class="simple">
+<li><p>一组终结符（terminal symbols），有时候又叫token</p></li>
+<li><p>一组非终结符（nonterminal）syntactic variables.</p></li>
+<li><p>一组产生式（productions）</p></li>
+<li><p>一个非终结符作为起始符号</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>5.3.3.2. 二义性文法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>ambiguous grammars</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>5.3.4. 错误处理<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>错误发生时，有一些可选的方法，最简单一种处理方式是 遇到第一个错误就退出，但是当错误很多的时候，最好能够容忍，并报出之后的错误。</p>
+<div class="section" id="panic-mode-recovery">
+<h3>5.3.4.1. Panic-Mode Recovery<a class="headerlink" href="#panic-mode-recovery" title="Permalink to this headline">¶</a></h3>
+<p>当遇到错误的时候，就开始丢弃遇到的符号，直到遇到一个终结符，例如分号等。</p>
+</div>
+<div class="section" id="phrase-level-recovery">
+<h3>5.3.4.2. Phrase-Level Recovery<a class="headerlink" href="#phrase-level-recovery" title="Permalink to this headline">¶</a></h3>
+<p>这个方式是遇到错误的时候，替换一个能让当前parse执行下去的符号。</p>
+</div>
+<div class="section" id="error-productions">
+<h3>5.3.4.3. Error Productions<a class="headerlink" href="#error-productions" title="Permalink to this headline">¶</a></h3>
+<p>把错误的产生式加到语法解析里面。</p>
+</div>
+<div class="section" id="global-corrections">
+<h3>5.3.4.4. Global Corrections<a class="headerlink" href="#global-corrections" title="Permalink to this headline">¶</a></h3>
+<p>还有一种做法是找到一个最近的能正常parse的源程序然后往下，但是这种做法太过消耗时间和空间资源，实际情况下使用的情况较少。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="semantic.html" class="btn btn-neutral float-right" title="5.4. 语义分析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lexical.html" class="btn btn-neutral float-left" title="5.2. 词法分析" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

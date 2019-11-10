@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1. 基础知识 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. 词法分析" href="lexical.html" />
+    <link rel="prev" title="5. 编译原理" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 编译原理</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. 基础知识</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1.1. 编译器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.1.2. 相关书籍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.1.3. 编译阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lexical.html">5.2. 词法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">5.3. 语法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantic.html">5.4. 语义分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intermediate.html">5.5. 中间代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">5.6. 代码优化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation.html">5.7. 代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llvm.html">5.8. LLVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit.html">5.9. JIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminology.html">5.10. 相关术语</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 编译原理</a> &raquo;</li>
+        
+      <li>5.1. 基础知识</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/compile/basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.1. 基础知识<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>5.1.1. 编译器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>简单来说，编译程序是一种翻译程序，它将高级语言所写的源程序翻译成等价的机器语言或汇编语言的目标程序。</p>
+<p>解释程序也是一种翻译程序，它将源程序作为输入并执行之，解释程序与编译程序的主要区别是解释程序的执行过程中不生成目标程序。</p>
+<p>编译的过程大致可分为词法分析、语法分析、语义分析、中间代码生成、代码优化、代码生成等几步。</p>
+<p>词法分析阶段的任务是对构成源程序的字符串从左到右进行扫描和分解，根据语言的词法规则，识别出一个一个具有独立意义的token。</p>
+<p>词法规则是单词符号的形成规则,它规定了哪样的字符串构成一个单词符号。</p>
+<p>语法分析的任务是在词法分析的基础上,  根据语言的语法规则从单词符号串中识别出各种语法单位 (如表达式、说明、语句等) ,并进行语法检查,即检查各种语法单位在语法结构上的正确性。</p>
+<p>语言的语法规则规定了如何从单词符号形成语法单位，语法规则是语法单位的形成规则。</p>
+<p>语义分析的任务是首先对每种语法单位进行静态的语义审查，然后分析其含义，并用另一种语言形式 (比源语言更接近于目标语言的一种中间代码或直接用目标语言 ) 来描述这种语义。</p>
+<p>代码优化的任务是对前阶段产生的中间代码进行等价变换或改造，以期获得更为高效，（省时间和空间）的目标代码。优化主要包括局部优化和循环优化等。</p>
+</div>
+<div class="section" id="id3">
+<h2>5.1.2. 相关书籍<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>编译原理领域最有名的三本书昵称为龙、虎、鲸。</p>
+<p>龙书原名 <code class="docutils literal notranslate"><span class="pre">Compilers:</span> <span class="pre">Principles,</span> <span class="pre">Techniques,</span> <span class="pre">and</span> <span class="pre">Tools</span></code> ，由Alfred V.Aho等人编写。主要讨论了编译器设计的主题，包括词法分析、语法分析、语法制导分析、类型检查、运行环境、中间代码生成、代码生成、代码优化等问题。</p>
+<p>虎书原名 <code class="docutils literal notranslate"><span class="pre">Modern</span> <span class="pre">Compiler</span> <span class="pre">Implenentation</span> <span class="pre">in</span> <span class="pre">C</span></code> 由Andrew W.Apple等人编写。虎书与龙书内容相似，但是增加了数据流分析、循环优化、内存管理等内容。</p>
+<p>鲸书原名 <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Compiler</span> <span class="pre">Design</span> <span class="pre">and</span> <span class="pre">Implementation</span></code> 由Steven S.Muchnick编写，和前两本书相比，鲸书涉及到了更多的比较高级的编译器实现。</p>
+</div>
+<div class="section" id="id4">
+<h2>5.1.3. 编译阶段<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>编译第一阶段为预处理阶段，涉及以下操作</p>
+<ul class="simple">
+<li><p>执行预编译指令 #define 等</p></li>
+<li><p>处理条件预编译指令 #ifdef 等</p></li>
+<li><p>删除注释</p></li>
+<li><p>添加行号和文件名标识</p></li>
+<li><p>保留 #pragma 预编译指令</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-E</span> <span class="pre">hello.c</span> <span class="pre">-o</span> <span class="pre">hello.i</span></code></p></li>
+</ul>
+<p>编译阶段，对预处理完的文件进行词法分析、语法分析、语义分析以及优化后生成相应的汇编代码。将文本文件hello.i翻译成文本文件.s，包含一个汇编语言程序。可使用gcc的 <code class="docutils literal notranslate"><span class="pre">-S</span></code> 参数， 例如 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-S</span> <span class="pre">hello.i</span> <span class="pre">-o</span> <span class="pre">hello.s</span></code> 。</p>
+<p>汇编阶段，汇编器将.s文件翻译成机器语言指令，使用 gcc 的 <code class="docutils literal notranslate"><span class="pre">-c</span></code> 参数，例如 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-c</span> <span class="pre">hello.s</span> <span class="pre">-o</span> <span class="pre">hello.o</span></code> 。</p>
+<p>链接阶段，编译器以动态链接或静态链接的方式生成二进制文件。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lexical.html" class="btn btn-neutral float-right" title="5.2. 词法分析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="5. 编译原理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

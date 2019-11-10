@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.2. BLE &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. 汇编基础" href="../assembly/index.html" />
+    <link rel="prev" title="3.1. NVRAM" href="nvram.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 固件</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nvram.html">3.1. NVRAM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. BLE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.2.1. 工作流程</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.2.1.1. 设备配对</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2.2. 协议栈</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#physical-layer">3.2.2.1. Physical Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-layer">3.2.2.2. Link Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hci">3.2.2.3. HCI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generic-access-profile-gap">3.2.2.4. Generic Access Profile (GAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.3. 攻击</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mitm">3.2.3.1. MITM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pin">3.2.3.2. 离线PIN码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.2.3.3. 中继攻击</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dos">3.2.3.4. DoS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.4. 分析工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3.2.4.1. 嗅探工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.2.4.2. 扫描器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">3.2.4.3. 攻击</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">3.2.4.4. 模拟器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">3.2.4.5. 手机端</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.2.5. 安全问题</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">3.2.5.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">3.2.5.2. 业务安全</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">3.2.5.3. 网络传输</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">3.2.5.4. 蓝牙通信</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. 固件</a> &raquo;</li>
+        
+      <li>3.2. BLE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/firmware/ble.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ble">
+<h1>3.2. BLE<a class="headerlink" href="#ble" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>3.2.1. 工作流程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>蓝牙启动</p></li>
+<li><p>扫描设备</p></li>
+<li><p>设备配对</p></li>
+<li><p>数据传输</p></li>
+</ul>
+<div class="section" id="id2">
+<h3>3.2.1.1. 设备配对<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>生成初始密钥</dt><dd><ul>
+<li><p>初始密钥Kinit长度为128bit, 由E22算法生成</p></li>
+<li><p>首先提出通信的设备为主设备(Master)，用A表示</p></li>
+<li><p>被动通信的设备为从设备(Slave)，用B表示</p></li>
+<li><dl class="simple">
+<dt>E22算法的输入</dt><dd><ul>
+<li><p>从设备的物理地址(BD_ADDR)</p></li>
+<li><p>PIN码及其长度</p></li>
+<li><p>128 bit的随机数(IN_RAND)，由A产生，并明文传输给B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>生成链路密钥</dt><dd><ul>
+<li><p>A产生128位的随机数LK_RANDA，B产生随机数LK_RANDB</p></li>
+<li><p>Kinit与LK_RANDA，发送给B</p></li>
+<li><p>Kinit与LK_RANDB，发送给A</p></li>
+<li><p>用E21加密LK_RANDA、LK_RANDB、BD_ADDRA、BD_ADDRB，结果异或得到Kab</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>双方认证</dt><dd><ul>
+<li><p>使用挑战-应答</p></li>
+<li><p>A为应答，B为请求</p></li>
+<li><p>A产生128 bit的随机数AU_RANDA，明文传输至B</p></li>
+<li><p>A、B使用AU_RANDA、Kab、BD_ANDRB加密运算生成32位的SRESA和SRESB</p></li>
+<li><p>B将SRESB传给A，A比较SRESA和SRESB，相同则通过</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>3.2.2. 协议栈<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="physical-layer">
+<h3>3.2.2.1. Physical Layer<a class="headerlink" href="#physical-layer" title="Permalink to this headline">¶</a></h3>
+<p>蓝牙使用2.4GHz频道，自适应跳频</p>
+</div>
+<div class="section" id="link-layer">
+<h3>3.2.2.2. Link Layer<a class="headerlink" href="#link-layer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>控制设备的射频状态</p></li>
+<li><p>Standby</p></li>
+<li><p>Advertising</p></li>
+<li><p>Scanning</p></li>
+<li><p>Initiating</p></li>
+<li><p>Connection</p></li>
+</ul>
+</div>
+<div class="section" id="hci">
+<h3>3.2.2.3. HCI<a class="headerlink" href="#hci" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>主机控制接口层</p></li>
+<li><p>Host和Controller的通信协议</p></li>
+<li><p>软硬件接口</p></li>
+</ul>
+</div>
+<div class="section" id="generic-access-profile-gap">
+<h3>3.2.2.4. Generic Access Profile (GAP)<a class="headerlink" href="#generic-access-profile-gap" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>控制设备连接和广播</p></li>
+<li><dl class="simple">
+<dt>role</dt><dd><ul>
+<li><p>Broadcaster：设备发送Advertising Events</p></li>
+<li><p>Observer: 设备在接受Advertising Events</p></li>
+<li><p>Peripheral：设备接受Link Layer连接</p></li>
+<li><p>Central: 设备发起Link Layer连接</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>通信模式</dt><dd><ul>
+<li><p>Broadcast Mode and Observation Procedure: 单向无连接通信</p></li>
+<li><p>Discovery modes and procedure: 设备发现</p></li>
+<li><p>Connection modes and procedure: 设备连接</p></li>
+<li><p>Bonding modes and procedure: 设备配对</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Logical Link Control and Adaptation Protocol (L2CAP Protocol)</p></li>
+<li><dl class="simple">
+<dt>Security Manager (SM)</dt><dd><ul>
+<li><p>配对</p></li>
+<li><p>认证</p></li>
+<li><p>加密</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Attribute Protocol (ATT)</p></li>
+<li><dl class="simple">
+<dt>Generic Attribute Profile (GATT)</dt><dd><ul>
+<li><p>接受和处理主从设备的指令信息，并打包成合适的profile</p></li>
+<li><dl class="simple">
+<dt>Services</dt><dd><ul>
+<li><p>将数据分为独立逻辑项，包含一个或多个Characteristic</p></li>
+<li><p>每个Service有一个UUID标识</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Characteristic</dt><dd><ul>
+<li><p>最小的逻辑数据单元</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>3.2.3. 攻击<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mitm">
+<h3>3.2.3.1. MITM<a class="headerlink" href="#mitm" title="Permalink to this headline">¶</a></h3>
+<p>B修改自身为A的地址，以A的身份和C通信
+B修改自身为C的地址，以C的身份和A通信</p>
+</div>
+<div class="section" id="pin">
+<h3>3.2.3.2. 离线PIN码<a class="headerlink" href="#pin" title="Permalink to this headline">¶</a></h3>
+<p>暴力攻击PIN码</p>
+</div>
+<div class="section" id="id5">
+<h3>3.2.3.3. 中继攻击<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>以中继的方式放大蓝牙信号</p>
+</div>
+<div class="section" id="dos">
+<h3>3.2.3.4. DoS<a class="headerlink" href="#dos" title="Permalink to this headline">¶</a></h3>
+<p>发起大量的鉴权/文件传送等请求，使设备不能正常工作</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>3.2.4. 分析工具<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>3.2.4.1. 嗅探工具<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>cc2540 / cc2541</dt><dd><ul>
+<li><p>只能监听一个信道</p></li>
+<li><p>低价替补方案</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>MRF51822</dt><dd><ul>
+<li><p>数据包捕获不稳定</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Frontline BPA 600</p></li>
+<li><p>Ellsys BEX400</p></li>
+<li><dl class="simple">
+<dt>Ubertooth</dt><dd><ul>
+<li><p>支持有限</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>HackRF</dt><dd><ul>
+<li><p>针对蓝牙，使用复杂</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>3.2.4.2. 扫描器<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>bleah</p></li>
+<li><p>bluelog</p></li>
+<li><p>btCrawler</p></li>
+<li><p>Kismet</p></li>
+<li><p>BLE Sniffer</p></li>
+<li><p>Blue Scanner</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>3.2.4.3. 攻击<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>BtleJuice</p></li>
+<li><p>Blueranger</p></li>
+<li><p>Bluebugging</p></li>
+<li><p>Peripheral hijacking</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>3.2.4.4. 模拟器<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>hackmelock</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>3.2.4.5. 手机端<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bluez</p></li>
+<li><p>LightBlue</p></li>
+<li><p>nRF Connect</p></li>
+<li><p>Ramble</p></li>
+<li><p>hackmelock</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>3.2.5. 安全问题<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>3.2.5.1. 基础<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>配置管理</p></li>
+<li><p>身份鉴别</p></li>
+<li><p>认证授权</p></li>
+<li><p>会话管理</p></li>
+<li><p>输入验证</p></li>
+<li><p>错误处理</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>3.2.5.2. 业务安全<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>账户管理</p></li>
+<li><p>云端密码下发</p></li>
+<li><p>远程开门</p></li>
+<li><p>开锁记录</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>3.2.5.3. 网络传输<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>明文传输</p></li>
+<li><p>加密漏洞</p></li>
+<li><p>数据包逆向</p></li>
+<li><p>OTA固件拦截</p></li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>3.2.5.4. 蓝牙通信<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>协议分析</p></li>
+<li><p>明文传输</p></li>
+<li><p>信号重放</p></li>
+<li><p>信号拦截</p></li>
+<li><p>操作指令</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../assembly/index.html" class="btn btn-neutral float-right" title="4. 汇编基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nvram.html" class="btn btn-neutral float-left" title="3.1. NVRAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11.5. 沙箱机制 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>12.5. 沙箱机制 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12. 工具与资源" href="../tools/index.html" />
-    <link rel="prev" title="11.4. NX" href="dep.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="13. 工具与资源" href="../tools/index.html" />
+    <link rel="prev" title="12.4. NX" href="dep.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,33 +84,34 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. 防御策略</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">11.1. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">11.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html">11.3. CFI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dep.html">11.4. NX</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">11.5. 沙箱机制</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">11.5.1. 命名空间</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#chroot">11.5.2. chroot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">11.5.3. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">12. 防御策略</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">12.1. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">12.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html">12.3. CFI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep.html">12.4. NX</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.5. 沙箱机制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">12.5.1. 命名空间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chroot">12.5.2. chroot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">12.5.3. 参考链接</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -155,9 +157,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">11. 防御策略</a> &raquo;</li>
+          <li><a href="index.html">12. 防御策略</a> &raquo;</li>
         
-      <li>11.5. 沙箱机制</li>
+      <li>12.5. 沙箱机制</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,27 +179,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>11.5. 沙箱机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>12.5. 沙箱机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>11.5.1. 命名空间<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>12.5.1. 命名空间<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Linux中支持namespace（命名空间）机制，这是一种轻量级的虚拟化形式。命名空间建立系统的不同视图，对于每一个命名空间看来，都像是一台独立的Linux机器。目前Linux支持六种命名空间，分别为：</p>
 <ul class="simple">
-<li>mnt (mount points, file systems)</li>
-<li>pid (processes)</li>
-<li>net (network stack)</li>
-<li>ipc (system V IPC)</li>
-<li>uts (host name)</li>
-<li>user (UIDs)</li>
+<li><p>mnt (mount points, file systems)</p></li>
+<li><p>pid (processes)</p></li>
+<li><p>net (network stack)</p></li>
+<li><p>ipc (system V IPC)</p></li>
+<li><p>uts (host name)</p></li>
+<li><p>user (UIDs)</p></li>
 </ul>
 </div>
 <div class="section" id="chroot">
-<h2>11.5.2. chroot<a class="headerlink" href="#chroot" title="Permalink to this headline">¶</a></h2>
+<h2>12.5.2. chroot<a class="headerlink" href="#chroot" title="Permalink to this headline">¶</a></h2>
 <p>chroot是较老的沙箱实现方式，其内部的机制和文件系统的命名空间类似。</p>
 </div>
 <div class="section" id="id3">
-<h2>11.5.3. 参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>12.5.3. 参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://opensourceforu.com/2016/07/many-approaches-sandboxing-linux/amp/">Many approaches to sandboxing in Linux</a></li>
+<li><p><a class="reference external" href="https://opensourceforu.com/2016/07/many-approaches-sandboxing-linux/amp/">Many approaches to sandboxing in Linux</a></p></li>
 </ul>
 </div>
 </div>
@@ -210,10 +212,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tools/index.html" class="btn btn-neutral float-right" title="12. 工具与资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../tools/index.html" class="btn btn-neutral float-right" title="13. 工具与资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dep.html" class="btn btn-neutral" title="11.4. NX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dep.html" class="btn btn-neutral float-left" title="12.4. NX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -222,7 +224,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -239,37 +241,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -4,6 +4,15 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 目录:
 
+   basic
+   lexical
+   syntax
+   semantic
+   intermediate
+   optimization
+   generation
    llvm
+   jit
+   terminology

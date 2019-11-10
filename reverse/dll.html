@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3. DLL &mdash; bin-sec 1.0.0 documentation</title>
+  <title>7.3. DLL &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. 漏洞利用基础" href="../exploit/index.html" />
-    <link rel="prev" title="6.2. PE" href="pe.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="8. 漏洞利用基础" href="../exploit/index.html" />
+    <link rel="prev" title="7.2. PE" href="pe.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,35 +84,36 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 逆向工程</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elf.html">6.1. ELF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html">6.2. PE</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. DLL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">6.3.1. 简介</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#svchost-exe">6.3.1.1. svchost.exe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dllhost-exe">6.3.1.2. dllhost.exe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rundll32-exe">6.3.1.3. rundll32.exe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 逆向工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elf.html">7.1. ELF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html">7.2. PE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. DLL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.3.1. 简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#svchost-exe">7.3.1.1. svchost.exe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dllhost-exe">7.3.1.2. dllhost.exe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rundll32-exe">7.3.1.3. rundll32.exe</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#ref">6.3.2. ref</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ref">7.3.2. ref</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -157,9 +159,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">6. 逆向工程</a> &raquo;</li>
+          <li><a href="index.html">7. 逆向工程</a> &raquo;</li>
         
-      <li>6.3. DLL</li>
+      <li>7.3. DLL</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,26 +181,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dll">
-<h1>6.3. DLL<a class="headerlink" href="#dll" title="Permalink to this headline">¶</a></h1>
+<h1>7.3. DLL<a class="headerlink" href="#dll" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>6.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>7.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>dll是被映射到exe进程的地址空间中去，换句话说，它可以被认为寄生在exe之上，自己并不独立存在。
 而对于需要独立执行的dll，Windows使用svchost.exe、dllhost.exe和rundll32.exe来执行这些dll。</p>
 <div class="section" id="svchost-exe">
-<h3>6.3.1.1. svchost.exe<a class="headerlink" href="#svchost-exe" title="Permalink to this headline">¶</a></h3>
+<h3>7.3.1.1. svchost.exe<a class="headerlink" href="#svchost-exe" title="Permalink to this headline">¶</a></h3>
 <p>官方的解释是 <code class="docutils literal notranslate"><span class="pre">svchost.exe</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">generic</span> <span class="pre">host</span> <span class="pre">process</span> <span class="pre">name</span> <span class="pre">for</span> <span class="pre">services</span> <span class="pre">that</span> <span class="pre">run</span> <span class="pre">from</span> <span class="pre">dynamic-link</span> <span class="pre">libraries.</span></code></p>
 </div>
 <div class="section" id="dllhost-exe">
-<h3>6.3.1.2. dllhost.exe<a class="headerlink" href="#dllhost-exe" title="Permalink to this headline">¶</a></h3>
+<h3>7.3.1.2. dllhost.exe<a class="headerlink" href="#dllhost-exe" title="Permalink to this headline">¶</a></h3>
 <p>它的存在是为了容纳COM组件。</p>
 </div>
 <div class="section" id="rundll32-exe">
-<h3>6.3.1.3. rundll32.exe<a class="headerlink" href="#rundll32-exe" title="Permalink to this headline">¶</a></h3>
+<h3>7.3.1.3. rundll32.exe<a class="headerlink" href="#rundll32-exe" title="Permalink to this headline">¶</a></h3>
 <p>rundll是Windows系统自带的一个直接执行DLL中导出函数的小工具</p>
 </div>
 </div>
 <div class="section" id="ref">
-<h2>6.3.2. ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
+<h2>7.3.2. ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://zhuanlan.zhihu.com/p/30000572">https://zhuanlan.zhihu.com/p/30000572</a></p>
 </div>
 </div>
@@ -211,10 +213,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../exploit/index.html" class="btn btn-neutral float-right" title="7. 漏洞利用基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../exploit/index.html" class="btn btn-neutral float-right" title="8. 漏洞利用基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pe.html" class="btn btn-neutral" title="6.2. PE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pe.html" class="btn btn-neutral float-left" title="7.2. PE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -223,7 +225,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -240,37 +242,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

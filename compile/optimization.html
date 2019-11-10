@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.6. 代码优化 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.7. 代码生成" href="generation.html" />
+    <link rel="prev" title="5.5. 中间代码生成" href="intermediate.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 编译原理</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic.html">5.1. 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lexical.html">5.2. 词法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">5.3. 语法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantic.html">5.4. 语义分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intermediate.html">5.5. 中间代码生成</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.6. 代码优化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.6.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.6.2. 优化方式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.6.3. 优化原则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generation.html">5.7. 代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llvm.html">5.8. LLVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit.html">5.9. JIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminology.html">5.10. 相关术语</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 编译原理</a> &raquo;</li>
+        
+      <li>5.6. 代码优化</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/compile/optimization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.6. 代码优化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>5.6.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>代码优化对程序实施各种等价变化，使得变换后程序能生成高效率的目标代码。好的编译器需要生成目标代码占用的存储空间少，且运行时间短。另外，编译器的编译时间、资源消耗也是需要考虑的指标。</p>
+</div>
+<div class="section" id="id3">
+<h2>5.6.2. 优化方式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>代码优化可以分为与机器有关的优化和与机器无关的优化。</p>
+<p>机器无关的优化主要有下面几种方式：</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>局部优化</dt><dd><ul>
+<li><p>合并已知量</p></li>
+<li><p>删除公共子表达式 （删除多余的运算）</p></li>
+<li><p>删除无用赋值</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>循环优化</dt><dd><ul>
+<li><p>代码外提</p></li>
+<li><p>删除归纳变量</p></li>
+<li><p>强度削弱</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>全局优化</dt><dd><ul>
+<li><p>在整个程序范围内进行优化，需要进行数据流分析，代价很高</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>5.6.3. 优化原则<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>在当前，优化越来越重要，一个是因为现代处理器越来越复杂，有更多的机制来提供优化的机会。</p>
+<p>另一个原因是多核并行越来越普遍，编译器需要适应，但是在硬件条件多变的情况下，很难知道一个解是不是最优解，那么就遵循以下的原则：</p>
+<ul class="simple">
+<li><p>优化必须保证正确</p></li>
+<li><p>优化要保证大部分程序都能提升表现</p></li>
+<li><p>优化带来的编译时间消耗需要是可以接受的</p></li>
+<li><p>工程量要能接受</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generation.html" class="btn btn-neutral float-right" title="5.7. 代码生成" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intermediate.html" class="btn btn-neutral float-left" title="5.5. 中间代码生成" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

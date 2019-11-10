@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.2. MIPS &mdash; bin-sec 1.0.0 documentation</title>
+  <title>4.4. MIPS &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. 编译原理" href="../compile/index.html" />
-    <link rel="prev" title="3.1. 区别" href="diff.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="4.5. PowerPC" href="ppc.html" />
+    <link rel="prev" title="4.3. ARM" href="arm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,36 +84,41 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 汇编基础</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="diff.html">3.1. 区别</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. MIPS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.2.1. 数据类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.2. 寄存器</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">3.2.2.1. 寄存器编号及其用途</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 汇编基础</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="diff.html">4.1. 区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x86.html">4.2. x86</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm.html">4.3. ARM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. MIPS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. 指令特点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.4.2. 数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.4.3. 寄存器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">4.4.3.1. 寄存器编号及其用途</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.3. 读写操作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">3.2.4. 寻址</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.5. 算术指令集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">3.2.6. 控制流</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.4.4. 读写操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.4.5. 寻址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.4.6. 算术指令集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.4.7. 控制流</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="ppc.html">4.5. PowerPC</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -158,9 +164,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">3. 汇编基础</a> &raquo;</li>
+          <li><a href="index.html">4. 汇编基础</a> &raquo;</li>
         
-      <li>3.2. MIPS</li>
+      <li>4.4. MIPS</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,165 +186,146 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mips">
-<h1>3.2. MIPS<a class="headerlink" href="#mips" title="Permalink to this headline">¶</a></h1>
+<h1>4.4. MIPS<a class="headerlink" href="#mips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.2.1. 数据类型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.1. 指令特点<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>所有MIPS指令都是32位</li>
-<li>单个字符用单引号，例如：’b’</li>
-<li>字符串用双引号，例如：”A string”</li>
+<li><p>所有指令都是32位长</p></li>
+<li><dl class="simple">
+<dt>指令操作必须符合流水线</dt><dd><ul>
+<li><p>MIPS指令一次只能修改一个寄存器的值</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>3操作数指令</p></li>
+<li><p>32个寄存器</p></li>
+<li><p>没有条件标志位</p></li>
 </ul>
 </div>
 <div class="section" id="id2">
-<h2>3.2.2. 寄存器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.2. 数据类型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>MIPS下一共有32个通用寄存器</li>
-<li>在汇编中，寄存器标志由 <code class="docutils literal notranslate"><span class="pre">$</span></code> 符开头</li>
-<li><dl class="first docutils">
-<dt>寄存器表示可以有两种方式</dt>
-<dd><ul class="first last">
-<li>直接使用该寄存器对应的编号，例如：从 <code class="docutils literal notranslate"><span class="pre">$0</span></code> 到 <code class="docutils literal notranslate"><span class="pre">$31</span></code></li>
-<li><dl class="first docutils">
-<dt>使用对应的寄存器名称</dt>
-<dd><ul class="first last">
-<li>例如： <code class="docutils literal notranslate"><span class="pre">$t1</span></code> , <code class="docutils literal notranslate"><span class="pre">$sp</span></code></li>
+<li><p>所有MIPS指令都是32位</p></li>
+<li><p>单个字符用单引号，例如：’b’</p></li>
+<li><p>字符串用双引号，例如：”A string”</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li>栈的走向是从高地址到低地址</li>
-</ul>
+</div>
 <div class="section" id="id3">
-<h3>3.2.2.1. 寄存器编号及其用途<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<h2>4.4.3. 寄存器<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>MIPS下一共有32个通用寄存器</p></li>
+<li><p>在汇编中，寄存器标志由 <code class="docutils literal notranslate"><span class="pre">$</span></code> 符开头</p></li>
+<li><dl class="simple">
+<dt>寄存器表示可以有两种方式</dt><dd><ul>
+<li><p>直接使用该寄存器对应的编号，例如：从 <code class="docutils literal notranslate"><span class="pre">$0</span></code> 到 <code class="docutils literal notranslate"><span class="pre">$31</span></code></p></li>
+<li><dl class="simple">
+<dt>使用对应的寄存器名称</dt><dd><ul>
+<li><p>例如： <code class="docutils literal notranslate"><span class="pre">$t1</span></code> , <code class="docutils literal notranslate"><span class="pre">$sp</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>栈的走向是从高地址到低地址</p></li>
+</ul>
+<div class="section" id="id4">
+<h3>4.4.3.1. 寄存器编号及其用途<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
 <colgroup>
-<col width="24%" />
-<col width="15%" />
-<col width="61%" />
+<col style="width: 24%" />
+<col style="width: 15%" />
+<col style="width: 61%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">寄存器编号</th>
-<th class="head">寄存器名</th>
-<th class="head">寄存器用途</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>寄存器编号</p></th>
+<th class="head"><p>寄存器名</p></th>
+<th class="head"><p>寄存器用途</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>0</td>
-<td>zero</td>
-<td>永远返回零</td>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>zero</p></td>
+<td><p>永远返回零</p></td>
 </tr>
-<tr class="row-odd"><td>1</td>
-<td>$at</td>
-<td>汇编保留寄存器</td>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>$at</p></td>
+<td><p>汇编保留寄存器</p></td>
 </tr>
-<tr class="row-even"><td>2-3</td>
-<td>$v0 - $v1</td>
-<td>存储表达式或者是函数的返回值</td>
+<tr class="row-even"><td><p>2-3</p></td>
+<td><p>$v0 - $v1</p></td>
+<td><p>存储表达式或者是函数的返回值</p></td>
 </tr>
-<tr class="row-odd"><td>4-7</td>
-<td>$a0 - $a3</td>
-<td>存储子程序的前4个参数，在子程序调用过程中释放</td>
+<tr class="row-odd"><td><p>4-7</p></td>
+<td><p>$a0 - $a3</p></td>
+<td><p>存储子程序的前4个参数，在子程序调用过程中释放</p></td>
 </tr>
-<tr class="row-even"><td>8-15</td>
-<td>$t0 - $t7</td>
-<td>临时变量</td>
+<tr class="row-even"><td><p>8-15</p></td>
+<td><p>$t0 - $t7</p></td>
+<td><p>临时变量</p></td>
 </tr>
-<tr class="row-odd"><td>16-23</td>
-<td>$s0 - $s7</td>
-<td>静态变量</td>
+<tr class="row-odd"><td><p>16-23</p></td>
+<td><p>$s0 - $s7</p></td>
+<td><p>静态变量</p></td>
 </tr>
-<tr class="row-even"><td>24-25</td>
-<td>$t8 - $t9</td>
-<td>临时变量</td>
+<tr class="row-even"><td><p>24-25</p></td>
+<td><p>$t8 - $t9</p></td>
+<td><p>临时变量</p></td>
 </tr>
-<tr class="row-odd"><td>26-27</td>
-<td>$k0 - $k1</td>
-<td>中断函数返回值</td>
+<tr class="row-odd"><td><p>26-27</p></td>
+<td><p>$k0 - $k1</p></td>
+<td><p>中断函数返回值</p></td>
 </tr>
-<tr class="row-even"><td>28</td>
-<td>$gp</td>
-<td>指向静态数据块的中间地址</td>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>$gp</p></td>
+<td><p>指向静态数据块的中间地址</p></td>
 </tr>
-<tr class="row-odd"><td>29</td>
-<td>$sp</td>
-<td>栈顶指针</td>
+<tr class="row-odd"><td><p>29</p></td>
+<td><p>$sp</p></td>
+<td><p>栈顶指针</p></td>
 </tr>
-<tr class="row-even"><td>30</td>
-<td>$fp</td>
-<td>帧指针</td>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>$fp</p></td>
+<td><p>帧指针</p></td>
 </tr>
-<tr class="row-odd"><td>31</td>
-<td>$ra</td>
-<td>返回地址</td>
+<tr class="row-odd"><td><p>31</p></td>
+<td><p>$ra</p></td>
+<td><p>返回地址</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>3.2.3. 读写操作<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt>load word</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">lw</span>&#160; <span class="pre">register_destination,</span> <span class="pre">RAM_source</span></code></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>store word</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">sw</span>&#160; <span class="pre">register_source,</span> <span class="pre">RAM_destination</span></code></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>store byte</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">sb</span>&#160; <span class="pre">register_source,</span> <span class="pre">RAM_destination</span></code></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>load immediate</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">li</span>&#160; <span class="pre">register_destination,</span> <span class="pre">value</span></code></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</div>
 <div class="section" id="id5">
-<h2>3.2.4. 寻址<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.4. 读写操作<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>直接寻址</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">la</span>&#160; <span class="pre">$t0,</span> <span class="pre">var1</span></code></li>
+<li><dl class="simple">
+<dt>load word</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lw</span>&#160; <span class="pre">register_destination,</span> <span class="pre">RAM_source</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>间接寻址</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">lw</span>&#160; <span class="pre">$t2,</span> <span class="pre">($t0)</span></code></li>
+<li><dl class="simple">
+<dt>store word</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sw</span>&#160; <span class="pre">register_source,</span> <span class="pre">RAM_destination</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>偏移</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">lw</span>&#160; <span class="pre">$t2,</span> <span class="pre">4($t0)</span></code></li>
+<li><dl class="simple">
+<dt>store byte</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sb</span>&#160; <span class="pre">register_source,</span> <span class="pre">RAM_destination</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>load immediate</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">li</span>&#160; <span class="pre">register_destination,</span> <span class="pre">value</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -346,68 +333,25 @@
 </ul>
 </div>
 <div class="section" id="id6">
-<h2>3.2.5. 算术指令集<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.5. 寻址<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>sub</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">sub</span> <span class="pre">$t2,$t3,$t4</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$t2</span> <span class="pre">=</span> <span class="pre">$t3</span> <span class="pre">-</span> <span class="pre">$t4</span></code></li>
+<li><dl class="simple">
+<dt>直接寻址</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">la</span>&#160; <span class="pre">$t0,</span> <span class="pre">var1</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>addi</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">addi</span> <span class="pre">$t2,$t3,</span> <span class="pre">5</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$t2</span> <span class="pre">=</span> <span class="pre">$t3</span> <span class="pre">+</span> <span class="pre">5;</span></code></li>
-<li>add immediate</li>
+<li><dl class="simple">
+<dt>间接寻址</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lw</span>&#160; <span class="pre">$t2,</span> <span class="pre">($t0)</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>addu</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">addu</span> <span class="pre">$t1,$t6,$t7</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">$t1</span> <span class="pre">=</span> <span class="pre">$t6</span> <span class="pre">+</span> <span class="pre">$t7;</span></code></li>
-<li>add as unsigned integers</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>subd</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">subu</span> <span class="pre">$t1,$t6,$t7</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$t1</span> <span class="pre">=</span> <span class="pre">$t6</span> <span class="pre">+</span> <span class="pre">$t7;</span></code></li>
-<li>subtract as unsigned integers</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>mult</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">mult</span> <span class="pre">$t3,$t4</span></code></li>
-<li>multiply 32-bit quantities in $t3 and $t4</li>
-<li>store 64-bit result in special registers Lo and Hi</li>
-<li><code class="docutils literal notranslate"><span class="pre">(Hi,Lo)</span> <span class="pre">=</span> <span class="pre">$t3</span> <span class="pre">*</span> <span class="pre">$t4</span></code></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>div</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">$t5,$t6</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Lo</span> <span class="pre">=</span> <span class="pre">$t5</span> <span class="pre">/</span> <span class="pre">$t6</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Hi</span> <span class="pre">=</span> <span class="pre">$t5</span> <span class="pre">mod</span> <span class="pre">$t6</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">mfhi</span> <span class="pre">$t0</span></code></li>
-<li>move quantity in special register Hi to $t0</li>
-<li><code class="docutils literal notranslate"><span class="pre">mflo</span> <span class="pre">$t1</span></code></li>
-<li>move quantity in special register Lo to $t1</li>
+<li><dl class="simple">
+<dt>偏移</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lw</span>&#160; <span class="pre">$t2,</span> <span class="pre">4($t0)</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -415,84 +359,137 @@
 </ul>
 </div>
 <div class="section" id="id7">
-<h2>3.2.6. 控制流<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.6. 算术指令集<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">b</span>&#160;&#160; <span class="pre">target</span></code></dt>
-<dd><ul class="first last">
-<li>unconditional branch to program label target</li>
+<li><dl class="simple">
+<dt>sub</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sub</span> <span class="pre">$t2,$t3,$t4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$t2</span> <span class="pre">=</span> <span class="pre">$t3</span> <span class="pre">-</span> <span class="pre">$t4</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">beq</span> <span class="pre">$t0,$t1,target</span></code></dt>
-<dd><ul class="first last">
-<li>branch to target if  $t0 = $t1</li>
+<li><dl class="simple">
+<dt>addi</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">addi</span> <span class="pre">$t2,$t3,</span> <span class="pre">5</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$t2</span> <span class="pre">=</span> <span class="pre">$t3</span> <span class="pre">+</span> <span class="pre">5;</span></code></p></li>
+<li><p>add immediate</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">blt</span> <span class="pre">$t0,$t1,target</span></code></dt>
-<dd><ul class="first last">
-<li>branch to target if  $t0 &lt; $t1</li>
+<li><dl class="simple">
+<dt>addu</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">addu</span> <span class="pre">$t1,$t6,$t7</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">$t1</span> <span class="pre">=</span> <span class="pre">$t6</span> <span class="pre">+</span> <span class="pre">$t7;</span></code></p></li>
+<li><p>add as unsigned integers</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">ble</span> <span class="pre">$t0,$t1,target</span></code></dt>
-<dd><ul class="first last">
-<li>branch to target if  $t0 &lt;= $t1</li>
+<li><dl class="simple">
+<dt>subd</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">subu</span> <span class="pre">$t1,$t6,$t7</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$t1</span> <span class="pre">=</span> <span class="pre">$t6</span> <span class="pre">+</span> <span class="pre">$t7;</span></code></p></li>
+<li><p>subtract as unsigned integers</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">bgt</span> <span class="pre">$t0,$t1,target</span></code></dt>
-<dd><ul class="first last">
-<li>branch to target if  $t0 &gt; $t1</li>
+<li><dl class="simple">
+<dt>mult</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mult</span> <span class="pre">$t3,$t4</span></code></p></li>
+<li><p>multiply 32-bit quantities in $t3 and $t4</p></li>
+<li><p>store 64-bit result in special registers Lo and Hi</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(Hi,Lo)</span> <span class="pre">=</span> <span class="pre">$t3</span> <span class="pre">*</span> <span class="pre">$t4</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">bge</span> <span class="pre">$t0,$t1,target</span></code></dt>
-<dd><ul class="first last">
-<li>branch to target if  $t0 &gt;= $t1</li>
+<li><dl class="simple">
+<dt>div</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">$t5,$t6</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lo</span> <span class="pre">=</span> <span class="pre">$t5</span> <span class="pre">/</span> <span class="pre">$t6</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Hi</span> <span class="pre">=</span> <span class="pre">$t5</span> <span class="pre">mod</span> <span class="pre">$t6</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mfhi</span> <span class="pre">$t0</span></code></p></li>
+<li><p>move quantity in special register Hi to $t0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mflo</span> <span class="pre">$t1</span></code></p></li>
+<li><p>move quantity in special register Lo to $t1</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">bne</span> <span class="pre">$t0,$t1,target</span></code></dt>
-<dd><ul class="first last">
-<li>branch to target if  $t0 &lt;&gt; $t1</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>4.4.7. 控制流<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">b</span>&#160;&#160; <span class="pre">target</span></code></dt><dd><ul>
+<li><p>unconditional branch to program label target</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">j</span>&#160;&#160; <span class="pre">target</span></code></dt>
-<dd><ul class="first last">
-<li>unconditional jump to program label target</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">beq</span> <span class="pre">$t0,$t1,target</span></code></dt><dd><ul>
+<li><p>branch to target if  $t0 = $t1</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">jr</span>&#160; <span class="pre">$t3</span></code></dt>
-<dd><ul class="first last">
-<li>jump to address contained in $t3</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">blt</span> <span class="pre">$t0,$t1,target</span></code></dt><dd><ul>
+<li><p>branch to target if  $t0 &lt; $t1</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">jal</span> <span class="pre">sub_label</span></code></dt>
-<dd><ul class="first last">
-<li>copy program counter (return address) to register $ra (return address register)</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ble</span> <span class="pre">$t0,$t1,target</span></code></dt><dd><ul>
+<li><p>branch to target if  $t0 &lt;= $t1</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bgt</span> <span class="pre">$t0,$t1,target</span></code></dt><dd><ul>
+<li><p>branch to target if  $t0 &gt; $t1</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bge</span> <span class="pre">$t0,$t1,target</span></code></dt><dd><ul>
+<li><p>branch to target if  $t0 &gt;= $t1</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bne</span> <span class="pre">$t0,$t1,target</span></code></dt><dd><ul>
+<li><p>branch to target if  $t0 &lt;&gt; $t1</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">j</span>&#160;&#160; <span class="pre">target</span></code></dt><dd><ul>
+<li><p>unconditional jump to program label target</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">jr</span>&#160; <span class="pre">$t3</span></code></dt><dd><ul>
+<li><p>jump to address contained in $t3</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">jal</span> <span class="pre">sub_label</span></code></dt><dd><ul>
+<li><p>copy program counter (return address) to register $ra (return address register)</p></li>
 </ul>
 </dd>
 </dl>
@@ -509,10 +506,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../compile/index.html" class="btn btn-neutral float-right" title="4. 编译原理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ppc.html" class="btn btn-neutral float-right" title="4.5. PowerPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="diff.html" class="btn btn-neutral" title="3.1. 区别" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arm.html" class="btn btn-neutral float-left" title="4.3. ARM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -521,7 +518,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -538,37 +535,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

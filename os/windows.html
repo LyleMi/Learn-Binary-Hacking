@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.5. Windows &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.5. Windows &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. 逆向工程" href="../reverse/index.html" />
-    <link rel="prev" title="5.4. Mac OS" href="macos.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="6.6. Android" href="android.html" />
+    <link rel="prev" title="6.4. Mac OS" href="macos.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,69 +84,72 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. 操作系统</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="overview.html">5.1. 概述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boot.html">5.2. Boot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux.html">5.3. Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macos.html">5.4. Mac OS</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.5. Windows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">5.5.1. 版本历史</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#windows-nt">5.5.2. Windows NT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">5.5.3. 运行模式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">5.5.4. 基本模块</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">5.5.5. 系统进程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">5.5.6. 注册表</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">5.5.6.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">5.5.6.2. 数据类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#root-key">5.5.6.3. root key</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot.html">6.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.5. Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.5.1. 版本历史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows-nt">6.5.2. Windows NT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.5.3. 运行模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.5.4. 基本模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.5.5. 系统进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.5.6. 注册表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.5.6.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">6.5.6.2. 数据类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.6.3. root key</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">5.5.7. 服务</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wmi">5.5.8. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">5.5.9. 进程与线程</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">5.5.9.1. 进程</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">5.5.9.2. 线程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">6.5.7. 服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wmi">6.5.8. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">6.5.9. 进程与线程</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6.5.9.1. 进程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">6.5.9.2. 线程</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">5.5.10. 安全机制</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">5.5.10.1. 核心模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">6.5.10. 安全机制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">6.5.10.1. 核心模块</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">5.5.11. 内存破坏漏洞防护机制</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#dep">5.5.11.1. DEP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#aslr">5.5.11.2. ASLR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#epm">5.5.11.3. EPM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#patchguard">5.5.11.4. PatchGuard</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#code-signing">5.5.11.5. Code Signing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">6.5.11. 内存破坏漏洞防护机制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dep">6.5.11.1. DEP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aslr">6.5.11.2. ASLR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#epm">6.5.11.3. EPM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patchguard">6.5.11.4. PatchGuard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-signing">6.5.11.5. Code Signing</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">5.5.12. 其他</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ssdt">5.5.12.1. SSDT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#idt">5.5.12.2. IDT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gdt">5.5.12.3. GDT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ldt">5.5.12.4. LDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">6.5.12. 其他</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ssdt">6.5.12.1. SSDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#idt">6.5.12.2. IDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gdt">6.5.12.3. GDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldt">6.5.12.4. LDT</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">5.5.13. 常见缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">5.5.14. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">6.5.13. 常见缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">6.5.14. 参考链接</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">9. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -191,9 +195,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">5. 操作系统</a> &raquo;</li>
+          <li><a href="index.html">6. 操作系统</a> &raquo;</li>
         
-      <li>5.5. Windows</li>
+      <li>6.5. Windows</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -213,87 +217,87 @@
            <div itemprop="articleBody">
             
   <div class="section" id="windows">
-<h1>5.5. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h1>
+<h1>6.5. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>5.5.1. 版本历史<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<h2>6.5.1. 版本历史<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="55%" />
-<col width="18%" />
-<col width="27%" />
+<col style="width: 55%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Windows Version</th>
-<th class="head">Version</th>
-<th class="head">Release Date</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Windows Version</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Release Date</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Windows NT 3 .1</td>
-<td>3.1</td>
-<td>1993.7</td>
+<tbody>
+<tr class="row-even"><td><p>Windows NT 3 .1</p></td>
+<td><p>3.1</p></td>
+<td><p>1993.7</p></td>
 </tr>
-<tr class="row-odd"><td>Windows NT 3 .5</td>
-<td>3.5</td>
-<td>1994.9</td>
+<tr class="row-odd"><td><p>Windows NT 3 .5</p></td>
+<td><p>3.5</p></td>
+<td><p>1994.9</p></td>
 </tr>
-<tr class="row-even"><td>Windows NT 3 .51</td>
-<td>3.51</td>
-<td>1995.5</td>
+<tr class="row-even"><td><p>Windows NT 3 .51</p></td>
+<td><p>3.51</p></td>
+<td><p>1995.5</p></td>
 </tr>
-<tr class="row-odd"><td>Windows NT 4 .0</td>
-<td>4.0</td>
-<td>1996.7</td>
+<tr class="row-odd"><td><p>Windows NT 4 .0</p></td>
+<td><p>4.0</p></td>
+<td><p>1996.7</p></td>
 </tr>
-<tr class="row-even"><td>Windows 2000</td>
-<td>5.0</td>
-<td>1999.12</td>
+<tr class="row-even"><td><p>Windows 2000</p></td>
+<td><p>5.0</p></td>
+<td><p>1999.12</p></td>
 </tr>
-<tr class="row-odd"><td>Windows XP</td>
-<td>5.1</td>
-<td>2001.8</td>
+<tr class="row-odd"><td><p>Windows XP</p></td>
+<td><p>5.1</p></td>
+<td><p>2001.8</p></td>
 </tr>
-<tr class="row-even"><td>Windows Server 2003</td>
-<td>5.2</td>
-<td>2003.3</td>
+<tr class="row-even"><td><p>Windows Server 2003</p></td>
+<td><p>5.2</p></td>
+<td><p>2003.3</p></td>
 </tr>
-<tr class="row-odd"><td>Windows Vista</td>
-<td>6.0</td>
-<td>2007.1</td>
+<tr class="row-odd"><td><p>Windows Vista</p></td>
+<td><p>6.0</p></td>
+<td><p>2007.1</p></td>
 </tr>
-<tr class="row-even"><td>Windows Server 2008</td>
-<td>6.0</td>
-<td>2008.3</td>
+<tr class="row-even"><td><p>Windows Server 2008</p></td>
+<td><p>6.0</p></td>
+<td><p>2008.3</p></td>
 </tr>
-<tr class="row-odd"><td>Windows 7</td>
-<td>6.1</td>
-<td>2009.10</td>
+<tr class="row-odd"><td><p>Windows 7</p></td>
+<td><p>6.1</p></td>
+<td><p>2009.10</p></td>
 </tr>
-<tr class="row-even"><td>Windows Server 2008 R2</td>
-<td>6.1</td>
-<td>2009.10</td>
+<tr class="row-even"><td><p>Windows Server 2008 R2</p></td>
+<td><p>6.1</p></td>
+<td><p>2009.10</p></td>
 </tr>
-<tr class="row-odd"><td>Windows 8</td>
-<td>6.2</td>
-<td>2012.10</td>
+<tr class="row-odd"><td><p>Windows 8</p></td>
+<td><p>6.2</p></td>
+<td><p>2012.10</p></td>
 </tr>
-<tr class="row-even"><td>Windows 10</td>
-<td>10.0</td>
-<td>2015.7</td>
+<tr class="row-even"><td><p>Windows 10</p></td>
+<td><p>10.0</p></td>
+<td><p>2015.7</p></td>
 </tr>
-<tr class="row-odd"><td>Windows Server 2016</td>
-<td>10.0</td>
-<td>2016.9</td>
+<tr class="row-odd"><td><p>Windows Server 2016</p></td>
+<td><p>10.0</p></td>
+<td><p>2016.9</p></td>
 </tr>
-<tr class="row-even"><td>Windows Server 2019</td>
-<td>10.0</td>
-<td>2019.10</td>
+<tr class="row-even"><td><p>Windows Server 2019</p></td>
+<td><p>10.0</p></td>
+<td><p>2019.10</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="windows-nt">
-<h2>5.5.2. Windows NT<a class="headerlink" href="#windows-nt" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.2. Windows NT<a class="headerlink" href="#windows-nt" title="Permalink to this headline">¶</a></h2>
 <p>Windows NT是Microsoft发行的一系列操作系统，其第一个版本于1993年7月发布。它是一个独立于处理器的多处理和多用户操作系统。</p>
 <p>Windows NT的第一个版本是Windows NT 3.1，是为工作站和服务器计算机生成的。它旨在补充基于MS-DOS（包括Windows 1.0到Windows 3.1x）的Windows的消费者版本。</p>
 <p>渐渐地，Windows NT系列已经扩展到微软针对所有个人计算机的通用操作系统产品线，不再使用Windows 9x系列。</p>
@@ -301,12 +305,12 @@
 <p>最新版本支持x86（更具体地说是IA-32和x64）和ARM。 Windows NT系列的主要功能包括Windows Shell，Windows API，Native API，Active Directory，组策略，硬件抽象层，NTFS，BitLocker，Windows应用商店，Windows Update和Hyper-V。</p>
 </div>
 <div class="section" id="id2">
-<h2>5.5.3. 运行模式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.3. 运行模式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Windows支持Intel x86/x64 的两种处理器模式内核模式（Ring 0）和用户模式（Ring 3）。</p>
 <p>内核模式下的代码可以访问所有的内存空间；可以直接操纵硬件。用户模式下的代码无权访问系统空间的内存页面；无法直接操纵硬件。用户模式向内核模式的切换是受控制的。</p>
 </div>
 <div class="section" id="id3">
-<h2>5.5.4. 基本模块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.4. 基本模块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Windows操作系统内核模式下的基本模块包含Windows执行体、Windows内核体、设备驱动程序、窗口和图形系统、硬件抽象层。</p>
 <p>其中Windows执行体是Windows内核体的上层接口，包含了基本的操作系统服务，如进程与线程管理、内存管理、I/O管理、网络连接、进程间通信以及安全服务。</p>
 <p>Windows内核体实现与硬件体系结构支持的代码，实现底层的操作系统功能，如线程调度 、中断和异常分发处理、多处理器同步等。</p>
@@ -315,76 +319,67 @@
 <p>硬件抽象层即Hal.dll文件，用于屏蔽Windows内核、驱动程序与平台硬件差异性的底 层代码。</p>
 </div>
 <div class="section" id="id4">
-<h2>5.5.5. 系统进程<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.5. 系统进程<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>Idle</dt>
-<dd><ul class="first last">
-<li>每个CPU一个idle线程做空闲CPU时间统计</li>
+<li><dl class="simple">
+<dt>Idle</dt><dd><ul>
+<li><p>每个CPU一个idle线程做空闲CPU时间统计</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>System</dt>
-<dd><ul class="first last">
-<li>内核模式的系统进程</li>
+<li><dl class="simple">
+<dt>System</dt><dd><ul>
+<li><p>内核模式的系统进程</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Wininit.ext</dt>
-<dd><ul class="first last">
-<li>Session 0 初始化</li>
+<li><dl class="simple">
+<dt>Wininit.ext</dt><dd><ul>
+<li><p>Session 0 初始化</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Csrss.exe</dt>
-<dd><ul class="first last">
-<li>Windows子系统进程，即客户端/服务器运行进程</li>
+<li><dl class="simple">
+<dt>Csrss.exe</dt><dd><ul>
+<li><p>Windows子系统进程，即客户端/服务器运行进程</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Smss.exe</dt>
-<dd><ul class="first last">
-<li>会话（Session）管理器，系统启动时第一个运行的进程</li>
+<li><dl class="simple">
+<dt>Smss.exe</dt><dd><ul>
+<li><p>会话（Session）管理器，系统启动时第一个运行的进程</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Winlogon.exe</dt>
-<dd><ul class="first last">
-<li>处理交互式登录</li>
+<li><dl class="simple">
+<dt>Winlogon.exe</dt><dd><ul>
+<li><p>处理交互式登录</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Services.exe</dt>
-<dd><ul class="first last">
-<li>服务控制管理器，负责启动和、停止、暂停、恢复服务</li>
+<li><dl class="simple">
+<dt>Services.exe</dt><dd><ul>
+<li><p>服务控制管理器，负责启动和、停止、暂停、恢复服务</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Svchost.exe</dt>
-<dd><ul class="first last">
-<li>共享进程服务的宿主进程</li>
+<li><dl class="simple">
+<dt>Svchost.exe</dt><dd><ul>
+<li><p>共享进程服务的宿主进程</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Lsass.exe</dt>
-<dd><ul class="first last">
-<li>本地安全授权子系统，验证用户登录、授权和审计</li>
+<li><dl class="simple">
+<dt>Lsass.exe</dt><dd><ul>
+<li><p>本地安全授权子系统，验证用户登录、授权和审计</p></li>
 </ul>
 </dd>
 </dl>
@@ -392,114 +387,102 @@
 </ul>
 </div>
 <div class="section" id="id5">
-<h2>5.5.6. 注册表<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.6. 注册表<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
-<h3>5.5.6.1. 简介<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.6.1. 简介<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
 <p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
 <p>涉及到注册表的有：</p>
 <ol class="arabic simple">
-<li>在启动时，boot loader从注册表中读取数据。</li>
-<li>内核启动时，内核驱动从注册表中读取配置。</li>
-<li>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</li>
-<li>在应用启动时，读取各种配置文件。</li>
+<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
+<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
+<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
+<li><p>在应用启动时，读取各种配置文件。</p></li>
 </ol>
 </div>
 <div class="section" id="id7">
-<h3>5.5.6.2. 数据类型<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.6.2. 数据类型<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>REG_NONE</dt>
-<dd><ul class="first last">
-<li>没有值</li>
+<li><dl class="simple">
+<dt>REG_NONE</dt><dd><ul>
+<li><p>没有值</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_SZ</dt>
-<dd><ul class="first last">
-<li>固定长度 Unicode</li>
+<li><dl class="simple">
+<dt>REG_SZ</dt><dd><ul>
+<li><p>固定长度 Unicode</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_EXPAND_SZ</dt>
-<dd><ul class="first last">
-<li>可变长度 Unicode</li>
+<li><dl class="simple">
+<dt>REG_EXPAND_SZ</dt><dd><ul>
+<li><p>可变长度 Unicode</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_BINARY</dt>
-<dd><ul class="first last">
-<li>任意长度二进制数据</li>
+<li><dl class="simple">
+<dt>REG_BINARY</dt><dd><ul>
+<li><p>任意长度二进制数据</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_DWORD</dt>
-<dd><ul class="first last">
-<li>32 bit 数字</li>
+<li><dl class="simple">
+<dt>REG_DWORD</dt><dd><ul>
+<li><p>32 bit 数字</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_DWORD_BIG_ENDIAN</dt>
-<dd><ul class="first last">
-<li>32 bit 数字，大端</li>
+<li><dl class="simple">
+<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
+<li><p>32 bit 数字，大端</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_LINK</dt>
-<dd><ul class="first last">
-<li>Unicode 符号链接，指向另一个注册表项</li>
+<li><dl class="simple">
+<dt>REG_LINK</dt><dd><ul>
+<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_MULTI_SZ</dt>
-<dd><ul class="first last">
-<li>Unicode 字符串</li>
+<li><dl class="simple">
+<dt>REG_MULTI_SZ</dt><dd><ul>
+<li><p>Unicode 字符串</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_RESOURCE_LIST</dt>
-<dd><ul class="first last">
-<li>硬件资源描述</li>
+<li><dl class="simple">
+<dt>REG_RESOURCE_LIST</dt><dd><ul>
+<li><p>硬件资源描述</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt>
-<dd><ul class="first last">
-<li>硬件资源描述</li>
+<li><dl class="simple">
+<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
+<li><p>硬件资源描述</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt>
-<dd><ul class="first last">
-<li>资源需求</li>
+<li><dl class="simple">
+<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
+<li><p>资源需求</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>REG_QWORD</dt>
-<dd><ul class="first last">
-<li>64 bit 数字</li>
+<li><dl class="simple">
+<dt>REG_QWORD</dt><dd><ul>
+<li><p>64 bit 数字</p></li>
 </ul>
 </dd>
 </dl>
@@ -507,105 +490,102 @@
 </ul>
 </div>
 <div class="section" id="root-key">
-<h3>5.5.6.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.6.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt>
-<dd><ul class="first last">
-<li>AppEvents：事件关联</li>
-<li>Console：控制台设定</li>
-<li>Control Panel：控制面板</li>
-<li>Environment：环境变量</li>
-<li>EUDC：用户定义字符</li>
-<li>Identities：Windows Mail账户信息</li>
-<li>Keyboard Layout：键盘布局</li>
-<li>Network：网络驱动信息</li>
-<li>Printers：打印机</li>
-<li>Software：软件</li>
-<li>Volatile Environment：可变的环境变量</li>
+<li><dl class="simple">
+<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
+<li><p>AppEvents：事件关联</p></li>
+<li><p>Console：控制台设定</p></li>
+<li><p>Control Panel：控制面板</p></li>
+<li><p>Environment：环境变量</p></li>
+<li><p>EUDC：用户定义字符</p></li>
+<li><p>Identities：Windows Mail账户信息</p></li>
+<li><p>Keyboard Layout：键盘布局</p></li>
+<li><p>Network：网络驱动信息</p></li>
+<li><p>Printers：打印机</p></li>
+<li><p>Software：软件</p></li>
+<li><p>Volatile Environment：可变的环境变量</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>HKEY_USERS：所有用户有关的数据</li>
-<li><dl class="first docutils">
-<dt>HKEY_CLASSES_ROOT</dt>
-<dd><ul class="first last">
-<li>文件后缀关联</li>
-<li>COM（Component Object Model）注册</li>
-<li>UAC</li>
+<li><p>HKEY_USERS：所有用户有关的数据</p></li>
+<li><dl class="simple">
+<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
+<li><p>文件后缀关联</p></li>
+<li><p>COM（Component Object Model）注册</p></li>
+<li><p>UAC</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt>
-<dd><ul class="first last">
-<li>HKLMBCD00000000</li>
-<li>HKLMCOMPONENTS</li>
-<li>HKLMHARDWARE</li>
-<li>HKLMSAM</li>
-<li>HKLMSECURITY</li>
-<li>HKLMSOFTWARE</li>
-<li>HKLMSYSTEM</li>
+<li><dl class="simple">
+<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
+<li><p>HKLMBCD00000000</p></li>
+<li><p>HKLMCOMPONENTS</p></li>
+<li><p>HKLMHARDWARE</p></li>
+<li><p>HKLMSAM</p></li>
+<li><p>HKLMSECURITY</p></li>
+<li><p>HKLMSOFTWARE</p></li>
+<li><p>HKLMSYSTEM</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>HKEY_PERFORMANCE_DATA：性能相关的数据</li>
-<li>HKEY_CURRENT_CONFIG：当前配置文件</li>
+<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
+<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="id8">
-<h2>5.5.7. 服务<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.7. 服务<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>服务（Services）程序是后台运行的进程，常用来执行特定的任务，不需要和用户进行交互。比如自动更新服务、后台智能传输服务、事件日志服务等。</p>
 <p>服务程序受Service Control Manager（SCM，即services.exe进程）所控制，其服务程序的配置数据位于 <code class="docutils literal notranslate"><span class="pre">HKLM\System\CurrentControlSet\Services</span></code> 。</p>
 <p>服务通常由三个部分组成：服务应用、服务控制程序 (service control program, SCP)、服务控制管理器 (service control manager, SCM)。</p>
 <p>Windows提供了内置的SCP，可以启动、停止、继续运行程序。用户也可以自定义SCP程序来玩橙更细粒度的控制。服务程序是普通的Windows可执行程序，只是会有一些附加模块和SCM通信。</p>
 </div>
 <div class="section" id="wmi">
-<h2>5.5.8. WMI<a class="headerlink" href="#wmi" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.8. WMI<a class="headerlink" href="#wmi" title="Permalink to this headline">¶</a></h2>
 <p>Windows Management Instrumentation (WMI) 是 Web-Based Enterprise Management (WBEM)的一个实现，用于提供操作界面和对象模式以便访问有关操作系统、设备、应用程序和服务的管理信息。</p>
 <p>WMI由4个部分组成，分别为：management applications, WMI infrastructure, providers, and managed objects。</p>
 </div>
 <div class="section" id="id9">
-<h2>5.5.9. 进程与线程<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.9. 进程与线程<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id10">
-<h3>5.5.9.1. 进程<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.9.1. 进程<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>进程（Process）是一个应用程序运行的实例，包含以下一些基本组件：私有虚拟地址、可执行体程序、被操作系统分配的一份资源句柄（Handles）列表、访问控制令牌（Token）、进程标识号一个或多个线程。</p>
 <p>访问控制令牌是用以唯一的标识所有者及其所属组以及和该进程相关联的特权（Privilege）信息。</p>
 <p>进程创建步骤分为七步：</p>
 <ul class="simple">
-<li>转换并校验参数和标记</li>
-<li>打开可执行映像文件（.exe）</li>
-<li>创建Windows执行体进程对象</li>
-<li>创建初始线程（栈，上下文和 执行体线程对象等）</li>
-<li>通知Windows子系统初始化了一个进程</li>
-<li>开始运行初始线程。（除非进程创建的时候被挂起）</li>
-<li>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</li>
+<li><p>转换并校验参数和标记</p></li>
+<li><p>打开可执行映像文件（.exe）</p></li>
+<li><p>创建Windows执行体进程对象</p></li>
+<li><p>创建初始线程（栈，上下文和 执行体线程对象等）</p></li>
+<li><p>通知Windows子系统初始化了一个进程</p></li>
+<li><p>开始运行初始线程。（除非进程创建的时候被挂起）</p></li>
+<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</p></li>
 </ul>
 </div>
 <div class="section" id="id11">
-<h3>5.5.9.2. 线程<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.9.2. 线程<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>线程（Thread）是CPU调度执行的基本单元，其包含CPU状态、两个栈、线程本地存储（TLS）、线程标识号和访问控制令牌。</p>
 <p>线程的两个栈分别用于内核模式和用户模式。线程本地存储（TLS）包含一个私有存储空间，用来保存子系统、运行时库以及DLL文件等。</p>
 <p>访问控制令牌（Access Token），用以唯一的标识所有者及其所属组以及和该线程相关联的特权（Privilege）信息</p>
 </div>
 </div>
 <div class="section" id="id12">
-<h2>5.5.10. 安全机制<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.10. 安全机制<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id13">
-<h3>5.5.10.1. 核心模块<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.10.1. 核心模块<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>SRM: Security reference monitor</li>
+<li><p>SRM: Security reference monitor</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="id14">
-<h2>5.5.11. 内存破坏漏洞防护机制<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.11. 内存破坏漏洞防护机制<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="dep">
-<h3>5.5.11.1. DEP<a class="headerlink" href="#dep" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.11.1. DEP<a class="headerlink" href="#dep" title="Permalink to this headline">¶</a></h3>
 <p>DEP（Data Executive Protection，数据执行保护）从Windows XP SP2开始引入，缺省仅为基本的Windows程序和服务启用DEP。</p>
 <p>DEP的基本原理是将数据所在的内存页标记为不可执行，当程序产生溢出，恶意代码试图在数据段执行指令时，CPU会产生异常而不去执行指令。</p>
 <p>实现DEP机制需要CPU的支持。为此AMD公司推出了EVP（enhanced virus protection）技术，Intel推出了EDB （execute disable bit）技术，这些技术在原理上均是在内存的页面表（Page Table）中加入一个特殊的标 识位（NX/XD）来标识是否允许在该页上执行指令。</p>
@@ -616,88 +596,88 @@
 – AlwaysOff：对所有的进程都禁用了DEP，DEP也不能被应用程序动态开启，这该模式一般只有在特殊场合才会使用</p>
 </div>
 <div class="section" id="aslr">
-<h3>5.5.11.2. ASLR<a class="headerlink" href="#aslr" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.11.2. ASLR<a class="headerlink" href="#aslr" title="Permalink to this headline">¶</a></h3>
 <p>ASLR（ Address Space Layout Randomization， 内存地址空间布局随机化）在加载程序到内存空间时随机化各个模块的起始加载地址，防止攻击者定位攻击指令代码的位置。</p>
 <p>ASLR需要操作系统及应用程序的双重支持才能发挥作用，支持ASLR的程序在PE头中会设置IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE标识表明其支持ASLR。</p>
 <p>ASLR主要影响的部分模块随机化、堆栈随机化和PEB/TEB随机化。模块随机化指系统将PE文件映射到内存时，对其加载基地址进行随机化处理， 基地址在系统启动时确定，系统重启后会变化。堆栈随机化指每次程序加载后，其内存空间中堆、栈的基址都会发生变化。于是内存中的变量所在的地址也会发生变化。</p>
 <p>ASLR在Windows Vista/7引入实现，但机制尚不完善，攻击者还能在一定范围内进行漏洞利用。比如使用堆喷射、利用没有随机化的系统或软件的EXE/DLL等方式。</p>
 </div>
 <div class="section" id="epm">
-<h3>5.5.11.3. EPM<a class="headerlink" href="#epm" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.11.3. EPM<a class="headerlink" href="#epm" title="Permalink to this headline">¶</a></h3>
 <p>EPM （Enhanced Protection Mode，增强保护模式）也叫做“沙盒模式”（Sandbox Mode），本质上是隔离进程和降低权限。该机制Windows 8的IE 10开始引入，从Windows 8.1开始默认启用。</p>
 </div>
 <div class="section" id="patchguard">
-<h3>5.5.11.4. PatchGuard<a class="headerlink" href="#patchguard" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.11.4. PatchGuard<a class="headerlink" href="#patchguard" title="Permalink to this headline">¶</a></h3>
 <p>PatchGuard是在64位版本的Windows操作系统中提供的新功能，用于保护操作系统的核心结构，防止他们被其他程序修改。</p>
 <p>其对系统服务描述符表SSDT（System Service Descriptor Table）、全局描述符表GDT（Global Descriptor Table）和中断描述符表IDT（Interrupt Descriptor Table）、系统映像System images（ntoskrnl.exe, ndis.sys, hal.dll）等进行保护。</p>
 <p>PatchGuard处在系统任务的一个较高层面上，通过每隔一定时间进行一些固定的检查来确定这些系统关键内容是否更改。这些检查主要通过将核心内容与缓存中已保存的已知正确的备份进行对比，检测间隔大约为5-10分钟左右的某一随机选择时间。</p>
 <p>PatchGuard的缺点在于缺乏本地硬件水平的支持，只能通过轮询的形式，而不是采用事件驱动或硬件驱动的形式。</p>
 </div>
 <div class="section" id="code-signing">
-<h3>5.5.11.5. Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.11.5. Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h3>
 <p>Code Signing（代码签名）检查机制需要加载到系统内核中运行的驱动程序必须有数字签名以保证 其代码的完整性，否则系统内核就不加载该驱动程序。</p>
 <p>代码完整性检测被加载到内核中的驱动程序或系统文件是否已经被签名，或正在运行系统管理员账户权限的系统文件是否已被恶意软件篡改。在基于x64版本的操作系统下，内核模式的驱动程序必须进行数字签名后才能被加载。</p>
 </div>
 </div>
 <div class="section" id="id15">
-<h2>5.5.12. 其他<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.12. 其他<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ssdt">
-<h3>5.5.12.1. SSDT<a class="headerlink" href="#ssdt" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.12.1. SSDT<a class="headerlink" href="#ssdt" title="Permalink to this headline">¶</a></h3>
 <p>SSDT（System Services Descriptor Table）是系统服务描述符表，这个表把 Ring3 的 Win32 API 和 Ring0 的内核 API 联系起来。</p>
 <p>SSDT 并不仅仅只包含一个庞大的地址索引表，它还包含着一些其它有用的信息，诸如地址索引的基地址、服务函数个数等。</p>
 <p>通过修改此表的函数地址可以对常用Windows函数及API进行Hook，从而实现对一些关心的系统动作进行过滤、监控的目的。</p>
 <p>一些HIPS、防毒软件、系统监控、注册表监控软件往往会采用此接口来实现自己的监控模块。</p>
 </div>
 <div class="section" id="idt">
-<h3>5.5.12.2. IDT<a class="headerlink" href="#idt" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.12.2. IDT<a class="headerlink" href="#idt" title="Permalink to this headline">¶</a></h3>
 <p>IDT（Interrupt Descriptor Table）是中断描述符表，是操作系统用于处理中断的。</p>
 </div>
 <div class="section" id="gdt">
-<h3>5.5.12.3. GDT<a class="headerlink" href="#gdt" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.12.3. GDT<a class="headerlink" href="#gdt" title="Permalink to this headline">¶</a></h3>
 <p>GDT，即全局描述表（GDT Global Descriptor Table）。</p>
 </div>
 <div class="section" id="ldt">
-<h3>5.5.12.4. LDT<a class="headerlink" href="#ldt" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.12.4. LDT<a class="headerlink" href="#ldt" title="Permalink to this headline">¶</a></h3>
 <p>LDT（Local Descriptor Table），即局部描述符表。</p>
 </div>
 </div>
 <div class="section" id="id16">
-<h2>5.5.13. 常见缩写<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.13. 常见缩写<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Alpc: Advanced Local Inter-Process Communication</li>
-<li>Cc: Common Cache</li>
-<li>Cm: Configuration manager</li>
-<li>Dbgk: Debugging Framework for User-Mode</li>
-<li>Em: Errata Manager</li>
-<li>Etw: Event Tracing for Windows</li>
-<li>Ex: Executive support routines</li>
-<li>FsRtl: File system driver run-time library</li>
-<li>Hvl: Hypervisor Library Io I/O manager</li>
-<li>Kd: Kernel Debugger</li>
-<li>Ke: Kernel</li>
-<li>Lsa: Local Security Authority</li>
-<li>Mm: Memory manager</li>
-<li>Nt: NT system services (most of which are exported as Windows functions) Ob Object manager</li>
-<li>Pf: Prefetcher</li>
-<li>Po: Power manager</li>
-<li>Pp: PnP manager</li>
-<li>Ps: Process support</li>
-<li>Rtl: Run-time library</li>
-<li>Se: Security</li>
-<li>Sm: Store Manager</li>
-<li>Tm: Transaction Manager</li>
-<li>Vf: Verifier</li>
-<li>Wdi: Windows Diagnostic Infrastructure Whea Windows Hardware Error Architecture Wmi Windows Management Instrumentation</li>
-<li>Zw: Mirror entry point for system services</li>
+<li><p>Alpc: Advanced Local Inter-Process Communication</p></li>
+<li><p>Cc: Common Cache</p></li>
+<li><p>Cm: Configuration manager</p></li>
+<li><p>Dbgk: Debugging Framework for User-Mode</p></li>
+<li><p>Em: Errata Manager</p></li>
+<li><p>Etw: Event Tracing for Windows</p></li>
+<li><p>Ex: Executive support routines</p></li>
+<li><p>FsRtl: File system driver run-time library</p></li>
+<li><p>Hvl: Hypervisor Library Io I/O manager</p></li>
+<li><p>Kd: Kernel Debugger</p></li>
+<li><p>Ke: Kernel</p></li>
+<li><p>Lsa: Local Security Authority</p></li>
+<li><p>Mm: Memory manager</p></li>
+<li><p>Nt: NT system services (most of which are exported as Windows functions) Ob Object manager</p></li>
+<li><p>Pf: Prefetcher</p></li>
+<li><p>Po: Power manager</p></li>
+<li><p>Pp: PnP manager</p></li>
+<li><p>Ps: Process support</p></li>
+<li><p>Rtl: Run-time library</p></li>
+<li><p>Se: Security</p></li>
+<li><p>Sm: Store Manager</p></li>
+<li><p>Tm: Transaction Manager</p></li>
+<li><p>Vf: Verifier</p></li>
+<li><p>Wdi: Windows Diagnostic Infrastructure Whea Windows Hardware Error Architecture Wmi Windows Management Instrumentation</p></li>
+<li><p>Zw: Mirror entry point for system services</p></li>
 </ul>
 </div>
 <div class="section" id="id17">
-<h2>5.5.14. 参考链接<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.14. 参考链接<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://www.redog.me/tags/windows-kernel-exploit-tutorial/">windows kernel exploit tutorial</a></li>
-<li><a class="reference external" href="https://github.com/hacksysteam/HackSysExtremeVulnerableDriver">HEVD</a></li>
-<li><a class="reference external" href="https://github.com/leeqwind/HolicPOC">HolicPOC</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Windows_NT">Windows NT Wiki</a></li>
+<li><p><a class="reference external" href="https://www.redog.me/tags/windows-kernel-exploit-tutorial/">windows kernel exploit tutorial</a></p></li>
+<li><p><a class="reference external" href="https://github.com/hacksysteam/HackSysExtremeVulnerableDriver">HEVD</a></p></li>
+<li><p><a class="reference external" href="https://github.com/leeqwind/HolicPOC">HolicPOC</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Windows_NT">Windows NT Wiki</a></p></li>
 </ul>
 </div>
 </div>
@@ -710,10 +690,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../reverse/index.html" class="btn btn-neutral float-right" title="6. 逆向工程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="android.html" class="btn btn-neutral float-right" title="6.6. Android" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="macos.html" class="btn btn-neutral" title="5.4. Mac OS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="macos.html" class="btn btn-neutral float-left" title="6.4. Mac OS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -722,7 +702,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -739,37 +719,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

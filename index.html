@@ -17,34 +17,35 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. 基础知识" href="basic/index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -82,21 +83,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assembly/index.html">3. 汇编基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="os/index.html">5. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reverse/index.html">6. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="heap/index.html">9. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">11. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -164,86 +166,109 @@
   <div class="section" id="id1">
 <h1>二进制安全学习笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">目录:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic/index.html">1. 基础知识</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="basic/history.html">1.1. 计算机发展简史</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic/bool.html">1.2. 布尔代数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/endian.html">1.3. 大小端与数据表示</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pc/index.html">2. 计算机体系结构</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pc/organization.html">2.1. 计算机系统构成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pc/cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pc/firmware.html">2.3. 固件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pc/kernel.html">2.4. 内核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/index.html">2. 计算机体系结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture/organization.html">2.1. 计算机系统构成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/cpu.html">2.2. CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/kernel.html">2.3. 内核</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="assembly/index.html">3. 汇编基础</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assembly/diff.html">3.1. 区别</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assembly/mips.html">3.2. MIPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firmware/index.html">3. 固件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware/nvram.html">3.1. NVRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware/ble.html">3.2. BLE</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="compile/index.html">4. 编译原理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="compile/llvm.html">4.1. LLVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly/index.html">4. 汇编基础</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly/diff.html">4.1. 区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly/x86.html">4.2. x86</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly/arm.html">4.3. ARM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly/mips.html">4.4. MIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly/ppc.html">4.5. PowerPC</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="os/index.html">5. 操作系统</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="os/overview.html">5.1. 概述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os/boot.html">5.2. Boot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os/linux.html">5.3. Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os/macos.html">5.4. Mac OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os/windows.html">5.5. Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compile/index.html">5. 编译原理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compile/basic.html">5.1. 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/lexical.html">5.2. 词法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/syntax.html">5.3. 语法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/semantic.html">5.4. 语义分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/intermediate.html">5.5. 中间代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/optimization.html">5.6. 代码优化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/generation.html">5.7. 代码生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/llvm.html">5.8. LLVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/jit.html">5.9. JIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compile/terminology.html">5.10. 相关术语</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reverse/index.html">6. 逆向工程</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reverse/elf.html">6.1. ELF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reverse/pe.html">6.2. PE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reverse/dll.html">6.3. DLL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="os/index.html">6. 操作系统</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="os/overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/boot.html">6.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/linux.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/windows.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="exploit/index.html">7. 漏洞利用基础</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="exploit/stack.html">7.1. Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exploit/heap.html">7.2. Heap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reverse/index.html">7. 逆向工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reverse/elf.html">7.1. ELF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/pe.html">7.2. PE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/dll.html">7.3. DLL</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stack/index.html">8. 栈相关漏洞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stack/rop.html">8.1. ROP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stack/overflow.html">8.2. 栈溢出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploit/index.html">8. 漏洞利用基础</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exploit/shellcode.html">8.1. Shellcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploit/stack.html">8.2. Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploit/heap.html">8.3. Heap</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="heap/index.html">9. 堆相关漏洞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="heap/uaf.html">9.1. Use After Free</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap/offByOne.html">9.2. Off By One</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heap/unlink.html">9.3. 堆溢出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack/index.html">9. 栈相关漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stack/call.html">9.1. 调用机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack/rop.html">9.2. ROP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack/overflow.html">9.3. 栈溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">10. 其他漏洞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vulns/fmtstr.html">10.1. 格式化字符串</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vulns/typeConfusion.html">10.2. Type Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heap/index.html">10. 堆相关漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="heap/uaf.html">10.1. Use After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heap/offByOne.html">10.2. Off By One</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heap/unlink.html">10.3. 堆溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">11. 防御策略</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/aslr.html">11.1. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/canary.html">11.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/cfi.html">11.3. CFI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/dep.html">11.4. NX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigations/sandbox.html">11.5. 沙箱机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vulns/index.html">11. 其他漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vulns/fmtstr.html">11.1. 格式化字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vulns/typeConfusion.html">11.2. Type Confusion</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tools/index.html">12. 工具与资源</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tools/list.html">12.1. 推荐列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/gcc.html">12.2. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/gdb.html">12.3. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/ulimit.html">12.4. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/windbg.html">12.5. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/ida.html">12.6. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/objdump.html">12.7. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/readelf.html">12.8. readelf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mitigations/index.html">12. 防御策略</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/aslr.html">12.1. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/canary.html">12.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/cfi.html">12.3. CFI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/dep.html">12.4. NX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigations/sandbox.html">12.5. 沙箱机制</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="misc/index.html">13. 其他</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="misc/gc.html">13.1. 垃圾回收</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc/sandbox.html">13.2. 沙箱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">13. 工具与资源</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/list.html">13.1. 工具列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/booklist.html">13.2. 书单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/document.html">13.3. 文档资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/gcc.html">13.4. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/gdb.html">13.5. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/ulimit.html">13.6. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/windbg.html">13.7. Windbg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/ida.html">13.8. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/objdump.html">13.9. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/readelf.html">13.10. readelf</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="misc/index.html">14. 其他</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc/gc.html">14.1. 垃圾回收</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/sandbox.html">14.2. 沙箱</a></li>
 </ul>
 </li>
 </ul>
@@ -252,9 +277,9 @@
 <div class="section" id="id2">
 <h1>目录<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 
@@ -276,7 +301,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -293,37 +318,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

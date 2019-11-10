@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.1. Use After Free &mdash; bin-sec 1.0.0 documentation</title>
+  <title>10.1. Use After Free &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.2. Off By One" href="offByOne.html" />
-    <link rel="prev" title="9. 堆相关漏洞" href="index.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="10.2. Off By One" href="offByOne.html" />
+    <link rel="prev" title="10. 堆相关漏洞" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,34 +84,35 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pc/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">3. 汇编基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">4. 编译原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../os/index.html">5. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">6. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">7. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">8. 栈相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">9. 堆相关漏洞</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.1. Use After Free</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.1.1. 概述</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">9.1.1.1. 基本概念</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">9.1.1.2. 成因</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">9.1.1.3. 危害</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">10. 堆相关漏洞</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.1. Use After Free</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">10.1.1. 概述</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">10.1.1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">10.1.1.2. 成因</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">10.1.1.3. 危害</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">9.2. Off By One</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html">9.3. 堆溢出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">10.2. Off By One</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html">10.3. 堆溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">10. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">11. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">12. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">13. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
 </ul>
 
             
@@ -156,9 +158,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">9. 堆相关漏洞</a> &raquo;</li>
+          <li><a href="index.html">10. 堆相关漏洞</a> &raquo;</li>
         
-      <li>9.1. Use After Free</li>
+      <li>10.1. Use After Free</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,17 +180,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="use-after-free">
-<h1>9.1. Use After Free<a class="headerlink" href="#use-after-free" title="Permalink to this headline">¶</a></h1>
+<h1>10.1. Use After Free<a class="headerlink" href="#use-after-free" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>9.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>10.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>9.1.1.1. 基本概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>10.1.1.1. 基本概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>UAF的产生涉及到两个事件，产生和使用悬垂指针。</p>
 <p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针，Dangling pointer）。</p>
 <p>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针（Wild pointer）。</p>
 </div>
 <div class="section" id="id3">
-<h3>9.1.1.2. 成因<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>10.1.1.2. 成因<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>在许多编程语言中（比如C），显示地从内存中删除一个对象或者返回时通过销毁栈帧，并不会改变相关的指针的值。该指针仍旧指向内存中相同的位置，即使引用已经被删除，现在可能已经挪作他用。</p>
 <p>举例来说</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">512</span><span class="p">);</span>
@@ -203,12 +205,12 @@
 <p>因为glibc使用首次适应（FirstFit）来选取合适的chunk，当a被free后，调用相近大小的malloc，则会分配a的地址。此时没有设置a的地址为 <code class="docutils literal notranslate"><span class="pre">null</span></code> ，则可以通过a来访问和修改c指向的空间的内容。</p>
 </div>
 <div class="section" id="id4">
-<h3>9.1.1.3. 危害<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>10.1.1.3. 危害<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>可以概括为三方面：</p>
 <ul class="simple">
-<li>破坏完整性：例如对已经释放的内存进行的操作可能破坏正常的数据</li>
-<li>破坏可用性：例如内存块释放后恰好发生了内存块合并，一些进程使用非法数据作为内存块就会崩溃</li>
-<li>破坏访问控制：利用UAF读取私密信息</li>
+<li><p>破坏完整性：例如对已经释放的内存进行的操作可能破坏正常的数据</p></li>
+<li><p>破坏可用性：例如内存块释放后恰好发生了内存块合并，一些进程使用非法数据作为内存块就会崩溃</p></li>
+<li><p>破坏访问控制：利用UAF读取私密信息</p></li>
 </ul>
 </div>
 </div>
@@ -222,10 +224,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="offByOne.html" class="btn btn-neutral float-right" title="9.2. Off By One" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="offByOne.html" class="btn btn-neutral float-right" title="10.2. Off By One" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="9. 堆相关漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="10. 堆相关漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -234,7 +236,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle.
+        &copy; Copyright 2017, lyle
 
     </p>
   </div>
@@ -251,37 +253,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0.0',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
