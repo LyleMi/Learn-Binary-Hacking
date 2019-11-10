@@ -6,6 +6,8 @@
    :caption: 目录:
 
    list
+   booklist
+   document
    gcc
    gdb
    ulimit
