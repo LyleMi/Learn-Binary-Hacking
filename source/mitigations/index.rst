@@ -10,3 +10,4 @@
    cfi
    dep
    sandbox
+   secureprogramming

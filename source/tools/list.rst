@@ -19,12 +19,17 @@ PE工具
 - `capstone <https://github.com/aquynh/capstone>`_
 - `Apktool <https://github.com/iBotPeaches/Apktool>`_
 - `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
+- `DynamoRIO <https://github.com/DynamoRIO/dynamorio>`_ Dynamic Instrumentation Tool Platform
+- `binary ninja <https://binary.ninja/>`_
+- `HAL <https://github.com/emsec/hal>`_ The Hardware Analyzer
 
 IDA
 ----------------------------------------
 - `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_
 - `IDArling <https://github.com/IDArlingTeam/IDArling>`_
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
+- `awesome ida <https://github.com/xrkk/awesome-ida>`_
+- `golang loader assist <https://github.com/strazzere/golang_loader_assist>`_
 
 Ghidra
 ----------------------------------------
@@ -53,6 +58,15 @@ Diff
 - `Process Explorer <https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>`_
 - `peda <https://github.com/longld/peda>`_
 
+污点分析
+----------------------------------------
+- `Triton <https://github.com/JonathanSalwan/Triton>`_
+- `bap <https://github.com/BinaryAnalysisPlatform/bap>`_ Binary Analysis BinaryAnalysisPlatform
+
+静态分析
+----------------------------------------
+- `LIEF <https://github.com/lief-project/LIEF>`_ Library to Instrument Executable Formats
+
 漏洞利用
 ----------------------------------------
 - `pwntools <https://github.com/Gallopsled/pwntools>`_
@@ -77,3 +91,19 @@ IoT
 ----------------------------------------
 - `static GDB and GDBServer <https://github.com/hugsy/gdb-static>`_
 - `statically compiled tools like Nmap and Socat <https://github.com/ernw/static-toolbox>`_
+- `static binaries <https://github.com/andrew-d/static-binaries>`_
+
+交叉编译
+----------------------------------------
+- `buildroot <https://github.com/buildroot/buildroot>`_ Buildroot, making embedded Linux easy
+- `musl cross <https://github.com/GregorR/musl-cross>`_ A small suite of scripts and patches for building musl libc cross compilers
+
+Sandbox
+----------------------------------------
+- `any.run <https://app.any.run/>`_
+- `Noriben <https://github.com/Rurik/Noriben>`_ Portable, Simple, Malware Analysis Sandbox
+
+Malware Sample
+----------------------------------------
+- `malware samples <https://github.com/InQuest/malware-samples>`_
+- `theZoo <https://github.com/ytisf/theZoo>`_
