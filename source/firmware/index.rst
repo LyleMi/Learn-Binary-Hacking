@@ -8,3 +8,5 @@
    nvram
    ble
    secureboot
+   android
+   ios

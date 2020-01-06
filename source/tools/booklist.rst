@@ -10,6 +10,7 @@
 - CSAPP
 - Windows Internal
 - 深入理解Mac OS X & iOS操作系统
+- 程序员的自我修养：链接、装载与库
 - `Unix环境高级编程 <https://book.douban.com/subject/25900403/>`_
 - `现代操作系统 <https://book.douban.com/subject/1390650/>`_
 - `自己动手写操作系统 <https://book.douban.com/subject/1422377/>`_
@@ -23,6 +24,17 @@
 浏览器
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - 白帽子讲浏览器安全
+- Browser Hack Handbook
+- The Browser Hacker's Handbook
+- How browser works
+
+IoT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- 揭密家用路由器0day漏洞挖掘技术
+
+Android
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Android软件安全与逆向分析
 
 体系架构
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,6 +48,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - 0day安全 软件漏洞分析技术
 - The Shellcode's Handbook
+- 堆栈攻击：八层网络安全防御
 
 垃圾回收
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
