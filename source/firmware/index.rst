@@ -8,5 +8,6 @@
    nvram
    ble
    secureboot
+   router
    android
    ios
