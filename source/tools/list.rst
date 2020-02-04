@@ -86,6 +86,7 @@ IoT
 模糊测试
 ----------------------------------------
 - `afl <https://github.com/mirrorer/afl>`_
+- `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_
 
 静态编译工具
 ----------------------------------------
