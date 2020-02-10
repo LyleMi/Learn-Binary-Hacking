@@ -1,8 +1,8 @@
 gdb
-================================
+========================================
 
 gdb
---------------------------------
+----------------------------------------
 
 - BreakPoint 断点
     - ``break [PROBE_MODIFIER] [LOCATION] [thread THREADNUM] [if CONDITION]``
@@ -53,7 +53,7 @@ gdb
 
 
 gdb-peda
---------------------------------
+----------------------------------------
 
 - ``aslr`` show aslr setting
 - ``checksec`` Check for various security options of binary
