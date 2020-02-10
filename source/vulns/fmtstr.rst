@@ -36,3 +36,18 @@
     - ``%$hhn`` 表示写入的地址空间为1字节
     - ``%$lln`` 表示写入的地址空间为8字节，在32bit和64bit环境下一样
     - 有时，直接写4字节会导致程序崩溃或等候时间过长，可以通过 ``%$hn`` 或 ``%$hhn`` 来适时调整
+
+sinks
+----------------------------------------
+- printf
+- vprintf
+- cprintf
+- dprintf
+- fprintf
+- asprintf
+- snprintf
+- vdprintf
+- vfprintf
+- vsprintf
+- vasprintf
+- vsnprintf
