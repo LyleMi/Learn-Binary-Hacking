@@ -52,6 +52,7 @@ Diff
 - `qemu <https://github.com/qemu/>`_
 - `unicorn <https://github.com/unicorn-engine/unicorn>`_
 - `OpenEmu <https://github.com/OpenEmu/OpenEmu>`_
+- `firmadyne <https://github.com/firmadyne/firmadyne>`_ Platform for emulation and dynamic analysis of Linux-based firmware
 
 动态分析
 ----------------------------------------
@@ -87,8 +88,9 @@ IoT
 ----------------------------------------
 - `afl <https://github.com/mirrorer/afl>`_
 - `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_
+- `radamsa <https://gitlab.com/akihe/radamsa>`_ Radamsa is a test case generator for robustness testing. It is typically used to test how well a program can withstand malformed and potentially malicious inputs. It works by reading sample files of valid data and generating interestringly different outputs from them. The main selling points of radamsa are that it has already found a slew of bugs in programs that actually matter, it is easily scriptable and, easy to get up and running.
 
-静态编译工具
+编译工具
 ----------------------------------------
 - `static GDB and GDBServer <https://github.com/hugsy/gdb-static>`_
 - `statically compiled tools like Nmap and Socat <https://github.com/ernw/static-toolbox>`_

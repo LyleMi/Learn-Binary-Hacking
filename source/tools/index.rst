@@ -11,5 +11,5 @@
    reverse/index
    debuger/index
    emulator/index
-   gcc
+   compiler/index
    ulimit
