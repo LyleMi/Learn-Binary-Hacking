@@ -35,7 +35,7 @@ Dalvik
 ----------------------------------------
 基于寄存器的虚拟机，完成对象生命周期、堆栈、线程的管理、安全和异常的管理以及垃圾回收等。每一个Android都运行在一个单独的Dalvik虚拟实例上。
 
-APK内容
+APK结构
 ----------------------------------------
 - res目录：资源文件
 - META_INF：数字签名信息
@@ -44,6 +44,14 @@ APK内容
 - resource.arsc文件：编译后的二进制资源文件
 - classes.dex：Dalvik可执行二进制文件
 - AndroidManifest.xml
+
+数据存储
+----------------------------------------
+- Applications ``/data/app/<package-name>/``
+- Shared Preferences Files ``/data/app/<package-name>/shared_pref``
+- SQLite Database ``/data/app/<package-name>/databases``
+- Internal Storage ``/data/app/<package-name>/files``
+
 
 恶意软件分类
 ----------------------------------------

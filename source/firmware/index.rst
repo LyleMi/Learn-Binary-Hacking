@@ -6,7 +6,8 @@
    :caption: 目录:
 
    unpack
-   nvram
+   hal
+   hardware
    ble
    secureboot
    router
