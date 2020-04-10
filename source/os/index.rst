@@ -10,6 +10,6 @@
    boot
    linux/index
    macos
-   windows
+   windows/index
    android
    ios

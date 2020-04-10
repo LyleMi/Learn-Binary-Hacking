@@ -6,7 +6,11 @@
 - Linux内核设计与实现 - Linux Kernel Development
 - Linux系统编程
 - Linux内核情景分析
+- 深入理解Linux网络内幕
+- 深入理解Linux虚拟内存管理
 - Linux内核完全注释
+- Linux设备驱动程序
+- 深入理解Linux内核
 - CSAPP
 - Windows Internal
 - 深入理解Mac OS X & iOS操作系统

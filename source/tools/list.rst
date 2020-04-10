@@ -17,11 +17,16 @@ PE工具
 ----------------------------------------
 - `radare2 <https://github.com/radare/radare2>`_
 - `capstone <https://github.com/aquynh/capstone>`_
-- `Apktool <https://github.com/iBotPeaches/Apktool>`_
 - `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
-- `DynamoRIO <https://github.com/DynamoRIO/dynamorio>`_ Dynamic Instrumentation Tool Platform
 - `binary ninja <https://binary.ninja/>`_
 - `HAL <https://github.com/emsec/hal>`_ The Hardware Analyzer
+
+动态插桩
+----------------------------------------
+- `DynamoRIO <https://github.com/DynamoRIO/dynamorio>`_ Dynamic Instrumentation Tool Platform
+- `pintools <https://github.com/jonathansalwan/pintools>`_ Pintool example and PoC for dynamic binary analysis
+- `frida <https://github.com/frida/frida>`_
+- `QBDI <https://github.com/QBDI/QBDI>`_ A Dynamic Binary Instrumentation framework based on LLVM
 
 IDA
 ----------------------------------------
@@ -114,3 +119,18 @@ Malware Sample
 实验环境
 ----------------------------------------
 - `ABD <https://github.com/malrev/ABD>`_ Course materials for Advanced Binary Deobfuscation by NTT Secure Platform Laboratories
+
+Android
+----------------------------------------
+
+分析工具
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `classyshark <https://github.com/google/android-classyshark>`_ Analyze any Android/Java based app or game
+- `jadx <https://github.com/skylot/jadx>`_ Dex to Java decompiler
+- `jd-gui <https://github.com/java-decompiler/jd-gui>`_ Java Decompiler GUI
+- `dex2jar <https://github.com/pxb1988/dex2jar>`_ Tools to work with android .dex and java .class files
+- `Apktool <https://github.com/iBotPeaches/Apktool>`_ tool for reverse engineering Android apk files
+
+漏洞
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `qark <https://github.com/linkedin/qark>`_ Tool to look for several security related Android application vulnerabilities

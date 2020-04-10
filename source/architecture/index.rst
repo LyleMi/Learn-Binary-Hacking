@@ -8,4 +8,8 @@
 
    organization
    cpu
+   memory
+   disk
+   bus
+   device
    kernel

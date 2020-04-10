@@ -8,6 +8,7 @@
    unpack
    hal
    hardware
+   4g
    ble
    secureboot
    router

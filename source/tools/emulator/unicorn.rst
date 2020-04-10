@@ -7,4 +7,5 @@ Unicorn基于QEMU，它提取了QEMU中与CPU模拟相关的核心代码，并�
 
 参考链接
 ----------------------------------------
-- `unicorn <https://github.com/unicorn-engine/unicorn>`_
+- `unicorn at github <https://github.com/unicorn-engine/unicorn>`_
+- `unicorn <http://www.unicorn-engine.org/>`_
