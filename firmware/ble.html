@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.2. BLE &mdash; bin-sec 1.0.0 documentation</title>
+  <title>3.5. BLE &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. 汇编基础" href="../assembly/index.html" />
-    <link rel="prev" title="3.1. NVRAM" href="nvram.html" /> 
+    <link rel="next" title="3.6. 可信启动" href="secureboot.html" />
+    <link rel="prev" title="3.4. 4G" href="4g.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,44 +88,66 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 固件</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="nvram.html">3.1. NVRAM</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. BLE</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.2.1. 工作流程</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">3.2.1.1. 设备配对</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 嵌入式设备</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unpack.html">3.1. 固件解包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal.html">3.2. HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">3.3. 硬件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4g.html">3.4. 4G</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.5. BLE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.5.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.5.2. 架构</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.5.2.1. 物理层</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.5.2.2. 基带</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-manager">3.5.2.3. Link Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-manager">3.5.2.4. Device Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hci">3.5.2.5. HCI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l2cap">3.5.2.6. L2CAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smp">3.5.2.7. SMP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sdp">3.5.2.8. SDP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amp-manager">3.5.2.9. AMP Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gap">3.5.2.10. GAP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">3.2.2. 协议栈</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#physical-layer">3.2.2.1. Physical Layer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#link-layer">3.2.2.2. Link Layer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hci">3.2.2.3. HCI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#generic-access-profile-gap">3.2.2.4. Generic Access Profile (GAP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.5.3. 工作流程</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.5.3.1. 设备配对</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.3. 攻击</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mitm">3.2.3.1. MITM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pin">3.2.3.2. 离线PIN码</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">3.2.3.3. 中继攻击</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dos">3.2.3.4. DoS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.5.4. 协议栈</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#physical-layer">3.5.4.1. Physical Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-layer">3.5.4.2. Link Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.5.4.3. HCI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generic-access-profile-gap">3.5.4.4. Generic Access Profile (GAP)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.4. 分析工具</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">3.2.4.1. 嗅探工具</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">3.2.4.2. 扫描器</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">3.2.4.3. 攻击</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">3.2.4.4. 模拟器</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">3.2.4.5. 手机端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.5.5. 攻击</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mitm">3.5.5.1. MITM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pin">3.5.5.2. 离线PIN码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">3.5.5.3. 中继攻击</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dos">3.5.5.4. DoS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">3.2.5. 安全问题</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">3.2.5.1. 基础</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">3.2.5.2. 业务安全</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">3.2.5.3. 网络传输</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">3.2.5.4. 蓝牙通信</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3.5.6. 分析工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">3.5.6.1. 嗅探工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">3.5.6.2. 扫描器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">3.5.6.3. 攻击</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">3.5.6.4. 模拟器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">3.5.6.5. 手机端</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">3.5.7. 安全问题</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">3.5.7.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">3.5.7.2. 业务安全</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">3.5.7.3. 网络传输</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">3.5.7.4. 蓝牙通信</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">3.5.8. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secureboot.html">3.6. 可信启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html">3.7. 路由设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android.html">3.8. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios.html">3.9. iOS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
@@ -184,9 +206,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">3. 固件</a> &raquo;</li>
+          <li><a href="index.html">3. 嵌入式设备</a> &raquo;</li>
         
-      <li>3.2. BLE</li>
+      <li>3.5. BLE</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -206,17 +228,65 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ble">
-<h1>3.2. BLE<a class="headerlink" href="#ble" title="Permalink to this headline">¶</a></h1>
+<h1>3.5. BLE<a class="headerlink" href="#ble" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>3.2.1. 工作流程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>3.5.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>蓝牙低功耗（Bluetooth Low Energy，BLE），是对经典蓝牙BR/EDR技术的补充，多用于小数据率、离散传输的应用。虽然BLE和经典蓝牙都是蓝牙标准，但是BLE并不兼容经典蓝牙BR/EDR。相比于经典蓝牙，它具有覆盖范围更广，安全性更高，功耗低等特点。</p>
+</div>
+<div class="section" id="id2">
+<h2>3.5.2. 架构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>3.5.2.1. 物理层<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>蓝牙物理层（RF层），包括BR/EDR、LE以及AMP三种，主要负责在物理channel上收发蓝牙packet。对BR/EDR和LE RF来说，还会接收来自Baseband的控制命令来控制RF频率的选择和timing。而AMP PHY，则是使用802.11（WIFI）的规范。</p>
+</div>
+<div class="section" id="id4">
+<h3>3.5.2.2. 基带<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Link Controller和Basebandresource management组成了蓝牙的基带（baseband）。Link Controller负责链路控制，主要是根据当前物理channel的参数、逻辑channel的参数、逻辑transport的参数将数据payload组装成bluetoothpacket。另外，通过LinkControl Protocol（对LE来说是LL LayerProtocol），可以实现流控、ack、重传等机制。Baseband resourcemanagement，主要用于管理RF资源。</p>
+</div>
+<div class="section" id="link-manager">
+<h3>3.5.2.3. Link Manager<a class="headerlink" href="#link-manager" title="Permalink to this headline">¶</a></h3>
+<p>Link Manager主要负责创建、修改、释放蓝牙逻辑连接（Logical Link），同时也负责维护蓝牙设备之间物理连接（Physical Link）的参数。它的功能主要是通过Link Management Protocol（LMP，for BR/EDR）和Link Layer Protocol（LL，for LE）完成。</p>
+</div>
+<div class="section" id="device-manager">
+<h3>3.5.2.4. Device Manager<a class="headerlink" href="#device-manager" title="Permalink to this headline">¶</a></h3>
+<p>Device Manager主要负责控制蓝牙设备的通用行为（蓝牙数据传输除外的行为）,包括：搜索附近的蓝牙设备，连接到其他的蓝牙设备。</p>
+</div>
+<div class="section" id="hci">
+<h3>3.5.2.5. HCI<a class="headerlink" href="#hci" title="Permalink to this headline">¶</a></h3>
+<p>蓝牙系统分为Bluetooth Controller和Bluetooth Host两个大的模块，它们之间通过HCI（Host Controller Interface）接口以HCI协议进行通信。</p>
+</div>
+<div class="section" id="l2cap">
+<h3>3.5.2.6. L2CAP<a class="headerlink" href="#l2cap" title="Permalink to this headline">¶</a></h3>
+<p>L2CAP位于Bluetooth Host中，包括两个子模块：Channel Manager主要负责创建、管理、释放L2CAP channel。L2CAP Resource Manager负责统一管理、调度L2CAP channel上传递的PDU（Packet Data Unit），以确保那些高QoS的packet可以获得对物理信道的控制权。</p>
+</div>
+<div class="section" id="smp">
+<h3>3.5.2.7. SMP<a class="headerlink" href="#smp" title="Permalink to this headline">¶</a></h3>
+<p>SMP（Security Manager Protocol）是一个点对点的协议，基于专用的L2CAP channel，用于生成加密（encryption）和识别（identity）用的密匙（keys）。</p>
+</div>
+<div class="section" id="sdp">
+<h3>3.5.2.8. SDP<a class="headerlink" href="#sdp" title="Permalink to this headline">¶</a></h3>
+<p>SDP（Service Discover Protocol）也是一个点对点的协议，基于专用的L2CAP channel，用于发现其它蓝牙设备能提供哪些profile以及这些profile有何特性。在了解清楚了其他蓝牙设备的profile以及特性之后，本蓝牙设备可以发起对自己感兴趣的蓝牙profile的连接动作。</p>
+</div>
+<div class="section" id="amp-manager">
+<h3>3.5.2.9. AMP Manager<a class="headerlink" href="#amp-manager" title="Permalink to this headline">¶</a></h3>
+<p>基于L2CAP channel，和对端的AMP manager交互，用于发现对方是否具备AMP功能，以及收集用于建立AMP物理链路的信息。</p>
+</div>
+<div class="section" id="gap">
+<h3>3.5.2.10. GAP<a class="headerlink" href="#gap" title="Permalink to this headline">¶</a></h3>
+<p>GAP（Generic Access Profile）是一个基础的蓝牙profile，用于提供蓝牙设备的通用访问功能，包括设备发现、连接、鉴权、服务发现等等。</p>
+<p>GAP 是所有其它应用模型的基础，它定义了在 Bluetooth 设备间建立基带链路的通用方法。还定义了一些通用的操作，这些操作可供引用 GAP 的应用模型以及实施多个应用模型的设备使用。GAP 确保了两个 蓝牙设备（不管制造商和应用程序）可以通过 Bluetooth 技术交换信息，以发现彼此支持的应用程序。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>3.5.3. 工作流程<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>蓝牙启动</p></li>
 <li><p>扫描设备</p></li>
 <li><p>设备配对</p></li>
 <li><p>数据传输</p></li>
 </ul>
-<div class="section" id="id2">
-<h3>3.2.1.1. 设备配对<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>3.5.3.1. 设备配对<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>生成初始密钥</dt><dd><ul>
@@ -260,14 +330,14 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>3.2.2. 协议栈<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>3.5.4. 协议栈<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="physical-layer">
-<h3>3.2.2.1. Physical Layer<a class="headerlink" href="#physical-layer" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.4.1. Physical Layer<a class="headerlink" href="#physical-layer" title="Permalink to this headline">¶</a></h3>
 <p>蓝牙使用2.4GHz频道，自适应跳频</p>
 </div>
 <div class="section" id="link-layer">
-<h3>3.2.2.2. Link Layer<a class="headerlink" href="#link-layer" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.4.2. Link Layer<a class="headerlink" href="#link-layer" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>控制设备的射频状态</p></li>
 <li><p>Standby</p></li>
@@ -277,8 +347,8 @@
 <li><p>Connection</p></li>
 </ul>
 </div>
-<div class="section" id="hci">
-<h3>3.2.2.3. HCI<a class="headerlink" href="#hci" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>3.5.4.3. HCI<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>主机控制接口层</p></li>
 <li><p>Host和Controller的通信协议</p></li>
@@ -286,7 +356,7 @@
 </ul>
 </div>
 <div class="section" id="generic-access-profile-gap">
-<h3>3.2.2.4. Generic Access Profile (GAP)<a class="headerlink" href="#generic-access-profile-gap" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.4.4. Generic Access Profile (GAP)<a class="headerlink" href="#generic-access-profile-gap" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>控制设备连接和广播</p></li>
 <li><dl class="simple">
@@ -345,30 +415,30 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>3.2.3. 攻击<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>3.5.5. 攻击<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="mitm">
-<h3>3.2.3.1. MITM<a class="headerlink" href="#mitm" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.5.1. MITM<a class="headerlink" href="#mitm" title="Permalink to this headline">¶</a></h3>
 <p>B修改自身为A的地址，以A的身份和C通信
 B修改自身为C的地址，以C的身份和A通信</p>
 </div>
 <div class="section" id="pin">
-<h3>3.2.3.2. 离线PIN码<a class="headerlink" href="#pin" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.5.2. 离线PIN码<a class="headerlink" href="#pin" title="Permalink to this headline">¶</a></h3>
 <p>暴力攻击PIN码</p>
 </div>
-<div class="section" id="id5">
-<h3>3.2.3.3. 中继攻击<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>3.5.5.3. 中继攻击<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>以中继的方式放大蓝牙信号</p>
 </div>
 <div class="section" id="dos">
-<h3>3.2.3.4. DoS<a class="headerlink" href="#dos" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.5.4. DoS<a class="headerlink" href="#dos" title="Permalink to this headline">¶</a></h3>
 <p>发起大量的鉴权/文件传送等请求，使设备不能正常工作</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>3.2.4. 分析工具<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id7">
-<h3>3.2.4.1. 嗅探工具<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h2>3.5.6. 分析工具<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>3.5.6.1. 嗅探工具<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>cc2540 / cc2541</dt><dd><ul>
@@ -403,8 +473,8 @@ B修改自身为C的地址，以C的身份和A通信</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>3.2.4.2. 扫描器<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>3.5.6.2. 扫描器<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>bleah</p></li>
 <li><p>bluelog</p></li>
@@ -414,8 +484,8 @@ B修改自身为C的地址，以C的身份和A通信</p>
 <li><p>Blue Scanner</p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>3.2.4.3. 攻击<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>3.5.6.3. 攻击<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>BtleJuice</p></li>
 <li><p>Blueranger</p></li>
@@ -423,14 +493,14 @@ B修改自身为C的地址，以C的身份和A通信</p>
 <li><p>Peripheral hijacking</p></li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h3>3.2.4.4. 模拟器<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>3.5.6.4. 模拟器<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>hackmelock</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h3>3.2.4.5. 手机端<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>3.5.6.5. 手机端<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Bluez</p></li>
 <li><p>LightBlue</p></li>
@@ -440,10 +510,10 @@ B修改自身为C的地址，以C的身份和A通信</p>
 </ul>
 </div>
 </div>
-<div class="section" id="id12">
-<h2>3.2.5. 安全问题<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id13">
-<h3>3.2.5.1. 基础<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h2>3.5.7. 安全问题<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h3>3.5.7.1. 基础<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>配置管理</p></li>
 <li><p>身份鉴别</p></li>
@@ -453,8 +523,8 @@ B修改自身为C的地址，以C的身份和A通信</p>
 <li><p>错误处理</p></li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>3.2.5.2. 业务安全<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>3.5.7.2. 业务安全<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>账户管理</p></li>
 <li><p>云端密码下发</p></li>
@@ -462,8 +532,8 @@ B修改自身为C的地址，以C的身份和A通信</p>
 <li><p>开锁记录</p></li>
 </ul>
 </div>
-<div class="section" id="id15">
-<h3>3.2.5.3. 网络传输<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>3.5.7.3. 网络传输<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>明文传输</p></li>
 <li><p>加密漏洞</p></li>
@@ -471,8 +541,8 @@ B修改自身为C的地址，以C的身份和A通信</p>
 <li><p>OTA固件拦截</p></li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h3>3.2.5.4. 蓝牙通信<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>3.5.7.4. 蓝牙通信<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>协议分析</p></li>
 <li><p>明文传输</p></li>
@@ -481,6 +551,12 @@ B修改自身为C的地址，以C的身份和A通信</p>
 <li><p>操作指令</p></li>
 </ul>
 </div>
+</div>
+<div class="section" id="id22">
+<h2>3.5.8. 参考链接<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mp.weixin.qq.com/s/wrOZ13q0dmg11X5U1VISTQ">BLE安全现状与挑战</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -492,10 +568,10 @@ B修改自身为C的地址，以C的身份和A通信</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../assembly/index.html" class="btn btn-neutral float-right" title="4. 汇编基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="secureboot.html" class="btn btn-neutral float-right" title="3.6. 可信启动" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nvram.html" class="btn btn-neutral float-left" title="3.1. NVRAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="4g.html" class="btn btn-neutral float-left" title="3.4. 4G" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

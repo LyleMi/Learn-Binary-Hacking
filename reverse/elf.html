@@ -88,7 +88,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
@@ -121,6 +121,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">7.1.5. 内存布局</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pltgot">7.1.6. PLT与GOT</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pe.html">7.2. PE</a></li>
@@ -362,6 +363,10 @@
 <span class="o">----------------------------------</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="pltgot">
+<h2>7.1.6. PLT与GOT<a class="headerlink" href="#pltgot" title="Permalink to this headline">¶</a></h2>
+<p>在编译和链接阶段，链接器无法知知道进程运行起来之后外部函数的加载地址。因此程序编译时会采用两种表进行辅助，一个为程序链接表（PLT，Procedure Link Table），一个为全局偏移表（GOT, Global Offset Table）。</p>
 </div>
 </div>
 

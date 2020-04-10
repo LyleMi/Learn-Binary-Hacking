@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.3. 内核" href="kernel.html" />
+    <link rel="next" title="2.3. 内存" href="memory.html" />
     <link rel="prev" title="2.1. 计算机系统构成" href="organization.html" /> 
 </head>
 
@@ -90,23 +90,31 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. CPU</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">2.2.1. 指令集架构</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">2.2.1.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">2.2.1.2. 分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.2.1. 简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.2.1.1. 特殊寄存器</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">2.2.2. 流水线</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.2.2.1. 流水线优化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">2.2.2.2. 权限</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.2.2. 指令集架构</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.2.2.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.2.2.2. 分类</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">2.2.3. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.2.3. 流水线</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.2.3.1. 流水线优化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.2.3.2. 权限</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.3. 内核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.2.4. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">2.6. 设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.7. 内核</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
@@ -187,25 +195,38 @@
   <div class="section" id="cpu">
 <h1>2.2. CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>2.2.1. 指令集架构<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>CPU 是执行指令的核心。一个 CPU 的执行周期是从内存中提取一条指令、解码并决定它的类型和操作数，执行，然后再提取、解码执行后续的指令，一直重复这个循环。</p>
+<p>每个 CPU 都有一组可以执行的特定指令集，一般情况下不能执行其他指令集的指令。由于访问内存获取执行或数据要比执行指令花费的时间长，因此所有的 CPU 内部都会包含一些寄存器来保存关键变量和临时结果。</p>
+<p>大多数CPU都具有几个特殊的寄存器。其中之一是程序计数器(program counter)，程序计数器会指示下一条需要从内存提取指令的地址。提取指令后，程序计数器将更新为下一条需要提取的地址。</p>
+<p>另一个寄存器是 堆栈指针(stack pointer)，它指向内存中当前栈的顶端。堆栈指针会包含输入过程中的有关参数、局部变量以及没有保存在寄存器中的临时变量。</p>
 <div class="section" id="id2">
-<h3>2.2.1.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.1.1. 特殊寄存器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>特殊用途寄存器，顾名思义是仅为一项任务而设计的寄存器。例如，cs/ds/gs 和其他段寄存器属于特殊目的寄存器，因为它们的存在是为了保存段号。eax，ecx等是一般用途的寄存器，可以无限制地使用。</p>
+<p>通用目的寄存器比如有：eax、ecx、edx、ebx、esi、edi、ebp、esp</p>
+<p>特殊目的寄存器比如有：cs、ds、ss、es、fs、gs、eip、flag</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2.2.2. 指令集架构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>2.2.2.1. 简介<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>指令集架构（英语：Instruction Set Architecture，缩写为ISA），又称指令集或指令集体系，是计算机体系结构中与程序设计有关的部分，包含了基本数据类型、指令集、寄存器、寻址模式、存储体系、中断、异常处理以及外部I/O。指令集架构包含一系列的opcode即操作码（机器语言），以及由特定处理器执行的基本命令。</p>
 <p>指令集体系与微架构（一套用于执行指令集的微处理器设计方法）不同。使用不同微架构的计算机可以共享一种指令集。例如，Intel的Pentium和AMD的AMD Athlon，两者几乎采用相同版本的x86指令集体系，但是两者在内部设计上有本质的区别。</p>
 </div>
-<div class="section" id="id3">
-<h3>2.2.1.2. 分类<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>2.2.2.2. 分类<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>指令集分为复杂指令集（Complex Instruction Set Computing，CISC）和精简指令集（Reduced Instruction Set Computing，RISC）。</p>
 <p>复杂指令集计算机包含许多应用程序中很少使用的特定指令，由此产生的缺陷是指令长度不固定。精简指令集计算机通过只执行在程序中经常使用的指令来简化处理器的结构，而特殊操作则以子程序的方式实现，它们的特殊使用通过处理器额外的执行时间来弥补。</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>2.2.2. 流水线<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>2.2.3. 流水线<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>流水线（pipeline）技术是指在CPU执行时多条指令同时进行操作的一种准并行处理实现技术。</p>
 <p>主要是使用不同的电路功能单元组成一条指令处理流水线，然后将一条指令分为多步来执行，这样可以在一个时钟周期内完成一条指令。</p>
 <p>一般一条指令可以分为取指、译指、执行、写回等步骤。</p>
-<div class="section" id="id5">
-<h3>2.2.2.1. 流水线优化<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>2.2.3.1. 流水线优化<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>分支预测</p></li>
 <li><p>指令冒险</p></li>
@@ -213,13 +234,13 @@
 <li><p>乱序执行</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>2.2.2.2. 权限<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>2.2.3.2. 权限<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>ring0到ring3，ring0为最高权限，ring3最低，一般ring0为内核权限，ring3为用户权限，很少用ring1和ring2。</p>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>2.2.3. 参考链接<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>2.2.4. 参考链接<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Intel_microprocessors">List of Intel microprocessors</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures">List of ARM microarchitectures</a></p></li>
@@ -236,7 +257,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kernel.html" class="btn btn-neutral float-right" title="2.3. 内核" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="memory.html" class="btn btn-neutral float-right" title="2.3. 内存" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="organization.html" class="btn btn-neutral float-left" title="2.1. 计算机系统构成" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3. Linux &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.3.1. 源代码" href="source.html" />
+    <link rel="prev" title="6.2. Boot" href="../boot.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source.html">6.3.1. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.2. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.3. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addr.html">6.3.4. 虚拟地址转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.5. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.6. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.7. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.3.8. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.3.9. 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.3.10. 内存管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6.3.10.1. 内存回收</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">6.3.11. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+      <li>6.3. Linux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/linux/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linux">
+<h1>6.3. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="source.html">6.3.1. 源代码</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source.html#id2">6.3.1.1. 目录结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fs.html">6.3.2. 文件系统</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fs.html#id2">6.3.2.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs.html#id3">6.3.2.2. 超级块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs.html#inode">6.3.2.3. inode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">6.3.3. 设备</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="device.html#id2">6.3.3.1. 设备分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#id6">6.3.3.2. 设备号</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="addr.html">6.3.4. 虚拟地址转换</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="addr.html#id2">6.3.4.1. 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mitigation.html">6.3.5. 防御措施</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mitigation.html#kptr-restrict">6.3.5.1. kptr_restrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigation.html#smep">6.3.5.2. SMEP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="syscall.html">6.3.6. syscall</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syscall.html#id1">6.3.6.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall.html#ioctl">6.3.6.2. ioctl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall.html#fcntl">6.3.6.3. fcntl</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cgroups.html">6.3.7. Cgroups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cgroups.html#id1">6.3.7.1. 四个组件</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>6.3.8. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Linux内核在1991年首次被Linus发布，采用GPL(GNU General Public License)许可证开源。</p>
+<p>Linux内核采用单内核结构，也借鉴类微内核的优点：模块、抢占式内核、支持内核线程以及动态装载内核模块。</p>
+<p>Linux的版本以 <code class="docutils literal notranslate"><span class="pre">kernel_version.major_revision.minor_revision</span></code> 的格式表示，其中偶数 <code class="docutils literal notranslate"><span class="pre">major_revision</span></code> 代表稳定版，奇数代表开发版。</p>
+<p>Linux的所有历史版本都可以在 <a class="reference external" href="https://mirrors.edge.kernel.org/pub/linux/kernel/">这里</a> 找到。</p>
+</div>
+<div class="section" id="id3">
+<h2>6.3.9. 启动<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>接通电源后，计算机加载BIOS或UEFI，进行相应的启动程序。</p>
+<p>而后BIOS/UEFI加载MBR，MBR调用GRUB，而后调用Linux内核，调用内核文件，之后执行 <code class="docutils literal notranslate"><span class="pre">init</span></code> 作为所有系统进程的起点。 <code class="docutils literal notranslate"><span class="pre">init</span></code> 读取配置文件 <code class="docutils literal notranslate"><span class="pre">/etc/inittab</span></code> ，并根据 <code class="docutils literal notranslate"><span class="pre">inittab</span></code> 执行相应程序。</p>
+<p>其中常见的内核文件有：</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>vmlinux</dt><dd><ul>
+<li><p>编译出来的最原始的内核文件，未压缩。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>zImage</dt><dd><ul>
+<li><p>vmlinux经过gzip压缩后的文件。</p></li>
+<li><p>zImage解压缩内核到低端内存(第一个640K)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bzImage</dt><dd><ul>
+<li><p>bz表示 <code class="docutils literal notranslate"><span class="pre">big</span> <span class="pre">zImage</span></code></p></li>
+<li><p>bzImage解压缩内核到高端内存(1M以上)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>uImage</dt><dd><ul>
+<li><p>U-boot专用的映像文件，在zImage之前加上一个长度为0x40的tag</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>vmlinuz</dt><dd><ul>
+<li><p>bzImage/zImage文件的拷贝或指向bzImage/zImage的链接。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>initrd</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">initial</span> <span class="pre">ramdisk</span></code> 的简写</p></li>
+<li><p>一般被用来临时的引导硬件到实际内核vmlinuz能够接管并继续引导的状态</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>然后根据不同的运行级别执行 <code class="docutils literal notranslate"><span class="pre">/etc/rcX.d/</span></code> 目录下的文件， 例如运行级别为5时，执行 <code class="docutils literal notranslate"><span class="pre">/etc/rc5.d/</span></code> 下的文件，接着执行 <code class="docutils literal notranslate"><span class="pre">/etc/rc.d/rc.local</span></code> ，最后设置好tty，为用户登录做准备。</p>
+</div>
+<div class="section" id="id4">
+<h2>6.3.10. 内存管理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>6.3.10.1. 内存回收<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>在运行时需要回收一些很少使用的内存页面来保证系统持续有内存使用。页面回收的方式有页回写、页交换和页丢弃三种方式。</p>
+<p>页回写指一个很少使用的页的后备存储器是一个块设备（例如文件映射），则可以将内存直接同步到块设备，腾出的页面可以被重用。</p>
+<p>页交换指页面没有后备存储器，则可以交换到特定swap分区，再次被访问时再交换回内存。</p>
+<p>页丢弃指页面的后备存储器是一个文件，但文件内容在内存不能被修改（例如可执行文件），那么在当前不需要的情况下可直接丢弃。</p>
+<p>回收时间一般在内存紧缺时回收，或者周期性回收，或者由用户触发回收。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>6.3.11. 参考链接<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.kernel.org">The Linux Kernel Archives</a></p></li>
+<li><p><a class="reference external" href="https://www.kernel.org/doc/html/latest/">The Linux Kernel documentation</a></p></li>
+<li><p><a class="reference external" href="https://xz.aliyun.com/t/2024">Linux内核调试</a></p></li>
+<li><p><a class="reference external" href="http://blog.nsfocus.net/gdb-kgdb-debug-application/">利用KGDB调试内核驱动模块</a></p></li>
+<li><p><a class="reference external" href="http://www.mamicode.com/info-detail-2399209.html">Linux kernel pwn notes</a></p></li>
+<li><p><a class="reference external" href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/">Linux kernel ROP</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/lukuen/article/details/6935068">slub算法</a></p></li>
+<li><p><a class="reference external" href="https://github.com/black-bunny/LinKern-x86_64-bypass-SMEP-KASLR-kptr_restric">SMEP bypass</a></p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/">Linux 文件系统剖析</a></p></li>
+<li><p><a class="reference external" href="https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md">Linux Crgoups 资源限制</a></p></li>
+<li><p><a class="reference external" href="https://www.freebuf.com/articles/network/229004.html">容器简史：从1979至今的日子</a></p></li>
+<li><p><a class="reference external" href="https://linux-kernel-labs.github.io/refs/heads/master/index.html">Linux Kernel Teaching</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="source.html" class="btn btn-neutral float-right" title="6.3.1. 源代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../boot.html" class="btn btn-neutral float-left" title="6.2. Boot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

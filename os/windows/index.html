@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.5. Windows &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.5.1. 版本历史" href="history.html" />
+    <link rel="prev" title="6.4. Mac OS" href="../macos.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/index.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.5. Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic.html">6.5.2. 基础</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.4. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.5. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html#id3">6.5.6. 内存破坏漏洞防护机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.5.7. 其他</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ssdt">6.5.7.1. SSDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#idt">6.5.7.2. IDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gdt">6.5.7.3. GDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldt">6.5.7.4. LDT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.5.8. 常见缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.5.9. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+      <li>6.5. Windows</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/windows/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="windows">
+<h1>6.5. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">6.5.1. 版本历史</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#windows-nt">6.5.1.1. Windows NT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic.html">6.5.2. 基础</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#id2">6.5.2.1. 运行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#id3">6.5.2.2. 基本模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#id4">6.5.2.3. 系统进程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#id5">6.5.2.4. 服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#wmi">6.5.2.5. WMI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#id6">6.5.2.6. 进程与线程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fs.html">6.5.3. 文件系统</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fs.html#fat">6.5.3.1. FAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs.html#ntfs">6.5.3.2. NTFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs.html#refs">6.5.3.3. ReFS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">6.5.4. 注册表</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#id2">6.5.4.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#id3">6.5.4.2. 数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#root-key">6.5.4.3. root key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">6.5.5. 安全机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#id2">6.5.5.1. 核心模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#applocker">6.5.5.2. AppLocker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html#id3">6.5.6. 内存破坏漏洞防护机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#dep">6.5.6.1. DEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#aslr">6.5.6.2. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#epm">6.5.6.3. EPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#patchguard">6.5.6.4. PatchGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#code-signing">6.5.6.5. Code Signing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>6.5.7. 其他<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ssdt">
+<h3>6.5.7.1. SSDT<a class="headerlink" href="#ssdt" title="Permalink to this headline">¶</a></h3>
+<p>SSDT（System Services Descriptor Table）是系统服务描述符表，这个表把 Ring3 的 Win32 API 和 Ring0 的内核 API 联系起来。</p>
+<p>SSDT 并不仅仅只包含一个庞大的地址索引表，它还包含着一些其它有用的信息，诸如地址索引的基地址、服务函数个数等。</p>
+<p>通过修改此表的函数地址可以对常用Windows函数及API进行Hook，从而实现对一些关心的系统动作进行过滤、监控的目的。</p>
+<p>一些HIPS、防毒软件、系统监控、注册表监控软件往往会采用此接口来实现自己的监控模块。</p>
+</div>
+<div class="section" id="idt">
+<h3>6.5.7.2. IDT<a class="headerlink" href="#idt" title="Permalink to this headline">¶</a></h3>
+<p>IDT（Interrupt Descriptor Table）是中断描述符表，是操作系统用于处理中断的。</p>
+</div>
+<div class="section" id="gdt">
+<h3>6.5.7.3. GDT<a class="headerlink" href="#gdt" title="Permalink to this headline">¶</a></h3>
+<p>GDT，即全局描述表（GDT Global Descriptor Table）。</p>
+</div>
+<div class="section" id="ldt">
+<h3>6.5.7.4. LDT<a class="headerlink" href="#ldt" title="Permalink to this headline">¶</a></h3>
+<p>LDT（Local Descriptor Table），即局部描述符表。</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>6.5.8. 常见缩写<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Alpc: Advanced Local Inter-Process Communication</p></li>
+<li><p>Cc: Common Cache</p></li>
+<li><p>Cm: Configuration manager</p></li>
+<li><p>Dbgk: Debugging Framework for User-Mode</p></li>
+<li><p>Em: Errata Manager</p></li>
+<li><p>Etw: Event Tracing for Windows</p></li>
+<li><p>Ex: Executive support routines</p></li>
+<li><p>FsRtl: File system driver run-time library</p></li>
+<li><p>Hvl: Hypervisor Library Io I/O manager</p></li>
+<li><p>Kd: Kernel Debugger</p></li>
+<li><p>Ke: Kernel</p></li>
+<li><p>Lsa: Local Security Authority</p></li>
+<li><p>Mm: Memory manager</p></li>
+<li><p>Nt: NT system services (most of which are exported as Windows functions) Ob Object manager</p></li>
+<li><p>Pf: Prefetcher</p></li>
+<li><p>Po: Power manager</p></li>
+<li><p>Pp: PnP manager</p></li>
+<li><p>Ps: Process support</p></li>
+<li><p>Rtl: Run-time library</p></li>
+<li><p>Se: Security</p></li>
+<li><p>Sm: Store Manager</p></li>
+<li><p>Tm: Transaction Manager</p></li>
+<li><p>Vf: Verifier</p></li>
+<li><p>Wdi: Windows Diagnostic Infrastructure Whea Windows Hardware Error Architecture Wmi Windows Management Instrumentation</p></li>
+<li><p>Zw: Mirror entry point for system services</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>6.5.9. 参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.redog.me/tags/windows-kernel-exploit-tutorial/">windows kernel exploit tutorial</a></p></li>
+<li><p><a class="reference external" href="https://github.com/hacksysteam/HackSysExtremeVulnerableDriver">HEVD</a></p></li>
+<li><p><a class="reference external" href="https://github.com/leeqwind/HolicPOC">HolicPOC</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Windows_NT">Windows NT Wiki</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview">AppLocker</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="history.html" class="btn btn-neutral float-right" title="6.5.1. 版本历史" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../macos.html" class="btn btn-neutral float-left" title="6.4. Mac OS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

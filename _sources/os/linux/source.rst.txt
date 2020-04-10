@@ -1,0 +1,138 @@
+源代码
+========================================
+
+目录结构
+----------------------------------------
+通常来说，Linux的目录结构如下:
+
+- /bin
+    - 必要的一些二进制文件
+- /boot
+    - boot loader的静态文件
+- /etc
+    - 各种config文件
+- /usr
+    - 共享的一些只读文件
+    - /usr/local
+        - 本地文件
+    - /usr/share
+        - 所有架构的静态共享文件
+    - /usr/share/man
+        - 手册文件
+        - man1 user program
+        - man2 system calls
+        - man3 lib functions
+        - man4 special file
+        - man5 file formats 
+        - man6 games
+        - man7 misc
+        - man8 system admin
+    - /usr/bin
+        - 常用的用户命令
+    - /usr/include
+        - C程序标准库
+    - /usr/lib
+        - 程序obj / bin / lib文件
+    - /usr/sbin
+        - 非必须文件
+- /var
+    - 各种变量数据文件
+    - /var/cache
+        - 应用cache
+    - /var/lib
+    - /var/yp
+        - NIS服务
+    - /var/lock
+        - 共享文件的锁
+    - /var/opt
+        - 安装包的数据
+    - /var/run
+        - 系统启动后的数据
+    - /var/tmp
+    - /var/spool
+        - 待处理数据
+    - /var/log
+        - 日志
+- /sbin
+    - 系统程序
+- /tmp
+    - 临时文件，重启后删除
+- /dev
+    - /dev/hd[a-t]：IDE设备
+    - /dev/sd[a-z]：SCSI设备
+    - /dev/fd[0-7]：标准软驱
+    - /dev/md[0-31]：软raid设备
+    - /dev/loop[0-7]：本地回环设备
+    - /dev/ram[0-15]：内存
+    - /dev/null：无限数据接收设备,相当于黑洞
+    - /dev/zero：无限零资源
+    - /dev/tty[0-63]：虚拟终端
+    - /dev/ttyS[0-3]：串口
+    - /dev/lp[0-3]：并口
+    - /dev/console：控制台
+    - /dev/fb[0-31]：framebuffer
+    - /dev/random：随机数设备
+    - /dev/urandom：随机数设备
+    - /dev/cdrom => /dev/hdc
+    - /dev/modem => /dev/ttyS[0-9]
+    - /dev/pilot => /dev/ttyS[0-9]
+- /proc
+    - 伪文件系统，它只存在内存当中，而不占用外存空间
+    - 以文件系统的方式为访问系统内核数据的操作提供接口
+    - 可以通过 proc 得到系统的信息，并可以改变内核的某些参数
+    - /proc/cmdline
+        - 内核命令的启动行
+    - /proc/cpuinfo
+        - 系统CPU的多种信息
+    - /proc/devices
+        - 字符设备和块设备的主设备号
+    - /proc/dma
+        - DMA通道
+    - /proc/filesystems
+        - 可供使用的文件系统类型
+    - /proc/interrupts
+        - 保留的中断
+    - /proc/ioports
+        - 设备驱动程序登记的I/O端口范围
+    - /proc/kcore
+        - 以core格式保存的系统物理内存
+    - /proc/kmsg
+        - 内核消息
+    - /proc/ksyms
+        - 内核符号
+    - /proc/loadavg
+        - 负载信息
+    - /proc/locks
+        - 文件的加锁信息
+    - /proc/meminfo
+        - 内存状态信息
+    - /proc/misc
+        - 通过 ``misc_register`` 登记的设备驱动信息
+    - /proc/modules
+        - 可加载内核模块的信息
+    - /proc/mounts
+        - 以 ``/etc/mtab`` 文件的格式给出当前系统所安装的文件系统信息
+    - /proc/pci
+        - PCI设备的信息
+    - /proc/stat
+        - CPU利用率，磁盘，内存页，内存对换，全部中断，接触开关
+    - /proc/uptime
+        - 从上次系统自举以来的秒数
+    - /proc/version
+        - 正在运行的内核版本
+    - /proc/net
+        - 联网代码的行为
+    - /proc/scsi
+        - SCSI设备的文件
+    - /proc/sys
+        - 系统信息
+- /home
+    - 用户文件
+- /lib
+    - 库和内核模块
+- /mnt
+    - 挂载目录
+- /opt
+    - 应用程序
+- /root
+    - root用户

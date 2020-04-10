@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.6. 设备 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7. 内核" href="kernel.html" />
+    <link rel="prev" title="2.5. 总线" href="bus.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. 设备</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-o">2.6.1. I/O 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.6.2. 设备控制器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.6.3. 内存映射 I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.6.4. 直接内存访问</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.6.5. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.7. 内核</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
+        
+      <li>2.6. 设备</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/architecture/device.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>2.6. 设备<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="i-o">
+<h2>2.6.1. I/O 设备<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+<p>I/O 设备是用于和计算机进行通信的外部硬件。输入/输出设备能够向计算机发送数据并从计算机接收数据。</p>
+<p>I/O 设备通常由机械组件(mechanical component)和电子组件(electronic component)构成，其中电子组件被称为设备控制器(device controller)或者适配器(adapter)。I/O 设备通常采用可插入（PCIe）扩展插槽的主板上的芯片或印刷电路卡的形式。</p>
+</div>
+<div class="section" id="id2">
+<h2>2.6.2. 设备控制器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>设备控制器是处理 CPU 传入和传出信号的系统。设备通过插头和插座连接到计算机，并且插座连接到设备控制器。设备控制器从连接的设备处接收数据，并将其存储在控制器内部的一些特殊目的寄存器(special purpose registers) 也就是本地缓冲区中。</p>
+</div>
+<div class="section" id="id3">
+<h2>2.6.3. 内存映射 I/O<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>每个设备控制器都会有几个寄存器用来和 CPU 进行通信。通过写入这些寄存器，操作系统可以命令设备发送数据，接收数据、开启或者关闭设备等。通过从这些寄存器中读取信息，操作系统能够知道设备的状态，是否准备接受一个新命令等。</p>
+<p>为了控制寄存器，许多设备都会有数据缓冲区(data buffer)，来供系统进行读写。例如，在屏幕上显示一个像素的常规方法是使用一个视频 RAM，这一 RAM 基本上只是一个数据缓冲区，用来供程序和操作系统写入数据。</p>
+<p>CPU 与设备寄存器和设备数据缓冲区进行通信有三种方式。第一种方法是，每个控制寄存器都被分配一个 I/O 端口号，端口号是一个 8 位或 16 位的整数。操作系统可以使用类似 <code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">REG,PORT</span></code> / <code class="docutils literal notranslate"><span class="pre">OUT</span> <span class="pre">PORT,REG</span></code> 的指令访问。</p>
+<p>第二种方式是将所有控制寄存器映射到内存空间中。</p>
+<p>第三种方式是一种混合方式，这种方式具有与内存映射 I/O 的数据缓冲区，而控制寄存器则具有单独的 I/O 端口。</p>
+<p>在这种方式下，当 CPU 想要读入一个字的时候，将需要的地址放到总线地址线上，然后在总线的一条控制线上调用一个 READ 信号。还有第二条信号线来表明需要的是 I/O 空间还是内存空间。如果是内存空间，内存将响应请求。如果是 I/O 空间，那么 I/O 设备将响应请求。如果只有内存空间，那么每个内存模块和每个 I/O 设备都会将地址线和它所服务的地址范围进行比较。如果地址落在这一范围之内，它就会响应请求。</p>
+</div>
+<div class="section" id="id4">
+<h2>2.6.4. 直接内存访问<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>无论一个 CPU 是否具有内存映射 I/O，都需要寻址设备控制器以便与交换数据。CPU 可以从 I/O 控制器每次请求一个字节的数据，但是这么做会浪费 CPU 时间，所以经常会用到一种称为直接内存访问(Direct Memory Access) 的方案。</p>
+</div>
+<div class="section" id="id5">
+<h2>2.6.5. 参考链接<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mp.weixin.qq.com/s/lkQlXs10U1VVnWn5QbZ7Gg">I/O 设备</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kernel.html" class="btn btn-neutral float-right" title="2.7. 内核" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bus.html" class="btn btn-neutral float-left" title="2.5. 总线" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

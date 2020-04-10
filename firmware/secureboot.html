@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.6. 可信启动 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.7. 路由设备" href="router.html" />
+    <link rel="prev" title="3.5. BLE" href="ble.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 嵌入式设备</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unpack.html">3.1. 固件解包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal.html">3.2. HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">3.3. 硬件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4g.html">3.4. 4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ble.html">3.5. BLE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.6. 可信启动</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.6.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.6.2. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="router.html">3.7. 路由设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android.html">3.8. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios.html">3.9. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. 嵌入式设备</a> &raquo;</li>
+        
+      <li>3.6. 可信启动</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/firmware/secureboot.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>3.6. 可信启动<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>3.6.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>安全启动机制一般包括多种机制，主要是：</p>
+<ul class="simple">
+<li><p>用于在启动目标镜像之前对其进行验证。</p></li>
+<li><p>在更新前验证更新固件的完整性，完全擦除旧固件以及防止攻击者恢复为已知状态的回滚防止机制。</p></li>
+<li><p>用于安全维护和证明设备内部信任链的机制，</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>3.6.2. 参考链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/opencomputeproject/Security/blob/master/SecureFirmwareDevelopmentBestPractices.md">Secure Firmware Development Best Practices</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="router.html" class="btn btn-neutral float-right" title="3.7. 路由设备" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ble.html" class="btn btn-neutral float-left" title="3.5. BLE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

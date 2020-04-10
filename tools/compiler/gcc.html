@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13.7.1. gcc &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.7.2. clang" href="clang.html" />
+    <link rel="prev" title="13.7. 编译工具" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">13. 工具与资源</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../list.html">13.1. 工具列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../booklist.html">13.2. 书单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document.html">13.3. 文档资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse/index.html">13.4. 逆向工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debuger/index.html">13.5. 调试器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emulator/index.html">13.6. 模拟器</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13.7. 编译工具</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.7.1. gcc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">13.7.1.1. 常规选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">13.7.1.2. 安全相关选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">13.7.1.3. 体系结构相关选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">13.7.1.4. 报警相关选项</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="clang.html">13.7.2. clang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmake.html">13.7.3. CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ulimit.html">13.8. ulimit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">13. 工具与资源</a> &raquo;</li>
+        
+          <li><a href="index.html">13.7. 编译工具</a> &raquo;</li>
+        
+      <li>13.7.1. gcc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tools/compiler/gcc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gcc">
+<h1>13.7.1. gcc<a class="headerlink" href="#gcc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>13.7.1.1. 常规选项<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code> 只执行预处理、编译、汇编，不执行链接过程</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-E</span></code> 输出预处理文件</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-g</span></code> 在可执行程序中包含标准调试信息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-I</span> <span class="pre">&lt;dir&gt;</span></code> 在头文件的搜索路径列表中添加dir目录</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-L</span> <span class="pre">&lt;dir&gt;</span></code> 在库文件的搜索路径列表中添加dir目录</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;filename&gt;</span></code> 设置生成的文件名</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Ox</span></code> 设置优化的等级</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code> 去掉符号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-S</span></code> 输出汇编文件</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> 打印出编译器内部编译各过程的命令行信息和编译器的版本</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>13.7.1.2. 安全相关选项<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-fno-exceptions</span></code> 不使用异常</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-fno-stack-protector</span></code> 不开启canary栈溢出检测</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-z</span> <span class="pre">execstack</span></code> 开启栈可执行关闭NX</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>13.7.1.3. 体系结构相关选项<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-m32</span></code> 生成32bit程序需要gcc-multilib (x86机器上编译不用加)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-mcpu=type</span></code> 针对不同的CPU使用相应的CPU指令，type可为i386/i486/pentium/i686等</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-mieee-fp</span></code> 使用IEEE标准进行浮点数的比较</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-mno-ieee-fp</span></code> 不使用IEEE标准进行浮点数的比较</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-mrtd</span></code> 强行将函数参数个数固定的函数用 <code class="docutils literal notranslate"><span class="pre">ret</span> <span class="pre">NUM</span></code> 返回，节省调用函数的一条指令</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-mshort</span></code> 把int类型作为16位处理，相当于short int</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-msoft-float</span></code> 输出包含浮点库调用的目标代码</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>13.7.1.4. 报警相关选项<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-ansi</span></code> 支持符合ANSI标准的C程序</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-pedantic</span></code> 允许发出ANSI C标准所列的全部警告信息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-pedantic-error</span></code> 允许发出ANSI C标准所列的全部错误信息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-w</span></code> 关闭所有告警</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Wall</span></code> 允许发出Gcc提供的所有有用的报警信息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-werror</span></code> 把所有的告警信息转化为错误信息，并在告警发生时终止编译过程</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="clang.html" class="btn btn-neutral float-right" title="13.7.2. clang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="13.7. 编译工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

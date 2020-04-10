@@ -8,8 +8,8 @@
 
    overview
    boot
-   linux
+   linux/index
    macos
-   windows
+   windows/index
    android
    ios

@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.5.2. 基础 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.5.3. 注册表" href="registry.html" />
+    <link rel="prev" title="6.5.1. 版本历史" href="history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/index.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.5. Windows</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.2. 基础</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.2.1. 运行模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.2.2. 基本模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.5.2.3. 系统进程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6.5.2.4. 服务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wmi">6.5.2.5. WMI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.5.2.6. 进程与线程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.3. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.4. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html#id3">6.5.5. 内存破坏漏洞防护机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.5.6. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id2">6.5.7. 常见缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.5.8. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="index.html">6.5. Windows</a> &raquo;</li>
+        
+      <li>6.5.2. 基础</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/windows/basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>6.5.2. 基础<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>6.5.2.1. 运行模式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Windows支持Intel x86/x64 的两种处理器模式内核模式（Ring 0）和用户模式（Ring 3）。</p>
+<p>内核模式下的代码可以访问所有的内存空间；可以直接操纵硬件。用户模式下的代码无权访问系统空间的内存页面；无法直接操纵硬件。用户模式向内核模式的切换是受控制的。</p>
+</div>
+<div class="section" id="id3">
+<h2>6.5.2.2. 基本模块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Windows操作系统内核模式下的基本模块包含Windows执行体、Windows内核体、设备驱动程序、窗口和图形系统、硬件抽象层。</p>
+<p>其中Windows执行体是Windows内核体的上层接口，包含了基本的操作系统服务，如进程与线程管理、内存管理、I/O管理、网络连接、进程间通信以及安全服务。</p>
+<p>Windows内核体实现与硬件体系结构支持的代码，实现底层的操作系统功能，如线程调度 、中断和异常分发处理、多处理器同步等。</p>
+<p>设备驱动程序包括硬件设备驱动程序、文件系统与网络设备驱动程序。</p>
+<p>窗口和图形系统即Win32k.sys（Windows子系统的内核模式部分），实现了图形用户界 面（GUI）函数，包括窗口的处理、绘制等。</p>
+<p>硬件抽象层即Hal.dll文件，用于屏蔽Windows内核、驱动程序与平台硬件差异性的底 层代码。</p>
+</div>
+<div class="section" id="id4">
+<h2>6.5.2.3. 系统进程<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Idle</dt><dd><ul>
+<li><p>每个CPU一个idle线程做空闲CPU时间统计</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>System</dt><dd><ul>
+<li><p>内核模式的系统进程</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wininit.ext</dt><dd><ul>
+<li><p>Session 0 初始化</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Csrss.exe</dt><dd><ul>
+<li><p>Windows子系统进程，即客户端/服务器运行进程</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Smss.exe</dt><dd><ul>
+<li><p>会话（Session）管理器，系统启动时第一个运行的进程</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Winlogon.exe</dt><dd><ul>
+<li><p>处理交互式登录</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Services.exe</dt><dd><ul>
+<li><p>服务控制管理器，负责启动和、停止、暂停、恢复服务</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Svchost.exe</dt><dd><ul>
+<li><p>共享进程服务的宿主进程</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Lsass.exe</dt><dd><ul>
+<li><p>本地安全授权子系统，验证用户登录、授权和审计</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>6.5.2.4. 服务<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>服务（Services）程序是后台运行的进程，常用来执行特定的任务，不需要和用户进行交互。比如自动更新服务、后台智能传输服务、事件日志服务等。</p>
+<p>服务程序受Service Control Manager（SCM，即services.exe进程）所控制，其服务程序的配置数据位于 <code class="docutils literal notranslate"><span class="pre">HKLM\System\CurrentControlSet\Services</span></code> 。</p>
+<p>服务通常由三个部分组成：服务应用、服务控制程序 (service control program, SCP)、服务控制管理器 (service control manager, SCM)。</p>
+<p>Windows提供了内置的SCP，可以启动、停止、继续运行程序。用户也可以自定义SCP程序来玩橙更细粒度的控制。服务程序是普通的Windows可执行程序，只是会有一些附加模块和SCM通信。</p>
+</div>
+<div class="section" id="wmi">
+<h2>6.5.2.5. WMI<a class="headerlink" href="#wmi" title="Permalink to this headline">¶</a></h2>
+<p>Windows Management Instrumentation (WMI) 是 Web-Based Enterprise Management (WBEM)的一个实现，用于提供操作界面和对象模式以便访问有关操作系统、设备、应用程序和服务的管理信息。</p>
+<p>WMI由4个部分组成，分别为：management applications, WMI infrastructure, providers, and managed objects。</p>
+</div>
+<div class="section" id="id6">
+<h2>6.5.2.6. 进程与线程<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>6.5.2.6.1. 进程<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>进程（Process）是一个应用程序运行的实例，包含以下一些基本组件：私有虚拟地址、可执行体程序、被操作系统分配的一份资源句柄（Handles）列表、访问控制令牌（Token）、进程标识号一个或多个线程。</p>
+<p>访问控制令牌是用以唯一的标识所有者及其所属组以及和该进程相关联的特权（Privilege）信息。</p>
+<p>进程创建步骤分为七步：</p>
+<ul class="simple">
+<li><p>转换并校验参数和标记</p></li>
+<li><p>打开可执行映像文件（.exe）</p></li>
+<li><p>创建Windows执行体进程对象</p></li>
+<li><p>创建初始线程（栈，上下文和 执行体线程对象等）</p></li>
+<li><p>通知Windows子系统初始化了一个进程</p></li>
+<li><p>开始运行初始线程。（除非进程创建的时候被挂起）</p></li>
+<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>6.5.2.6.2. 线程<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>线程（Thread）是CPU调度执行的基本单元，其包含CPU状态、两个栈、线程本地存储（TLS）、线程标识号和访问控制令牌。</p>
+<p>线程的两个栈分别用于内核模式和用户模式。线程本地存储（TLS）包含一个私有存储空间，用来保存子系统、运行时库以及DLL文件等。</p>
+<p>访问控制令牌（Access Token），用以唯一的标识所有者及其所属组以及和该线程相关联的特权（Privilege）信息</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="registry.html" class="btn btn-neutral float-right" title="6.5.3. 注册表" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="history.html" class="btn btn-neutral float-left" title="6.5.1. 版本历史" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

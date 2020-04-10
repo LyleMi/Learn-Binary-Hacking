@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.3. 内核 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>2.7. 内核 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. 固件" href="../firmware/index.html" />
-    <link rel="prev" title="2.2. CPU" href="cpu.html" /> 
+    <link rel="next" title="3. 嵌入式设备" href="../firmware/index.html" />
+    <link rel="prev" title="2.6. 设备" href="device.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,14 +90,18 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. 内核</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.1. 宏内核</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.3.2. 微内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">2.6. 设备</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. 内核</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.7.1. 宏内核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.7.2. 微内核</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
@@ -156,7 +160,7 @@
         
           <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
         
-      <li>2.3. 内核</li>
+      <li>2.7. 内核</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,15 +180,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>2.3. 内核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>2.7. 内核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>2.3.1. 宏内核<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>2.7.1. 宏内核<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>宏内核（Monolithic Kernel）是操作系统核心架构的一种，此架构的特性是整个核心程序都是以核心空间（Kernel Space）的身份及监管者模式（Supervisor Mode）来运行。</p>
 <p>宏内核通常是以单一静态二进制文件的方式被存储在磁盘，或是高速缓存上，在开机之后被加载存储器中的核心空间，并开始运作。</p>
 <p>宏内核的优点是效率高、反应快，但是耦合度高、灵活性差。</p>
 </div>
 <div class="section" id="id3">
-<h2>2.3.2. 微内核<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>2.7.2. 微内核<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>微内核只有最基本的操作系统功能。非基本的服务和应用都在微内核之外构造。</p>
 <p>微内核有着扩展性强、灵活、可移植、支持分布式系统等优势。</p>
 </div>
@@ -198,10 +202,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../firmware/index.html" class="btn btn-neutral float-right" title="3. 固件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../firmware/index.html" class="btn btn-neutral float-right" title="3. 嵌入式设备" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cpu.html" class="btn btn-neutral float-left" title="2.2. CPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="device.html" class="btn btn-neutral float-left" title="2.6. 设备" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

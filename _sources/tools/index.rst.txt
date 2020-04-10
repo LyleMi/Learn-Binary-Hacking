@@ -1,5 +1,5 @@
 工具与资源
-================================
+========================================
 
 .. toctree::
    :maxdepth: 2
@@ -8,10 +8,8 @@
    list
    booklist
    document
-   gcc
-   gdb
+   reverse/index
+   debuger/index
+   emulator/index
+   compiler/index
    ulimit
-   windbg
-   ida
-   objdump
-   readelf

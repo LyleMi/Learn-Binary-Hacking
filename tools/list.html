@@ -88,7 +88,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
@@ -103,28 +103,38 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">13.1.1. 编译工具</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pe">13.1.2. PE工具</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">13.1.3. 逆向工具</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ida">13.1.4. IDA</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ghidra">13.1.5. Ghidra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#diff">13.1.6. Diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">13.1.7. 调试工具</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">13.1.8. 模拟执行</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">13.1.9. 动态分析</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">13.1.10. 漏洞利用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#iot">13.1.11. IoT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">13.1.12. 符号执行</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">13.1.13. 模糊测试</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">13.1.14. 静态编译工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">13.1.4. 动态插桩</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ida">13.1.5. IDA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ghidra">13.1.6. Ghidra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diff">13.1.7. Diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">13.1.8. 调试工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">13.1.9. 模拟执行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">13.1.10. 动态分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">13.1.11. 污点分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">13.1.12. 静态分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">13.1.13. 漏洞利用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iot">13.1.14. IoT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">13.1.15. 符号执行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">13.1.16. 模糊测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">13.1.17. 编译工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">13.1.18. 交叉编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sandbox">13.1.19. Sandbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#malware-sample">13.1.20. Malware Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">13.1.21. 实验环境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#android">13.1.22. Android</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">13.1.22.1. 分析工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">13.1.22.2. 漏洞</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="booklist.html">13.2. 书单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document.html">13.3. 文档资料</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">13.4. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">13.5. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.6. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html">13.7. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">13.8. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">13.9. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">13.10. readelf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/index.html">13.4. 逆向工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debuger/index.html">13.5. 调试器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emulator/index.html">13.6. 模拟器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiler/index.html">13.7. 编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.8. ulimit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
@@ -217,33 +227,45 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/radare/radare2">radare2</a></p></li>
 <li><p><a class="reference external" href="https://github.com/aquynh/capstone">capstone</a></p></li>
-<li><p><a class="reference external" href="https://github.com/iBotPeaches/Apktool">Apktool</a></p></li>
 <li><p><a class="reference external" href="https://github.com/0xd4d/dnspy">dnspy</a> .NET debugger and assembly editor</p></li>
+<li><p><a class="reference external" href="https://binary.ninja/">binary ninja</a></p></li>
+<li><p><a class="reference external" href="https://github.com/emsec/hal">HAL</a> The Hardware Analyzer</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>13.1.4. 动态插桩<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/DynamoRIO/dynamorio">DynamoRIO</a> Dynamic Instrumentation Tool Platform</p></li>
+<li><p><a class="reference external" href="https://github.com/jonathansalwan/pintools">pintools</a> Pintool example and PoC for dynamic binary analysis</p></li>
+<li><p><a class="reference external" href="https://github.com/frida/frida">frida</a></p></li>
+<li><p><a class="reference external" href="https://github.com/QBDI/QBDI">QBDI</a> A Dynamic Binary Instrumentation framework based on LLVM</p></li>
 </ul>
 </div>
 <div class="section" id="ida">
-<h2>13.1.4. IDA<a class="headerlink" href="#ida" title="Permalink to this headline">¶</a></h2>
+<h2>13.1.5. IDA<a class="headerlink" href="#ida" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/igogo-x86/HexRaysPyTools">HexRaysPyTools</a></p></li>
 <li><p><a class="reference external" href="https://github.com/IDArlingTeam/IDArling">IDArling</a></p></li>
 <li><p><a class="reference external" href="https://github.com/inforion/idapython-cheatsheet">idapython cheatsheet</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xrkk/awesome-ida">awesome ida</a></p></li>
+<li><p><a class="reference external" href="https://github.com/strazzere/golang_loader_assist">golang loader assist</a></p></li>
 </ul>
 </div>
 <div class="section" id="ghidra">
-<h2>13.1.5. Ghidra<a class="headerlink" href="#ghidra" title="Permalink to this headline">¶</a></h2>
+<h2>13.1.6. Ghidra<a class="headerlink" href="#ghidra" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/NationalSecurityAgency/ghidra">ghidra</a></p></li>
 <li><p><a class="reference external" href="https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer">Ghidra Cpp Class Analyzer</a></p></li>
 </ul>
 </div>
 <div class="section" id="diff">
-<h2>13.1.6. Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
+<h2>13.1.7. Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/joxeankoret/diaphora">diaphora</a></p></li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2>13.1.7. 调试工具<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>13.1.8. 调试工具<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/iovisor/bcc">bcc</a></p></li>
 <li><p><a class="reference external" href="https://github.com/openresty/openresty-systemtap-toolkit">openresty systemtap toolkit</a></p></li>
@@ -251,30 +273,44 @@
 <li><p><a class="reference external" href="https://github.com/namhyung/uftrace">uftrace</a></p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2>13.1.8. 模拟执行<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>13.1.9. 模拟执行<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/qemu/">qemu</a></p></li>
 <li><p><a class="reference external" href="https://github.com/unicorn-engine/unicorn">unicorn</a></p></li>
 <li><p><a class="reference external" href="https://github.com/OpenEmu/OpenEmu">OpenEmu</a></p></li>
+<li><p><a class="reference external" href="https://github.com/firmadyne/firmadyne">firmadyne</a> Platform for emulation and dynamic analysis of Linux-based firmware</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h2>13.1.9. 动态分析<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>13.1.10. 动态分析<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer">Process Explorer</a></p></li>
 <li><p><a class="reference external" href="https://github.com/longld/peda">peda</a></p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h2>13.1.10. 漏洞利用<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>13.1.11. 污点分析<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/JonathanSalwan/Triton">Triton</a></p></li>
+<li><p><a class="reference external" href="https://github.com/BinaryAnalysisPlatform/bap">bap</a> Binary Analysis BinaryAnalysisPlatform</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>13.1.12. 静态分析<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lief-project/LIEF">LIEF</a> Library to Instrument Executable Formats</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>13.1.13. 漏洞利用<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/Gallopsled/pwntools">pwntools</a></p></li>
 <li><p><a class="reference external" href="https://github.com/JonathanSalwan/ROPgadget">ROPgadget</a></p></li>
 </ul>
 </div>
 <div class="section" id="iot">
-<h2>13.1.11. IoT<a class="headerlink" href="#iot" title="Permalink to this headline">¶</a></h2>
+<h2>13.1.14. IoT<a class="headerlink" href="#iot" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/phodal/awesome-iot">awesome iot</a></p></li>
 <li><p><a class="reference external" href="https://github.com/V33RU/IoTSecurity101">IoTSecurity101</a></p></li>
@@ -282,24 +318,73 @@
 <li><p><a class="reference external" href="https://github.com/ElevenPaths/HomePWN">HomePWN</a></p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h2>13.1.12. 符号执行<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>13.1.15. 符号执行<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/Z3Prover/z3">Z3</a></p></li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h2>13.1.13. 模糊测试<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>13.1.16. 模糊测试<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/mirrorer/afl">afl</a></p></li>
+<li><p><a class="reference external" href="https://github.com/MozillaSecurity/fuzzdata">fuzzdata</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.com/akihe/radamsa">radamsa</a> Radamsa is a test case generator for robustness testing. It is typically used to test how well a program can withstand malformed and potentially malicious inputs. It works by reading sample files of valid data and generating interestringly different outputs from them. The main selling points of radamsa are that it has already found a slew of bugs in programs that actually matter, it is easily scriptable and, easy to get up and running.</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h2>13.1.14. 静态编译工具<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h2>13.1.17. 编译工具<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/hugsy/gdb-static">static GDB and GDBServer</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ernw/static-toolbox">statically compiled tools like Nmap and Socat</a></p></li>
+<li><p><a class="reference external" href="https://github.com/andrew-d/static-binaries">static binaries</a></p></li>
 </ul>
+</div>
+<div class="section" id="id15">
+<h2>13.1.18. 交叉编译<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/buildroot/buildroot">buildroot</a> Buildroot, making embedded Linux easy</p></li>
+<li><p><a class="reference external" href="https://github.com/GregorR/musl-cross">musl cross</a> A small suite of scripts and patches for building musl libc cross compilers</p></li>
+</ul>
+</div>
+<div class="section" id="sandbox">
+<h2>13.1.19. Sandbox<a class="headerlink" href="#sandbox" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://app.any.run/">any.run</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Rurik/Noriben">Noriben</a> Portable, Simple, Malware Analysis Sandbox</p></li>
+</ul>
+</div>
+<div class="section" id="malware-sample">
+<h2>13.1.20. Malware Sample<a class="headerlink" href="#malware-sample" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/InQuest/malware-samples">malware samples</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ytisf/theZoo">theZoo</a></p></li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h2>13.1.21. 实验环境<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/malrev/ABD">ABD</a> Course materials for Advanced Binary Deobfuscation by NTT Secure Platform Laboratories</p></li>
+</ul>
+</div>
+<div class="section" id="android">
+<h2>13.1.22. Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id17">
+<h3>13.1.22.1. 分析工具<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/google/android-classyshark">classyshark</a> Analyze any Android/Java based app or game</p></li>
+<li><p><a class="reference external" href="https://github.com/skylot/jadx">jadx</a> Dex to Java decompiler</p></li>
+<li><p><a class="reference external" href="https://github.com/java-decompiler/jd-gui">jd-gui</a> Java Decompiler GUI</p></li>
+<li><p><a class="reference external" href="https://github.com/pxb1988/dex2jar">dex2jar</a> Tools to work with android .dex and java .class files</p></li>
+<li><p><a class="reference external" href="https://github.com/iBotPeaches/Apktool">Apktool</a> tool for reverse engineering Android apk files</p></li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>13.1.22.2. 漏洞<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/linkedin/qark">qark</a> Tool to look for several security related Android application vulnerabilities</p></li>
+</ul>
+</div>
 </div>
 </div>
 

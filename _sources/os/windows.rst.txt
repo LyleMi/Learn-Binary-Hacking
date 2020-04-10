@@ -215,6 +215,12 @@ WMI由4个部分组成，分别为：management applications, WMI infrastructure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - SRM: Security reference monitor
 
+AppLocker
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AppLocker用于管理Windows运行的应用和文件。
+
+提供了各种不同程度的定制来方便用户/安全组制定规则。
+
 内存破坏漏洞防护机制
 ----------------------------------------
 
@@ -322,3 +328,4 @@ LDT（Local Descriptor Table），即局部描述符表。
 - `HEVD <https://github.com/hacksysteam/HackSysExtremeVulnerableDriver>`_
 - `HolicPOC <https://github.com/leeqwind/HolicPOC>`_
 - `Windows NT Wiki <https://en.wikipedia.org/wiki/Windows_NT>`_
+- `AppLocker <https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview>`_

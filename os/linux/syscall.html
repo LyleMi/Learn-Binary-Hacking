@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.6. syscall &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.3.7. Cgroups" href="cgroups.html" />
+    <link rel="prev" title="6.3.5. 防御措施" href="mitigation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="source.html">6.3.1. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.2. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.3. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addr.html">6.3.4. 虚拟地址转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.5. 防御措施</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.6. syscall</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.6.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ioctl">6.3.6.2. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fcntl">6.3.6.3. fcntl</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.7. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.3.8. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.3.9. 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id4">6.3.10. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id6">6.3.11. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3. Linux</a> &raquo;</li>
+        
+      <li>6.3.6. syscall</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/linux/syscall.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="syscall">
+<h1>6.3.6. syscall<a class="headerlink" href="#syscall" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.3.6.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>syscall是内核提供用户空间程序与内核空间进行交互的一套标准接口，这些接口让用户态程序能受限访问硬件设备，比如申请系统资源、操作设备读写、创建新进程等。用户空间发起请求，内核空间负责执行，这些接口便是用户空间和内核空间共同识别的桥梁。</p>
+<p>Syscall是通过中断方式实现的，用户程序通过软中断切入内核态，执行指令。Linux内核中，每个Syscall都有唯一的系统调用号对应。</p>
+<p>系统调用列表可在 <code class="docutils literal notranslate"><span class="pre">linux/arch/sh/include/uapi/asm/unistd_64.h</span></code> 中找到。</p>
+</div>
+<div class="section" id="ioctl">
+<h2>6.3.6.2. ioctl<a class="headerlink" href="#ioctl" title="Permalink to this headline">¶</a></h2>
+<p>ioctl 是设备驱动程序中设备控制接口函数，一个字符设备驱动通常会实现设备打开、关闭、读、写等功能，在一些需要细分的情境下，如果需要扩展新的功能，通常以增设 ioctl 命令的方式实现。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;sys/ioctl.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">ioctl</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cmd</span><span class="p">,</span> <span class="p">...)</span> <span class="p">;</span>
+</pre></div>
+</div>
+<p>其中fd是文件描述符，cmd是交互协议，设备驱动将根据 cmd 执行对应操作，最后是可变参数，依赖 cmd 指定长度以及类型。ioctl 函数执行成功时返回 0，失败则返回 -1 并设置全局变量 errorno 值。</p>
+</div>
+<div class="section" id="fcntl">
+<h2>6.3.6.3. fcntl<a class="headerlink" href="#fcntl" title="Permalink to this headline">¶</a></h2>
+<p>fcntl用于根据文件描述词来操作文件的特性，函数原型如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">fcntl</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cmd</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">fcntl</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cmd</span><span class="p">,</span> <span class="kt">long</span> <span class="n">arg</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">fcntl</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cmd</span><span class="p">,</span> <span class="k">struct</span> <span class="n">flock</span> <span class="o">*</span><span class="n">lock</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>fcntl函数有5种功能：</p>
+<ul class="simple">
+<li><p>复制一个现有的描述符 <code class="docutils literal notranslate"><span class="pre">cmd=F_DUPFD</span></code></p></li>
+<li><p>获得/设置文件描述符标记 <code class="docutils literal notranslate"><span class="pre">cmd=F_GETFD或F_SETFD</span></code></p></li>
+<li><p>获得/设置文件状态标记 <code class="docutils literal notranslate"><span class="pre">cmd=F_GETFL或F_SETFL</span></code></p></li>
+<li><p>获得/设置异步I/O所有权 <code class="docutils literal notranslate"><span class="pre">cmd=F_GETOWN或F_SETOWN</span></code></p></li>
+<li><p>获得/设置记录锁 <code class="docutils literal notranslate"><span class="pre">cmd=F_GETLK,F_SETLK或F_SETLKW</span></code></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cgroups.html" class="btn btn-neutral float-right" title="6.3.7. Cgroups" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mitigation.html" class="btn btn-neutral float-left" title="6.3.5. 防御措施" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

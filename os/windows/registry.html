@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.5.4. 注册表 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.5.5. 安全机制" href="security.html" />
+    <link rel="prev" title="6.5.3. 文件系统" href="fs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/index.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.5. Windows</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic.html">6.5.2. 基础</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.3. 文件系统</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.4. 注册表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.4.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.4.2. 数据类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.4.3. root key</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.5. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html#id3">6.5.6. 内存破坏漏洞防护机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.5.7. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id2">6.5.8. 常见缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.5.9. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="index.html">6.5. Windows</a> &raquo;</li>
+        
+      <li>6.5.4. 注册表</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/windows/registry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>6.5.4. 注册表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>6.5.4.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
+<p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
+<p>涉及到注册表的有：</p>
+<ol class="arabic simple">
+<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
+<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
+<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
+<li><p>在应用启动时，读取各种配置文件。</p></li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>6.5.4.2. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>REG_NONE</dt><dd><ul>
+<li><p>没有值</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_SZ</dt><dd><ul>
+<li><p>固定长度 Unicode</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_EXPAND_SZ</dt><dd><ul>
+<li><p>可变长度 Unicode</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_BINARY</dt><dd><ul>
+<li><p>任意长度二进制数据</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_DWORD</dt><dd><ul>
+<li><p>32 bit 数字</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
+<li><p>32 bit 数字，大端</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_LINK</dt><dd><ul>
+<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_MULTI_SZ</dt><dd><ul>
+<li><p>Unicode 字符串</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_RESOURCE_LIST</dt><dd><ul>
+<li><p>硬件资源描述</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
+<li><p>硬件资源描述</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
+<li><p>资源需求</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>REG_QWORD</dt><dd><ul>
+<li><p>64 bit 数字</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="root-key">
+<h2>6.5.4.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
+<li><p>AppEvents：事件关联</p></li>
+<li><p>Console：控制台设定</p></li>
+<li><p>Control Panel：控制面板</p></li>
+<li><p>Environment：环境变量</p></li>
+<li><p>EUDC：用户定义字符</p></li>
+<li><p>Identities：Windows Mail账户信息</p></li>
+<li><p>Keyboard Layout：键盘布局</p></li>
+<li><p>Network：网络驱动信息</p></li>
+<li><p>Printers：打印机</p></li>
+<li><p>Software：软件</p></li>
+<li><p>Volatile Environment：可变的环境变量</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>HKEY_USERS：所有用户有关的数据</p></li>
+<li><dl class="simple">
+<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
+<li><p>文件后缀关联</p></li>
+<li><p>COM（Component Object Model）注册</p></li>
+<li><p>UAC</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
+<li><p>HKLMBCD00000000</p></li>
+<li><p>HKLMCOMPONENTS</p></li>
+<li><p>HKLMHARDWARE</p></li>
+<li><p>HKLMSAM</p></li>
+<li><p>HKLMSECURITY</p></li>
+<li><p>HKLMSOFTWARE</p></li>
+<li><p>HKLMSYSTEM</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
+<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="security.html" class="btn btn-neutral float-right" title="6.5.5. 安全机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fs.html" class="btn btn-neutral float-left" title="6.5.3. 文件系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

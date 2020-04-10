@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13.5.1. gdb &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.5.2. Windbg" href="windbg.html" />
+    <link rel="prev" title="13.5. 调试器" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">13. 工具与资源</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../list.html">13.1. 工具列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../booklist.html">13.2. 书单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document.html">13.3. 文档资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse/index.html">13.4. 逆向工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13.5. 调试器</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.5.1. gdb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">13.5.1.1. gdb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gdb-peda">13.5.1.2. gdb-peda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="windbg.html">13.5.2. Windbg</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../emulator/index.html">13.6. 模拟器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">13.7. 编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ulimit.html">13.8. ulimit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">13. 工具与资源</a> &raquo;</li>
+        
+          <li><a href="index.html">13.5. 调试器</a> &raquo;</li>
+        
+      <li>13.5.1. gdb</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tools/debuger/gdb.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gdb">
+<h1>13.5.1. gdb<a class="headerlink" href="#gdb" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>13.5.1.1. gdb<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>BreakPoint 断点</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">[PROBE_MODIFIER]</span> <span class="pre">[LOCATION]</span> <span class="pre">[thread</span> <span class="pre">THREADNUM]</span> <span class="pre">[if</span> <span class="pre">CONDITION]</span></code></p></li>
+<li><dl class="simple">
+<dt>设置断点</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">*0x080483d0</span></code> 在内存0x080483d0处下断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">&lt;func</span> <span class="pre">name&gt;</span></code> 在函数处下断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">*&lt;func</span> <span class="pre">name&gt;</span> <span class="pre">+</span> <span class="pre">4</span></code> 在函数偏移处下断点</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>相关操作</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code> 从断点处继续运行</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d[elete]</span> <span class="pre">1</span></code> 删除断点1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">1</span> <span class="pre">2</span></code> 删除断点1 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> 删除所有断点</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dis[able]</span> <span class="pre">1</span></code> Disable breakpoint 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">en[able]</span> <span class="pre">1</span></code> Enable breakpoint 1</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c[ontinue]</span></code> 运行至下一个断点或程序结束</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">command</span></code> 设置断点的命令</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disas</span> <span class="pre">&lt;func</span> <span class="pre">name&gt;</span></code> 反汇编函数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fin[ish]</span></code> 跳出当前函数 / 循环</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">i</span></code> info</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">b</span></code> breakpoints info</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">f</span></code> frame info</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">s</span></code> stack info</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ignore</span> <span class="pre">&lt;break_list&gt;</span> <span class="pre">count</span></code></dt><dd><ul>
+<li><p>break_list所指定的断点号将被忽略count次</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> / <code class="docutils literal notranslate"><span class="pre">next</span></code> 单步运行</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&lt;func</span> <span class="pre">name&gt;</span></code> 找函数地址</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">&lt;param&gt;</span></code> 从头开始运行</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> / <code class="docutils literal notranslate"><span class="pre">step</span></code> 单步运行 遇到调用时深入</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file</span></code> 加载文件</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">x/nfu</span> <span class="pre">address</span></code> 打印内存</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> 表示要显示的内存单元的个数</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">f</span></code> 表示显示方式</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> 按十六进制格式显示变量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> 按十进制格式显示变量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code> 按十进制格式显示无符号整型。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">o</span></code> 按八进制格式显示变量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t</span></code> 按二进制格式显示变量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> 按十六进制格式显示变量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code> 指令地址格式</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code> 按字符格式显示变量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> 按浮点数格式显示变量。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u</span></code> 表示一个地址单元的长度</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> 表示单字节</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code> 表示双字节</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code> 表示四字节</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g</span></code> 表示八字节</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>地址可以是内存地址或者是寄存器</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="gdb-peda">
+<h2>13.5.1.2. gdb-peda<a class="headerlink" href="#gdb-peda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aslr</span></code> show aslr setting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">checksec</span></code> Check for various security options of binary</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dumpargs</span></code> Display arguments passed to a function when stopped at a call instruction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dumprop</span></code> Dump all ROP gadgets in specific memory range</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elfheader</span></code> Get headers information from debugged ELF file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elfsymbol</span></code> Get non-debugging symbol information from an ELF file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup</span></code> Search for all addresses/references to addresses which belong to a memory range</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patch</span></code> Patch memory start at an address with string/hexstring/int</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">pattern</span></code> Generate, search, or write a cyclic pattern to memory</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern_create</span> <span class="pre">200</span></code> 生成一段长度为200的字符串</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern_offset</span> <span class="pre">0x223333</span></code> 在0x223333的位置根据匹配找溢出的字节数</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">procinfo</span></code> Display various info from /proc/pid/</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pshow</span></code> Show various PEDA options and other settings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pset</span></code> Set various PEDA options and other settings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readelf</span></code> Get headers information from an ELF file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ropgadget</span></code> Get common ROP gadgets of binary or library</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ropsearch</span></code> Search for ROP gadgets in memory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">searchmem|find</span></code> Search for a pattern in memory; support regex search</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shellcode</span></code> Generate or download common shellcodes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skeleton</span></code> Generate python exploit code template</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmmap</span></code> Get virtual mapping address ranges of section(s) in debugged process</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xormem</span></code> XOR a memory region with a key</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="windbg.html" class="btn btn-neutral float-right" title="13.5.2. Windbg" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="13.5. 调试器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -88,7 +88,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
@@ -104,23 +104,23 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">13.2.1. 操作系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">13.2.2. 编译原理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">13.2.3. 浏览器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">13.2.4. 体系架构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">13.2.5. 虚拟化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">13.2.6. 漏洞利用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">13.2.7. 垃圾回收</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">13.2.8. 逆向分析</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">13.2.9. 程序优化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">13.2.10. 综合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iot">13.2.4. IoT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#android">13.2.5. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">13.2.6. 体系架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">13.2.7. 虚拟化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">13.2.8. 漏洞利用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">13.2.9. 垃圾回收</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">13.2.10. 逆向分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">13.2.11. 程序优化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">13.2.12. 综合</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="document.html">13.3. 文档资料</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">13.4. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">13.5. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.6. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html">13.7. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">13.8. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">13.9. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">13.10. readelf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/index.html">13.4. 逆向工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debuger/index.html">13.5. 调试器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emulator/index.html">13.6. 模拟器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiler/index.html">13.7. 编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.8. ulimit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
@@ -198,10 +198,15 @@
 <li><p>Linux内核设计与实现 - Linux Kernel Development</p></li>
 <li><p>Linux系统编程</p></li>
 <li><p>Linux内核情景分析</p></li>
+<li><p>深入理解Linux网络内幕</p></li>
+<li><p>深入理解Linux虚拟内存管理</p></li>
 <li><p>Linux内核完全注释</p></li>
+<li><p>Linux设备驱动程序</p></li>
+<li><p>深入理解Linux内核</p></li>
 <li><p>CSAPP</p></li>
 <li><p>Windows Internal</p></li>
 <li><p>深入理解Mac OS X &amp; iOS操作系统</p></li>
+<li><p>程序员的自我修养：链接、装载与库</p></li>
 <li><p><a class="reference external" href="https://book.douban.com/subject/25900403/">Unix环境高级编程</a></p></li>
 <li><p><a class="reference external" href="https://book.douban.com/subject/1390650/">现代操作系统</a></p></li>
 <li><p><a class="reference external" href="https://book.douban.com/subject/1422377/">自己动手写操作系统</a></p></li>
@@ -219,49 +224,65 @@
 <h2>13.2.3. 浏览器<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>白帽子讲浏览器安全</p></li>
+<li><p>Browser Hack Handbook</p></li>
+<li><p>The Browser Hacker’s Handbook</p></li>
+<li><p>How browser works</p></li>
+</ul>
+</div>
+<div class="section" id="iot">
+<h2>13.2.4. IoT<a class="headerlink" href="#iot" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>揭密家用路由器0day漏洞挖掘技术</p></li>
+</ul>
+</div>
+<div class="section" id="android">
+<h2>13.2.5. Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Android软件安全与逆向分析</p></li>
 </ul>
 </div>
 <div class="section" id="id7">
-<h2>13.2.4. 体系架构<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.6. 体系架构<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>MIPS体系架构透视</p></li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h2>13.2.5. 虚拟化<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.7. 虚拟化<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>系统虚拟化——原理与实现</p></li>
 </ul>
 </div>
 <div class="section" id="id9">
-<h2>13.2.6. 漏洞利用<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.8. 漏洞利用<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>0day安全 软件漏洞分析技术</p></li>
 <li><p>The Shellcode’s Handbook</p></li>
+<li><p>堆栈攻击：八层网络安全防御</p></li>
 </ul>
 </div>
 <div class="section" id="id10">
-<h2>13.2.7. 垃圾回收<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.9. 垃圾回收<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>垃圾回收的算法与实现</p></li>
 </ul>
 </div>
 <div class="section" id="id11">
-<h2>13.2.8. 逆向分析<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.10. 逆向分析<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>恶意代码分析实战</p></li>
 <li><p>C++反汇编与逆向技术分析</p></li>
 </ul>
 </div>
 <div class="section" id="id12">
-<h2>13.2.9. 程序优化<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.11. 程序优化<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>代码大全</p></li>
 <li><p>改善既有代码的设计</p></li>
 </ul>
 </div>
 <div class="section" id="id13">
-<h2>13.2.10. 综合<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.12. 综合<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>程序员的自我修养 —— 链接、装载与库</p></li>
 <li><p>计算机程序的构造和解释</p></li>

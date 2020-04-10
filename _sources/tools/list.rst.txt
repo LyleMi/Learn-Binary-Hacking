@@ -17,14 +17,24 @@ PE工具
 ----------------------------------------
 - `radare2 <https://github.com/radare/radare2>`_
 - `capstone <https://github.com/aquynh/capstone>`_
-- `Apktool <https://github.com/iBotPeaches/Apktool>`_
 - `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
+- `binary ninja <https://binary.ninja/>`_
+- `HAL <https://github.com/emsec/hal>`_ The Hardware Analyzer
+
+动态插桩
+----------------------------------------
+- `DynamoRIO <https://github.com/DynamoRIO/dynamorio>`_ Dynamic Instrumentation Tool Platform
+- `pintools <https://github.com/jonathansalwan/pintools>`_ Pintool example and PoC for dynamic binary analysis
+- `frida <https://github.com/frida/frida>`_
+- `QBDI <https://github.com/QBDI/QBDI>`_ A Dynamic Binary Instrumentation framework based on LLVM
 
 IDA
 ----------------------------------------
 - `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_
 - `IDArling <https://github.com/IDArlingTeam/IDArling>`_
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
+- `awesome ida <https://github.com/xrkk/awesome-ida>`_
+- `golang loader assist <https://github.com/strazzere/golang_loader_assist>`_
 
 Ghidra
 ----------------------------------------
@@ -47,11 +57,21 @@ Diff
 - `qemu <https://github.com/qemu/>`_
 - `unicorn <https://github.com/unicorn-engine/unicorn>`_
 - `OpenEmu <https://github.com/OpenEmu/OpenEmu>`_
+- `firmadyne <https://github.com/firmadyne/firmadyne>`_ Platform for emulation and dynamic analysis of Linux-based firmware
 
 动态分析
 ----------------------------------------
 - `Process Explorer <https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>`_
 - `peda <https://github.com/longld/peda>`_
+
+污点分析
+----------------------------------------
+- `Triton <https://github.com/JonathanSalwan/Triton>`_
+- `bap <https://github.com/BinaryAnalysisPlatform/bap>`_ Binary Analysis BinaryAnalysisPlatform
+
+静态分析
+----------------------------------------
+- `LIEF <https://github.com/lief-project/LIEF>`_ Library to Instrument Executable Formats
 
 漏洞利用
 ----------------------------------------
@@ -72,8 +92,45 @@ IoT
 模糊测试
 ----------------------------------------
 - `afl <https://github.com/mirrorer/afl>`_
+- `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_
+- `radamsa <https://gitlab.com/akihe/radamsa>`_ Radamsa is a test case generator for robustness testing. It is typically used to test how well a program can withstand malformed and potentially malicious inputs. It works by reading sample files of valid data and generating interestringly different outputs from them. The main selling points of radamsa are that it has already found a slew of bugs in programs that actually matter, it is easily scriptable and, easy to get up and running.
 
-静态编译工具
+编译工具
 ----------------------------------------
 - `static GDB and GDBServer <https://github.com/hugsy/gdb-static>`_
 - `statically compiled tools like Nmap and Socat <https://github.com/ernw/static-toolbox>`_
+- `static binaries <https://github.com/andrew-d/static-binaries>`_
+
+交叉编译
+----------------------------------------
+- `buildroot <https://github.com/buildroot/buildroot>`_ Buildroot, making embedded Linux easy
+- `musl cross <https://github.com/GregorR/musl-cross>`_ A small suite of scripts and patches for building musl libc cross compilers
+
+Sandbox
+----------------------------------------
+- `any.run <https://app.any.run/>`_
+- `Noriben <https://github.com/Rurik/Noriben>`_ Portable, Simple, Malware Analysis Sandbox
+
+Malware Sample
+----------------------------------------
+- `malware samples <https://github.com/InQuest/malware-samples>`_
+- `theZoo <https://github.com/ytisf/theZoo>`_
+
+实验环境
+----------------------------------------
+- `ABD <https://github.com/malrev/ABD>`_ Course materials for Advanced Binary Deobfuscation by NTT Secure Platform Laboratories
+
+Android
+----------------------------------------
+
+分析工具
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `classyshark <https://github.com/google/android-classyshark>`_ Analyze any Android/Java based app or game
+- `jadx <https://github.com/skylot/jadx>`_ Dex to Java decompiler
+- `jd-gui <https://github.com/java-decompiler/jd-gui>`_ Java Decompiler GUI
+- `dex2jar <https://github.com/pxb1988/dex2jar>`_ Tools to work with android .dex and java .class files
+- `Apktool <https://github.com/iBotPeaches/Apktool>`_ tool for reverse engineering Android apk files
+
+漏洞
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `qark <https://github.com/linkedin/qark>`_ Tool to look for several security related Android application vulnerabilities

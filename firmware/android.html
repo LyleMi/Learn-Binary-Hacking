@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.8. Android &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.9. iOS" href="ios.html" />
+    <link rel="prev" title="3.7. 路由设备" href="router.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 嵌入式设备</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unpack.html">3.1. 固件解包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal.html">3.2. HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">3.3. 硬件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4g.html">3.4. 4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ble.html">3.5. BLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secureboot.html">3.6. 可信启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html">3.7. 路由设备</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.8. Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.8.1. 系统框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.8.2. 组件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#activity">3.8.2.1. Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service">3.8.2.2. Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#content-provider">3.8.2.3. Content Provider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broadcast-receivers">3.8.2.4. Broadcast Receivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dalvik">3.8.3. Dalvik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apk">3.8.4. APK结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.8.5. 数据存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.8.6. 恶意软件分类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.8.6.1. 按行为分</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.8.6.2. 按类别分</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.8.7. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ios.html">3.9. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. 嵌入式设备</a> &raquo;</li>
+        
+      <li>3.8. Android</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/firmware/android.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="android">
+<h1>3.8. Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>3.8.1. 系统框架<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><img alt="AndroidSystemFramework" src="../_images/AndroidSystemFramework.png" /></p>
+</div>
+<div class="section" id="id2">
+<h2>3.8.2. 组件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="activity">
+<h3>3.8.2.1. Activity<a class="headerlink" href="#activity" title="Permalink to this headline">¶</a></h3>
+<p>Activity(用户界面)是应用程序与用户进行人机交互的可视化用户界面，包含很多与用户交互的构件， 如按钮、文本输入框等。一个 Android 应用程序可以有多个 Activity。</p>
+<p>Activity共有四种状态</p>
+<ul class="simple">
+<li><p>Active：激活或运行，这时Activity在屏幕前台</p></li>
+<li><p>Pause：暂停状态，这时Activity失去焦点，但对用户可见</p></li>
+<li><p>Stop：停止状态，这时Activity被其他Activity覆盖而完全变暗</p></li>
+<li><p>Inactive：终止状态，这时Activity被系统清理出内存</p></li>
+</ul>
+</div>
+<div class="section" id="service">
+<h3>3.8.2.2. Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h3>
+<p>Service(后台进程)是 Android 系统运行在后台的服务，不提供用户界面;</p>
+</div>
+<div class="section" id="content-provider">
+<h3>3.8.2.3. Content Provider<a class="headerlink" href="#content-provider" title="Permalink to this headline">¶</a></h3>
+<p>Content Provider(内容提供器)是一种 SQL-数据库，用于为应用程序提供数据，同时为应用程序中的数 据共享提供支持;</p>
+</div>
+<div class="section" id="broadcast-receivers">
+<h3>3.8.2.4. Broadcast Receivers<a class="headerlink" href="#broadcast-receivers" title="Permalink to this headline">¶</a></h3>
+<p>Broadcast Receivers(广播接收器)是接收广播消息的邮箱。</p>
+</div>
+</div>
+<div class="section" id="dalvik">
+<h2>3.8.3. Dalvik<a class="headerlink" href="#dalvik" title="Permalink to this headline">¶</a></h2>
+<p>基于寄存器的虚拟机，完成对象生命周期、堆栈、线程的管理、安全和异常的管理以及垃圾回收等。每一个Android都运行在一个单独的Dalvik虚拟实例上。</p>
+</div>
+<div class="section" id="apk">
+<h2>3.8.4. APK结构<a class="headerlink" href="#apk" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>res目录：资源文件</p></li>
+<li><p>META_INF：数字签名信息</p></li>
+<li><p>lib目录：动态链接库</p></li>
+<li><p>assets目录：原始格式的文件</p></li>
+<li><p>resource.arsc文件：编译后的二进制资源文件</p></li>
+<li><p>classes.dex：Dalvik可执行二进制文件</p></li>
+<li><p>AndroidManifest.xml</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>3.8.5. 数据存储<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Applications <code class="docutils literal notranslate"><span class="pre">/data/app/&lt;package-name&gt;/</span></code></p></li>
+<li><p>Shared Preferences Files <code class="docutils literal notranslate"><span class="pre">/data/app/&lt;package-name&gt;/shared_pref</span></code></p></li>
+<li><p>SQLite Database <code class="docutils literal notranslate"><span class="pre">/data/app/&lt;package-name&gt;/databases</span></code></p></li>
+<li><p>Internal Storage <code class="docutils literal notranslate"><span class="pre">/data/app/&lt;package-name&gt;/files</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>3.8.6. 恶意软件分类<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>3.8.6.1. 按行为分<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>恶意软件安装(malware installation)</dt><dd><ul>
+<li><p>重打包(repackaging)</p></li>
+<li><p>更新攻击(update attack)</p></li>
+<li><p>诱惑下载(drive-by download)</p></li>
+<li><p>其他</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>恶意软件运行(activation)</p></li>
+<li><dl class="simple">
+<dt>恶意载荷(malicious payloads)</dt><dd><ul>
+<li><p>提权攻击(privilege escalation)</p></li>
+<li><p>远程控制(remote control)</p></li>
+<li><p>付费(financial charge)</p></li>
+<li><p>信息收集(information collection)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>权限使用(permission uses)</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>3.8.6.2. 按类别分<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>木马类</p></li>
+<li><p>病毒类</p></li>
+<li><p>后门类</p></li>
+<li><p>僵尸类</p></li>
+<li><p>间谍软件类</p></li>
+<li><p>恐吓软件类</p></li>
+<li><p>勒索软件类</p></li>
+<li><p>广告软件类</p></li>
+<li><p>跟踪软件类</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>3.8.7. 参考链接<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://developer.android.com/">Developer Android</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ios.html" class="btn btn-neutral float-right" title="3.9. iOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="router.html" class="btn btn-neutral float-left" title="3.7. 路由设备" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

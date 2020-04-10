@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="13.1. 工具列表" href="list.html" />
-    <link rel="prev" title="12.5. 沙箱机制" href="../mitigations/sandbox.html" /> 
+    <link rel="prev" title="12.6. 安全编程" href="../mitigations/secureprogramming.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,7 +88,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
@@ -102,13 +102,11 @@
 <li class="toctree-l2"><a class="reference internal" href="list.html">13.1. 工具列表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="booklist.html">13.2. 书单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document.html">13.3. 文档资料</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gcc.html">13.4. gcc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html">13.5. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.6. ulimit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html">13.7. Windbg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ida.html">13.8. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="objdump.html">13.9. objdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readelf.html">13.10. readelf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/index.html">13.4. 逆向工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debuger/index.html">13.5. 调试器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emulator/index.html">13.6. 模拟器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiler/index.html">13.7. 编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulimit.html">13.8. ulimit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
@@ -185,30 +183,40 @@
 <li class="toctree-l2"><a class="reference internal" href="list.html#id2">13.1.1. 编译工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html#pe">13.1.2. PE工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html#id3">13.1.3. 逆向工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#ida">13.1.4. IDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#ghidra">13.1.5. Ghidra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#diff">13.1.6. Diff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id5">13.1.7. 调试工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id6">13.1.8. 模拟执行</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id7">13.1.9. 动态分析</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id8">13.1.10. 漏洞利用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#iot">13.1.11. IoT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id9">13.1.12. 符号执行</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id10">13.1.13. 模糊测试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list.html#id11">13.1.14. 静态编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id4">13.1.4. 动态插桩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#ida">13.1.5. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#ghidra">13.1.6. Ghidra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#diff">13.1.7. Diff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id6">13.1.8. 调试工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id7">13.1.9. 模拟执行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id8">13.1.10. 动态分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id9">13.1.11. 污点分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id10">13.1.12. 静态分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id11">13.1.13. 漏洞利用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#iot">13.1.14. IoT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id12">13.1.15. 符号执行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id13">13.1.16. 模糊测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id14">13.1.17. 编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id15">13.1.18. 交叉编译</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#sandbox">13.1.19. Sandbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#malware-sample">13.1.20. Malware Sample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#id16">13.1.21. 实验环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html#android">13.1.22. Android</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="booklist.html">13.2. 书单</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="booklist.html#id2">13.2.1. 操作系统</a></li>
 <li class="toctree-l2"><a class="reference internal" href="booklist.html#id5">13.2.2. 编译原理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="booklist.html#id6">13.2.3. 浏览器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id7">13.2.4. 体系架构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id8">13.2.5. 虚拟化</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id9">13.2.6. 漏洞利用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id10">13.2.7. 垃圾回收</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id11">13.2.8. 逆向分析</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id12">13.2.9. 程序优化</a></li>
-<li class="toctree-l2"><a class="reference internal" href="booklist.html#id13">13.2.10. 综合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#iot">13.2.4. IoT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#android">13.2.5. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id7">13.2.6. 体系架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id8">13.2.7. 虚拟化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id9">13.2.8. 漏洞利用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id10">13.2.9. 垃圾回收</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id11">13.2.10. 逆向分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id12">13.2.11. 程序优化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="booklist.html#id13">13.2.12. 综合</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="document.html">13.3. 文档资料</a><ul>
@@ -216,24 +224,29 @@
 <li class="toctree-l2"><a class="reference internal" href="document.html#id3">13.3.2. 可信执行</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gcc.html">13.4. gcc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdb.html">13.5. gdb</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html#id1">13.5.1. gdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gdb.html#gdb-peda">13.5.2. gdb-peda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reverse/index.html">13.4. 逆向工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reverse/ida.html">13.4.1. IDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/objdump.html">13.4.2. objdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse/readelf.html">13.4.3. readelf</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ulimit.html">13.6. ulimit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windbg.html">13.7. Windbg</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html#id1">13.7.1. 命令行启动参数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windbg.html#id2">13.7.2. 调试命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debuger/index.html">13.5. 调试器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debuger/gdb.html">13.5.1. gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debuger/windbg.html">13.5.2. Windbg</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ida.html">13.8. IDA</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ida.html#id1">13.8.1. 快捷键</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emulator/index.html">13.6. 模拟器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="emulator/qemu.html">13.6.1. QEMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emulator/unicorn.html">13.6.2. Unicorn</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="objdump.html">13.9. objdump</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readelf.html">13.10. readelf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler/index.html">13.7. 编译工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compiler/gcc.html">13.7.1. gcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiler/clang.html">13.7.2. clang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiler/cmake.html">13.7.3. CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ulimit.html">13.8. ulimit</a></li>
 </ul>
 </div>
 </div>
@@ -249,7 +262,7 @@
         <a href="list.html" class="btn btn-neutral float-right" title="13.1. 工具列表" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../mitigations/sandbox.html" class="btn btn-neutral float-left" title="12.5. 沙箱机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../mitigations/secureprogramming.html" class="btn btn-neutral float-left" title="12.6. 安全编程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.3. Linux" href="linux.html" />
+    <link rel="next" title="6.3. Linux" href="linux/index.html" />
     <link rel="prev" title="6.1. 概述" href="overview.html" /> 
 </head>
 
@@ -88,7 +88,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">6. 操作系统</a><ul class="current">
@@ -96,12 +96,13 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Boot</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bios">6.2.1. BIOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#uefi">6.2.2. UEFI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">6.2.3. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grub">6.2.3. GRUB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.2.4. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="linux.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux/index.html">6.3. Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macos.html">6.4. Mac OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/index.html">6.5. Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="android.html">6.6. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ios.html">6.7. iOS</a></li>
 </ul>
@@ -197,8 +198,12 @@
 <p>BIOS标准将bootlloader存放在主引导记录（MBR）中，容量有限，而UEFI中引入了新的系统分区来存储bootloader以及驱动等数据。</p>
 <p>另外，UEFI通过固件签名验证提供了安全的启动加载，拒绝不合法的UEFI执行程序和驱动程序。</p>
 </div>
+<div class="section" id="grub">
+<h2>6.2.3. GRUB<a class="headerlink" href="#grub" title="Permalink to this headline">¶</a></h2>
+<p>GNU GRUB（GRand Unified Bootloader）是一个来自GNU项目的多操作系统启动程序。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择操作系统分区上的不同内核，也可用于向这些内核传递启动参数。</p>
+</div>
 <div class="section" id="id1">
-<h2>6.2.3. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.4. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://wiki.osdev.org/UEFI">UEFI</a></p></li>
 <li><p><a class="reference external" href="http://www.ruanyifeng.com/blog/2013/02/booting.html">计算机是如何启动的</a></p></li>
@@ -214,7 +219,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="linux.html" class="btn btn-neutral float-right" title="6.3. Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linux/index.html" class="btn btn-neutral float-right" title="6.3. Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral float-left" title="6.1. 概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

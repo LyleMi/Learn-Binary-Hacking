@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.1. 源代码 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.3.2. 文件系统" href="fs.html" />
+    <link rel="prev" title="6.3. Linux" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.1. 源代码</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.1.1. 目录结构</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.2. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.3. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addr.html">6.3.4. 虚拟地址转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.5. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.6. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.7. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.3.8. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.3.9. 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id4">6.3.10. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id6">6.3.11. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3. Linux</a> &raquo;</li>
+        
+      <li>6.3.1. 源代码</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/linux/source.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>6.3.1. 源代码<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>6.3.1.1. 目录结构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>通常来说，Linux的目录结构如下:</p>
+<ul>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/bin</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>必要的一些二进制文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/boot</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>boot loader的静态文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/etc</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>各种config文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/usr</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>共享的一些只读文件</p></li>
+<li><dl class="simple">
+<dt>/usr/local</dt><dd><ul>
+<li><p>本地文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/usr/share</dt><dd><ul>
+<li><p>所有架构的静态共享文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/usr/share/man</dt><dd><ul>
+<li><p>手册文件</p></li>
+<li><p>man1 user program</p></li>
+<li><p>man2 system calls</p></li>
+<li><p>man3 lib functions</p></li>
+<li><p>man4 special file</p></li>
+<li><p>man5 file formats</p></li>
+<li><p>man6 games</p></li>
+<li><p>man7 misc</p></li>
+<li><p>man8 system admin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/usr/bin</dt><dd><ul>
+<li><p>常用的用户命令</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/usr/include</dt><dd><ul>
+<li><p>C程序标准库</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/usr/lib</dt><dd><ul>
+<li><p>程序obj / bin / lib文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/usr/sbin</dt><dd><ul>
+<li><p>非必须文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/var</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>各种变量数据文件</p></li>
+<li><dl class="simple">
+<dt>/var/cache</dt><dd><ul>
+<li><p>应用cache</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>/var/lib</p></li>
+<li><dl class="simple">
+<dt>/var/yp</dt><dd><ul>
+<li><p>NIS服务</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/var/lock</dt><dd><ul>
+<li><p>共享文件的锁</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/var/opt</dt><dd><ul>
+<li><p>安装包的数据</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/var/run</dt><dd><ul>
+<li><p>系统启动后的数据</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>/var/tmp</p></li>
+<li><dl class="simple">
+<dt>/var/spool</dt><dd><ul>
+<li><p>待处理数据</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/var/log</dt><dd><ul>
+<li><p>日志</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/sbin</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>系统程序</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/tmp</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>临时文件，重启后删除</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/dev</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>/dev/hd[a-t]：IDE设备</p></li>
+<li><p>/dev/sd[a-z]：SCSI设备</p></li>
+<li><p>/dev/fd[0-7]：标准软驱</p></li>
+<li><p>/dev/md[0-31]：软raid设备</p></li>
+<li><p>/dev/loop[0-7]：本地回环设备</p></li>
+<li><p>/dev/ram[0-15]：内存</p></li>
+<li><p>/dev/null：无限数据接收设备,相当于黑洞</p></li>
+<li><p>/dev/zero：无限零资源</p></li>
+<li><p>/dev/tty[0-63]：虚拟终端</p></li>
+<li><p>/dev/ttyS[0-3]：串口</p></li>
+<li><p>/dev/lp[0-3]：并口</p></li>
+<li><p>/dev/console：控制台</p></li>
+<li><p>/dev/fb[0-31]：framebuffer</p></li>
+<li><p>/dev/random：随机数设备</p></li>
+<li><p>/dev/urandom：随机数设备</p></li>
+<li><p>/dev/cdrom =&gt; /dev/hdc</p></li>
+<li><p>/dev/modem =&gt; /dev/ttyS[0-9]</p></li>
+<li><p>/dev/pilot =&gt; /dev/ttyS[0-9]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/proc</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>伪文件系统，它只存在内存当中，而不占用外存空间</p></li>
+<li><p>以文件系统的方式为访问系统内核数据的操作提供接口</p></li>
+<li><p>可以通过 proc 得到系统的信息，并可以改变内核的某些参数</p></li>
+<li><dl class="simple">
+<dt>/proc/cmdline</dt><dd><ul>
+<li><p>内核命令的启动行</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/cpuinfo</dt><dd><ul>
+<li><p>系统CPU的多种信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/devices</dt><dd><ul>
+<li><p>字符设备和块设备的主设备号</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/dma</dt><dd><ul>
+<li><p>DMA通道</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/filesystems</dt><dd><ul>
+<li><p>可供使用的文件系统类型</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/interrupts</dt><dd><ul>
+<li><p>保留的中断</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/ioports</dt><dd><ul>
+<li><p>设备驱动程序登记的I/O端口范围</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/kcore</dt><dd><ul>
+<li><p>以core格式保存的系统物理内存</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/kmsg</dt><dd><ul>
+<li><p>内核消息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/ksyms</dt><dd><ul>
+<li><p>内核符号</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/loadavg</dt><dd><ul>
+<li><p>负载信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/locks</dt><dd><ul>
+<li><p>文件的加锁信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/meminfo</dt><dd><ul>
+<li><p>内存状态信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/misc</dt><dd><ul>
+<li><p>通过 <code class="docutils literal notranslate"><span class="pre">misc_register</span></code> 登记的设备驱动信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/modules</dt><dd><ul>
+<li><p>可加载内核模块的信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/mounts</dt><dd><ul>
+<li><p>以 <code class="docutils literal notranslate"><span class="pre">/etc/mtab</span></code> 文件的格式给出当前系统所安装的文件系统信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/pci</dt><dd><ul>
+<li><p>PCI设备的信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/stat</dt><dd><ul>
+<li><p>CPU利用率，磁盘，内存页，内存对换，全部中断，接触开关</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/uptime</dt><dd><ul>
+<li><p>从上次系统自举以来的秒数</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/version</dt><dd><ul>
+<li><p>正在运行的内核版本</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/net</dt><dd><ul>
+<li><p>联网代码的行为</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/scsi</dt><dd><ul>
+<li><p>SCSI设备的文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/sys</dt><dd><ul>
+<li><p>系统信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/home</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>用户文件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/lib</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>库和内核模块</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/mnt</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>挂载目录</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/opt</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>应用程序</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">/root</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>root用户</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fs.html" class="btn btn-neutral float-right" title="6.3.2. 文件系统" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="6.3. Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

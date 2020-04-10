@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.9. iOS &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. 汇编基础" href="../assembly/index.html" />
+    <link rel="prev" title="3.8. Android" href="android.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 嵌入式设备</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unpack.html">3.1. 固件解包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal.html">3.2. HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">3.3. 硬件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4g.html">3.4. 4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ble.html">3.5. BLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secureboot.html">3.6. 可信启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html">3.7. 路由设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android.html">3.8. Android</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.9. iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.9.1. 系统结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.9.2. 数据的加密与保护</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.9.2.1. 强制加密</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.9.2.2. 数据保护</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.9.2.3. 锁屏密码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keychain">3.9.2.4. Keychain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.9.3. 网络安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.9.4. 设备权限控制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. 嵌入式设备</a> &raquo;</li>
+        
+      <li>3.9. iOS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/firmware/ios.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ios">
+<h1>3.9. iOS<a class="headerlink" href="#ios" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>3.9.1. 系统结构<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>所有iOS设备中，系统与硬件都高度集成，从系统启动、系统更新、应用的安装、应用的运行时等多个方面来保全系统的安全，具体包括以下几个限制。</p>
+<p>所有iOS设备在处理器内都集成有一段名为Boot Room的代码，此代码被烧制到处理其内的一块存储上，并且只读，可以认为是完全可信的。系统启动时，Boot Room通过苹果的Apple Root CA Public证书对Low-Level BootLoader进行验证，如果通过验证，Low-Level BootLoader将运行iBoot，较Low-Level Bootloader高层次的Bootloader，如果这一步也通过，那么iBoot将运行iOS的内核, XNU，系统开始运行。以上这几个步骤任一步骤无法通过，都将导致系统无法启动，这样，处理期内烧制的Boot Room保证了iOS系统只能在Apple自家设备上运行，而这些设备也将无法运行iOS之外的系统。</p>
+<p>iOS设备的系统升级之后是不允许降级的。这样做的好处是系统的安全等级只会越来越高，二不会出现由于系统降级，已修复安全风险又暴露出来的问题。iOS系统在升级过程需要联网进行验证，系统升级之前，设备会将LLB、iBoot、内核、镜像，外加一个随机的不可重复的值发送到苹果的服务器进行验证，服务器端对所有这些进行验证，如果通过验证，将会返回一个通过的结果，结果加入了与设备唯一相关的ECID。这样做的好处是此值是无法重用的，只能对应与一台设备，且只能使用一次。通过这种机制，保证了系统升级过程都是符合苹果要求的。</p>
+<p>所有运行在iOS上的代码都是需要签名的。苹果自带应用已经打上了苹果的签名，而第三方应用，则需要开发者账号进行签名，而开发者账号都是通过苹果官方实名审核的账号，从开发者源头上控制了程序的安全性，也就是说，系统内所有运行的程序都是可信的，且知道来源的。</p>
+<p>运行与iOS系统的第三方软件都是运行与sandbox之内，每个第三方程序都有自己的独占的路径，其只能访问独占路境内的内容，其他程序的文件一般情况下无法访问，如果要访问，只能通过苹果官方API，而不能自行操作文件。连个应用之间无法共享文件，如要互相通信，只能通过URL Schema或shared key chain。另外，每个应用都有其运行权限，不同权限可进行的操作是不同的，将应用的权限限制在其需要的范围内，而不赋予额外的权限。</p>
+</div>
+<div class="section" id="id2">
+<h2>3.9.2. 数据的加密与保护<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>3.9.2.1. 强制加密<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>而iOS内所有用户数据都是强制加密的，加密功能不能关闭。所以，苹果的AES加解密引擎都是硬件级的，位于存储与系统之间的DMA内，这样提供了较高的效率与性能。加密解密使用的KEY主要来自unique ID(UID)以及Group ID(gid)，UID与唯一设备相关，GID与某种特定型号的CPU相关，一台设备的UID及GID全部被烧制到芯片内部，除了AES加密引擎，没有其他方法直接读取，能看到的只有使用UID及GID加密后的数据。这样，不同设备的加密结果是不同的，同一套密文只能在加密的机器上进行解密。除了GID及UID，其他加密使用的KEY全部来自系统自带的随机数生成器，具体使用的算法为Yarrow。</p>
+</div>
+<div class="section" id="id4">
+<h3>3.9.2.2. 数据保护<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>iOS提供了名为File Data Protection的数据保护方法。所有文件在加密时使用的key都是不同的，这些key被称作的prefile key，存储于metafile内。prefile的访问需要进行解密的key，这些key包括：</p>
+<ol class="arabic simple">
+<li><p>File System Key: 系统安装时生成的一个随机的key</p></li>
+<li><p>Class Key，这个key与UID相关，如果用户设置了锁屏密码，那么此Class Key将的来源也包括锁屏密码。</p></li>
+</ol>
+<p>只有有了这两个key，一个文件的prefilekey才能被读取出来，此加密的文件才能被解密，也就是说，当锁屏之后，或存储位于不同的设备之上，数据是无法读取的。</p>
+<p>File System Key还有一个重要作用，远程删除数据时，其实不用真正的删除磁盘上的数据，只要删除此key，那么所有文件的prefile key 将不能访问，也就是所有文件将无法读取。</p>
+</div>
+<div class="section" id="id5">
+<h3>3.9.2.3. 锁屏密码<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>锁屏密码为了防止暴力破解，增加了三个限制：</p>
+<ol class="arabic simple">
+<li><p>与uid绑定，只能在该密码生成的设备上进行尝试，</p></li>
+<li><p>两次尝试的间隔被强制设成80ms，机器暴力破解的时间将大大加长</p></li>
+<li><p>增加选项，如果连续输错次数超过10次，可以选择删除设备内数据</p></li>
+</ol>
+</div>
+<div class="section" id="keychain">
+<h3>3.9.2.4. Keychain<a class="headerlink" href="#keychain" title="Permalink to this headline">¶</a></h3>
+<p>应用的小量极敏感数据，例如密码，最好存储与KeyChain内，而不是应用自己管理。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>3.9.3. 网络安全<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>除了本地数据的保护，苹果还对数据的传输提供了多种多样的保护机制。苹果提供了可靠的、可信以及加密的连接。因为iOS平台限制了同时监听的端口的数量，并将那些不必要的网络组建，例如telnet，shell以及web server等，所以不需要防火墙的保护。</p>
+</div>
+<div class="section" id="id7">
+<h2>3.9.4. 设备权限控制<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>针对企业用户，iOS系统提供了多样的安全策略，管理原可以根据需求对设备的安全特性进行多样化的设置，包括密码策略，数据保护策略，应用使用策略，远程数据删除等功能，给企业级用户提供了高安全性以及极大的灵活性。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../assembly/index.html" class="btn btn-neutral float-right" title="4. 汇编基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="android.html" class="btn btn-neutral float-left" title="3.8. Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

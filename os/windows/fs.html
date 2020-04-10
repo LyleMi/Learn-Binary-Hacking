@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.5.3. 文件系统 &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.5.4. 注册表" href="registry.html" />
+    <link rel="prev" title="6.5.2. 基础" href="basic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/index.html">6.3. Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.5. Windows</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic.html">6.5.2. 基础</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.3. 文件系统</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fat">6.5.3.1. FAT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ntfs">6.5.3.2. NTFS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refs">6.5.3.3. ReFS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.4. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.5. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html#id3">6.5.6. 内存破坏漏洞防护机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.5.7. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id2">6.5.8. 常见缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.5.9. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="index.html">6.5. Windows</a> &raquo;</li>
+        
+      <li>6.5.3. 文件系统</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/windows/fs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>6.5.3. 文件系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fat">
+<h2>6.5.3.1. FAT<a class="headerlink" href="#fat" title="Permalink to this headline">¶</a></h2>
+<p>FAT(File Allocation Table)是“文件分配表”的意思。顾名思义，就是用来记录文件所在位置的表格，</p>
+<div class="section" id="fat-16">
+<h3>6.5.3.1.1. FAT-16<a class="headerlink" href="#fat-16" title="Permalink to this headline">¶</a></h3>
+<p>FAT16使用了16位的空间来表示每个扇区(Sector)配置文件的状态，故称之为FAT16。FAT-16磁盘分区最大只能到2GB。</p>
+</div>
+<div class="section" id="fat-32">
+<h3>6.5.3.1.2. FAT-32<a class="headerlink" href="#fat-32" title="Permalink to this headline">¶</a></h3>
+<p>FAT16使用了32位的空间来表示每个扇区(Sector)配置文件的状态，最大支持32GB分区，单个文件最大支持4GB。</p>
+</div>
+<div class="section" id="exfat">
+<h3>6.5.3.1.3. exFAT<a class="headerlink" href="#exfat" title="Permalink to this headline">¶</a></h3>
+<p>exFAT（Extended File Allocation Table File System）又称扩展FAT或扩展文件分配表。</p>
+</div>
+</div>
+<div class="section" id="ntfs">
+<h2>6.5.3.2. NTFS<a class="headerlink" href="#ntfs" title="Permalink to this headline">¶</a></h2>
+<p>NTFS（New Technology File System）是Windows NT内核的系列操作系统支持的、一个特别为网络和磁盘配额、文件加密等管理安全特性设计的磁盘格式，提供长文件名、数据保护和恢复，能通过目录和文件许可实现安全性，并支持跨越分区。</p>
+</div>
+<div class="section" id="refs">
+<h2>6.5.3.3. ReFS<a class="headerlink" href="#refs" title="Permalink to this headline">¶</a></h2>
+<p>ReFS（Resilient File System，弹性文件系统） 是在Windows Server 2012中新引入的一个文件系统。只能应用于存储数据，不能引导系统。ReFS是与NTFS大部分兼容的，其主要目的 是为了保持较高的稳定性，可以自动验证数据是否损坏，并尽力恢复数据。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="registry.html" class="btn btn-neutral float-right" title="6.5.4. 注册表" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic.html" class="btn btn-neutral float-left" title="6.5.2. 基础" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
