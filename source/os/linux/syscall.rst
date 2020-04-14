@@ -38,3 +38,13 @@ fcntl函数有5种功能：
 - 获得/设置文件状态标记 ``cmd=F_GETFL或F_SETFL``
 - 获得/设置异步I/O所有权 ``cmd=F_GETOWN或F_SETOWN``
 - 获得/设置记录锁 ``cmd=F_GETLK,F_SETLK或F_SETLKW``
+
+execve
+----------------------------------------
+``execve`` 系统调用的原型如下：
+
+.. code-block:: cpp
+
+    int execve(const char *filename, char *const argv[], char *const envp[]); 
+
+它所对应的三个参数分别是程序文件名，执行参数，环境变量。
