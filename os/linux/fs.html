@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3.2. 文件系统 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.3.3. 文件系统 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.3. 虚拟地址转换" href="addr.html" />
-    <link rel="prev" title="6.3.1. 源代码" href="source.html" /> 
+    <link rel="next" title="6.3.4. 设备" href="device.html" />
+    <link rel="prev" title="6.3.2. 源代码" href="source.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,24 +95,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="source.html">6.3.1. 源代码</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.2. 文件系统</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.2.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.3.2.2. 超级块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#inode">6.3.2.3. inode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.3. 文件系统</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.3.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.3.3.2. 超级块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inode">6.3.3.3. inode</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="addr.html">6.3.3. 虚拟地址转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.4. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.5. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.3.6. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.3.7. 启动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id4">6.3.8. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id6">6.3.9. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.6. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.7. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.8. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.9. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../windows.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">6.5. Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
@@ -174,7 +174,7 @@
         
           <li><a href="index.html">6.3. Linux</a> &raquo;</li>
         
-      <li>6.3.2. 文件系统</li>
+      <li>6.3.3. 文件系统</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -194,17 +194,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.3.2. 文件系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.3.3. 文件系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.3.2.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.3.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Linux 以一组通用对象的角度看待所有文件系统。这些对象是超级块（superblock）、inode、dentry 和文件。超级块在每个文件系统的根上，描述和维护文件系统的状态。文件系统中管理的每个对象（文件或目录）在 Linux 中表示为一个 inode。inode 包含管理文件系统中的对象所需的所有元数据（包括可以在对象上执行的操作）。另一组结构称为 dentry，它们用来实现名称和 inode 之间的映射，有一个目录缓存用来保存最近使用的 dentry。dentry 还维护目录和文件之间的关系，从而支持在文件系统中移动。最后，VFS 文件表示一个打开的文件（保存打开的文件的状态，比如写偏移量等等）。</p>
 </div>
 <div class="section" id="id3">
-<h2>6.3.2.2. 超级块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.3.2. 超级块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>超级块结构表示一个文件系统。它包含管理文件系统所需的信息，包括文件系统名称（比如 ext2）、文件系统的大小和状态、块设备的引用和元数据信息（比如空闲列表等等）。超级块通常存储在存储媒体上，但是如果超级块不存在，也可以实时创建。</p>
 </div>
 <div class="section" id="inode">
-<h2>6.3.2.3. inode<a class="headerlink" href="#inode" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.3.3. inode<a class="headerlink" href="#inode" title="Permalink to this headline">¶</a></h2>
 <p>inode 表示文件系统中的一个对象，它具有惟一标识符。各个文件系统提供将文件名映射为惟一 inode 标识符和 inode 引用的方法。</p>
 </div>
 </div>
@@ -217,10 +217,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="addr.html" class="btn btn-neutral float-right" title="6.3.3. 虚拟地址转换" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="device.html" class="btn btn-neutral float-right" title="6.3.4. 设备" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="source.html" class="btn btn-neutral float-left" title="6.3.1. 源代码" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="source.html" class="btn btn-neutral float-left" title="6.3.2. 源代码" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

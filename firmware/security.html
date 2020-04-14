@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.1. 固件解包 &mdash; bin-sec 1.0.0 documentation</title>
+  <title>3.10. 安全性 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.2. HAL" href="hal.html" />
-    <link rel="prev" title="3. 嵌入式设备" href="index.html" /> 
+    <link rel="next" title="4. 汇编基础" href="../assembly/index.html" />
+    <link rel="prev" title="3.9. iOS" href="ios.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,13 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 嵌入式设备</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. 固件解包</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">3.1.1. 获取固件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.2. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.1.3. 常见模式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">3.1.4. 参考链接</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="unpack.html">3.1. 固件解包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hal.html">3.2. HAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hardware.html">3.3. 硬件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4g.html">3.4. 4G</a></li>
@@ -104,7 +98,10 @@
 <li class="toctree-l2"><a class="reference internal" href="router.html">3.7. 路由设备</a></li>
 <li class="toctree-l2"><a class="reference internal" href="android.html">3.8. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ios.html">3.9. iOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">3.10. 安全性</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.10. 安全性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.10.1. 常见安全问题</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
@@ -165,13 +162,13 @@
         
           <li><a href="index.html">3. 嵌入式设备</a> &raquo;</li>
         
-      <li>3.1. 固件解包</li>
+      <li>3.10. 安全性</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/firmware/unpack.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/firmware/security.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,36 +182,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>3.1. 固件解包<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>3.10. 安全性<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>3.1.1. 获取固件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>3.10.1. 常见安全问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>直接从开发团队、制造商/供应商或用户获取</p></li>
-<li><p>使用制造商提供的项目从头编译</p></li>
-<li><p>从供应商的网站获取</p></li>
-<li><p>从论坛、博客，或官方评论中获取</p></li>
-<li><p>设备更新进行中间人（MITM）获取</p></li>
-<li><p>通过 UART、JTAG、PICit等直接从硬件中提取</p></li>
-<li><p>嗅探“硬件组件中的串行通信”中的更新服务器请求</p></li>
-<li><p>通过移动应用程序中的硬编码接口</p></li>
-<li><p>将固件从引导加载程序（如：U-boot ）转储到闪存或通过tftp的网络转储</p></li>
-<li><p>从主板卸下闪存芯片（如：SPI ）或 MCU，以进行离线分析和数据提取</p></li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h2>3.1.2. 文件系统<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>常见的文件系统类型有squashfs、ubifs、romfs、rootfs、jffs2、yaffs2、cramfs、initramfs等。</p>
-</div>
-<div class="section" id="id4">
-<h2>3.1.3. 常见模式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>无加密，使用binwalk等工具解包即可。</p>
-<p>加密但是在运行后会解密，提取nvram可获得固件。</p>
-<p>若之前版本存在无加密固件，可通过劫持升级过程获得新版本固件。</p>
-</div>
-<div class="section" id="id5">
-<h2>3.1.4. 参考链接<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://scriptingxss.gitbook.io/firmware-security-testing-methodology/">OWASP Firmware Security Testing Methodology</a></p></li>
+<li><p>硬编码凭证</p></li>
+<li><p>硬编码的API端点和后端服务器详细信息</p></li>
 </ul>
 </div>
 </div>
@@ -227,10 +200,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hal.html" class="btn btn-neutral float-right" title="3.2. HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../assembly/index.html" class="btn btn-neutral float-right" title="4. 汇编基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="3. 嵌入式设备" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ios.html" class="btn btn-neutral float-left" title="3.9. iOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

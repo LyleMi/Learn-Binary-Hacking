@@ -88,22 +88,23 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 汇编基础</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="diff.html">4.1. 区别</a></li>
 <li class="toctree-l2"><a class="reference internal" href="x86.html">4.2. x86</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arm.html">4.3. ARM</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. MIPS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. 指令特点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">4.4.2. 数据类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4.4.3. 寄存器</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">4.4.3.1. 寄存器编号及其用途</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.4.2. 指令特点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.4.3. 数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.4.4. 寄存器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.4.4.1. 寄存器编号及其用途</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">4.4.4. 读写操作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4.4.5. 寻址</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">4.4.6. 算术指令集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">4.4.7. 控制流</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.4.5. 读写操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.4.6. 寻址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.4.7. 算术指令集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">4.4.8. 控制流</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ppc.html">4.5. PowerPC</a></li>
@@ -188,7 +189,11 @@
   <div class="section" id="mips">
 <h1>4.4. MIPS<a class="headerlink" href="#mips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>4.4.1. 指令特点<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>MIPS的意思是“无内部互锁流水级的微处理器”（Microprocessor without interlocked piped stages），其机制是尽量利用软件办法避免流水线中的数据相关问题。它最早是在80年代初期由斯坦福（Stanford）大学Hennessy教授领导的研究小组研制出来的。MIPS公司的R系列就是在此基础上开发的RISC工业产品的微处理器。这些系列产品为很多计算机公司采用构成各种工作站和计算机系统。</p>
+</div>
+<div class="section" id="id2">
+<h2>4.4.2. 指令特点<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>所有指令都是32位长</p></li>
 <li><dl class="simple">
@@ -203,16 +208,16 @@
 <li><p>没有条件标志位</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h2>4.4.2. 数据类型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>4.4.3. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>所有MIPS指令都是32位</p></li>
 <li><p>单个字符用单引号，例如：’b’</p></li>
 <li><p>字符串用双引号，例如：”A string”</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h2>4.4.3. 寄存器<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>4.4.4. 寄存器<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>MIPS下一共有32个通用寄存器</p></li>
 <li><p>在汇编中，寄存器标志由 <code class="docutils literal notranslate"><span class="pre">$</span></code> 符开头</p></li>
@@ -232,8 +237,8 @@
 </li>
 <li><p>栈的走向是从高地址到低地址</p></li>
 </ul>
-<div class="section" id="id4">
-<h3>4.4.3.1. 寄存器编号及其用途<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>4.4.4.1. 寄存器编号及其用途<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
@@ -299,8 +304,8 @@
 </table>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>4.4.4. 读写操作<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>4.4.5. 读写操作<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>load word</dt><dd><ul>
@@ -332,8 +337,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2>4.4.5. 寻址<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>4.4.6. 寻址<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>直接寻址</dt><dd><ul>
@@ -358,8 +363,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h2>4.4.6. 算术指令集<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>4.4.7. 算术指令集<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>sub</dt><dd><ul>
@@ -421,8 +426,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h2>4.4.7. 控制流<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>4.4.8. 控制流<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">b</span>&#160;&#160; <span class="pre">target</span></code></dt><dd><ul>

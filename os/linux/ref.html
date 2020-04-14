@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3.9. Cgroups &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.3.10. 参考链接 &mdash; bin-sec 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.10. 参考链接" href="ref.html" />
-    <link rel="prev" title="6.3.8. syscall" href="syscall.html" /> 
+    <link rel="next" title="6.4. Mac OS" href="../macos.html" />
+    <link rel="prev" title="6.3.9. Cgroups" href="cgroups.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,11 +103,14 @@
 <li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.7. 防御措施</a></li>
 <li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.8. syscall</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.9. Cgroups</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.9.1. 四个组件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.10. 参考链接</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.10.1. 文档与资源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.3.10.2. 调试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.3.10.3. 漏洞利用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blog">6.3.10.4. blog</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.10. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -173,13 +176,13 @@
         
           <li><a href="index.html">6.3. Linux</a> &raquo;</li>
         
-      <li>6.3.9. Cgroups</li>
+      <li>6.3.10. 参考链接</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/linux/cgroups.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/linux/ref.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,124 +195,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cgroups">
-<h1>6.3.9. Cgroups<a class="headerlink" href="#cgroups" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>6.3.9.1. 四个组件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Cgroups包含Cgroup、Subsystem、hierarchy、task四个组件。</p>
-<div class="section" id="cgroup">
-<h3>6.3.9.1.1. Cgroup<a class="headerlink" href="#cgroup" title="Permalink to this headline">¶</a></h3>
-<p>Cgroup是对进程分组管理的一种机制，一个Cgroup包含一组进程，并可以在上面添加添加Linux Subsystem的各种参数配置，将一组进程和一组Subsystem的系统参数关联起来。</p>
-</div>
-<div class="section" id="subsystem">
-<h3>6.3.9.1.2. Subsystem<a class="headerlink" href="#subsystem" title="Permalink to this headline">¶</a></h3>
-<p>Subsystem是一个资源调度控制器不同版本的Kernel所支持的有所偏差，可以通过 <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/proc/cgroups</span></code> 查看</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>blkio</dt><dd><ul>
-<li><p>对块设备(比如硬盘)的IO进行访问限制</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>cpu</dt><dd><ul>
-<li><p>设置进程的CPU调度的策略，比如CPU时间片的分配</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>cpuacct</dt><dd><ul>
-<li><p>统计/生成cgroup中的任务占用CPU资源报告</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>cpuset</dt><dd><ul>
-<li><p>在多核机器上分配给任务(task)独立的CPU和内存节点(内存仅使用于NUMA架构)</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>devices</dt><dd><ul>
-<li><p>控制cgroup中对设备的访问</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>freezer</dt><dd><ul>
-<li><p>挂起(suspend) / 恢复 (resume) cgroup 中的进程</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>memory</dt><dd><ul>
-<li><p>用于控制cgroup中进程的占用以及生成内存占用报告</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>net_cls</dt><dd><ul>
-<li><p>使用等级识别符（classid）标记网络数据包，这让 Linux 流量控制器 tc (traffic controller) 可以识别来自特定 cgroup 的包并做限流或监控</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>net_prio</dt><dd><ul>
-<li><p>设置cgroup中进程产生的网络流量的优先级</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>hugetlb</dt><dd><ul>
-<li><p>限制使用的内存页数量</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>pids</dt><dd><ul>
-<li><p>限制任务的数量</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>net_cls</dt><dd><ul>
-<li><p>可以使不同cgroups下面的进程使用不同的namespace。</p></li>
-<li><p>每个subsystem会关联到定义的cgroup上，并对这个cgoup中的进程做相应的限制和控制。</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</div>
-<div class="section" id="hierarchy">
-<h3>6.3.9.1.3. hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">¶</a></h3>
-<p>hierarchy树形结构的 CGroup 层级，每个子 CGroup 节点会继承父 CGroup 节点的子系统配置，每个 Hierarchy 在初始化时会有默认的 CGroup(Root CGroup)。</p>
-</div>
-<div class="section" id="task">
-<h3>6.3.9.1.4. Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h3>
-<p>Task (任务) 在cgroups中，任务就是系统的一个进程。</p>
-</div>
+  <div class="section" id="id1">
+<h1>6.3.10. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h3>6.3.9.1.5. 四个组件的关系<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h2>6.3.10.1. 文档与资源<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>系统在创建新的hierarchy之后，该系统的所有任务都会加入这个hierarchy的cgroup，称之为root cgroup，此cgroup在创建hierarchy自动创建，后面在该hierarchy中创建都是cgroup根节点的子节点</p></li>
-<li><p>一个subsystem只能附加到一个hierarchy上面</p></li>
-<li><p>一个hierarchy可以附加多个subsystem</p></li>
-<li><p>一个task可以是多个cgroup的成员，但这些cgroup必须在不同的hierarchy</p></li>
-<li><p>一个进程fork出子进程时，该子进程默认自动成为父进程所在的cgroup的成员，也可以根据情况将其移动到到不同的cgroup中</p></li>
+<li><p><a class="reference external" href="https://www.kernel.org">The Linux Kernel Archives</a></p></li>
+<li><p><a class="reference external" href="https://www.kernel.org/doc/html/latest/">The Linux Kernel documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/0xAX/linux-insides">linux insides</a> A book-in-progress about the linux kernel and its insides</p></li>
 </ul>
 </div>
+<div class="section" id="id3">
+<h2>6.3.10.2. 调试<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://xz.aliyun.com/t/2024">Linux内核调试</a></p></li>
+<li><p><a class="reference external" href="http://blog.nsfocus.net/gdb-kgdb-debug-application/">利用KGDB调试内核驱动模块</a></p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>6.3.10.3. 漏洞利用<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.mamicode.com/info-detail-2399209.html">Linux kernel pwn notes</a></p></li>
+<li><p><a class="reference external" href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/">Linux kernel ROP</a></p></li>
+<li><p><a class="reference external" href="https://github.com/black-bunny/LinKern-x86_64-bypass-SMEP-KASLR-kptr_restric">SMEP bypass</a></p></li>
+</ul>
+</div>
+<div class="section" id="blog">
+<h2>6.3.10.4. blog<a class="headerlink" href="#blog" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.csdn.net/lukuen/article/details/6935068">slub算法</a></p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/">Linux 文件系统剖析</a></p></li>
+<li><p><a class="reference external" href="https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md">Linux Crgoups 资源限制</a></p></li>
+<li><p><a class="reference external" href="https://www.freebuf.com/articles/network/229004.html">容器简史：从1979至今的日子</a></p></li>
+<li><p><a class="reference external" href="https://linux-kernel-labs.github.io/refs/heads/master/index.html">Linux Kernel Teaching</a></p></li>
+<li><p><a class="reference external" href="https://segmentfault.com/a/1190000009082089">Linux TTY/PTS概述</a></p></li>
+<li><p><a class="reference external" href="http://www.linusakesson.net/programming/tty/index.php">The TTY demystified</a></p></li>
+<li><p><a class="reference external" href="http://wuxinwei.org/2015/04/19/Neteasy-cloud-linux-kernel/">linux中ELF加载过程分析</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/gatieme/java/article/details/51628257">ELF文件的加载过程</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -321,10 +244,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ref.html" class="btn btn-neutral float-right" title="6.3.10. 参考链接" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../macos.html" class="btn btn-neutral float-right" title="6.4. Mac OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="syscall.html" class="btn btn-neutral float-left" title="6.3.8. syscall" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cgroups.html" class="btn btn-neutral float-left" title="6.3.9. Cgroups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -57,7 +57,6 @@ Diff
 - `qemu <https://github.com/qemu/>`_
 - `unicorn <https://github.com/unicorn-engine/unicorn>`_
 - `OpenEmu <https://github.com/OpenEmu/OpenEmu>`_
-- `firmadyne <https://github.com/firmadyne/firmadyne>`_ Platform for emulation and dynamic analysis of Linux-based firmware
 
 动态分析
 ----------------------------------------
@@ -134,3 +133,18 @@ Android
 漏洞
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `qark <https://github.com/linkedin/qark>`_ Tool to look for several security related Android application vulnerabilities
+
+嵌入式设备
+----------------------------------------
+
+仿真
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `firmadyne <https://github.com/firmadyne/firmadyne>`_ Platform for emulation and dynamic analysis of Linux-based firmware
+- `frankenstein <https://github.com/seemoo-lab/frankenstein/>`_ Broadcom and Cypress firmware emulation for fuzzing and further full-stack debugging
+
+漏洞分析工具
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `FACT <https://github.com/fkie-cad/FACT_core>`_ The Firmware Analysis and Comparison Tool (FACT)
+- `firmwalker <https://github.com/craigz28/firmwalker>`_
+- `Firmware Analysis Toolkit <https://github.com/attify/firmware-analysis-toolkit>`_
+- `fwanalyzer <https://github.com/cruise-automation/fwanalyzer>`_

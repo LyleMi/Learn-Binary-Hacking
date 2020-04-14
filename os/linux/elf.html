@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.6. ELF &mdash; bin-sec 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.3.7. 防御措施" href="mitigation.html" />
+    <link rel="prev" title="6.3.5. 内存管理" href="mem.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> bin-sec
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.6. ELF</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.6.1. 加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execve">6.3.6.2. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.6.3. 注册机制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-elf">6.3.6.4. Load ELF</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.7. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.8. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.10. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bin-sec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3. Linux</a> &raquo;</li>
+        
+      <li>6.3.6. ELF</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/os/linux/elf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elf">
+<h1>6.3.6. ELF<a class="headerlink" href="#elf" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.3.6.1. 加载<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>从编译/链接和运行的角度看，应用程序和库程序的链接有两种方式。
+一种是固定的、静态的链接，在编译时将要用到的库函数的代码从代码库中抽取出来，链接进应用软件中。另一种是动态链接，在编译阶段并不完成跟库函数的链接，到程序时才把链接库的映像装入用户空间并加以定位。</p>
+<p>其中ELF的载入在Linux内核中完成，动态链接的实现在用户空间中由 <code class="docutils literal notranslate"><span class="pre">ld-linux.so</span></code> 来完成，解释器的启动由内核负责。</p>
+</div>
+<div class="section" id="execve">
+<h2>6.3.6.2. execve<a class="headerlink" href="#execve" title="Permalink to this headline">¶</a></h2>
+<p>在用户层面，shell进行会调用 <code class="docutils literal notranslate"><span class="pre">fork()</span></code> 系统调用创建一个新进程，新进程调用 <code class="docutils literal notranslate"><span class="pre">execve()</span></code> 系统调用执行指定的ELF文件。</p>
+<p>在内核中， <code class="docutils literal notranslate"><span class="pre">execve</span></code> 系统调用的相应入口是 <code class="docutils literal notranslate"><span class="pre">sys_execve</span></code> ，在执行 <code class="docutils literal notranslate"><span class="pre">sys_execve</span></code> 之后，内核会调用 <code class="docutils literal notranslate"><span class="pre">do_execve</span></code> / <code class="docutils literal notranslate"><span class="pre">search_binary_handle</span></code> / <code class="docutils literal notranslate"><span class="pre">load_elf_binary</span></code> 等函数来完成加载。 <code class="docutils literal notranslate"><span class="pre">do_execve</span></code> 相关代码如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">do_execve</span><span class="p">(</span><span class="k">struct</span> <span class="n">filename</span> <span class="o">*</span><span class="n">filename</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="k">const</span> <span class="n">__user</span> <span class="o">*</span><span class="n">__argv</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="k">const</span> <span class="n">__user</span> <span class="o">*</span><span class="n">__envp</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">do_execve_common</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">envp</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">do_execve_common</span><span class="p">(</span><span class="k">struct</span> <span class="n">filename</span> <span class="o">*</span><span class="n">filename</span><span class="p">,</span>
+                <span class="k">struct</span> <span class="n">user_arg_ptr</span> <span class="n">argv</span><span class="p">,</span>
+                <span class="k">struct</span> <span class="n">user_arg_ptr</span> <span class="n">envp</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 选择最小负载的CPU，以执行新程序</span>
+    <span class="n">sched_exec</span><span class="p">();</span>
+
+    <span class="c1">// 填充 linux_binprm 结构体</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">prepare_binprm</span><span class="p">(</span><span class="n">bprm</span><span class="p">);</span>
+
+    <span class="c1">// 拷贝文件名、命令行参数、环境变量</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">copy_strings_kernel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">bprm</span><span class="o">-&gt;</span><span class="n">filename</span><span class="p">,</span> <span class="n">bprm</span><span class="p">);</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">copy_strings</span><span class="p">(</span><span class="n">bprm</span><span class="o">-&gt;</span><span class="n">envc</span><span class="p">,</span> <span class="n">envp</span><span class="p">,</span> <span class="n">bprm</span><span class="p">);</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">copy_strings</span><span class="p">(</span><span class="n">bprm</span><span class="o">-&gt;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">bprm</span><span class="p">);</span>
+
+    <span class="c1">// 调用 search_binary_handler 扫描formats链表，根据不同的文本格式，选择不同的load函数</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">exec_binprm</span><span class="p">(</span><span class="n">bprm</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中结构体 <code class="docutils literal notranslate"><span class="pre">linux_binprm</span></code> 部分定义是：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">linux_binprm</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">BINPRM_BUF_SIZE</span><span class="p">];</span>
+<span class="cp">#ifdef CONFIG_MMU</span>
+    <span class="k">struct</span> <span class="n">vm_area_struct</span> <span class="o">*</span><span class="n">vma</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">vma_pages</span><span class="p">;</span>
+<span class="cp">#else</span>
+    <span class="p">...</span>
+    <span class="kt">unsigned</span> <span class="n">interp_flags</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="n">interp_data</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">loader</span><span class="p">,</span> <span class="n">exec</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>6.3.6.3. 注册机制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Linux支持不同格式的可执行程序，这些程序用 <code class="docutils literal notranslate"><span class="pre">linux_binfmt</span></code> 来描述，其定义在 <code class="docutils literal notranslate"><span class="pre">include/linux/binfmts.h</span></code> 中。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * This structure defines the functions that are used to load the binary formats that linux accepts.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">linux_binfmt</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">list_head</span> <span class="n">lh</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">module</span> <span class="o">*</span><span class="n">module</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">load_binary</span><span class="p">)(</span><span class="k">struct</span> <span class="n">linux_binprm</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">load_shlib</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">core_dump</span><span class="p">)(</span><span class="k">struct</span> <span class="n">coredump_params</span> <span class="o">*</span><span class="n">cprm</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">min_coredump</span><span class="p">;</span> <span class="cm">/* minimal dump size */</span>
+<span class="p">}</span> <span class="n">__randomize_layout</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>所有的 <code class="docutils literal notranslate"><span class="pre">linux_binfmt</span></code> 对象都处于一个链表中，第一个元素的地址存放在 <code class="docutils literal notranslate"><span class="pre">formats</span></code> 变量中, 可以通过调用 <code class="docutils literal notranslate"><span class="pre">register_binfmt()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unregister_binfmt()</span></code> 函数在链表中插入和删除元素。在系统启动期间，为每个编译进内核的可执行格式都执行 <code class="docutils literal notranslate"><span class="pre">register_binfmt()</span></code> 函数。</p>
+<p>当执行程序的时候，内核打开目标映像文件，并从目标文件的头部读入若干字节，并调用 <code class="docutils literal notranslate"><span class="pre">search_binary_handler</span></code> 遍历所有注册的 <code class="docutils literal notranslate"><span class="pre">linux_binfmt</span></code> 对象，对其调用 <code class="docutils literal notranslate"><span class="pre">load_binary</span></code> 方法来尝试加载，直到加载成功为止。</p>
+<p><code class="docutils literal notranslate"><span class="pre">search_binary_handler</span></code> 的部分代码如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">search_binary_handler</span><span class="p">(</span><span class="k">struct</span> <span class="n">linux_binprm</span> <span class="o">*</span><span class="n">bprm</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 遍历formats链表</span>
+    <span class="n">list_for_each_entry</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">formats</span><span class="p">,</span> <span class="n">lh</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">try_module_get</span><span class="p">(</span><span class="n">fmt</span><span class="o">-&gt;</span><span class="n">module</span><span class="p">))</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="n">read_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">binfmt_lock</span><span class="p">);</span>
+        <span class="n">bprm</span><span class="o">-&gt;</span><span class="n">recursion_depth</span><span class="o">++</span><span class="p">;</span>
+
+        <span class="c1">// 应用每种格式的load_binary方法</span>
+        <span class="n">retval</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">-&gt;</span><span class="n">load_binary</span><span class="p">(</span><span class="n">bprm</span><span class="p">);</span>
+        <span class="n">read_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">binfmt_lock</span><span class="p">);</span>
+        <span class="n">put_binfmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">);</span>
+        <span class="n">bprm</span><span class="o">-&gt;</span><span class="n">recursion_depth</span><span class="o">--</span><span class="p">;</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">retval</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-elf">
+<h2>6.3.6.4. Load ELF<a class="headerlink" href="#load-elf" title="Permalink to this headline">¶</a></h2>
+<p>在ELF文件格式中，处理函数是 <code class="docutils literal notranslate"><span class="pre">load_elf_binary</span></code> 函数，流程如下：</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>填充并且检查目标程序ELF头部</dt><dd><ul>
+<li><p>是否 <code class="docutils literal notranslate"><span class="pre">\x7fELF</span></code> 开头</p></li>
+<li><p>映像的类型是否为 <code class="docutils literal notranslate"><span class="pre">ET_EXEC</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">load_elf_phdrs</span></code> 加载目标程序的程序头表</dt><dd><ul>
+<li><p>执行程序必须至少有一个段</p></li>
+<li><p>所有段大小之和不能超过64k</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>如果需要动态链接, 则寻找和处理解释器段</dt><dd><ul>
+<li><p>“解释器”段的类型为PT_INTERP，可通过 <code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">-l</span></code> 查看</p></li>
+<li><p>“解释器” 段实际上是一个字符串，即解释器的文件名</p></li>
+<li><p>通常为 <code class="docutils literal notranslate"><span class="pre">/lib/ld-linux.so.2</span></code> / <code class="docutils literal notranslate"><span class="pre">/lib64/ld-linux-x86-64.so.2</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>检查并读取解释器的程序表头</p></li>
+<li><p>装入目标程序的段segment</p></li>
+<li><p>填写程序的入口地址</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">create_elf_tables</span></code> 填写目标文件的参数环境变量等必要信息</dt><dd><ul>
+<li><p>准备 <code class="docutils literal notranslate"><span class="pre">argc</span></code> <code class="docutils literal notranslate"><span class="pre">envc</span></code> 等变量</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_kernel</span></code> 宏准备进入新的程序入口</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">load_elf_binary</span></code> 的部分代码如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">load_elf_binary</span><span class="p">(</span><span class="k">struct</span> <span class="n">linux_binprm</span> <span class="o">*</span><span class="n">bprm</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+
+    <span class="cm">/* Now we do a little grungy work by mmapping the ELF image into</span>
+<span class="cm">       the correct location in memory. */</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf_ppnt</span> <span class="o">=</span> <span class="n">elf_phdata</span><span class="p">;</span>
+        <span class="n">i</span> <span class="o">&lt;</span> <span class="n">loc</span><span class="o">-&gt;</span><span class="n">elf_ex</span><span class="p">.</span><span class="n">e_phnum</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">elf_ppnt</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">elf_prot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf_flags</span><span class="p">,</span> <span class="n">elf_fixed</span> <span class="o">=</span> <span class="n">MAP_FIXED_NOREPLACE</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">k</span><span class="p">,</span> <span class="n">vaddr</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">total_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">elf_ppnt</span><span class="o">-&gt;</span><span class="n">p_type</span> <span class="o">!=</span> <span class="n">PT_LOAD</span><span class="p">)</span>
+            <span class="k">continue</span><span class="p">;</span>
+         <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mitigation.html" class="btn btn-neutral float-right" title="6.3.7. 防御措施" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mem.html" class="btn btn-neutral float-left" title="6.3.5. 内存管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
