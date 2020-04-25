@@ -11,6 +11,10 @@
     - boot loader的静态文件
 - /etc
     - 各种config文件
+    - /etc/fstab 开机自动挂载的配置文件
+    - /etc/mtab 当前的分区挂载情况
+    - /etc/passwd 用户文件
+    - /etc/shadow 密码文件
 - /usr
     - 共享的一些只读文件
     - /usr/local
