@@ -45,8 +45,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'bin-sec'
-copyright = u'2017, lyle'
+project = u'二进制安全学习笔记'
+copyright = u'2017-2020, lyle'
 author = u'lyle'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -133,7 +133,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'bin-sec.tex', u'bin-sec Documentation',
+    (master_doc, 'bin-sec.tex', u'二进制安全学习笔记',
      u'lyle', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bin-sec', u'bin-sec Documentation',
+    (master_doc, 'bin-sec', u'二进制安全学习笔记',
      [author], 1)
 ]
 
@@ -154,7 +154,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'bin-sec', u'bin-sec Documentation',
+    (master_doc, 'bin-sec', u'二进制安全学习笔记',
      author, 'bin-sec', 'One line description of project.',
      'Miscellaneous'),
 ]
