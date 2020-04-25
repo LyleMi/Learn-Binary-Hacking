@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3.8. syscall &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.3.8. syscall &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> bin-sec
+            <a href="../../index.html" class="icon icon-home"> 二进制安全学习笔记
           
 
           
@@ -97,7 +97,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
@@ -107,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#ioctl">6.3.8.2. ioctl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fcntl">6.3.8.3. fcntl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#execve">6.3.8.4. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select">6.3.8.5. select</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
@@ -141,7 +142,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">bin-sec</a>
+          <a href="../../index.html">二进制安全学习笔记</a>
         
       </nav>
 
@@ -238,6 +239,17 @@
 </div>
 <p>它所对应的三个参数分别是程序文件名，执行参数，环境变量。</p>
 </div>
+<div class="section" id="select">
+<h2>6.3.8.5. select<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h2>
+<p>select是IO多种复用的一种实现，它将需要监控的fd分为读，写，异常三类，其返回时是读、写、异常事件发生或者超时。</p>
+<p><code class="docutils literal notranslate"><span class="pre">select</span></code> 系统调用的原型如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">select</span> <span class="p">(</span><span class="kt">int</span> <span class="n">__nfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__readfds</span><span class="p">,</span>
+           <span class="n">fd_set</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__writefds</span><span class="p">,</span>
+           <span class="n">fd_set</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__exceptfds</span><span class="p">,</span>
+           <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__timeout</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -260,7 +272,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle
+        &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>

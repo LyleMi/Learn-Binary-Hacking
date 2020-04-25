@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.3.2. Overlayfs &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.4. 设备" href="../device.html" />
+    <link rel="prev" title="6.3.3.1. 基础知识" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.3. 文件系统</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="intro.html">6.3.3.1. 基础知识</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.3.2. Overlayfs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../device.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mitigation.html">6.3.7. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../syscall.html">6.3.8. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cgroups.html">6.3.9. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.10. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">7. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">8. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">9. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">10. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">11. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">12. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">13. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">14. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.3. 文件系统</a> &raquo;</li>
+        
+      <li>6.3.3.2. Overlayfs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/fs/overlay.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overlayfs">
+<h1>6.3.3.2. Overlayfs<a class="headerlink" href="#overlayfs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.3.3.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>OverlayFS是一种堆叠文件系统，它依赖并建立在其它的文件系统之上，并不直接参与磁盘空间结构的划分，仅仅将原来底层文件系统中不同的目录进行“合并”，然后向用户呈现。</p>
+<p>它于2014年被合并到Linux内核的3.18版本。其4.0版本带来了必要的改进，例如Docker中所需的overlay2存储驱动程序。</p>
+</div>
+<div class="section" id="id2">
+<h2>6.3.3.2.2. 机制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>OverlayFS的主要机制涉及当两个文件系统提供同一名称的目录时目录访问的合并，分为upper层（读写层）和lower（只读层）。OverlayFS下的文件并不是upper层或者lower层文件的拷贝，而是记录了文件的层次信息。</p>
+<p>在OverlayFS中，会为每个文件分配一个ovl_entry变量，通过文件dentry的d_fsdata字段指向这个分配的ovl_entry变量。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../device.html" class="btn btn-neutral float-right" title="6.3.4. 设备" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="6.3.3.1. 基础知识" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

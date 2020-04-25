@@ -18,13 +18,27 @@
 - `Linux kernel ROP <https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/>`_
 - `SMEP bypass <https://github.com/black-bunny/LinKern-x86_64-bypass-SMEP-KASLR-kptr_restric>`_
 
+文件系统
+----------------------------------------
+- `Linux 文件系统剖析 <https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/>`_
+- `OverlayFS Wiki <https://en.wikipedia.org/wiki/OverlayFS>`_
+- `内核OverlayFS 文件层次信息 <https://arkingc.github.io/2017/09/20/2017-09-20-linux-code-overlayfs-layerinfo/>`_
+- `深入理解overlayfs（一） <https://blog.csdn.net/luckyapple1028/article/details/77916194>`_
+- `深入理解overlayfs（二）：使用与原理分析 <https://blog.csdn.net/luckyapple1028/article/details/78075358>`_
+- `Overlayfs And Containers <http://people.redhat.com/vgoyal/papers-presentations/vault-2017/vivek-overlayfs-and-containers-presentation-valult-2017.pdf>`_
+
+内核
+----------------------------------------
+- `Linux Kernel Teaching <https://linux-kernel-labs.github.io/refs/heads/master/index.html>`_
+- `slub算法 <https://blog.csdn.net/lukuen/article/details/6935068>`_
+
+安全机制
+----------------------------------------
+- `Linux Crgoups 资源限制 <https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md>`_
+
 blog
 ----------------------------------------
-- `slub算法 <https://blog.csdn.net/lukuen/article/details/6935068>`_
-- `Linux 文件系统剖析 <https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/>`_
-- `Linux Crgoups 资源限制 <https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md>`_
 - `容器简史：从1979至今的日子 <https://www.freebuf.com/articles/network/229004.html>`_
-- `Linux Kernel Teaching <https://linux-kernel-labs.github.io/refs/heads/master/index.html>`_
 - `Linux TTY/PTS概述 <https://segmentfault.com/a/1190000009082089>`_
 - `The TTY demystified <http://www.linusakesson.net/programming/tty/index.php>`_
 - `linux中ELF加载过程分析 <http://wuxinwei.org/2015/04/19/Neteasy-cloud-linux-kernel/>`_

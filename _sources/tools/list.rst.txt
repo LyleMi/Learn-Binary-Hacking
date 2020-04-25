@@ -35,6 +35,7 @@ IDA
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
 - `awesome ida <https://github.com/xrkk/awesome-ida>`_
 - `golang loader assist <https://github.com/strazzere/golang_loader_assist>`_
+- `IDAGolangHelper <https://github.com/sibears/IDAGolangHelper>`_ Set of IDA Pro scripts for parsing GoLang types information stored in compiled binary
 
 Ghidra
 ----------------------------------------
@@ -148,3 +149,4 @@ Android
 - `firmwalker <https://github.com/craigz28/firmwalker>`_
 - `Firmware Analysis Toolkit <https://github.com/attify/firmware-analysis-toolkit>`_
 - `fwanalyzer <https://github.com/cruise-automation/fwanalyzer>`_
+- `Firmware Slap <https://github.com/ChrisTheCoolHut/Firmware_Slap>`_ Discovering vulnerabilities in firmware through concolic analysis and function clustering.

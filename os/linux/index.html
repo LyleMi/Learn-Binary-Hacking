@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3. Linux &mdash; bin-sec 1.0.0 documentation</title>
+  <title>6.3. Linux &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> bin-sec
+            <a href="../../index.html" class="icon icon-home"> 二进制安全学习笔记
           
 
           
@@ -97,7 +97,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Linux</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
@@ -135,7 +135,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">bin-sec</a>
+          <a href="../../index.html">二进制安全学习笔记</a>
         
       </nav>
 
@@ -200,10 +200,9 @@
 <li class="toctree-l2"><a class="reference internal" href="source.html#id2">6.3.2.1. 目录结构</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fs.html#id2">6.3.3.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fs.html#id3">6.3.3.2. 超级块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fs.html#inode">6.3.3.3. inode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fs/intro.html">6.3.3.1. 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs/overlay.html">6.3.3.2. Overlayfs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">6.3.4. 设备</a><ul>
@@ -234,6 +233,7 @@
 <li class="toctree-l2"><a class="reference internal" href="syscall.html#ioctl">6.3.8.2. ioctl</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syscall.html#fcntl">6.3.8.3. fcntl</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syscall.html#execve">6.3.8.4. execve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall.html#select">6.3.8.5. select</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a><ul>
@@ -244,7 +244,10 @@
 <li class="toctree-l2"><a class="reference internal" href="ref.html#id2">6.3.10.1. 文档与资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ref.html#id3">6.3.10.2. 调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ref.html#id4">6.3.10.3. 漏洞利用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#blog">6.3.10.4. blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id5">6.3.10.4. 文件系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id9">6.3.10.5. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id10">6.3.10.6. 安全机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#blog">6.3.10.7. blog</a></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +274,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, lyle
+        &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
