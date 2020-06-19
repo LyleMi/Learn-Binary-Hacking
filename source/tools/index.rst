@@ -5,7 +5,7 @@
    :maxdepth: 2
    :caption: 目录:
 
-   list
+   list/index
    booklist
    document
    reverse/index
