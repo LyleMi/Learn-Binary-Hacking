@@ -20,6 +20,7 @@ PE工具
 - `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
 - `binary ninja <https://binary.ninja/>`_
 - `HAL <https://github.com/emsec/hal>`_ The Hardware Analyzer
+- `bytecode viewer <https://github.com/Konloch/bytecode-viewer>`_ A Java 8+ Jar & Android APK Reverse Engineering Suite (Decompiler, Editor, Debugger & More)
 
 动态插桩
 ----------------------------------------
@@ -45,6 +46,7 @@ Ghidra
 Diff
 ----------------------------------------
 - `diaphora <https://github.com/joxeankoret/diaphora>`_
+- `polypyus <https://github.com/seemoo-lab/polypyus>`_
 
 调试工具
 ----------------------------------------

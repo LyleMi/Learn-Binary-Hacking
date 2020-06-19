@@ -42,7 +42,6 @@ Windows内核体实现与硬件体系结构支持的代码，实现底层的操�
 - Lsass.exe
     - 本地安全授权子系统，验证用户登录、授权和审计
 
-
 服务
 ----------------------------------------
 服务（Services）程序是后台运行的进程，常用来执行特定的任务，不需要和用户进行交互。比如自动更新服务、后台智能传输服务、事件日志服务等。
@@ -58,7 +57,6 @@ WMI
 Windows Management Instrumentation (WMI) 是 Web-Based Enterprise Management (WBEM)的一个实现，用于提供操作界面和对象模式以便访问有关操作系统、设备、应用程序和服务的管理信息。
 
 WMI由4个部分组成，分别为：management applications, WMI infrastructure, providers, and managed objects。
-
 
 进程与线程
 ----------------------------------------

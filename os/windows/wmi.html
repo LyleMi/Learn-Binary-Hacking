@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.6. 安全机制 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.5. WMI &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.7. 恶意软件" href="malware.html" />
-    <link rel="prev" title="6.5.5. WMI" href="wmi.html" /> 
+    <link rel="next" title="6.5.6. 安全机制" href="security.html" />
+    <link rel="prev" title="6.5.4. 注册表" href="registry.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,17 +101,12 @@
 <li class="toctree-l3"><a class="reference internal" href="basic.html">6.5.2. 基础</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.4. 注册表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.5. WMI</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.6. 安全机制</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.6.1. 核心模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#applocker">6.5.6.2. AppLocker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dep">6.5.6.3. DEP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#aslr">6.5.6.4. ASLR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#epm">6.5.6.5. EPM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#patchguard">6.5.6.6. PatchGuard</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#code-signing">6.5.6.7. Code Signing</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.5. WMI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.5.5.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.5.2. 工具</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.6. 安全机制</a></li>
 <li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.7. 恶意软件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.8. 术语与缩写</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.9. 参考链接</a></li>
@@ -178,13 +173,13 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.6. 安全机制</li>
+      <li>6.5.5. WMI</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/security.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/wmi.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -197,55 +192,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>6.5.6. 安全机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="wmi">
+<h1>6.5.5. WMI<a class="headerlink" href="#wmi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.5.5.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>WMI (Windows Management Instrumentation) 即 Windows 管理规范，从 Windows NT 4.0 开始出现在所有的 Windows 操作系统中，用于管理本地或远程的 Windows 系统。</p>
+</div>
 <div class="section" id="id2">
-<h2>6.5.6.1. 核心模块<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>SRM: Security reference monitor</p></li>
-</ul>
+<h2>6.5.5.2. 工具<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wmic">
+<h3>6.5.5.2.1. wmic<a class="headerlink" href="#wmic" title="Permalink to this headline">¶</a></h3>
+<p>wmic 是一个与 WMI 进行交互的命令行工具，拥有大量的 WMI 对象的方便记忆的默认别名。</p>
 </div>
-<div class="section" id="applocker">
-<h2>6.5.6.2. AppLocker<a class="headerlink" href="#applocker" title="Permalink to this headline">¶</a></h2>
-<p>AppLocker用于管理Windows运行的应用和文件。</p>
-<p>提供了各种不同程度的定制来方便用户/安全组制定规则。</p>
+<div class="section" id="wbemtest">
+<h3>6.5.5.2.2. wbemtest<a class="headerlink" href="#wbemtest" title="Permalink to this headline">¶</a></h3>
+<p>wbemtest 是一个带有图形界面的 WMI 诊断工具。它能够枚举对象实例、执行查询、注册事件、修改 WMI 对象和类，并且可以在本地或远程去调用方法。</p>
+</div>
+<div class="section" id="winrm">
+<h3>6.5.5.2.3. winrm<a class="headerlink" href="#winrm" title="Permalink to this headline">¶</a></h3>
+<p>winrm 是 WS-Management 协议的 Microsoft 实现，该协议为使用 Web 服务的本地计算机和远程计算机之间的通信提供了一种安全的方式。</p>
+</div>
 <div class="section" id="id3">
-<h3>6.5.6.2.1. 内存破坏漏洞防护机制<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.5.2.4. wmic<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>wmic 是一个简单的 Linux 命令行工具，用于执行 WMI 查询。</p>
 </div>
-</div>
-<div class="section" id="dep">
-<h2>6.5.6.3. DEP<a class="headerlink" href="#dep" title="Permalink to this headline">¶</a></h2>
-<p>DEP（Data Executive Protection，数据执行保护）从Windows XP SP2开始引入，缺省仅为基本的Windows程序和服务启用DEP。</p>
-<p>DEP的基本原理是将数据所在的内存页标记为不可执行，当程序产生溢出，恶意代码试图在数据段执行指令时，CPU会产生异常而不去执行指令。</p>
-<p>实现DEP机制需要CPU的支持。为此AMD公司推出了EVP（enhanced virus protection）技术，Intel推出了EDB （execute disable bit）技术，这些技术在原理上均是在内存的页面表（Page Table）中加入一个特殊的标 识位（NX/XD）来标识是否允许在该页上执行指令。</p>
-<p>DEP有四种可选参数：</p>
-<p>– Optin：对于大多数用户版本的操作系统来说，默认仅将DEP保护是仅仅为一些基本的Windows程序和服务启用。该模式可被应用程序动态关闭
-– Optout：系统为所有在所选列表外的程序和服务启用DEP，这种模式下，DEP仍可被应用程序关闭。该模式多用于服务器版本的操作系统，如Windows Server 2003/2008
-– AlwaysOn：对所有的进程启用DEP的保护，不存在排除列表。该模式下，DEP不可以被关闭，这是一种仅仅在64位操作系统上才能实现的工作模式，这在最大限度上保证了所有程序都能够抵御常见的数据溢出攻击
-– AlwaysOff：对所有的进程都禁用了DEP，DEP也不能被应用程序动态开启，这该模式一般只有在特殊场合才会使用</p>
-</div>
-<div class="section" id="aslr">
-<h2>6.5.6.4. ASLR<a class="headerlink" href="#aslr" title="Permalink to this headline">¶</a></h2>
-<p>ASLR（ Address Space Layout Randomization， 内存地址空间布局随机化）在加载程序到内存空间时随机化各个模块的起始加载地址，防止攻击者定位攻击指令代码的位置。</p>
-<p>ASLR需要操作系统及应用程序的双重支持才能发挥作用，支持ASLR的程序在PE头中会设置IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE标识表明其支持ASLR。</p>
-<p>ASLR主要影响的部分模块随机化、堆栈随机化和PEB/TEB随机化。模块随机化指系统将PE文件映射到内存时，对其加载基地址进行随机化处理， 基地址在系统启动时确定，系统重启后会变化。堆栈随机化指每次程序加载后，其内存空间中堆、栈的基址都会发生变化。于是内存中的变量所在的地址也会发生变化。</p>
-<p>ASLR在Windows Vista/7引入实现，但机制尚不完善，攻击者还能在一定范围内进行漏洞利用。比如使用堆喷射、利用没有随机化的系统或软件的EXE/DLL等方式。</p>
-</div>
-<div class="section" id="epm">
-<h2>6.5.6.5. EPM<a class="headerlink" href="#epm" title="Permalink to this headline">¶</a></h2>
-<p>EPM （Enhanced Protection Mode，增强保护模式）也叫做“沙盒模式”（Sandbox Mode），本质上是隔离进程和降低权限。该机制Windows 8的IE 10开始引入，从Windows 8.1开始默认启用。</p>
-</div>
-<div class="section" id="patchguard">
-<h2>6.5.6.6. PatchGuard<a class="headerlink" href="#patchguard" title="Permalink to this headline">¶</a></h2>
-<p>PatchGuard是在64位版本的Windows操作系统中提供的新功能，用于保护操作系统的核心结构，防止他们被其他程序修改。</p>
-<p>其对系统服务描述符表SSDT（System Service Descriptor Table）、全局描述符表GDT（Global Descriptor Table）和中断描述符表IDT（Interrupt Descriptor Table）、系统映像System images（ntoskrnl.exe, ndis.sys, hal.dll）等进行保护。</p>
-<p>PatchGuard处在系统任务的一个较高层面上，通过每隔一定时间进行一些固定的检查来确定这些系统关键内容是否更改。这些检查主要通过将核心内容与缓存中已保存的已知正确的备份进行对比，检测间隔大约为5-10分钟左右的某一随机选择时间。</p>
-<p>PatchGuard的缺点在于缺乏本地硬件水平的支持，只能通过轮询的形式，而不是采用事件驱动或硬件驱动的形式。</p>
-</div>
-<div class="section" id="code-signing">
-<h2>6.5.6.7. Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h2>
-<p>Code Signing（代码签名）检查机制需要加载到系统内核中运行的驱动程序必须有数字签名以保证 其代码的完整性，否则系统内核就不加载该驱动程序。</p>
-<p>代码完整性检测被加载到内核中的驱动程序或系统文件是否已经被签名，或正在运行系统管理员账户权限的系统文件是否已被恶意软件篡改。在基于x64版本的操作系统下，内核模式的驱动程序必须进行数字签名后才能被加载。</p>
 </div>
 </div>
 
@@ -257,10 +227,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="malware.html" class="btn btn-neutral float-right" title="6.5.7. 恶意软件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="security.html" class="btn btn-neutral float-right" title="6.5.6. 安全机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="wmi.html" class="btn btn-neutral float-left" title="6.5.5. WMI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="registry.html" class="btn btn-neutral float-left" title="6.5.4. 注册表" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

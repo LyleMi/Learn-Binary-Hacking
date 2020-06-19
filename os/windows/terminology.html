@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5. Windows &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.8. 术语与缩写 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.1. 版本历史" href="history.html" />
-    <link rel="prev" title="6.4. Mac OS" href="../macos.html" /> 
+    <link rel="next" title="6.5.9. 参考链接" href="ref.html" />
+    <link rel="prev" title="6.5.7. 恶意软件" href="malware.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linux/index.html">6.3. Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.5. Windows</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.5. Windows</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic.html">6.5.2. 基础</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.3. 文件系统</a></li>
@@ -104,7 +104,14 @@
 <li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.5. WMI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="security.html">6.5.6. 安全机制</a></li>
 <li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.7. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.8. 术语与缩写</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.8. 术语与缩写</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ssdt">6.5.8.1. SSDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#idt">6.5.8.2. IDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gdt">6.5.8.3. GDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldt">6.5.8.4. LDT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.8.5. 常见缩写</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.9. 参考链接</a></li>
 </ul>
 </li>
@@ -167,13 +174,15 @@
         
           <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
         
-      <li>6.5. Windows</li>
+          <li><a href="index.html">6.5. Windows</a> &raquo;</li>
+        
+      <li>6.5.8. 术语与缩写</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/terminology.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -186,69 +195,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="windows">
-<h1>6.5. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">目录:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="history.html">6.5.1. 版本历史</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="history.html#windows-nt">6.5.1.1. Windows NT</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="basic.html">6.5.2. 基础</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic.html#id2">6.5.2.1. 运行模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic.html#id3">6.5.2.2. 基本模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic.html#id4">6.5.2.3. 系统进程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic.html#id5">6.5.2.4. 服务</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic.html#wmi">6.5.2.5. WMI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic.html#id6">6.5.2.6. 进程与线程</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fs.html">6.5.3. 文件系统</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fs.html#fat">6.5.3.1. FAT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fs.html#ntfs">6.5.3.2. NTFS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fs.html#refs">6.5.3.3. ReFS</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">6.5.4. 注册表</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="registry.html#id2">6.5.4.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="registry.html#id3">6.5.4.2. 数据类型</a></li>
-<li class="toctree-l2"><a class="reference internal" href="registry.html#root-key">6.5.4.3. root key</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="wmi.html">6.5.5. WMI</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wmi.html#id1">6.5.5.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wmi.html#id2">6.5.5.2. 工具</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="security.html">6.5.6. 安全机制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="security.html#id2">6.5.6.1. 核心模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#applocker">6.5.6.2. AppLocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#dep">6.5.6.3. DEP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#aslr">6.5.6.4. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#epm">6.5.6.5. EPM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#patchguard">6.5.6.6. PatchGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#code-signing">6.5.6.7. Code Signing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="malware.html">6.5.7. 恶意软件</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="malware.html#id2">6.5.7.1. 行为检测绕过</a></li>
-<li class="toctree-l2"><a class="reference internal" href="malware.html#dll">6.5.7.2. DLL注入</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="terminology.html">6.5.8. 术语与缩写</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="terminology.html#ssdt">6.5.8.1. SSDT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="terminology.html#idt">6.5.8.2. IDT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="terminology.html#gdt">6.5.8.3. GDT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="terminology.html#ldt">6.5.8.4. LDT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="terminology.html#id2">6.5.8.5. 常见缩写</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ref.html">6.5.9. 参考链接</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id2">6.5.9.1. 文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id3">6.5.9.2. 漏洞利用</a></li>
-</ul>
-</li>
+  <div class="section" id="id1">
+<h1>6.5.8. 术语与缩写<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ssdt">
+<h2>6.5.8.1. SSDT<a class="headerlink" href="#ssdt" title="Permalink to this headline">¶</a></h2>
+<p>SSDT（System Services Descriptor Table）是系统服务描述符表，这个表把 Ring3 的 Win32 API 和 Ring0 的内核 API 联系起来。</p>
+<p>SSDT 并不仅仅只包含一个庞大的地址索引表，它还包含着一些其它有用的信息，诸如地址索引的基地址、服务函数个数等。</p>
+<p>通过修改此表的函数地址可以对常用Windows函数及API进行Hook，从而实现对一些关心的系统动作进行过滤、监控的目的。</p>
+<p>一些HIPS、防毒软件、系统监控、注册表监控软件往往会采用此接口来实现自己的监控模块。</p>
+</div>
+<div class="section" id="idt">
+<h2>6.5.8.2. IDT<a class="headerlink" href="#idt" title="Permalink to this headline">¶</a></h2>
+<p>IDT（Interrupt Descriptor Table）是中断描述符表，是操作系统用于处理中断的。</p>
+</div>
+<div class="section" id="gdt">
+<h2>6.5.8.3. GDT<a class="headerlink" href="#gdt" title="Permalink to this headline">¶</a></h2>
+<p>GDT，即全局描述表（GDT Global Descriptor Table）。</p>
+</div>
+<div class="section" id="ldt">
+<h2>6.5.8.4. LDT<a class="headerlink" href="#ldt" title="Permalink to this headline">¶</a></h2>
+<p>LDT（Local Descriptor Table），即局部描述符表。</p>
+</div>
+<div class="section" id="id2">
+<h2>6.5.8.5. 常见缩写<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Alpc: Advanced Local Inter-Process Communication</p></li>
+<li><p>Cc: Common Cache</p></li>
+<li><p>Cm: Configuration manager</p></li>
+<li><p>Dbgk: Debugging Framework for User-Mode</p></li>
+<li><p>Em: Errata Manager</p></li>
+<li><p>Etw: Event Tracing for Windows</p></li>
+<li><p>Ex: Executive support routines</p></li>
+<li><p>FsRtl: File system driver run-time library</p></li>
+<li><p>Hvl: Hypervisor Library Io I/O manager</p></li>
+<li><p>Kd: Kernel Debugger</p></li>
+<li><p>Ke: Kernel</p></li>
+<li><p>Lsa: Local Security Authority</p></li>
+<li><p>Mm: Memory manager</p></li>
+<li><p>Nt: NT system services (most of which are exported as Windows functions) Ob Object manager</p></li>
+<li><p>Pf: Prefetcher</p></li>
+<li><p>Po: Power manager</p></li>
+<li><p>Pp: PnP manager</p></li>
+<li><p>Ps: Process support</p></li>
+<li><p>Rtl: Run-time library</p></li>
+<li><p>Se: Security</p></li>
+<li><p>Sm: Store Manager</p></li>
+<li><p>Tm: Transaction Manager</p></li>
+<li><p>Vf: Verifier</p></li>
+<li><p>Wdi: Windows Diagnostic Infrastructure Whea Windows Hardware Error Architecture Wmi Windows Management Instrumentation</p></li>
+<li><p>Zw: Mirror entry point for system services</p></li>
 </ul>
 </div>
 </div>
@@ -261,10 +256,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="history.html" class="btn btn-neutral float-right" title="6.5.1. 版本历史" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ref.html" class="btn btn-neutral float-right" title="6.5.9. 参考链接" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../macos.html" class="btn btn-neutral float-left" title="6.4. Mac OS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="malware.html" class="btn btn-neutral float-left" title="6.5.7. 恶意软件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
