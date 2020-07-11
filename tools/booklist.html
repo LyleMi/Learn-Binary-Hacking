@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="13.3. 文档资料" href="document.html" />
-    <link rel="prev" title="13.1. 工具列表" href="list.html" /> 
+    <link rel="prev" title="13.1.7. 其他" href="list/misc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">13. 工具与资源</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="list.html">13.1. 工具列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list/index.html">13.1. 工具列表</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">13.2. 书单</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">13.2.1. 操作系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">13.2.2. 编译原理</a></li>
@@ -110,9 +110,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#id8">13.2.7. 虚拟化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">13.2.8. 漏洞利用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">13.2.9. 垃圾回收</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">13.2.10. 逆向分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">13.2.10. 逆向工程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">13.2.11. 程序优化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">13.2.12. 综合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">13.2.12. 安全开发</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">13.2.13. 综合</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="document.html">13.3. 文档资料</a></li>
@@ -195,14 +196,13 @@
 <div class="section" id="id2">
 <h2>13.2.1. 操作系统<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Linux内核设计与实现 - Linux Kernel Development</p></li>
 <li><p>Linux系统编程</p></li>
 <li><p>Linux内核情景分析</p></li>
 <li><p>深入理解Linux网络内幕</p></li>
 <li><p>深入理解Linux虚拟内存管理</p></li>
 <li><p>Linux内核完全注释</p></li>
 <li><p>Linux设备驱动程序</p></li>
-<li><p>深入理解Linux内核</p></li>
+<li><p>《深入理解Linux内核》 【美】DanielP.Bovet</p></li>
 <li><p>CSAPP</p></li>
 <li><p>Windows Internal</p></li>
 <li><p>深入理解Mac OS X &amp; iOS操作系统</p></li>
@@ -210,6 +210,10 @@
 <li><p><a class="reference external" href="https://book.douban.com/subject/25900403/">Unix环境高级编程</a></p></li>
 <li><p><a class="reference external" href="https://book.douban.com/subject/1390650/">现代操作系统</a></p></li>
 <li><p><a class="reference external" href="https://book.douban.com/subject/1422377/">自己动手写操作系统</a></p></li>
+<li><p>《编码：隐匿在计算机软硬件背后的语言》 【美】Charles Petzold</p></li>
+<li><p>《深入理解计算机系统》【美】Randal E.Bryant</p></li>
+<li><p>《深入理解Windows操作系统》【美】Russinovich,M.E.；Solomon,D.A.</p></li>
+<li><p>《Linux内核设计与实现》【美】Robert Love</p></li>
 </ul>
 </div>
 <div class="section" id="id5">
@@ -239,6 +243,9 @@
 <h2>13.2.5. Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Android软件安全与逆向分析</p></li>
+<li><p>《Android系统源代码情景分析》罗升阳</p></li>
+<li><p>《Android Dalvik虚拟机结构及机制剖析（第1、2卷）》吴艳霞；张国印</p></li>
+<li><p>《Android Internals::Power User’s View》【美】Jonathan Levin</p></li>
 </ul>
 </div>
 <div class="section" id="id7">
@@ -268,10 +275,19 @@
 </ul>
 </div>
 <div class="section" id="id11">
-<h2>13.2.10. 逆向分析<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.10. 逆向工程<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>恶意代码分析实战</p></li>
 <li><p>C++反汇编与逆向技术分析</p></li>
+<li><p>《编译与反编译技术实战》 庞建民</p></li>
+<li><p>《加密与解密》段钢</p></li>
+<li><p>《恶意软件分析诀窍与工具箱——对抗“流氓”软件的技术与利器》【美】Michael Hale Ligh；Steven Adair</p></li>
+<li><p>《C++反汇编与逆向分析技术揭秘》钱林松；赵海旭</p></li>
+<li><p>《IDA权威指南》【美】Chris Eagle</p></li>
+<li><p>《逆向工程权威指南》【乌克兰】Dennis Yurichev，多平台入门大全</p></li>
+<li><p>《Android软件安全与逆向分析》丰生强</p></li>
+<li><p>《macOS软件安全与逆向分析》丰生强</p></li>
+<li><p>《iOS应用逆向工程（第2版）》沙梓社；吴航</p></li>
 </ul>
 </div>
 <div class="section" id="id12">
@@ -282,7 +298,17 @@
 </ul>
 </div>
 <div class="section" id="id13">
-<h2>13.2.12. 综合<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2>13.2.12. 安全开发<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>《天书夜读：从汇编语言到Windows内核编程》谭文；邵坚磊</p></li>
+<li><p>《Rootkit：系统灰色地带的潜伏者》【美】Bill Blunden</p></li>
+<li><p>《Rootkits——Windows内核的安全防护》【美】Gerg Hoglund；James Butler</p></li>
+<li><p>《BSD ROOTKIT设计——内核黑客指引书》【美】Joseph Kong</p></li>
+<li><p>《寒江独钓：Windows内核安全编程》谭文；杨潇；邵坚磊</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h2>13.2.13. 综合<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>程序员的自我修养 —— 链接、装载与库</p></li>
 <li><p>计算机程序的构造和解释</p></li>
@@ -302,7 +328,7 @@
         <a href="document.html" class="btn btn-neutral float-right" title="13.3. 文档资料" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="list.html" class="btn btn-neutral float-left" title="13.1. 工具列表" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="list/misc.html" class="btn btn-neutral float-left" title="13.1.7. 其他" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -47,3 +47,4 @@ QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的
 - `qemu source code on github <https://github.com/qemu/qemu>`_
 - `QEMU, a Fast and Portable Dynamic Translator <https://static.usenix.org/event/usenix05/tech/freenix/full_papers/bellard/bellard.pdf>`_
 - `使用 QEMU 进行系统仿真 <https://www.ibm.com/developerworks/cn/linux/l-qemu/index.html>`_
+- `QEMU 信息泄露漏洞 CVE-2015-5165 分析及利用 <https://programlife.net/2020/06/30/cve-2015-5165-qemu-rtl8139-vulnerability-analysis/>`_
