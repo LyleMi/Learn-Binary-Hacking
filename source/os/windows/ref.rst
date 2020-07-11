@@ -6,6 +6,7 @@
 - `Windows Management Instrumentation <https://docs.microsoft.com/zh-cn/windows/win32/wmisdk/wmi-start-page>`_
 - `Windows NT Wiki <https://en.wikipedia.org/wiki/Windows_NT>`_
 - `AppLocker <https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview>`_
+- `Antimalware Scan Interface (AMSI) <https://docs.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal>`_
 
 漏洞利用
 ----------------------------------------

@@ -17,6 +17,8 @@ Sandbox
 ----------------------------------------
 - `any.run <https://app.any.run/>`_
 - `Noriben <https://github.com/Rurik/Noriben>`_ Portable, Simple, Malware Analysis Sandbox
+- `Cuckoo <https://cuckoosandbox.org/>`_
+- `redmimicry <https://redmimicry.com/>`_
 
 Malware Sample
 ----------------------------------------
@@ -26,3 +28,7 @@ Malware Sample
 实验环境
 ----------------------------------------
 - `ABD <https://github.com/malrev/ABD>`_ Course materials for Advanced Binary Deobfuscation by NTT Secure Platform Laboratories
+
+系统交互
+----------------------------------------
+- `PythonForWindows <https://github.com/hakril/PythonForWindows>`_  is a base of code aimed to make interaction with Windows

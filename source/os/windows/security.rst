@@ -1,12 +1,26 @@
 安全机制
 ========================================
 
+AMSI
+----------------------------------------
+AMSI（Anti-Malware Scan Interface，反恶意软件扫描接口）是从Windows 10开始引入的一种机制。程序和服务可以将“数据”发送到安装在系统上的反恶意软件服务（例如Windows Defender）上。
+
+AMSI基于hook来实现检测，例如，AMSI会hook WSH（Windows Scripting Host）及PowerShell来分析正在执行的代码内容。
+
+在Windows中，实现AMSI的所有组件如下：
+
+- UAC
+- PowerShell
+- Windows Script Host
+- VBScript
+- Office VBA宏
+
 核心模块
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 - SRM: Security reference monitor
 
 AppLocker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 AppLocker用于管理Windows运行的应用和文件。
 
 提供了各种不同程度的定制来方便用户/安全组制定规则。

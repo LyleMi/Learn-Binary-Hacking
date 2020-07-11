@@ -12,3 +12,8 @@ Android
 漏洞
 ----------------------------------------
 - `qark <https://github.com/linkedin/qark>`_ Tool to look for several security related Android application vulnerabilities
+
+改机工具
+----------------------------------------
+- `Xposed <https://github.com/rovo89/Xposed>`_
+- `Magisk <https://github.com/topjohnwu/Magisk>`_

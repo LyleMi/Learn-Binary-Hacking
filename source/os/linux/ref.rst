@@ -6,6 +6,7 @@
 - `The Linux Kernel Archives <https://www.kernel.org>`_
 - `The Linux Kernel documentation <https://www.kernel.org/doc/html/latest/>`_
 - `linux insides <https://github.com/0xAX/linux-insides>`_ A book-in-progress about the linux kernel and its insides
+- `Embedded Linux Wiki <https://elinux.org/Main_Page>`_
 
 调试
 ----------------------------------------

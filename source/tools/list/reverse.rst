@@ -31,6 +31,7 @@ IDA
 - `IDAGolangHelper <https://github.com/sibears/IDAGolangHelper>`_ Set of IDA Pro scripts for parsing GoLang types information stored in compiled binary
 - `abyss <https://github.com/patois/abyss>`_ IDAPython Plugin for Postprocessing of Hexrays Decompiler Output
 - `Sark <https://github.com/tmr232/Sark>`_ IDA Plugins & IDAPython Scripting Library
+- `IDA minsc <https://github.com/arizvisa/ida-minsc>`_ is a plugin for IDA Pro that assists a user with scripting the IDAPython plugin that is bundled with the disassembler
 
 Ghidra
 ----------------------------------------
@@ -41,3 +42,11 @@ Diff
 ----------------------------------------
 - `diaphora <https://github.com/joxeankoret/diaphora>`_
 - `polypyus <https://github.com/seemoo-lab/polypyus>`_
+
+Patch
+----------------------------------------
+- `e9patch <https://github.com/GJDuck/e9patch>`_ A powerful static binary rewriting tool
+
+文件分析
+----------------------------------------
+- `oletools <https://github.com/decalage2/oletools>`_ python tools to analyze MS OLE2 files and MS Office documents
