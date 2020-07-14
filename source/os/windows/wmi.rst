@@ -3,7 +3,9 @@ WMI
 
 简介
 ----------------------------------------
-WMI (Windows Management Instrumentation) 即 Windows 管理规范，从 Windows NT 4.0 开始出现在所有的 Windows 操作系统中，用于管理本地或远程的 Windows 系统。
+Windows Management Instrumentation (WMI) 是 Web-Based Enterprise Management (WBEM)的一个实现，从 Windows NT 4.0 开始出现在所有的 Windows 操作系统中，用于提供操作界面和对象模式以便访问有关操作系统、设备、应用程序和服务的管理信息。
+
+WMI由4个部分组成，分别为：management applications, WMI infrastructure, providers, and managed objects。
 
 工具
 ----------------------------------------
