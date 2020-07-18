@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.18. 参考链接 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.3.7. 进程 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.6. Android" href="../android.html" />
-    <link rel="prev" title="6.5.17. 术语与缩写" href="terminology.html" /> 
+    <link rel="next" title="6.3.8. 防御措施" href="mitigation.html" />
+    <link rel="prev" title="6.3.6. ELF" href="elf.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,33 +94,29 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. 操作系统</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../overview.html">6.1. 概述</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../boot.html">6.2. Boot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linux/index.html">6.3. Linux</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.7. 进程</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.7.1. 概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.3.7.2. 作业调度算法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.3.7.3. 组成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6.3.7.4. 进程调度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.3.7.5. 进程间通信</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.8. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.9. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.10. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.11. 参考链接</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">6.5. Windows</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kernel.html">6.5.2. Windows 内核</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html">6.5.3. 服务</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.5.4. 进程与线程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
-<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.18. 参考链接</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.18.1. 文档</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.18.2. 漏洞利用</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">6.5. Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
@@ -180,15 +176,15 @@
         
           <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
         
-          <li><a href="index.html">6.5. Windows</a> &raquo;</li>
+          <li><a href="index.html">6.3. Linux</a> &raquo;</li>
         
-      <li>6.5.18. 参考链接</li>
+      <li>6.3.7. 进程</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/ref.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/linux/process.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -202,22 +198,45 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.18. 参考链接<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.3.7. 进程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.5.18.1. 文档<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.microsoft.com/zh-cn/windows/win32/wmisdk/wmi-start-page">Windows Management Instrumentation</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Windows_NT">Windows NT Wiki</a></p></li>
-<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview">AppLocker</a></p></li>
-<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal">Antimalware Scan Interface (AMSI)</a></p></li>
-</ul>
+<h2>6.3.7.1. 概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>进程是程序处于一个执行环境中在一个数据集上的运行过程，它是系统进行资源分配和调度的一个可并发执行的独立单位。</p>
 </div>
 <div class="section" id="id3">
-<h2>6.5.18.2. 漏洞利用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.7.2. 作业调度算法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.redog.me/tags/windows-kernel-exploit-tutorial/">windows kernel exploit tutorial</a></p></li>
-<li><p><a class="reference external" href="https://github.com/hacksysteam/HackSysExtremeVulnerableDriver">HEVD</a></p></li>
-<li><p><a class="reference external" href="https://github.com/leeqwind/HolicPOC">HolicPOC</a></p></li>
+<li><p>先来先服务（FCFS） 有利于长作业而不利于短作业。</p></li>
+<li><p>短作业优先（SJF） 较短的作业平均等待时间 ，较大的系统吞吐率。</p></li>
+<li><p>响应比高优先（HRN） 求等待时间与执行时间两者时间之比。相对等待时间长优先。</p></li>
+<li><p>优先级调度 作业的紧急程度、资源要求、类别等。</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>6.3.7.3. 组成<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>进程控制块（PCB）</p></li>
+<li><p>进程执行的程序（code）</p></li>
+<li><p>进程执行时所用的数据</p></li>
+<li><p>进程执行时使用的工作区</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>6.3.7.4. 进程调度<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>先来先服务（FIFO）调度算法</p></li>
+<li><p>时间片轮转法</p></li>
+<li><p>优先级调度算法</p></li>
+<li><p>多级反馈队列调度算法</p></li>
+<li><p>实时系统调度策略</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>6.3.7.5. 进程间通信<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>消息通信</p></li>
+<li><p>共享存储区</p></li>
+<li><p>管道通信</p></li>
 </ul>
 </div>
 </div>
@@ -230,10 +249,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../android.html" class="btn btn-neutral float-right" title="6.6. Android" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mitigation.html" class="btn btn-neutral float-right" title="6.3.8. 防御措施" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="terminology.html" class="btn btn-neutral float-left" title="6.5.17. 术语与缩写" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="elf.html" class="btn btn-neutral float-left" title="6.3.6. ELF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

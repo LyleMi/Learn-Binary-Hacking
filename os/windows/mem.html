@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.12. 注册表 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.5. 内存管理 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.13. WMI" href="wmi.html" />
-    <link rel="prev" title="6.5.11. 网络机制" href="network.html" /> 
+    <link rel="next" title="6.5.6. 文件系统" href="fs.html" />
+    <link rel="prev" title="6.5.4. 进程与线程" href="process.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,25 +101,21 @@
 <li class="toctree-l3"><a class="reference internal" href="kernel.html">6.5.2. Windows 内核</a></li>
 <li class="toctree-l3"><a class="reference internal" href="services.html">6.5.3. 服务</a></li>
 <li class="toctree-l3"><a class="reference internal" href="process.html">6.5.4. 进程与线程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.12. 注册表</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.12.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.12.2. 数据类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.12.3. root key</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.5. 内存管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.5.1. 内存管理器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtural-memory">6.5.5.2. 虚拟内存（Virtural Memory）</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
-<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.6. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.7. 身份认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.8. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.9. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.10. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.11. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.12. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.13. 恶意软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.14. 术语与缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.15. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
@@ -183,13 +179,13 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.12. 注册表</li>
+      <li>6.5.5. 内存管理</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/registry.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/mem.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,153 +199,33 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.12. 注册表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.5.5. 内存管理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.5.12.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
-<p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
-<p>涉及到注册表的有：</p>
-<ol class="arabic simple">
-<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
-<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
-<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
-<li><p>在应用启动时，读取各种配置文件。</p></li>
-</ol>
-</div>
-<div class="section" id="id3">
-<h2>6.5.12.2. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.5.1. 内存管理器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>每个进程都有属于它的巨大的、连续的私有内存地址空间（即虚拟地址）。</p></li>
 <li><dl class="simple">
-<dt>REG_NONE</dt><dd><ul>
-<li><p>没有值</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_SZ</dt><dd><ul>
-<li><p>固定长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_EXPAND_SZ</dt><dd><ul>
-<li><p>可变长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_BINARY</dt><dd><ul>
-<li><p>任意长度二进制数据</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD</dt><dd><ul>
-<li><p>32 bit 数字</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
-<li><p>32 bit 数字，大端</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_LINK</dt><dd><ul>
-<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_MULTI_SZ</dt><dd><ul>
-<li><p>Unicode 字符串</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_LIST</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
-<li><p>资源需求</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_QWORD</dt><dd><ul>
-<li><p>64 bit 数字</p></li>
+<dt>内存管理器的功能：</dt><dd><ul>
+<li><p>将虚拟的私有内存翻译/映射到真正存放数据的物理内存，可以隔离不同进程之间的数据读写。</p></li>
+<li><p>当物理内存耗尽时，将内存换页（page）到磁盘上去；然后当需要时再换页回来。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 </div>
-<div class="section" id="root-key">
-<h2>6.5.12.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="virtural-memory">
+<h2>6.5.5.2. 虚拟内存（Virtural Memory）<a class="headerlink" href="#virtural-memory" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>每个进程都有它自己的虚拟地址空间。</p></li>
+<li><p>虚拟内存提供了和物理内存不相关的逻辑视图。</p></li>
 <li><dl class="simple">
-<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
-<li><p>AppEvents：事件关联</p></li>
-<li><p>Console：控制台设定</p></li>
-<li><p>Control Panel：控制面板</p></li>
-<li><p>Environment：环境变量</p></li>
-<li><p>EUDC：用户定义字符</p></li>
-<li><p>Identities：Windows Mail账户信息</p></li>
-<li><p>Keyboard Layout：键盘布局</p></li>
-<li><p>Network：网络驱动信息</p></li>
-<li><p>Printers：打印机</p></li>
-<li><p>Software：软件</p></li>
-<li><p>Volatile Environment：可变的环境变量</p></li>
+<dt>换页（Paging）是和磁盘传输内存内容的过程。</dt><dd><ul>
+<li><p>虚拟内存的大小可以超过可用的物理内存。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>HKEY_USERS：所有用户有关的数据</p></li>
-<li><dl class="simple">
-<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
-<li><p>文件后缀关联</p></li>
-<li><p>COM（Component Object Model）注册</p></li>
-<li><p>UAC</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
-<li><p>HKLMBCD00000000</p></li>
-<li><p>HKLMCOMPONENTS</p></li>
-<li><p>HKLMHARDWARE</p></li>
-<li><p>HKLMSAM</p></li>
-<li><p>HKLMSECURITY</p></li>
-<li><p>HKLMSOFTWARE</p></li>
-<li><p>HKLMSYSTEM</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
-<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
 </ul>
 </div>
 </div>
@@ -362,10 +238,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wmi.html" class="btn btn-neutral float-right" title="6.5.13. WMI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fs.html" class="btn btn-neutral float-right" title="6.5.6. 文件系统" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network.html" class="btn btn-neutral float-left" title="6.5.11. 网络机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="process.html" class="btn btn-neutral float-left" title="6.5.4. 进程与线程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

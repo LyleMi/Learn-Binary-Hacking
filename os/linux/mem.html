@@ -97,11 +97,14 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.5. 内存管理</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.5.1. 内存管理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">6.3.5.2. 虚拟地址转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.5.1. 地址定位方式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.3.5.2. 内存管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.3.5.3. 内存扩充</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">6.3.5.4. 分页存储</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">6.3.5.5. 虚拟地址转换</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
@@ -196,9 +199,51 @@
   <div class="section" id="id1">
 <h1>6.3.5. 内存管理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.3.5.1. 内存管理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.5.1. 地址定位方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>固定定位方式</dt><dd><ul>
+<li><p>汇编和机器代码一一对应</p></li>
+<li><p>容易覆盖操作系统</p></li>
+<li><p>只支持单道程序</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>静态重定位方式</dt><dd><ul>
+<li><p>源程序经编译和连接后生产的目标代码的地址是以0为起始地址的相对地址</p></li>
+<li><p>当需要执行时，由装入程序运行重定位程序模块，根据作业在本次分配到的内存起始地址将可执行代码装如指定内存地址，并修改有关地址部分的值</p></li>
+<li><p>修改的方式是对每一个逻辑地址的值加上内存区首地址</p></li>
+<li><p>需要整块的地址</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>动态重定位</dt><dd><ul>
+<li><p>在装入内存的时，不修改逻辑地址，访问逻辑地址时，动态的讲逻辑地址变成物理地址</p></li>
+<li><p>在执行指令时，若设计到逻辑地址，则将该地址送入虚地址寄存器VR，再将BR和VR相加送入地址寄存器MR</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 <div class="section" id="id3">
-<h3>6.3.5.1.1. 内存回收<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h2>6.3.5.2. 内存管理<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>6.3.5.2.1. 内存分配<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>首次适应法</p></li>
+<li><p>循环首次适应法</p></li>
+<li><p>最佳适应算法</p></li>
+<li><p>最差适应算法</p></li>
+<li><p>多重分区</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>6.3.5.2.2. 内存回收<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>在运行时需要回收一些很少使用的内存页面来保证系统持续有内存使用。页面回收的方式有页回写、页交换和页丢弃三种方式。</p>
 <p>页回写指一个很少使用的页的后备存储器是一个块设备（例如文件映射），则可以将内存直接同步到块设备，腾出的页面可以被重用。</p>
 <p>页交换指页面没有后备存储器，则可以交换到特定swap分区，再次被访问时再交换回内存。</p>
@@ -206,8 +251,32 @@
 <p>回收时间一般在内存紧缺时回收，或者周期性回收，或者由用户触发回收。</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>6.3.5.2. 虚拟地址转换<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>6.3.5.3. 内存扩充<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>6.3.5.3.1. 覆盖<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>在单用户系统中，为了能在较小的内存空间中运行大作业，可采用“覆盖”技术。覆盖技术就是将一个大程序按程序的逻辑结构划分成若干个程序（或数据）段，并将不会同时执行、从而就不必同时装入内存的程序段分在一组内，该组称为覆盖段。这个覆盖段可分配到同一个称为覆盖区的存储区域。</p>
+</div>
+<div class="section" id="id8">
+<h3>6.3.5.3.2. 交换技术<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>覆盖技术用于一个作业的内部，交换技术用于不同的作业。早期在单一连续分配的存储区管理系统中，采用交换技术也可以实现多道程序设计。任一时刻，主存中只保留一个完整的用户作业。当该作业的时间片用完或因等待某一事件而不能继续运行时，系统就挑选下一个作业进入主存运行。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>6.3.5.4. 分页存储<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>页式存储管理的基本思想是把作业的虚地址空间划分成若干长度相等的页（page）,也称虚页，每一个作业的虚页都从0开始编号。主存也划分成若干与虚页长度相等的页架（frame），也称页框或实页，主存的页架也从0开始编号。程序装入时，每一个虚页装到主存中的一个页架中，这些页架可以是不连续的。</p>
+<div class="section" id="id10">
+<h3>6.3.5.4.1. 页淘汰<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>最优淘汰算法（OPT）</p></li>
+<li><p>先进先出淘汰算法（FIFO）</p></li>
+<li><p>最近最少使用淘汰算法（LRU）</p></li>
+<li><p>最近未使用淘汰算法（NUR）</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>6.3.5.5. 虚拟地址转换<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>地址转换负责将虚拟地址转换成物理地址，有多个应用场景。</p>
 <p>应用在虚拟内存中，可以给应用程序一种独占整个计算机内存的假象，可以使用超过实际物理大小的内存，应用程序之间互不干扰。</p>
 <p>用于进程隔离，可以构建沙盒技术，避免操作系统内核和应用程序受到病毒或者恶意代码的攻击。</p>

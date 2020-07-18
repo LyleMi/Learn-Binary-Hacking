@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.12. 注册表 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.8. 文件加密与安全 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.13. WMI" href="wmi.html" />
-    <link rel="prev" title="6.5.11. 网络机制" href="network.html" /> 
+    <link rel="next" title="6.5.9. 身份认证" href="ident.html" />
+    <link rel="prev" title="6.5.7. 文件系统" href="fs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,16 +104,16 @@
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.8. 文件加密与安全</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#efs">6.5.8.1. EFS文件加密系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bitlocker">6.5.8.2. Bitlocker磁盘加密</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.5.8.3. 文件数据的备份和还原</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
 <li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
 <li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.12. 注册表</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.12.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.12.2. 数据类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.12.3. root key</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
 <li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
@@ -183,13 +183,13 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.12. 注册表</li>
+      <li>6.5.8. 文件加密与安全</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/registry.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/fsenc.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,154 +203,96 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.12. 注册表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.5.8. 文件加密与安全<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="efs">
+<h2>6.5.8.1. EFS文件加密系统<a class="headerlink" href="#efs" title="Permalink to this headline">¶</a></h2>
+<p>EFS（Encrypting File System, 加密文件系统）</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>公私钥加密体系</dt><dd><ul>
+<li><p>加密时，系统使用当前用户的公钥将数据加密并保存到硬盘上；解密时，系统使用该用户对应的私钥将数据解密出来。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EFS的优势</dt><dd><ul>
+<li><p>与操作系统结合紧密，对用户透明。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>支持EFS的操作系统</dt><dd><ul>
+<li><p>Windows 2000</p></li>
+<li><p>Windows XP专业版</p></li>
+<li><p>Windows Server 2003</p></li>
+<li><p>Windows Vista/7/8商业版、企业版、旗舰版</p></li>
+<li><p>Windows Server 2008</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 <div class="section" id="id2">
-<h2>6.5.12.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
-<p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
-<p>涉及到注册表的有：</p>
-<ol class="arabic simple">
-<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
-<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
-<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
-<li><p>在应用启动时，读取各种配置文件。</p></li>
-</ol>
+<h3>6.5.8.1.1. EFS的数据加密过程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>文件被复制到临时文件。若复制过程中发生错误，则利用此文件进行恢复。</p></li>
+<li><p>文件被一个随机产生的Key加密，这个Key叫作文件加密密钥（FEK），这个文件使用DESX或者3DES加密算法进行加密。</p></li>
+<li><p>数据加密区域（DDF，Data decryption field）产生，这个区域包含 了使用RSA算法加密的FEK和用户的公钥。</p></li>
+<li><p>数据恢复区域（DRF，Data recovery field）产生，这个区域的目的是为了在用户解密文件的中可能解密文件不可用（丢失Key、离开公 司等）。这些用户叫做恢复代理，恢复代理在加密数据恢复策略（ EDRP）中定义，它是一个域的安全策略。如果一个域的EDRP没有设置，本地EDRP被使用。DRF包含使用RSA算法加密的FEK和恢复 代理的公钥。如果在EDRP列表中有多个恢复代理，FEK须用每个恢复代理的公钥进行加密，也就是会为每个恢复代理创建一个DRF。</p></li>
+<li><p>包含加密数据、DDF及所有DRF的加密文件被写入磁盘， 文件大小一般保持不变。</p></li>
+<li><p>在第1步中创建的临时文件被删除。</p></li>
+</ul>
 </div>
+</div>
+<div class="section" id="bitlocker">
+<h2>6.5.8.2. Bitlocker磁盘加密<a class="headerlink" href="#bitlocker" title="Permalink to this headline">¶</a></h2>
+<p>Bitlocker是Windows Vista开始引入的一项数据保护新功能，可以解决计算机设备的物理丢失导致的数据失窃或恶意攻击泄漏。Bitlocker通过将Windows的安装分区进行整卷加密，防止被攻击者通过启动其他操作系统来获取文件的“脱机攻击”。</p>
 <div class="section" id="id3">
-<h2>6.5.12.2. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>6.5.8.2.1. Bitlocker的工作模式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Bitlocker的工作模式有TPM（Trusted Platform Module）模式和U盘模式。</p>
+<p>TPM模式要求计算机必须带有TPM芯片，这种芯片要通过硬件提供，一般只出现在安全性要求较高的商用计算机或工作站上。</p>
+<p>U盘模式要求计算机上有USB接口且BIOS支持在开机的时候访问USB设备，用于解密系统盘的密钥文件保存在U盘上，每次重启系统的时候必须在计算机上连接U盘。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>6.5.8.3. 文件数据的备份和还原<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>6.5.8.3.1. 数据备份类型<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
-<dt>REG_NONE</dt><dd><ul>
-<li><p>没有值</p></li>
+<dt>常规备份（完全备份，Full Backup）</dt><dd><ul>
+<li><p>对整个系统进行备份，包括操作系统和应用程序生成的数据。</p></li>
+<li><p>优点：当发生数据丢失的灾难时，只要用一盘磁带（即灾难发生前 一天的备份磁带），就可以恢复全部的数据。</p></li>
+<li><p>缺点：数据量大，占用备份的存储设备较多，备份时间较长。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>REG_SZ</dt><dd><ul>
-<li><p>固定长度 Unicode</p></li>
+<dt>增量备份 （Incremental Backup）</dt><dd><ul>
+<li><p>每次备份的数据只是上一次备份后增加和修改过的数据。</p></li>
+<li><p>优点：没有重复的备份数据，节省存储空间，又缩短了备份时间。</p></li>
+<li><p>缺点：发生灾难时恢复数据比较麻烦，需要环环相套的所有备份。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>REG_EXPAND_SZ</dt><dd><ul>
-<li><p>可变长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_BINARY</dt><dd><ul>
-<li><p>任意长度二进制数据</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD</dt><dd><ul>
-<li><p>32 bit 数字</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
-<li><p>32 bit 数字，大端</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_LINK</dt><dd><ul>
-<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_MULTI_SZ</dt><dd><ul>
-<li><p>Unicode 字符串</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_LIST</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
-<li><p>资源需求</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_QWORD</dt><dd><ul>
-<li><p>64 bit 数字</p></li>
+<dt>差异备份（Differential Backup）</dt><dd><ul>
+<li><p>每次备份的数据是相对于上一次全备份之后增加和修改过的数据。</p></li>
+<li><p>优点：备份所需时间短，节省磁带空间，灾难恢复也很方便，因为只需两盘磁带，即系统全备份与发生灾难前一天的备份。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 </div>
-<div class="section" id="root-key">
-<h2>6.5.12.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><dl class="simple">
-<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
-<li><p>AppEvents：事件关联</p></li>
-<li><p>Console：控制台设定</p></li>
-<li><p>Control Panel：控制面板</p></li>
-<li><p>Environment：环境变量</p></li>
-<li><p>EUDC：用户定义字符</p></li>
-<li><p>Identities：Windows Mail账户信息</p></li>
-<li><p>Keyboard Layout：键盘布局</p></li>
-<li><p>Network：网络驱动信息</p></li>
-<li><p>Printers：打印机</p></li>
-<li><p>Software：软件</p></li>
-<li><p>Volatile Environment：可变的环境变量</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_USERS：所有用户有关的数据</p></li>
-<li><dl class="simple">
-<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
-<li><p>文件后缀关联</p></li>
-<li><p>COM（Component Object Model）注册</p></li>
-<li><p>UAC</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
-<li><p>HKLMBCD00000000</p></li>
-<li><p>HKLMCOMPONENTS</p></li>
-<li><p>HKLMHARDWARE</p></li>
-<li><p>HKLMSAM</p></li>
-<li><p>HKLMSECURITY</p></li>
-<li><p>HKLMSOFTWARE</p></li>
-<li><p>HKLMSYSTEM</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
-<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
-</ul>
+<div class="section" id="id6">
+<h3>6.5.8.3.2. 删除与还原<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Windows删除文件只是简单的将硬盘上MFT（主文件分配表）中有关该文件的位置信息删除，而文件内容实际上还保存在硬盘相应的簇中。如果一个文件被删除了，但保存该文件的簇还没有被覆盖新数据的话，就可以将该文件重新恢复。如果需要彻底删除文件，不仅需要删除硬盘上MFT中的记录，还需要删除硬盘簇中实际保存的文件。</p>
+</div>
 </div>
 </div>
 
@@ -362,10 +304,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wmi.html" class="btn btn-neutral float-right" title="6.5.13. WMI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ident.html" class="btn btn-neutral float-right" title="6.5.9. 身份认证" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network.html" class="btn btn-neutral float-left" title="6.5.11. 网络机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fs.html" class="btn btn-neutral float-left" title="6.5.7. 文件系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

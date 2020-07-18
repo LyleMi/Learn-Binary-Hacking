@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.12. 注册表 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.4. 进程与线程 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.13. WMI" href="wmi.html" />
-    <link rel="prev" title="6.5.11. 网络机制" href="network.html" /> 
+    <link rel="next" title="6.5.5. 内存管理" href="mem.html" />
+    <link rel="prev" title="6.5.3. 服务" href="services.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,26 +100,23 @@
 <li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kernel.html">6.5.2. Windows 内核</a></li>
 <li class="toctree-l3"><a class="reference internal" href="services.html">6.5.3. 服务</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.5.4. 进程与线程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.12. 注册表</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.12.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.12.2. 数据类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.12.3. root key</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.4. 进程与线程</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.4.1. 进程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.4.2. 线程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.5.4.3. 数据结构</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
-<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.6. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.7. 身份认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.8. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.9. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.10. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.11. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.12. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.13. 恶意软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.14. 术语与缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.15. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
@@ -183,13 +180,13 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.12. 注册表</li>
+      <li>6.5.4. 进程与线程</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/registry.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/process.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,153 +200,43 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.12. 注册表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.5.4. 进程与线程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.5.12.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
-<p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
-<p>涉及到注册表的有：</p>
-<ol class="arabic simple">
-<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
-<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
-<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
-<li><p>在应用启动时，读取各种配置文件。</p></li>
-</ol>
+<h2>6.5.4.1. 进程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>进程（Process）是一个应用程序运行的实例，包含以下一些基本组件：私有虚拟地址、可执行体程序、被操作系统分配的一份资源句柄（Handles）列表、访问控制令牌（Token）、进程标识号一个或多个线程。</p>
+<p>访问控制令牌是用以唯一的标识所有者及其所属组以及和该进程相关联的特权（Privilege）信息。</p>
+<p>进程创建步骤分为七步：</p>
+<ul class="simple">
+<li><p>转换并校验参数和标记</p></li>
+<li><p>打开可执行映像文件（.exe）</p></li>
+<li><p>创建Windows执行体进程对象</p></li>
+<li><p>创建初始线程（栈，上下文和 执行体线程对象等）</p></li>
+<li><p>通知Windows子系统初始化了一个进程</p></li>
+<li><p>开始运行初始线程。（除非进程创建的时候被挂起）</p></li>
+<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</p></li>
+</ul>
 </div>
 <div class="section" id="id3">
-<h2>6.5.12.2. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.4.2. 线程<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>线程（Thread）是CPU调度执行的基本单元，其包含CPU状态、两个栈、线程本地存储（TLS）、线程标识号和访问控制令牌（Access Token）。</p>
+<p>线程的两个栈分别用于内核模式和用户模式。线程本地存储（TLS）包含一个私有存储空间，用来保存子系统、运行时库以及DLL文件等。</p>
+<p>访问控制令牌（Access Token），用以唯一的标识所有者及其所属组以及和该线程相关联的特权（Privilege）信息</p>
+<p>进程创建的主要过程：</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>REG_NONE</dt><dd><ul>
-<li><p>没有值</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_SZ</dt><dd><ul>
-<li><p>固定长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_EXPAND_SZ</dt><dd><ul>
-<li><p>可变长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_BINARY</dt><dd><ul>
-<li><p>任意长度二进制数据</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD</dt><dd><ul>
-<li><p>32 bit 数字</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
-<li><p>32 bit 数字，大端</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_LINK</dt><dd><ul>
-<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_MULTI_SZ</dt><dd><ul>
-<li><p>Unicode 字符串</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_LIST</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
-<li><p>资源需求</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_QWORD</dt><dd><ul>
-<li><p>64 bit 数字</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>转换并校验参数和标记</p></li>
+<li><p>打开可执行映像文件（.exe）</p></li>
+<li><p>创建Windows执行体进程对象</p></li>
+<li><p>创建初始线程（栈，上下文和 执行体线程对象等）</p></li>
+<li><p>通知Windows子系统初始化 了一个进程</p></li>
+<li><p>开始运行初始线程（除非进程创建的时候被挂起）</p></li>
+<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</p></li>
 </ul>
 </div>
-<div class="section" id="root-key">
-<h2>6.5.12.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>6.5.4.3. 数据结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="simple">
-<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
-<li><p>AppEvents：事件关联</p></li>
-<li><p>Console：控制台设定</p></li>
-<li><p>Control Panel：控制面板</p></li>
-<li><p>Environment：环境变量</p></li>
-<li><p>EUDC：用户定义字符</p></li>
-<li><p>Identities：Windows Mail账户信息</p></li>
-<li><p>Keyboard Layout：键盘布局</p></li>
-<li><p>Network：网络驱动信息</p></li>
-<li><p>Printers：打印机</p></li>
-<li><p>Software：软件</p></li>
-<li><p>Volatile Environment：可变的环境变量</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_USERS：所有用户有关的数据</p></li>
-<li><dl class="simple">
-<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
-<li><p>文件后缀关联</p></li>
-<li><p>COM（Component Object Model）注册</p></li>
-<li><p>UAC</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
-<li><p>HKLMBCD00000000</p></li>
-<li><p>HKLMCOMPONENTS</p></li>
-<li><p>HKLMHARDWARE</p></li>
-<li><p>HKLMSAM</p></li>
-<li><p>HKLMSECURITY</p></li>
-<li><p>HKLMSOFTWARE</p></li>
-<li><p>HKLMSYSTEM</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
-<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
+<li><p>每个Windows进程都是由一个执行体进程（EPROCESS）块来表示，包含与进程有关的属性及其他的相关数据结构（一个或者多个线程）。线程由执行体线程（ETHREAD） 块来表示。</p></li>
+<li><p>EPROCESS块和相关的数据结构位于系统地址空间中，不过PEB （进程环境块）和TEB（线程环境块）则位于进程地址空间中</p></li>
 </ul>
 </div>
 </div>
@@ -362,10 +249,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wmi.html" class="btn btn-neutral float-right" title="6.5.13. WMI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mem.html" class="btn btn-neutral float-right" title="6.5.5. 内存管理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network.html" class="btn btn-neutral float-left" title="6.5.11. 网络机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="services.html" class="btn btn-neutral float-left" title="6.5.3. 服务" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

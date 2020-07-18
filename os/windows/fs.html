@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.3. 文件系统 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.7. 文件系统 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.4. 注册表" href="registry.html" />
-    <link rel="prev" title="6.5.2. 基础" href="basic.html" /> 
+    <link rel="next" title="6.5.8. 文件加密与安全" href="fsenc.html" />
+    <link rel="prev" title="6.5.6. IO与驱动" href="iodriver.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,19 +98,29 @@
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.5. Windows</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="history.html">6.5.1. 版本历史</a></li>
-<li class="toctree-l3"><a class="reference internal" href="basic.html">6.5.2. 基础</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.3. 文件系统</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#fat">6.5.3.1. FAT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ntfs">6.5.3.2. NTFS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refs">6.5.3.3. ReFS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kernel.html">6.5.2. Windows 内核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services.html">6.5.3. 服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.5.4. 进程与线程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.7. 文件系统</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.7.1. 系统支持</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fat">6.5.7.2. FAT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ntfs">6.5.7.3. NTFS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refs">6.5.7.4. ReFS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.4. 注册表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.5. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html#id3">6.5.6. 内存破坏漏洞防护机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id1">6.5.7. 其他</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id2">6.5.8. 常见缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id3">6.5.9. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
+<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
@@ -174,7 +184,7 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.3. 文件系统</li>
+      <li>6.5.7. 文件系统</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -194,29 +204,100 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.3. 文件系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.5.7. 文件系统<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>6.5.7.1. 系统支持<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Windows支持以下几种文件系统格式：</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>CDFS</dt><dd><ul>
+<li><p>适用于CD的只读文件系统</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UDF</dt><dd><ul>
+<li><p>适用于DVD的只读文件系统</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>FAT12, FAT16, FAT32</dt><dd><ul>
+<li><p>File Allocation Table，文件分配表文件系统</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NTFS</dt><dd><ul>
+<li><p>New Technology File System，Windows NT以及之后 Windows的标准文件系统</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 <div class="section" id="fat">
-<h2>6.5.3.1. FAT<a class="headerlink" href="#fat" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.7.2. FAT<a class="headerlink" href="#fat" title="Permalink to this headline">¶</a></h2>
 <p>FAT(File Allocation Table)是“文件分配表”的意思。顾名思义，就是用来记录文件所在位置的表格，</p>
 <div class="section" id="fat-16">
-<h3>6.5.3.1.1. FAT-16<a class="headerlink" href="#fat-16" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.7.2.1. FAT-16<a class="headerlink" href="#fat-16" title="Permalink to this headline">¶</a></h3>
 <p>FAT16使用了16位的空间来表示每个扇区(Sector)配置文件的状态，故称之为FAT16。FAT-16磁盘分区最大只能到2GB。</p>
 </div>
 <div class="section" id="fat-32">
-<h3>6.5.3.1.2. FAT-32<a class="headerlink" href="#fat-32" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.7.2.2. FAT-32<a class="headerlink" href="#fat-32" title="Permalink to this headline">¶</a></h3>
 <p>FAT16使用了32位的空间来表示每个扇区(Sector)配置文件的状态，最大支持32GB分区，单个文件最大支持4GB。</p>
 </div>
 <div class="section" id="exfat">
-<h3>6.5.3.1.3. exFAT<a class="headerlink" href="#exfat" title="Permalink to this headline">¶</a></h3>
+<h3>6.5.7.2.3. exFAT<a class="headerlink" href="#exfat" title="Permalink to this headline">¶</a></h3>
 <p>exFAT（Extended File Allocation Table File System）又称扩展FAT或扩展文件分配表。</p>
 </div>
 </div>
 <div class="section" id="ntfs">
-<h2>6.5.3.2. NTFS<a class="headerlink" href="#ntfs" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.7.3. NTFS<a class="headerlink" href="#ntfs" title="Permalink to this headline">¶</a></h2>
 <p>NTFS（New Technology File System）是Windows NT内核的系列操作系统支持的、一个特别为网络和磁盘配额、文件加密等管理安全特性设计的磁盘格式，提供长文件名、数据保护和恢复，能通过目录和文件许可实现安全性，并支持跨越分区。</p>
+<p>NTFS支持功能</p>
+<ul class="simple">
+<li><p>访问控制（Access control）</p></li>
+<li><p>磁盘配额（Disk quotas）</p></li>
+<li><p>加密文件系统（Encrypting File System, EFS）</p></li>
+<li><p>支持多重数据流（Multiple data streams）</p></li>
+<li><p>支持硬链接和联结点（Hard links and junction points）</p></li>
+<li><p>基于Unicode的命名方式</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>6.5.7.3.1. 权限管理<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>文件夹的标准权限：读取、写入、列目录、读取和执行、修改、完全控制。</p>
+<p>文件的标准权限：读取、写入、读取和执行、修改、完全控制。</p>
+<p>多重权限规则：</p>
+<ul class="simple">
+<li><p>权限是累加的</p></li>
+<li><p>拒绝权限优先于其他权限</p></li>
+<li><p>设置给文件的权限优先于给文件夹的权限</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>6.5.7.3.2. 共享文件夹权限<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>比NTFS权限简单，优先级比NTFS权限低</p></li>
+<li><p>和NTFS权限可以进行组合，结果取决于哪个权限更严格</p></li>
+<li><p>共享允许的权限：读取、更改、完全操作</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>6.5.7.3.3. 共享文件夹权限的特点<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>共享文件夹权限只适用于文件夹、而不适用于单独的文件，也不能对该文件夹中的子文件夹和文件设置共享权限。</p></li>
+<li><p>共享文件夹权限并不对直接登录到计算机上的用户起作用，只适用于通过网络连接该文件夹的用户。</p></li>
+<li><p>在FAT32文件系统上，共享文件夹权限是保证网络资源被安全访问的唯一方法。</p></li>
+<li><p>默认的共享文件夹权限是指派给Everyone组的读取权限。</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="refs">
-<h2>6.5.3.3. ReFS<a class="headerlink" href="#refs" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.7.4. ReFS<a class="headerlink" href="#refs" title="Permalink to this headline">¶</a></h2>
 <p>ReFS（Resilient File System，弹性文件系统） 是在Windows Server 2012中新引入的一个文件系统。只能应用于存储数据，不能引导系统。ReFS是与NTFS大部分兼容的，其主要目的 是为了保持较高的稳定性，可以自动验证数据是否损坏，并尽力恢复数据。</p>
 </div>
 </div>
@@ -229,10 +310,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="registry.html" class="btn btn-neutral float-right" title="6.5.4. 注册表" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fsenc.html" class="btn btn-neutral float-right" title="6.5.8. 文件加密与安全" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="basic.html" class="btn btn-neutral float-left" title="6.5.2. 基础" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="iodriver.html" class="btn btn-neutral float-left" title="6.5.6. IO与驱动" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.12. 注册表 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.9. 身份认证 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.13. WMI" href="wmi.html" />
-    <link rel="prev" title="6.5.11. 网络机制" href="network.html" /> 
+    <link rel="next" title="6.5.10. 访问控制" href="acl.html" />
+    <link rel="prev" title="6.5.8. 文件加密与安全" href="fsenc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -105,15 +105,14 @@
 <li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.12. 注册表</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.12.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.12.2. 数据类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.12.3. root key</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.9. 身份认证</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sid">6.5.9.1. SID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.9.2. 相关程序</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
 <li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
@@ -183,13 +182,13 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.12. 注册表</li>
+      <li>6.5.9. 身份认证</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/registry.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/ident.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,154 +202,115 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.12. 注册表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.5.9. 身份认证<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sid">
+<h2>6.5.9.1. SID<a class="headerlink" href="#sid" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Windows使用SID来唯一表示安全主体 ，包括用户和组。Windows NT 6.x中， 系统服务也有SID标识。</p></li>
+<li><dl class="simple">
+<dt>查看账户的SID</dt><dd><ul>
+<li><p>whoami / user</p></li>
+<li><p>PsGetSid</p></li>
+<li><p>user2sid</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>从Windows Vista/Server 2008（NT 6.0）开始，每个服务程序都 有自己的SID，而账户的名称则为“NT SERVICE&lt;服务名称&gt;”</p></li>
+<li><dl class="simple">
+<dt>查看服务SID及其账户名称</dt><dd><ul>
+<li><p>sc.exe showsid &lt;service name&gt;</p></li>
+<li><p>psgetsid &lt;sid&gt;</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 <div class="section" id="id2">
-<h2>6.5.12.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
-<p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
-<p>涉及到注册表的有：</p>
-<ol class="arabic simple">
-<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
-<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
-<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
-<li><p>在应用启动时，读取各种配置文件。</p></li>
-</ol>
+<h2>6.5.9.2. 相关程序<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="winlogon">
+<h3>6.5.9.2.1. Winlogon<a class="headerlink" href="#winlogon" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>可信任的进程，负责管理与安全有关的用户交互</dt><dd><ul>
+<li><p>协调登录过程，在登录时启动用户的第一个进程，处理注销过程，以管理其他各种与安全有关的操作，包括在登录时输入口令、更改口令、锁住/解锁工作站等。</p></li>
+<li><p>创建可用的桌面。</p></li>
+<li><p>向操作系统注册一个安全维护序列（SAS, Secure Attention  Sequence），默认为Ctrl+Alt+Delete。</p></li>
+<li><p>维护工作站状态。</p></li>
+<li><p>实现超时处理。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>向GINA发送事件通知消息，提供可供GINA调用的各种接口函数。</p></li>
+<li><p>保证其操作对其他进程不可见，从而防止登录密码等信息被截获。</p></li>
+</ul>
+</div>
+<div class="section" id="gina">
+<h3>6.5.9.2.2. GINA动态链接库<a class="headerlink" href="#gina" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>提供了Winlogon用户标识和验证用户的输出函数。</dt><dd><ul>
+<li><p>WlxActivateUserShell、WlxDisplaySASNotice、WlxInitialize、WlxLoggedOnSAS、WlxLoggedOutSAS、WlxLogoff、WlxNegotiate、WlxScreenSaverNotify、WlxShutdown、WlxStartApplication、WlxWkstaLockedSAS</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>微软提供的GINA是MSGINA.dll，但允许被用户替换来自行定 制系统的用户识别和身份验证。</dt><dd><ul>
+<li><p>[HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindowsNTCurrentVersionWinlogon] “GinaDLL”=”ginadll.dll”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 <div class="section" id="id3">
-<h2>6.5.12.2. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>6.5.9.2.3. 身份验证程序包<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
-<dt>REG_NONE</dt><dd><ul>
-<li><p>没有值</p></li>
+<dt>身份验证程序包的任务</dt><dd><ul>
+<li><p>验证用户；</p></li>
+<li><p>为用户新建LSA登录会话；</p></li>
+<li><p>返回绑定到用户安全令牌中的SID。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>REG_SZ</dt><dd><ul>
-<li><p>固定长度 Unicode</p></li>
+<dt>身份验证程序包位于DLL动态链接库中</dt><dd><ul>
+<li><p>在系统启动期间被LSA所链接，接受输入的登录证书，通过验证 程序决定是否允许用户登录。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>REG_EXPAND_SZ</dt><dd><ul>
-<li><p>可变长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_BINARY</dt><dd><ul>
-<li><p>任意长度二进制数据</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD</dt><dd><ul>
-<li><p>32 bit 数字</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
-<li><p>32 bit 数字，大端</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_LINK</dt><dd><ul>
-<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_MULTI_SZ</dt><dd><ul>
-<li><p>Unicode 字符串</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_LIST</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
-<li><p>资源需求</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_QWORD</dt><dd><ul>
-<li><p>64 bit 数字</p></li>
+<dt>Windows安装的身份验证程序包</dt><dd><ul>
+<li><p>独立（工作组）环境：MSV1_0， %SystemRoot%System32Msv1_0.dll</p></li>
+<li><p>域环境：Kerberos， %SystemRoot%System32Kerberos.dll</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 </div>
-<div class="section" id="root-key">
-<h2>6.5.12.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="logonui">
+<h3>6.5.9.2.4. LogonUI<a class="headerlink" href="#logonui" title="Permalink to this headline">¶</a></h3>
+<p>LogonUI，Logon user interface，登录用户接口</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
-<li><p>AppEvents：事件关联</p></li>
-<li><p>Console：控制台设定</p></li>
-<li><p>Control Panel：控制面板</p></li>
-<li><p>Environment：环境变量</p></li>
-<li><p>EUDC：用户定义字符</p></li>
-<li><p>Identities：Windows Mail账户信息</p></li>
-<li><p>Keyboard Layout：键盘布局</p></li>
-<li><p>Network：网络驱动信息</p></li>
-<li><p>Printers：打印机</p></li>
-<li><p>Software：软件</p></li>
-<li><p>Volatile Environment：可变的环境变量</p></li>
+<li><p>为了保护Winlogon进程不崩溃，LogonUI由Winlogon按需启动，真正加载Credential provider，为用户提供验证身份的图形化界面。</p></li>
+<li><p>LogonUI是用户模式下的进程，即 %SystemRoot%System32LogonUI.exe</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_USERS：所有用户有关的数据</p></li>
-<li><dl class="simple">
-<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
-<li><p>文件后缀关联</p></li>
-<li><p>COM（Component Object Model）注册</p></li>
-<li><p>UAC</p></li>
+</div>
+<div class="section" id="cp">
+<h3>6.5.9.2.5. CP<a class="headerlink" href="#cp" title="Permalink to this headline">¶</a></h3>
+<p>CP，Credential provider，凭证提供者</p>
+<ul class="simple">
+<li><p>Credential provider是运行在LogonUI进程内的COM对象， 位于一些DLL文件中（触发SAS热键后由Winlogon按需启动 ），用来获取用户的用户名、密码、智能卡PIN码或者生物数据（比如指纹、视网膜信息）</p></li>
+<li><p>标准的CP是 %SystemRoot%System32authui.dll 和 %SystemRoot%System32SmartcardCredentialProvider.dll.</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
-<li><p>HKLMBCD00000000</p></li>
-<li><p>HKLMCOMPONENTS</p></li>
-<li><p>HKLMHARDWARE</p></li>
-<li><p>HKLMSAM</p></li>
-<li><p>HKLMSECURITY</p></li>
-<li><p>HKLMSOFTWARE</p></li>
-<li><p>HKLMSYSTEM</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
-<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
-</ul>
+</div>
 </div>
 </div>
 
@@ -362,10 +322,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wmi.html" class="btn btn-neutral float-right" title="6.5.13. WMI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acl.html" class="btn btn-neutral float-right" title="6.5.10. 访问控制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network.html" class="btn btn-neutral float-left" title="6.5.11. 网络机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fsenc.html" class="btn btn-neutral float-left" title="6.5.8. 文件加密与安全" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

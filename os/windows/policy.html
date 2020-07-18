@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.5.12. 注册表 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.5.15. 安全策略 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.5.13. WMI" href="wmi.html" />
-    <link rel="prev" title="6.5.11. 网络机制" href="network.html" /> 
+    <link rel="next" title="6.5.16. 恶意软件" href="malware.html" />
+    <link rel="prev" title="6.5.14. 安全机制" href="security.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,15 +108,14 @@
 <li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
 <li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
 <li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.12. 注册表</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.12.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.12.2. 数据类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#root-key">6.5.12.3. root key</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.15. 安全策略</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.5.15.1. 本地安全策略</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">6.5.15.2. 组策略</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
@@ -183,13 +182,13 @@
         
           <li><a href="index.html">6.5. Windows</a> &raquo;</li>
         
-      <li>6.5.12. 注册表</li>
+      <li>6.5.15. 安全策略</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/os/windows/registry.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/os/windows/policy.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,154 +202,197 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.5.12. 注册表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.5.15. 安全策略<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.5.12.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>注册表（Registry）是包含操作系统和其它软件的所有设置和配置相关数据的目录。</p>
-<p>注册表的逻辑结构类似于磁盘上的文件系统。注册表包含了键（key）和值（value）。其中键类似文件系统中的目录，而值就像文件，键可以包含子键（subkey）和值。值中存储着配置数据，数据有多种类型。最顶层的键称为根键（root key）。</p>
-<p>涉及到注册表的有：</p>
-<ol class="arabic simple">
-<li><p>在启动时，boot loader从注册表中读取数据。</p></li>
-<li><p>内核启动时，内核驱动从注册表中读取配置。</p></li>
-<li><p>在登陆时，读取网络驱动设置、墙纸、菜单、启动项等。</p></li>
-<li><p>在应用启动时，读取各种配置文件。</p></li>
-</ol>
-</div>
+<h2>6.5.15.1. 本地安全策略<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h2>6.5.12.2. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>6.5.15.1.1. 账户策略<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>账户策略仅涉及和用户账户的凭据相关的设置。通过设置账户策略、可以让所有本地账户更加安全，同时要破解账户密码所需的时间更长，所需技术更高。</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>REG_NONE</dt><dd><ul>
-<li><p>没有值</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_SZ</dt><dd><ul>
-<li><p>固定长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_EXPAND_SZ</dt><dd><ul>
-<li><p>可变长度 Unicode</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_BINARY</dt><dd><ul>
-<li><p>任意长度二进制数据</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD</dt><dd><ul>
-<li><p>32 bit 数字</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_DWORD_BIG_ENDIAN</dt><dd><ul>
-<li><p>32 bit 数字，大端</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_LINK</dt><dd><ul>
-<li><p>Unicode 符号链接，指向另一个注册表项</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_MULTI_SZ</dt><dd><ul>
-<li><p>Unicode 字符串</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_LIST</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_FULL_RESOURCE_DESCRIPTOR</dt><dd><ul>
-<li><p>硬件资源描述</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_RESOURCE_REQUIREMENTS_LIST</dt><dd><ul>
-<li><p>资源需求</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>REG_QWORD</dt><dd><ul>
-<li><p>64 bit 数字</p></li>
+<dt>账户策略的种类</dt><dd><ul>
+<li><p>密码策略</p></li>
+<li><p>账户锁定策略</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 </div>
-<div class="section" id="root-key">
-<h2>6.5.12.3. root key<a class="headerlink" href="#root-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>6.5.15.1.2. 密码策略<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
-<dt>HKEY_CURRENT_USER：和当前登陆用户有关的数据</dt><dd><ul>
-<li><p>AppEvents：事件关联</p></li>
-<li><p>Console：控制台设定</p></li>
-<li><p>Control Panel：控制面板</p></li>
-<li><p>Environment：环境变量</p></li>
-<li><p>EUDC：用户定义字符</p></li>
-<li><p>Identities：Windows Mail账户信息</p></li>
-<li><p>Keyboard Layout：键盘布局</p></li>
-<li><p>Network：网络驱动信息</p></li>
-<li><p>Printers：打印机</p></li>
-<li><p>Software：软件</p></li>
-<li><p>Volatile Environment：可变的环境变量</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>HKEY_USERS：所有用户有关的数据</p></li>
-<li><dl class="simple">
-<dt>HKEY_CLASSES_ROOT</dt><dd><ul>
-<li><p>文件后缀关联</p></li>
-<li><p>COM（Component Object Model）注册</p></li>
-<li><p>UAC</p></li>
+<dt>密码必须符合复杂性要求</dt><dd><ul>
+<li><p>建议设置为”启用”</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>HKEY_LOCAL_MACHINE：系统相关的数据</dt><dd><ul>
-<li><p>HKLMBCD00000000</p></li>
-<li><p>HKLMCOMPONENTS</p></li>
-<li><p>HKLMHARDWARE</p></li>
-<li><p>HKLMSAM</p></li>
-<li><p>HKLMSECURITY</p></li>
-<li><p>HKLMSOFTWARE</p></li>
-<li><p>HKLMSYSTEM</p></li>
+<dt>密码长度最小值</dt><dd><ul>
+<li><p>建议设置为“14”</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>HKEY_PERFORMANCE_DATA：性能相关的数据</p></li>
-<li><p>HKEY_CURRENT_CONFIG：当前配置文件</p></li>
+<li><dl class="simple">
+<dt>密码最短使用期限</dt><dd><ul>
+<li><p>建议设置为“5天”</p></li>
 </ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>密码最长使用期限</dt><dd><ul>
+<li><p>建议设置为“30天”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>强制密码历史</dt><dd><ul>
+<li><p>建议设置为“10个”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>用可还原的加密来存储密码</dt><dd><ul>
+<li><p>建议设置为“禁用”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>6.5.15.1.3. 账户锁定策略<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>账户锁定阈值</dt><dd><ul>
+<li><p>建议设置为“3次”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>账户锁定时间</dt><dd><ul>
+<li><p>建议设置为“30分钟”，可根据实际需要更改</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>复位账户锁定计数器</dt><dd><ul>
+<li><p>建议设置为“30分钟”，可根据实际需要更改</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>6.5.15.1.4. 本地策略<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>本地策略中包含的全部是和账户无关的安全设置。通过设置本地策略，可以让Windows实现更严格的安全性，或者实现其他和安全有关的功能</p>
+<p>本地策略的种类分为审核策略、用户权限分配、安全选项。</p>
+</div>
+<div class="section" id="id7">
+<h3>6.5.15.1.5. 审核策略<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>审核策略更改</p></li>
+<li><p>审核登录事件</p></li>
+<li><p>审核对象访问</p></li>
+<li><p>审核进程跟踪</p></li>
+<li><p>审核目录服务访问</p></li>
+<li><p>审核特权使用</p></li>
+<li><p>审核系统事件</p></li>
+<li><p>审核账户登录事件</p></li>
+<li><p>审核账户管理</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>6.5.15.2. 组策略<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>通过组策略（Group Policy）可以设置整个组织的集中化策略或分散式策略。</p>
+<div class="section" id="id9">
+<h3>6.5.15.2.1. 组策略对象<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>组策略对象（Group Policy Object, GPO）</dt><dd><ul>
+<li><p>组策略对象实际上就是组策略设置的集合。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>组策略对象包含：</dt><dd><ul>
+<li><dl class="simple">
+<dt>针对计算机的组策略设置</dt><dd><ul>
+<li><p>应用在操作系统初始化和周期性更新循环过程中</p></li>
+<li><p>指定操作系统行为、桌面行为、安全性设置、计算机启动和关机指令、计算机赋予的应用程序选项以及应用程序设置</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>针对用户的组策略设置</dt><dd><ul>
+<li><p>应用在用户登录计算机和周期性更新循环的过程中</p></li>
+<li><p>指定操作系统行为、桌面行为、安全性设置、赋予和公布的应用程序选项、应用程序设置、文件夹的重定向选项以及用户登录和注销指令。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>6.5.15.2.2. 组策略对象与活动目录<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>组策略对象与活动目录的联合使用实现了策略的集中与分散管理，适应从小到大的各种网络规模。</p>
+<ul class="simple">
+<li><p>组策略对象能够链接到站点、域和组织单元，影响其中的用户和计算机。</p></li>
+<li><p>应用组策略对象的顺序和级别决定了用户和计算机实际所采用的组策略设置。</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>6.5.15.2.3. 组策略对象的管理单元<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>根节点</dt><dd><ul>
+<li><dl class="simple">
+<dt>&lt;组策略对象名称&gt; [&lt;域名称&gt;]策略</dt><dd><ul>
+<li><p>如：Default Domain Policy [SjtuInfosec.net] 策略</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>“本地计算机”策略</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>第二层节点</dt><dd><ul>
+<li><p>计算机配置</p></li>
+<li><p>用户配置</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>第三层节点</dt><dd><ul>
+<li><p>软件设置</p></li>
+<li><p>Windows设置</p></li>
+<li><p>管理模板</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -362,10 +404,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wmi.html" class="btn btn-neutral float-right" title="6.5.13. WMI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="malware.html" class="btn btn-neutral float-right" title="6.5.16. 恶意软件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network.html" class="btn btn-neutral float-left" title="6.5.11. 网络机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="security.html" class="btn btn-neutral float-left" title="6.5.14. 安全机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
