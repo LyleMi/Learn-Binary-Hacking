@@ -12,12 +12,14 @@ Windows
    mem
    iodriver
    fs
+   fsenc
    ident
    acl
    network
    registry
    wmi
    security
+   policy
    malware
    terminology
    ref
