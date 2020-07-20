@@ -10,6 +10,5 @@
    document
    reverse/index
    debuger/index
-   emulator/index
    compiler/index
    ulimit

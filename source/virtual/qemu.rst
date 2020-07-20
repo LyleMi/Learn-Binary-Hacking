@@ -33,10 +33,16 @@ QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的
     - 最主要的模拟循环，虚拟机环境初始化，和 CPU 的执行。
 - target/<arch>/translate.c
     - 将 guest 代码翻译成不同架构的 TCG 操作码。
-- tcg/tcg.c
-    - 主要的 TCG 代码。
-- tcg/<arch>/tcg-target.c
-    - 将 TCG 代码转化生成主机代码。
+- target
+    - 不同架构的对应目录
+    - 将客户CPU架构的TBs转化成TCG中间代码
+    - TCG前的前端
+- tcg
+    - tcg/tcg.c
+        - 主要的 TCG 代码。
+    - tcg/<arch>/tcg-target.c
+        - 将 TCG 代码转化生成主机代码。
+    - TCG前的后端
 - accel/tcg/cpu-exec.c
     - 寻找下一个二进制翻译代码块，如果没有找到就请求得到下一个代码块，并且操作生成的代码块。
 
