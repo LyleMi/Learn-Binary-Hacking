@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.3. VMWare &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.4. KVM" href="kvm.html" />
+    <link rel="prev" title="7.2. 虚拟化技术" href="tech.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 虚拟化</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic.html">7.1. 基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html">7.2. 虚拟化技术</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. VMWare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.3.2. 安全策略</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vsphere">7.3.2.1. vSphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">7.3.2.2. 虚拟机安全策略</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kvm.html">7.4. KVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xen.html">7.5. Xen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu.html">7.6. QEMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.7. Unicorn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. 虚拟化</a> &raquo;</li>
+        
+      <li>7.3. VMWare</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/virtual/vmware.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vmware">
+<h1>7.3. VMWare<a class="headerlink" href="#vmware" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>7.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>VMWare是基于宿主模式的桌面虚拟软件，包括VMX驱动、ring0的VMM、ring3的用户态程序。</p>
+<p>VMware vSphere则是一个虚拟化方案，其核心是ESXi，ESXi独立安装在裸机上的操作系统（注意它不基于任何OS，它本身就是OS），通过它物理机的硬件资源被虚拟化为虚拟资源，之后再通过vCenter就能将安装了ESXi操作系统的物理机的资源进行整合，化为一个总的资源池，在这个资源池里面为各个部门划分不同大小的资源池方便其使用。</p>
+</div>
+<div class="section" id="id2">
+<h2>7.3.2. 安全策略<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vsphere">
+<h3>7.3.2.1. vSphere<a class="headerlink" href="#vsphere" title="Permalink to this headline">¶</a></h3>
+<p>ESXi通过以下功能提供附加VMKernel保护</p>
+<ul class="simple">
+<li><p>内存强化：将ESXi内核、用户模式应用程序及可执行组件(如驱动程序和库)位于无法预测的随机内存地址中。在将该功能与微处理器提供的不可执行的内存保护结合使用。</p></li>
+<li><p>内核模块完整性：数字签名确保由VMKernel加载的模块、驱动程序及应用程序的完整性和真实性。</p></li>
+<li><p>可信的平台模块：vSphere使用Intel可信的平台模块/受信任的执行技术（TPM/TXT），根据硬件信任根提供管理程序映像的远程证明。</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>7.3.2.2. 虚拟机安全策略<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>虚拟机常规保护</dt><dd><ul>
+<li><p>包括安装防毒软件、配置客户机操作系统的日志记录级别等</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>禁用虚拟机中不必要的功能</dt><dd><ul>
+<li><p>移出不必要的硬件设别、禁用操作系统中未使用的服务、限制公开复制到剪贴板中的敏感数据、限制用户在虚拟机中运行命令、限制客户机操作系统写入主机内存等</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>限制信息性消息从虚拟机流向VMX文件</dt><dd><ul>
+<li><p>限制信息性消息从虚拟机流向VMX文件，从而避免填充数据存储和造成拒绝服务。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kvm.html" class="btn btn-neutral float-right" title="7.4. KVM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tech.html" class="btn btn-neutral float-left" title="7.2. 虚拟化技术" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

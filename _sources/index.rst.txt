@@ -12,6 +12,7 @@
    assembly/index
    compile/index
    os/index
+   virtual/index
    reverse/index
    exploit/index
    stack/index

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.2. PE &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>8.2. PE &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.3. DLL" href="dll.html" />
-    <link rel="prev" title="7.1. ELF" href="elf.html" /> 
+    <link rel="next" title="8.3. DLL" href="dll.html" />
+    <link rel="prev" title="8.1. ELF" href="elf.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,27 +92,28 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 逆向工程</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elf.html">7.1. ELF</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.2. PE</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">7.2.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#table">7.2.2. Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rvas">7.2.3. RVAs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#heaps">7.2.4. Heaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#thread">7.2.5. Thread</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dcom">7.2.6. DCOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. 逆向工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elf.html">8.1. ELF</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.2. PE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">8.2.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#table">8.2.2. Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rvas">8.2.3. RVAs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heaps">8.2.4. Heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thread">8.2.5. Thread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dcom">8.2.6. DCOM</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dll.html">7.3. DLL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dll.html">8.3. DLL</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -158,9 +159,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">7. 逆向工程</a> &raquo;</li>
+          <li><a href="index.html">8. 逆向工程</a> &raquo;</li>
         
-      <li>7.2. PE</li>
+      <li>8.2. PE</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,35 +181,35 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pe">
-<h1>7.2. PE<a class="headerlink" href="#pe" title="Permalink to this headline">¶</a></h1>
+<h1>8.2. PE<a class="headerlink" href="#pe" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>7.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>8.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>PE（全称Portable Executable）格式，是微软Win32环境可移植可执行文件(如exe、dll、vxd、sys、vdm等)的标准文件格式。</p>
 </div>
 <div class="section" id="table">
-<h2>7.2.2. Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h2>
+<h2>8.2.2. Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h2>
 <p>每个PE文件在文件最开始的地方都有一个 import 和 export table。import table包含所有从dll中读取的函数，有一个.reloc 段来保存dll在内存中信息。</p>
 <p>和linux不同，pe会优先加载同一个文件夹内的dll而不是去其他地方找。在开发者看来这省去了修改PATH的烦恼，避免了dll-hell，但是在攻击者看来这为一些绕过提供了方便。</p>
 </div>
 <div class="section" id="rvas">
-<h2>7.2.3. RVAs<a class="headerlink" href="#rvas" title="Permalink to this headline">¶</a></h2>
+<h2>8.2.3. RVAs<a class="headerlink" href="#rvas" title="Permalink to this headline">¶</a></h2>
 <p>PE-COFF的一个比较重要的概念是Relative Virtual Address(RVAs)
 RVAs是用来减少一些PE Loader需要做的工作的，简单的说，每个DLL都被加载到内存中的某个位置，
 可以把RVA加到一个基址上去找想要的东西。</p>
 </div>
 <div class="section" id="heaps">
-<h2>7.2.4. Heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
+<h2>8.2.4. Heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
 <p>在dll加载的时候，会调用一些初始函数，这些函数会用HeapCreate()来设置其自身的栈，然后用一个全局变量的指针来指向它。</p>
 <p>大多数dll在内存中也有一个.data段来记录全局变量，因为有这么多的heap，堆溢出攻击会有点麻烦。</p>
 <p>在linux中只会有一个栈溢出，但是在win中可能有几个栈同时溢出，这就增加了分析的难度</p>
 <p>每个进程都有一个默认的堆，可以用GetDefaultHeap()来找到它，尽管这个heap并不一定是溢出的那一个。</p>
 </div>
 <div class="section" id="thread">
-<h2>7.2.5. Thread<a class="headerlink" href="#thread" title="Permalink to this headline">¶</a></h2>
+<h2>8.2.5. Thread<a class="headerlink" href="#thread" title="Permalink to this headline">¶</a></h2>
 <p>windows没有fork()，而是用CreateProcess，这个函数会起一个新的有自己内存空间的进程，子进程会继承父进程所有可继承的属性。</p>
 </div>
 <div class="section" id="dcom">
-<h2>7.2.6. DCOM<a class="headerlink" href="#dcom" title="Permalink to this headline">¶</a></h2>
+<h2>8.2.6. DCOM<a class="headerlink" href="#dcom" title="Permalink to this headline">¶</a></h2>
 <p>Distributed Common Object Model(DCOM)。windows有一个特点的是分发程序一般都是用binary，使得几乎所有程序都支持COM。</p>
 <p>COM可以用COM支持的任何一种语言完成，而且可以在其中进行无缝转换
 要深入的了解DOM，需要了解IDL（Interface Description Language）文件。</p>
@@ -223,10 +224,10 @@ RVAs是用来减少一些PE Loader需要做的工作的，简单的说，每个D
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dll.html" class="btn btn-neutral float-right" title="7.3. DLL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dll.html" class="btn btn-neutral float-right" title="8.3. DLL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="elf.html" class="btn btn-neutral float-left" title="7.1. ELF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="elf.html" class="btn btn-neutral float-left" title="8.1. ELF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

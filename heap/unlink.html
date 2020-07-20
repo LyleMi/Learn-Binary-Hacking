@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.3. 堆溢出 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>11.3. 堆溢出 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. 其他漏洞" href="../vulns/index.html" />
-    <link rel="prev" title="10.2. Off By One" href="offByOne.html" /> 
+    <link rel="next" title="12. 其他漏洞" href="../vulns/index.html" />
+    <link rel="prev" title="11.2. Off By One" href="offByOne.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,24 +92,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">10. 堆相关漏洞</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="uaf.html">10.1. Use After Free</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">10.2. Off By One</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">10.3. 堆溢出</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">10.3.1. 第一部分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">10.3.2. 第二部分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">10.3.3. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. 堆相关漏洞</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">11.1. Use After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">11.2. Off By One</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.3. 堆溢出</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">11.3.1. 第一部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">11.3.2. 第二部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">11.3.3. 参考链接</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -155,9 +156,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">10. 堆相关漏洞</a> &raquo;</li>
+          <li><a href="index.html">11. 堆相关漏洞</a> &raquo;</li>
         
-      <li>10.3. 堆溢出</li>
+      <li>11.3. 堆溢出</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,9 +178,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>10.3. 堆溢出<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>11.3. 堆溢出<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>10.3.1. 第一部分<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>11.3.1. 第一部分<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>首先简要介绍一下堆chunk的结构
 在malloc.c中找到关于堆chunk结构的代码</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">malloc_chunk</span> <span class="p">{</span>
@@ -288,7 +289,7 @@ bk=shellcode地址
 <p>但是执行unlink宏之后，再调用free其实就是调用shellcode，这时就可以执行任意命令了。</p>
 </div>
 <div class="section" id="id3">
-<h2>10.3.2. 第二部分<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>11.3.2. 第二部分<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Take a chunk off a bin list */
 #define unlink(AV, P, BK, FD) {
     FD = P-&gt;fd;
@@ -325,7 +326,7 @@ bk=shellcode地址
 </div>
 </div>
 <div class="section" id="id4">
-<h2>10.3.3. 参考链接<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>11.3.3. 参考链接<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://wooyun.jozxing.cc/static/drops/tips-7326.html">堆溢出的unlink利用方法</a></p></li>
 <li><p><a class="reference external" href="http://wooyun.jozxing.cc/static/drops/binary-7958.html">Double Free浅析</a></p></li>
@@ -341,10 +342,10 @@ bk=shellcode地址
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../vulns/index.html" class="btn btn-neutral float-right" title="11. 其他漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../vulns/index.html" class="btn btn-neutral float-right" title="12. 其他漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="offByOne.html" class="btn btn-neutral float-left" title="10.2. Off By One" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="offByOne.html" class="btn btn-neutral float-left" title="11.2. Off By One" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.7. 防御措施" href="mitigation.html" />
+    <link rel="next" title="6.3.7. 进程" href="process.html" />
     <link rel="prev" title="6.3.5. 内存管理" href="mem.html" /> 
 </head>
 
@@ -97,7 +97,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.6. ELF</a><ul>
@@ -107,10 +107,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#load-elf">6.3.6.4. Load ELF</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.7. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.8. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.10. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.8. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.9. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.10. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.11. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -119,14 +120,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -257,7 +259,7 @@
 <span class="cm"> */</span>
 <span class="k">struct</span> <span class="n">linux_binfmt</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="n">list_head</span> <span class="n">lh</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">module</span> <span class="o">*</span><span class="n">module</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="k">module</span> <span class="o">*</span><span class="k">module</span><span class="p">;</span>
     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">load_binary</span><span class="p">)(</span><span class="k">struct</span> <span class="n">linux_binprm</span> <span class="o">*</span><span class="p">);</span>
     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">load_shlib</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">core_dump</span><span class="p">)(</span><span class="k">struct</span> <span class="n">coredump_params</span> <span class="o">*</span><span class="n">cprm</span><span class="p">);</span>
@@ -272,7 +274,7 @@
 <span class="p">{</span>
     <span class="c1">// 遍历formats链表</span>
     <span class="n">list_for_each_entry</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">formats</span><span class="p">,</span> <span class="n">lh</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">try_module_get</span><span class="p">(</span><span class="n">fmt</span><span class="o">-&gt;</span><span class="n">module</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">try_module_get</span><span class="p">(</span><span class="n">fmt</span><span class="o">-&gt;</span><span class="k">module</span><span class="p">))</span>
             <span class="k">continue</span><span class="p">;</span>
         <span class="n">read_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">binfmt_lock</span><span class="p">);</span>
         <span class="n">bprm</span><span class="o">-&gt;</span><span class="n">recursion_depth</span><span class="o">++</span><span class="p">;</span>
@@ -311,16 +313,37 @@
 </li>
 <li><dl class="simple">
 <dt>如果需要动态链接, 则寻找和处理解释器段</dt><dd><ul>
-<li><p>“解释器”段的类型为PT_INTERP，可通过 <code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">-l</span></code> 查看</p></li>
-<li><p>“解释器” 段实际上是一个字符串，即解释器的文件名</p></li>
+<li><p>“解释器” 段的类型为 PT_INTERP ，可通过 <code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">-l</span></code> 查看</p></li>
+<li><p>“解释器” 段实际上是一个字符串，即解释器的文件位置</p></li>
 <li><p>通常为 <code class="docutils literal notranslate"><span class="pre">/lib/ld-linux.so.2</span></code> / <code class="docutils literal notranslate"><span class="pre">/lib64/ld-linux-x86-64.so.2</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><p>检查并读取解释器的程序表头</p></li>
-<li><p>装入目标程序的段segment</p></li>
-<li><p>填写程序的入口地址</p></li>
+<li><p>装入目标程序的段 segment</p></li>
+<li><dl class="simple">
+<dt>填写程序的入口地址</dt><dd><ul>
+<li><dl class="simple">
+<dt>如果需要装入解释器</dt><dd><ul>
+<li><p>通过 <code class="docutils literal notranslate"><span class="pre">load_elf_interp</span></code> 装入映像</p></li>
+<li><p>设置用户空间的入口地址为 <code class="docutils literal notranslate"><span class="pre">load_elf_interp()</span></code> 的返回值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_elf_interp()</span></code> 的返回值为解释器映像的入口地址</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>如果不需要装入解释器</dt><dd><ul>
+<li><p>入口地址设置为目标映像本身的入口地址</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">create_elf_tables</span></code> 填写目标文件的参数环境变量等必要信息</dt><dd><ul>
 <li><p>准备 <code class="docutils literal notranslate"><span class="pre">argc</span></code> <code class="docutils literal notranslate"><span class="pre">envc</span></code> 等变量</p></li>
@@ -328,7 +351,7 @@
 </dd>
 </dl>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_kernel</span></code> 宏准备进入新的程序入口</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_thread</span></code> 宏修改 eip / esp ，准备进入新的程序入口</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">load_elf_binary</span></code> 的部分代码如下：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">load_elf_binary</span><span class="p">(</span><span class="k">struct</span> <span class="n">linux_binprm</span> <span class="o">*</span><span class="n">bprm</span><span class="p">)</span>
@@ -360,7 +383,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mitigation.html" class="btn btn-neutral float-right" title="6.3.7. 防御措施" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="process.html" class="btn btn-neutral float-right" title="6.3.7. 进程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="mem.html" class="btn btn-neutral float-left" title="6.3.5. 内存管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

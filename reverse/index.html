@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7. 逆向工程 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>8. 逆向工程 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. ELF" href="elf.html" />
-    <link rel="prev" title="6.7. iOS" href="../os/ios.html" /> 
+    <link rel="next" title="8.1. ELF" href="elf.html" />
+    <link rel="prev" title="7.4. Unicorn" href="../virtual/unicorn.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,19 +92,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. 逆向工程</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elf.html">7.1. ELF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html">7.2. PE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dll.html">7.3. DLL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. 逆向工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elf.html">8.1. ELF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html">8.2. PE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dll.html">8.3. DLL</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -150,7 +151,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>7. 逆向工程</li>
+      <li>8. 逆向工程</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,31 +171,31 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>7. 逆向工程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>8. 逆向工程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">目录:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="elf.html">7.1. ELF</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id1">7.1.1. 概述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id2">7.1.2. 对象文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id3">7.1.3. ELF格式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id4">7.1.4. 段</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id5">7.1.5. 内存布局</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#pltgot">7.1.6. PLT与GOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elf.html">8.1. ELF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id1">8.1.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id2">8.1.2. 对象文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id3">8.1.3. ELF格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id4">8.1.4. 段</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id5">8.1.5. 内存布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#pltgot">8.1.6. PLT与GOT</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pe.html">7.2. PE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pe.html#id1">7.2.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html#table">7.2.2. Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html#rvas">7.2.3. RVAs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html#heaps">7.2.4. Heaps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html#thread">7.2.5. Thread</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html#dcom">7.2.6. DCOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pe.html">8.2. PE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pe.html#id1">8.2.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html#table">8.2.2. Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html#rvas">8.2.3. RVAs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html#heaps">8.2.4. Heaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html#thread">8.2.5. Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html#dcom">8.2.6. DCOM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dll.html">7.3. DLL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dll.html#id1">7.3.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dll.html#ref">7.3.2. ref</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dll.html">8.3. DLL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dll.html#id1">8.3.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dll.html#ref">8.3.2. ref</a></li>
 </ul>
 </li>
 </ul>
@@ -209,10 +210,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="elf.html" class="btn btn-neutral float-right" title="7.1. ELF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="elf.html" class="btn btn-neutral float-right" title="8.1. ELF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../os/ios.html" class="btn btn-neutral float-left" title="6.7. iOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../virtual/unicorn.html" class="btn btn-neutral float-left" title="7.4. Unicorn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

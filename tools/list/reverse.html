@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>13.1.1. 逆向工具 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>14.1.1. 逆向工具 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="13.1.2. 动态分析" href="dynamic.html" />
-    <link rel="prev" title="13.1. 工具列表" href="index.html" /> 
+    <link rel="next" title="14.1.2. 动态分析" href="dynamic.html" />
+    <link rel="prev" title="14.1. 工具列表" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,43 +92,43 @@
 <li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">13. 工具与资源</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">13.1. 工具列表</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">13.1.1. 逆向工具</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">13.1.1.1. 二进制</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pe">13.1.1.2. PE工具</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bytecode">13.1.1.3. Bytecode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ida">13.1.1.4. IDA</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ghidra">13.1.1.5. Ghidra</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#diff">13.1.1.6. Diff</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#patch">13.1.1.7. Patch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">13.1.1.8. 文件分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">14. 工具与资源</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14.1. 工具列表</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.1.1. 逆向工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">14.1.1.1. 二进制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pe">14.1.1.2. PE工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bytecode">14.1.1.3. Bytecode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ida">14.1.1.4. IDA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ghidra">14.1.1.5. Ghidra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#diff">14.1.1.6. Diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">14.1.1.7. Patch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">14.1.1.8. 文件分析</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamic.html">13.1.2. 动态分析</a></li>
-<li class="toctree-l3"><a class="reference internal" href="compile.html">13.1.3. 编译</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exploit.html">13.1.4. 漏洞利用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="firm.html">13.1.5. 嵌入式设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="android.html">13.1.6. Android</a></li>
-<li class="toctree-l3"><a class="reference internal" href="misc.html">13.1.7. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic.html">14.1.2. 动态分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compile.html">14.1.3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exploit.html">14.1.4. 漏洞利用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firm.html">14.1.5. 嵌入式设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android.html">14.1.6. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">14.1.7. 其他</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../booklist.html">13.2. 书单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../document.html">13.3. 文档资料</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reverse/index.html">13.4. 逆向工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../debuger/index.html">13.5. 调试器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../emulator/index.html">13.6. 模拟器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">13.7. 编译工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ulimit.html">13.8. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../booklist.html">14.2. 书单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document.html">14.3. 文档资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse/index.html">14.4. 逆向工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debuger/index.html">14.5. 调试器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">14.6. 编译工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ulimit.html">14.7. ulimit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -174,11 +174,11 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">13. 工具与资源</a> &raquo;</li>
+          <li><a href="../index.html">14. 工具与资源</a> &raquo;</li>
         
-          <li><a href="index.html">13.1. 工具列表</a> &raquo;</li>
+          <li><a href="index.html">14.1. 工具列表</a> &raquo;</li>
         
-      <li>13.1.1. 逆向工具</li>
+      <li>14.1.1. 逆向工具</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,9 +198,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>13.1.1. 逆向工具<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>14.1.1. 逆向工具<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>13.1.1.1. 二进制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.1. 二进制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/radare/radare2">radare2</a></p></li>
 <li><p><a class="reference external" href="https://github.com/aquynh/capstone">capstone</a></p></li>
@@ -211,7 +211,7 @@
 </ul>
 </div>
 <div class="section" id="pe">
-<h2>13.1.1.2. PE工具<a class="headerlink" href="#pe" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.2. PE工具<a class="headerlink" href="#pe" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.exeinfo.xn.pl/">EXEInfoPE</a></p></li>
 <li><p><a class="reference external" href="http://ntinfo.biz/index.html">DetectIt Easy</a></p></li>
@@ -219,14 +219,14 @@
 </ul>
 </div>
 <div class="section" id="bytecode">
-<h2>13.1.1.3. Bytecode<a class="headerlink" href="#bytecode" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.3. Bytecode<a class="headerlink" href="#bytecode" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/Konloch/bytecode-viewer">bytecode viewer</a> A Java 8+ Jar &amp; Android APK Reverse Engineering Suite (Decompiler, Editor, Debugger &amp; More)</p></li>
 <li><p><a class="reference external" href="https://github.com/zrax/pycdc">pycdc</a> C++ python bytecode disassembler and decompiler</p></li>
 </ul>
 </div>
 <div class="section" id="ida">
-<h2>13.1.1.4. IDA<a class="headerlink" href="#ida" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.4. IDA<a class="headerlink" href="#ida" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/igogo-x86/HexRaysPyTools">HexRaysPyTools</a></p></li>
 <li><p><a class="reference external" href="https://github.com/IDArlingTeam/IDArling">IDArling</a></p></li>
@@ -240,27 +240,27 @@
 </ul>
 </div>
 <div class="section" id="ghidra">
-<h2>13.1.1.5. Ghidra<a class="headerlink" href="#ghidra" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.5. Ghidra<a class="headerlink" href="#ghidra" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/NationalSecurityAgency/ghidra">ghidra</a></p></li>
 <li><p><a class="reference external" href="https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer">Ghidra Cpp Class Analyzer</a></p></li>
 </ul>
 </div>
 <div class="section" id="diff">
-<h2>13.1.1.6. Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.6. Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/joxeankoret/diaphora">diaphora</a></p></li>
 <li><p><a class="reference external" href="https://github.com/seemoo-lab/polypyus">polypyus</a></p></li>
 </ul>
 </div>
 <div class="section" id="patch">
-<h2>13.1.1.7. Patch<a class="headerlink" href="#patch" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.7. Patch<a class="headerlink" href="#patch" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/GJDuck/e9patch">e9patch</a> A powerful static binary rewriting tool</p></li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h2>13.1.1.8. 文件分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>14.1.1.8. 文件分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/decalage2/oletools">oletools</a> python tools to analyze MS OLE2 files and MS Office documents</p></li>
 </ul>
@@ -275,10 +275,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dynamic.html" class="btn btn-neutral float-right" title="13.1.2. 动态分析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dynamic.html" class="btn btn-neutral float-right" title="14.1.2. 动态分析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="13.1. 工具列表" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="14.1. 工具列表" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

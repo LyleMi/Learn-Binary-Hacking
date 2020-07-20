@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.1. ELF &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>8.1. ELF &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. PE" href="pe.html" />
-    <link rel="prev" title="7. 逆向工程" href="index.html" /> 
+    <link rel="next" title="8.2. PE" href="pe.html" />
+    <link rel="prev" title="8. 逆向工程" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,49 +92,50 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 逆向工程</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.1. ELF</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">7.1.1. 概述</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">7.1.2. 对象文件</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#relocatable-file">7.1.2.1. 可重定位的对象文件(Relocatable file)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#executable-file">7.1.2.2. 可执行的对象文件(Executable file)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shared-object-file">7.1.2.3. 可被共享的对象文件(Shared object file)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. 逆向工程</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. ELF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">8.1.1. 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">8.1.2. 对象文件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relocatable-file">8.1.2.1. 可重定位的对象文件(Relocatable file)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#executable-file">8.1.2.2. 可执行的对象文件(Executable file)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-object-file">8.1.2.3. 可被共享的对象文件(Shared object file)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">7.1.3. ELF格式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">7.1.4. 段</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#bss">7.1.4.1. .bss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-and-data1">7.1.4.2. .data and .data1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rodata">7.1.4.3. .rodata</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#text">7.1.4.4. .text</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#comment">7.1.4.5. .comment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#debug">7.1.4.6. .debug</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamic">7.1.4.7. .dynamic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynstr">7.1.4.8. .dynstr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynsym">7.1.4.9. .dynsym</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#got">7.1.4.10. .got</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#plt">7.1.4.11. .plt</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hash">7.1.4.12. .hash</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#init">7.1.4.13. .init</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fini">7.1.4.14. .fini</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interp">7.1.4.15. .interp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">8.1.3. ELF格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">8.1.4. 段</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bss">8.1.4.1. .bss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-and-data1">8.1.4.2. .data and .data1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rodata">8.1.4.3. .rodata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text">8.1.4.4. .text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment">8.1.4.5. .comment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debug">8.1.4.6. .debug</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamic">8.1.4.7. .dynamic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynstr">8.1.4.8. .dynstr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynsym">8.1.4.9. .dynsym</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#got">8.1.4.10. .got</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plt">8.1.4.11. .plt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hash">8.1.4.12. .hash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#init">8.1.4.13. .init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fini">8.1.4.14. .fini</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interp">8.1.4.15. .interp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">7.1.5. 内存布局</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pltgot">7.1.6. PLT与GOT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">8.1.5. 内存布局</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pltgot">8.1.6. PLT与GOT</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pe.html">7.2. PE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dll.html">7.3. DLL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.html">8.2. PE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dll.html">8.3. DLL</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -180,9 +181,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">7. 逆向工程</a> &raquo;</li>
+          <li><a href="index.html">8. 逆向工程</a> &raquo;</li>
         
-      <li>7.1. ELF</li>
+      <li>8.1. ELF</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -202,30 +203,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="elf">
-<h1>7.1. ELF<a class="headerlink" href="#elf" title="Permalink to this headline">¶</a></h1>
+<h1>8.1. ELF<a class="headerlink" href="#elf" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>7.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>8.1.1. 概述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>ELF(Executable and Linking Format)是一种对象文件的格式，用于定义不同类型的对象文件(Object files)中存放的对象、以及存放对象的格式。最初ELF由UNIX系统实验室（USL）开发和发布，作为应用程序二进制接口（ABI）的一部分。</p>
 <p>ELF标准旨在通过为开发人员提供一套简化的软件开发流程二进制接口定义，可以在多种环境下运行。</p>
 </div>
 <div class="section" id="id2">
-<h2>7.1.2. 对象文件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>8.1.2. 对象文件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>对象文件(Object files)有如下三个种类</p>
 <div class="section" id="relocatable-file">
-<h3>7.1.2.1. 可重定位的对象文件(Relocatable file)<a class="headerlink" href="#relocatable-file" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.2.1. 可重定位的对象文件(Relocatable file)<a class="headerlink" href="#relocatable-file" title="Permalink to this headline">¶</a></h3>
 <p>这是由汇编器汇编生成的 .o 文件。后面的链接器(link editor)拿一个或一些 Relocatable object files 作为输入，经链接处理后，生成一个可执行的对象文件 (Executable file) 或者一个可被共享的对象文件(Shared object file)。</p>
 </div>
 <div class="section" id="executable-file">
-<h3>7.1.2.2. 可执行的对象文件(Executable file)<a class="headerlink" href="#executable-file" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.2.2. 可执行的对象文件(Executable file)<a class="headerlink" href="#executable-file" title="Permalink to this headline">¶</a></h3>
 <p>在Linux系统里面，存在两种可执行的东西。除了Executable file，另外一种就是可执行的脚本(如shell脚本)。注意这些脚本不是Executable file，它们只是文本文件，但是执行这些脚本所用的解释器就是 Executable file，比如 bash shell 程序。</p>
 </div>
 <div class="section" id="shared-object-file">
-<h3>7.1.2.3. 可被共享的对象文件(Shared object file)<a class="headerlink" href="#shared-object-file" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.2.3. 可被共享的对象文件(Shared object file)<a class="headerlink" href="#shared-object-file" title="Permalink to this headline">¶</a></h3>
 <p>这些就是所谓的动态库文件，也即.so文件。如果拿前面的静态库来生成可执行程序，那每个生成的可执行程序中都会有一份库代码的拷贝。如果在磁盘中存储这些可执行程序，那就会占用额外的磁盘空间；另外如果拿它们放到Linux系统上一起运行，也会浪费掉宝贵的物理内存。如果将静态库换成动态库，那么这些问题都不会出现。</p>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>7.1.3. ELF格式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>8.1.3. ELF格式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>ELF格式有两种</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">Linking</span> <span class="n">View</span>
 <span class="o">+--------------------------+</span>
@@ -266,70 +267,70 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>7.1.4. 段<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>8.1.4. 段<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bss">
-<h3>7.1.4.1. .bss<a class="headerlink" href="#bss" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.1. .bss<a class="headerlink" href="#bss" title="Permalink to this headline">¶</a></h3>
 <p>bss段保存未初始化的全局变量和局部静态变量</p>
 </div>
 <div class="section" id="data-and-data1">
-<h3>7.1.4.2. .data and .data1<a class="headerlink" href="#data-and-data1" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.2. .data and .data1<a class="headerlink" href="#data-and-data1" title="Permalink to this headline">¶</a></h3>
 <p>data段保存已初始化的全局变量和局部静态变量</p>
 </div>
 <div class="section" id="rodata">
-<h3>7.1.4.3. .rodata<a class="headerlink" href="#rodata" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.3. .rodata<a class="headerlink" href="#rodata" title="Permalink to this headline">¶</a></h3>
 <p>存放只读数据</p>
 </div>
 <div class="section" id="text">
-<h3>7.1.4.4. .text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.4. .text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
 <p>程序代码段</p>
 </div>
 <div class="section" id="comment">
-<h3>7.1.4.5. .comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.5. .comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
 <p>存放编译器版本信息等</p>
 </div>
 <div class="section" id="debug">
-<h3>7.1.4.6. .debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.6. .debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
 <p>存放调试信息</p>
 </div>
 <div class="section" id="dynamic">
-<h3>7.1.4.7. .dynamic<a class="headerlink" href="#dynamic" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.7. .dynamic<a class="headerlink" href="#dynamic" title="Permalink to this headline">¶</a></h3>
 <p>该段中保存了动态链接器所需要的基本信息，是一个结构数组，可以看做动态链接下ELF文件的文件头。存储了动态链接会用到的各个表的位置等信息。</p>
 </div>
 <div class="section" id="dynstr">
-<h3>7.1.4.8. .dynstr<a class="headerlink" href="#dynstr" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.8. .dynstr<a class="headerlink" href="#dynstr" title="Permalink to this headline">¶</a></h3>
 <p>该段是 .dynsym 段的辅助段</p>
 </div>
 <div class="section" id="dynsym">
-<h3>7.1.4.9. .dynsym<a class="headerlink" href="#dynsym" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.9. .dynsym<a class="headerlink" href="#dynsym" title="Permalink to this headline">¶</a></h3>
 <p>该段与 <code class="docutils literal notranslate"><span class="pre">.symtab</span></code> 段类似，但只保存了与动态链接相关的符号</p>
 </div>
 <div class="section" id="got">
-<h3>7.1.4.10. .got<a class="headerlink" href="#got" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.10. .got<a class="headerlink" href="#got" title="Permalink to this headline">¶</a></h3>
 <p>程序全局入口表</p>
 </div>
 <div class="section" id="plt">
-<h3>7.1.4.11. .plt<a class="headerlink" href="#plt" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.11. .plt<a class="headerlink" href="#plt" title="Permalink to this headline">¶</a></h3>
 <p>动态链接的跳转表</p>
 </div>
 <div class="section" id="hash">
-<h3>7.1.4.12. .hash<a class="headerlink" href="#hash" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.12. .hash<a class="headerlink" href="#hash" title="Permalink to this headline">¶</a></h3>
 <p>在动态链接下，需要在程序运行时查找符号，为了加快符号查找过程，增加了辅助的符号哈希表</p>
 </div>
 <div class="section" id="init">
-<h3>7.1.4.13. .init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.13. .init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
 <p>程序初始化代码段</p>
 </div>
 <div class="section" id="fini">
-<h3>7.1.4.14. .fini<a class="headerlink" href="#fini" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.14. .fini<a class="headerlink" href="#fini" title="Permalink to this headline">¶</a></h3>
 <p>程序终结代码段</p>
 </div>
 <div class="section" id="interp">
-<h3>7.1.4.15. .interp<a class="headerlink" href="#interp" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4.15. .interp<a class="headerlink" href="#interp" title="Permalink to this headline">¶</a></h3>
 <p>该段里保存的是一个字符串，这个字符串就是可执行文件所需要的动态链接器的位置</p>
 </div>
 </div>
 <div class="section" id="id5">
-<h2>7.1.5. 内存布局<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>8.1.5. 内存布局<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------</span>
 <span class="o">|</span>        <span class="n">Kernel</span> <span class="n">Space</span>            <span class="o">|</span>    <span class="mi">1</span><span class="n">GB</span>
 <span class="o">----------------------------------</span>
@@ -365,7 +366,7 @@
 </div>
 </div>
 <div class="section" id="pltgot">
-<h2>7.1.6. PLT与GOT<a class="headerlink" href="#pltgot" title="Permalink to this headline">¶</a></h2>
+<h2>8.1.6. PLT与GOT<a class="headerlink" href="#pltgot" title="Permalink to this headline">¶</a></h2>
 <p>在编译和链接阶段，链接器无法知知道进程运行起来之后外部函数的加载地址。因此程序编译时会采用两种表进行辅助，一个为程序链接表（PLT，Procedure Link Table），一个为全局偏移表（GOT, Global Offset Table）。</p>
 </div>
 </div>
@@ -378,10 +379,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pe.html" class="btn btn-neutral float-right" title="7.2. PE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pe.html" class="btn btn-neutral float-right" title="8.2. PE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="7. 逆向工程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="8. 逆向工程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

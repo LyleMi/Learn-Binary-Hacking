@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. 堆相关漏洞 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>11. 堆相关漏洞 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10.1. Use After Free" href="uaf.html" />
-    <link rel="prev" title="9.3. 栈溢出" href="../stack/overflow.html" /> 
+    <link rel="next" title="11.1. Use After Free" href="uaf.html" />
+    <link rel="prev" title="10.3. 栈溢出" href="../stack/overflow.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,19 +92,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. 堆相关漏洞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html">10.1. Use After Free</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html">10.2. Off By One</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html">10.3. 堆溢出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. 堆相关漏洞</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uaf.html">11.1. Use After Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html">11.2. Off By One</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html">11.3. 堆溢出</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -150,7 +151,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>10. 堆相关漏洞</li>
+      <li>11. 堆相关漏洞</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,22 +171,22 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>10. 堆相关漏洞<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>11. 堆相关漏洞<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">目录:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="uaf.html">10.1. Use After Free</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="uaf.html#id1">10.1.1. 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uaf.html">11.1. Use After Free</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uaf.html#id1">11.1.1. 概述</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="offByOne.html">10.2. Off By One</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="offByOne.html#id1">10.2.1. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="offByOne.html">11.2. Off By One</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="offByOne.html#id1">11.2.1. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="unlink.html">10.3. 堆溢出</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html#id2">10.3.1. 第一部分</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html#id3">10.3.2. 第二部分</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unlink.html#id4">10.3.3. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unlink.html">11.3. 堆溢出</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html#id2">11.3.1. 第一部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html#id3">11.3.2. 第二部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unlink.html#id4">11.3.3. 参考链接</a></li>
 </ul>
 </li>
 </ul>
@@ -200,10 +201,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="uaf.html" class="btn btn-neutral float-right" title="10.1. Use After Free" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="uaf.html" class="btn btn-neutral float-right" title="11.1. Use After Free" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../stack/overflow.html" class="btn btn-neutral float-left" title="9.3. 栈溢出" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../stack/overflow.html" class="btn btn-neutral float-left" title="10.3. 栈溢出" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

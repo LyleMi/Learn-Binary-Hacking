@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1. 基础 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.2. 虚拟化技术" href="tech.html" />
+    <link rel="prev" title="7. 虚拟化" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 虚拟化</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.1. 基础</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.1.1. 简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">7.1.1.1. 发展历史</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">7.1.1.2. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">7.1.1.3. 意义</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.1.2. 原理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpu">7.1.2.1. CPU虚拟化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">7.1.2.2. 计算机虚拟化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.1.3. 虚拟化方式分类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">7.1.3.1. 半虚拟化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">7.1.3.2. 全虚拟化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">7.1.4. 虚拟化技术应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">7.1.4.1. 内核漏洞检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">7.1.4.2. 完整性保护</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">7.1.4.3. 入侵检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">7.1.4.4. 恶意代码检测与分析</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">7.1.5. 虚拟机漏洞</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html">7.2. 虚拟化技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">7.3. VMWare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kvm.html">7.4. KVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xen.html">7.5. Xen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu.html">7.6. QEMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.7. Unicorn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. 虚拟化</a> &raquo;</li>
+        
+      <li>7.1. 基础</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/virtual/basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>7.1. 基础<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>7.1.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>7.1.1.1. 发展历史<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>1959年 虚拟化概念提出 Christopher Strachey在国际信息处理大会上发表了虚拟化相关的文章</p></li>
+<li><p>1960年 早起计算机虚拟化 IBM研究出了IBM 7044计算机 让用户可以在一台大型机上运行多个系统</p></li>
+<li><p>1999年 现代计算机虚拟化实现 VMware解决了x86虚拟化的问题，推出了虚拟化软件</p></li>
+<li><p>2003年 开源虚拟化技术出现 Xen是剑桥的一个开源项目，是版虚拟化技术的代表</p></li>
+<li><p>2005年 硬件辅助虚拟化技术出现 Intel和ADM推出了支持虚拟化技术的处理器和芯片组，实现了硬件辅助虚拟化技术</p></li>
+<li><p>2006年 虚拟化技术在云计算中应用</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>7.1.1.2. 定义<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>虚拟化是表示计算机资源的抽象方法，通虚拟化可以用于访问抽象前资源一致的方法访问抽象的资源。这种资源的抽象方法并不受实现、地理位置底层资源的物理配置的限制。</p>
+</div>
+<div class="section" id="id5">
+<h3>7.1.1.3. 意义<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>效率：将原本一台服务器的资源分配给了多台虚拟化的服务器，有效地利用了闲置资源。</p></li>
+<li><p>隔离：虚拟环境中运行的应用程序之间的隔离性优于在传统的非虚拟化系统中运行的应用程序，这对于系统的安全性和可用性都有所提升。</p></li>
+<li><p>可靠：虚拟服务器是独立与硬件进行工作的，通过改进灾难恢复解决方案提高了业务的连续性。当一台服务器出现故障时可在最短时间内恢复且不影响整个集群的运作，在整个数据中心实现高可用性。</p></li>
+<li><p>成本：降低了部署成本，只需要更少的服务器就可实现需要更多服务器才能做到的事情，也间接降低了安全等其他方面的成本。</p></li>
+<li><p>兼容：虚拟化技术改进了桌面管理的方式，可部署多套不同的系统，将因兼容性造成问题的可能性降到最低。</p></li>
+<li><p>便于管理：提高了服务器/管理员比率，一个管理员可以轻松地管理比以前更多的服务器而不会造成更大的负担。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>7.1.2. 原理<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>非特权指令</dt><dd><ul>
+<li><p>可以在任何级别下执行</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>特权指令</dt><dd><ul>
+<li><p>操作和管理系统资源，只能在最高权限级ring0上运行</p></li>
+<li><p>其他权限运行触发异常被捕获</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>敏感指令</dt><dd><ul>
+<li><p>操作特权资源的指令，读写敏感的寄存器或内存，访问内存系统或IO指令。</p></li>
+<li><p>部分为特权指令，17条非特权指令</p></li>
+<li><p>所有的特权指令都是敏感指令。但不是所有的敏感指令都是特权指令</p></li>
+<li><p>x86架构下部分敏感指令可在低权限级别运行，不触发异常，不能被捕获</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="cpu">
+<h3>7.1.2.1. CPU虚拟化<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>指令翻译</dt><dd><ul>
+<li><p>二进制代码动态翻译</p></li>
+<li><p>在执行时动态地重写虚拟机的执行代码</p></li>
+<li><p>在需要 VMM 监控和模拟的位置插入陷入</p></li>
+<li><p>不需要修改 guest OS</p></li>
+<li><p>动态翻译带来一定的性能开销</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>指令翻译模拟器</dt><dd><ul>
+<li><p>虚拟化技术的实质是一样的：将底层资源进行分区，并向上提供特定的和多样化的执行环境</p></li>
+<li><p>纯软件方法模拟和实际运行程序不同的指令集去执行，这种方式构造的虚拟机一般称为模拟器</p></li>
+<li><p>模拟器可将 guest OS发出的所有指令翻译成本地指令集</p></li>
+<li><p>指令集虚拟化系统的代表包括 Bochs 和 QEMU 等</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Bochs</dt><dd><ul>
+<li><p>x86 PC模拟器 可以运行在大多主流平台上，包括x86 PowerPC Alpha Sun和MIPS</p></li>
+<li><p>翻译每一条指令</p></li>
+<li><p>从加电到重新启动模拟x86 CPU，为所有标准PC外围设备装配设备模型，支持无修改软件执行（包括操作系统）</p></li>
+<li><p>模拟需要额外开销</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QEMU</dt><dd><ul>
+<li><p>使用动态翻译器，Kqemu使用指令翻译缓冲区快速处理指令翻译</p></li>
+<li><p>支持两种操作模式：User Mode和System Mode</p></li>
+<li><p>在User Mode中，可以将CPU上编译的Linux进程装载到另一个CPU中，或跨编译进行交叉调试</p></li>
+<li><p>在System Mode中，可以模拟完整系统，包括处理器和外围设备</p></li>
+<li><p>QEMU支持多种处理器架构的模拟，包括x86、ARM、PowerPC和Sparc</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>7.1.2.2. 计算机虚拟化<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>VMM（Virtual Machine Monitor） 虚拟机监控层：运行于服务器硬件和虚拟机之间的中间软件层，又称为hypervisor</dt><dd><ul>
+<li><p>管理所有的系统资源</p></li>
+<li><p>管理虚拟机，提供虚拟机硬件模拟</p></li>
+<li><p>协调虚拟机使用服务器硬件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>宿主机操作系统：host OS</p></li>
+<li><p>客户机操作系统：guest OS</p></li>
+<li><dl class="simple">
+<dt>计算机虚拟化</dt><dd><ul>
+<li><p>CPU/内存/IO虚拟化</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>7.1.3. 虚拟化方式分类<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>半虚拟化 （Para-Virtualization）</dt><dd><ul>
+<li><p>客户操作系统通过修改能和物理硬件进行互动，效率较高，代表是Xen</p></li>
+<li><p>实现方式：修改操作系统</p></li>
+<li><p>和全虚拟化相比，架构更精简，而且在整体速度上有一定的优势。</p></li>
+<li><p>缺点是需要对Guest OS进行修改，所以在用户体验上不太好，对非开放的操作系统则无法提供支持</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>完全虚拟化 （Full Virtualization）</dt><dd><ul>
+<li><p>客户操作系统不用修改，硬件由VMM模拟，指令也由VMM进行模拟并返回给客户操作系统</p></li>
+<li><dl class="simple">
+<dt>实现方式</dt><dd><ul>
+<li><p>软件实现：要经过模拟处理，性能较低，对系统负荷较大</p></li>
+<li><p>硬件辅助：通过修改虚拟机和VMM运行的ring级别，提高性能</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="id9">
+<h3>7.1.3.1. 半虚拟化<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>CPU半虚拟化</dt><dd><ul>
+<li><p>在半虚拟化实现中，认为与其千方百计去捕获敏感指令，不如直接不用这些指令。于是对GuestOS进行了一些修改，替换掉这些指令，转而调用VMM提供的特殊API(hypercall)来进行模拟。当Guest OS需要执行敏感操作时，直接通过hypercall调用VMM，避免了捕获的开销。</p></li>
+<li><p>不需要hypervisor捕获特权指令而耗费一定的资源进行翻译操作，从而获得额外的性能和高扩展性，使其性能非常接近物理机</p></li>
+<li><p>这种方式需要修改操作系统内核，将不能虚拟化的指令替换为hypercall，hypercall直接与虚拟层通信，虚拟层提供内核操作的关键接口，如内存管理、中断处理和时间管理等。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>内存半虚拟化</dt><dd><ul>
+<li><p>在VMM的帮助下，使guest OS能够利用物理MMU一次完成由虚拟机地址到机器地址的三层转换技术</p></li>
+<li><p>guest OS的客户页表中的地址不再是客户物理地址，而是机器地址</p></li>
+<li><p>为了保护各个虚拟机内存空间相互独立，VMM在对页表进行地址替换前，会对页表中的每一个页表项进行检查，以确保只映射了属于该虚拟机的机器页面，而且不得包含对页表页面的可写映射</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>I/O设备半虚拟化</dt><dd><ul>
+<li><p>在半虚拟化下，修改Guest OS内核，将原生设备驱动从Guest OS中移出，放在一个经过VMM授权的设备虚拟机中，其余虚拟机中Guest OS的I/O请求都交由设备虚拟机处理。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>7.1.3.2. 全虚拟化<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>在虚拟化技术的早期，计算机没有在硬件层次上对虚拟化技术提供支持，因此虚拟化技术主要基于软件实现。</p></li>
+<li><p>完全虚拟化方法在虚拟服务器和底层硬件之间建立一个抽象层，捕捉和处理那些对虚拟化敏感的特权指令，为指令访问硬件控制器和外设充当中介，使客户操作系统无需修改就能在虚拟服务器上运行，就像运行在真实的物理环境下一样。</p></li>
+<li><dl class="simple">
+<dt>主要实现技术</dt><dd><ul>
+<li><p>优先级压缩</p></li>
+<li><p>二进制代码翻译</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CPU全虚拟化</dt><dd><ul>
+<li><p>客户操作系统运行在Ring 1级，VMM运行在Ring 0级，VMM提供给操作系统各种虚拟资源（虚拟BIOS、虚拟设备和虚拟内存管理等）。对于不能虚拟化的特权指令，通过二进制转换方式转换为同等效果的指令序列运行，而用户级指令可直接运行</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>内存全虚拟化</dt><dd><ul>
+<li><dl class="simple">
+<dt>影子页表</dt><dd><ul>
+<li><p>虚拟地址 &lt;=&gt; 物理地址</p></li>
+<li><p>虚拟机虚拟地址 &lt;=&gt; 虚拟机物理地址 &lt;=&gt; 真实的机器地址</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>影子页表对guest OS完全透明</p></li>
+<li><dl class="simple">
+<dt>维护影子页表的时间开销和空间开销很大</dt><dd><ul>
+<li><p>缺页补全</p></li>
+<li><p>每个虚拟机到需要一套影子页表</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>I/O设备全虚拟化</dt><dd><ul>
+<li><p>不修改guest OS</p></li>
+<li><p>VMM处理设备的方式根据VMM的位置不同</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>全虚拟化</dt><dd><ul>
+<li><dl class="simple">
+<dt>代表产品</dt><dd><ul>
+<li><p>VMware vSphere和Hyper-V</p></li>
+<li><p>开源KVM</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>优点</dt><dd><ul>
+<li><p>Guest OS无需修改</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>缺点</dt><dd><ul>
+<li><p>开销</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>全虚拟化-硬件辅助</dt><dd><ul>
+<li><dl class="simple">
+<dt>指令虚拟化</dt><dd><ul>
+<li><p>用户指令直接在硬件上执行</p></li>
+<li><p>部分特权指令直接执行</p></li>
+<li><p>部分特权指令在VMM上执行</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>存储器的虚拟化</dt><dd><ul>
+<li><p>NPT</p></li>
+<li><p>影子页表</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>I/O设备</dt><dd><ul>
+<li><p>指令模拟</p></li>
+<li><p>Intel - VT</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>硬件辅助虚拟化</dt><dd><ul>
+<li><dl class="simple">
+<dt>代表产品</dt><dd><ul>
+<li><p>Virtual Box / KVM</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>优点</dt><dd><ul>
+<li><p>引入硬件技术，使虚拟化技术更接近物理机的速度</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>缺点</dt><dd><ul>
+<li><p>硬件实现不够优化，还有提高空间</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>7.1.4. 虚拟化技术应用<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>7.1.4.1. 内核漏洞检测<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>User Space</dt><dd><ul>
+<li><p>部署一些分析和测试的应用程序</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Kernel Space</dt><dd><ul>
+<li><p>主要工作包括设置监视的内存区域、与超级管理程序通信、拦截特定的函数</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Hypervisor</dt><dd><ul>
+<li><p>主要负责进行具体的监测检查工作</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>7.1.4.2. 完整性保护<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>完整性是指能够保障被传输、接收或存储的信息是完整的和未被篡改的，是信息安全的重要属性之一。关于完整性保护的研究主要集中在文件系统完整性和内核代码完整性方面。</p>
+</div>
+<div class="section" id="id14">
+<h3>7.1.4.3. 入侵检测<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>现有的入侵检测系统给系统管理员带来了两难的选择：如果将入侵检测系统部署在主机上，则它可以清晰的观察到主机的系统状态，但是容易遭到恶意攻击或者被屏蔽；如果将其部署在网络上，则它可以更好的抵御攻击，但是对主机内部的状态一无所知，因此可能让攻击者逃脱。</p>
+<p>基于虚拟化的入侵检测系统，可以做到既能够观察到被监控系统的内部状态，又能与被监控系统隔离。VMM能够直接观察到被监控系统的内部状态，可以通过直接访问其内存来重构出GuestOS的内核数据结构，通过单独运行的入侵检测系统来进行检测。这种在虚拟机外部监控虚拟机内部运行状态的方法称为虚拟机自省（virtual machine introspection, VMI）。</p>
+</div>
+<div class="section" id="id15">
+<h3>7.1.4.4. 恶意代码检测与分析<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>原理</dt><dd><ul>
+<li><p>恶意软件具有静态的特征码，其感染破坏的流程中存在行为特征</p></li>
+<li><p>恶意软件入侵系统后会进行隐藏系统进程、添加注册表启动项等操作</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>现有解决方案</dt><dd><ul>
+<li><p>基于多引擎的特征码和行为特征检测</p></li>
+<li><p>基于入侵检测</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>7.1.5. 虚拟机漏洞<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>虚拟机逃逸</p></li>
+<li><p>拒绝服务攻击</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tech.html" class="btn btn-neutral float-right" title="7.2. 虚拟化技术" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="7. 虚拟化" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

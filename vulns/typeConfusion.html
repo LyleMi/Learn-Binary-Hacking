@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11.2. Type Confusion &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>12.2. Type Confusion &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12. 防御策略" href="../mitigations/index.html" />
-    <link rel="prev" title="11.1. 格式化字符串" href="fmtstr.html" /> 
+    <link rel="next" title="13. 防御策略" href="../mitigations/index.html" />
+    <link rel="prev" title="12.1. 格式化字符串" href="fmtstr.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,22 +92,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. 其他漏洞</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">11.1. 格式化字符串</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">11.2. Type Confusion</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">11.2.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">11.2.2. 示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">12. 其他漏洞</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fmtstr.html">12.1. 格式化字符串</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.2. Type Confusion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">12.2.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">12.2.2. 示例</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -153,9 +154,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">11. 其他漏洞</a> &raquo;</li>
+          <li><a href="index.html">12. 其他漏洞</a> &raquo;</li>
         
-      <li>11.2. Type Confusion</li>
+      <li>12.2. Type Confusion</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,16 +176,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="type-confusion">
-<h1>11.2. Type Confusion<a class="headerlink" href="#type-confusion" title="Permalink to this headline">¶</a></h1>
+<h1>12.2. Type Confusion<a class="headerlink" href="#type-confusion" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>11.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>12.2.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>类型混淆的问题发生在程序使用一种类型分配或初始化诸如指针，对象或变量之类的资源，但在之后使用与原始类型不兼容的类型访问该资源的情况。</p>
 <p>当程序使用不兼容类型访问资源时，可能会触发逻辑错误，因为资源没有预期的属性。在没有内存安全性的语言中，例如C和C++，类型混淆可能导致越界内存访问。</p>
 <p>虽然在C中使用许多不同的嵌入对象类型解析数据时，这种漏洞经常与 <code class="docutils literal notranslate"><span class="pre">union</span></code> 相关联，但它可以存在于可以以多种方式解释相同变量或内存位置的任何应用程序中。</p>
 <p>这个漏洞并不是C和C++独有的。PHP应用程序中的一些漏洞可以通过在期望标量时提供数组参数来触发，反之亦然。像Perl这样的语言，当变量被执行自动转换时，也可能包含这些问题。</p>
 </div>
 <div class="section" id="id2">
-<h2>11.2.2. 示例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>12.2.2. 示例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define NAME_TYPE 1</span>
 <span class="c1">#define ID_TYPE 2</span>
 
@@ -228,10 +229,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../mitigations/index.html" class="btn btn-neutral float-right" title="12. 防御策略" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../mitigations/index.html" class="btn btn-neutral float-right" title="13. 防御策略" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fmtstr.html" class="btn btn-neutral float-left" title="11.1. 格式化字符串" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fmtstr.html" class="btn btn-neutral float-left" title="12.1. 格式化字符串" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
