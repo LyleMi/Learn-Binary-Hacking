@@ -23,3 +23,7 @@ x86
 - IDTR
     - Global Descriptor Table Register
     - 记录段表
+
+参考链接
+----------------------------------------
+- `Intel 80386 Reference Programmer's Manual <https://nju-projectn.github.io/i386-manual/toc.htm>`_
