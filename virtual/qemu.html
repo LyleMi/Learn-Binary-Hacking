@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.6. QEMU &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>7.7. QEMU &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.7. Unicorn" href="unicorn.html" />
-    <link rel="prev" title="7.5. Xen" href="xen.html" /> 
+    <link rel="next" title="7.8. Unicorn" href="unicorn.html" />
+    <link rel="prev" title="7.6. Xen" href="xen.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,18 +95,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 虚拟化</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic.html">7.1. 基础</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tech.html">7.2. 虚拟化技术</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vmware.html">7.3. VMWare</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html">7.4. KVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xen.html">7.5. Xen</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.6. QEMU</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">7.6.1. 背景</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">7.6.2. 架构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">7.6.3. 外围设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">7.6.4. 源码结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">7.6.5. 参考链接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtio.html">7.3. Virtio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">7.4. VMWare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kvm.html">7.5. KVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xen.html">7.6. Xen</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.7. QEMU</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.7.1. 背景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.7.2. 架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.7.3. 外围设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.7.4. 源码结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.7.5. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.7. Unicorn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.8. Unicorn</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
@@ -164,7 +165,7 @@
         
           <li><a href="index.html">7. 虚拟化</a> &raquo;</li>
         
-      <li>7.6. QEMU</li>
+      <li>7.7. QEMU</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,14 +185,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="qemu">
-<h1>7.6. QEMU<a class="headerlink" href="#qemu" title="Permalink to this headline">¶</a></h1>
+<h1>7.7. QEMU<a class="headerlink" href="#qemu" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>7.6.1. 背景<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>7.7.1. 背景<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>QEMU是一款开源的仿真执行工具，可以模拟运行多种CPU架构的程序或系统。在执行时，QEMU会先以基本块（Basic Block）为单位，将目标指令经由TCG这一层翻译成宿主机的代码，得到TB(Translation Block)，最终在主机上执行。</p>
 <p>和虚拟化不同的是，仿真基本都是软件实现，宿主机和虚拟机可以是不同的架构。</p>
 </div>
 <div class="section" id="id2">
-<h2>7.6.2. 架构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>7.7.2. 架构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>QEMU 支持两种操作模式：用户模式仿真和系统模式仿真。用户模式仿真 允许一个 CPU 构建的进程在另一个 CPU 上执行（执行主机 CPU 指令的动态翻译并相应地转换 Linux 系统调用）。系统模式仿真 允许对整个系统进行仿真，包括处理器和配套的外围设备。</p>
 <p>在 x86 主机系统上仿真 x86 代码时，使用 QEMU 加速器 可以实现近似本地的性能。这让我们能够直接在主机 CPU 上执行仿真代码（在 Linux 上通过 kernel 模块执行）。</p>
 <p>但是从技术角度看，QEMU 的有趣之处在于其快速、可移植的动态翻译程序。动态翻译程序 允许在运行时将用于目标（来宾）CPU 的指令转换为用于主机 CPU，从而实现仿真。这可以通过一种强制方法实现（将指令从一个 CPU 映射到另一个 CPU），但是情况并非总是这样简单，在某些情况下，根据所翻译的架构，可能需要使用多个指令或行为更改。</p>
@@ -199,12 +200,12 @@
 <p>QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的内存开销最小化。当初次使用目标代码块时，翻译该块并将其存储为翻译后的代码块。 QEMU 将最近使用的翻译后的代码块缓存在一个 16 MB 的块中。 QEMU 甚至可以通过在缓存中将翻译后的代码块变为无效来支持代码的自我修改。</p>
 </div>
 <div class="section" id="id3">
-<h2>7.6.3. 外围设备<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>7.7.3. 外围设备<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>将 QEMU 作为 PC 系统仿真器使用可提供各种外围设备。需要的标准外围设备包括硬件 Video Graphics Array (VGA) 仿真器、PS/2 鼠标和键盘、电子集成驱动器（Integrated Drive Electronics）硬盘和 CD-ROM 接口，以及软盘仿真。另外，QEMU 包括对 NE2000 Peripheral Controller Interconnect (PCI) 网络适配器、串行端口、大量的声卡和 PCI Universal Host Controller Interface (UHCI) Universal Serial Bus (USB) 控制器（带虚拟 USB 集线器）的仿真。Processor symmetric multiprocessing (SMP) 支持也得到了对 255 个 CPU 的支持。</p>
 <p>除了仿真标准 PC 或 ISA PC（不带 PCI 总线）外，QEMU 还可以仿真其他非 PC 硬件，如 ARM Versatile 基线板（使用 926E）和 Malta million instructions per second (MIPS) 板。对于各种其他平台，包括 Power Macintosh G3 (Blue &amp;amp; White) 和 Sun-4u 平台，都能正常工作。</p>
 </div>
 <div class="section" id="id4">
-<h2>7.6.4. 源码结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>7.7.4. 源码结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>主要文件</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -261,7 +262,7 @@
 </ul>
 </div>
 <div class="section" id="id5">
-<h2>7.6.5. 参考链接<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>7.7.5. 参考链接<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.qemu.org/">qemu</a></p></li>
 <li><p><a class="reference external" href="https://wiki.qemu.org/">qemu wiki</a></p></li>
@@ -281,10 +282,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="unicorn.html" class="btn btn-neutral float-right" title="7.7. Unicorn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unicorn.html" class="btn btn-neutral float-right" title="7.8. Unicorn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="xen.html" class="btn btn-neutral float-left" title="7.5. Xen" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xen.html" class="btn btn-neutral float-left" title="7.6. Xen" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

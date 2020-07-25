@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1. 区别" href="diff.html" />
+    <link rel="next" title="4.1. 指令集架构" href="isa.html" />
     <link rel="prev" title="3.10. 安全性" href="../firmware/security.html" /> 
 </head>
 
@@ -90,23 +90,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. 汇编基础</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="diff.html">4.1. 区别</a></li>
-<li class="toctree-l2"><a class="reference internal" href="x86.html">4.2. x86</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arm.html">4.3. ARM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html">4.4. MIPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ppc.html">4.5. PowerPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isa.html">4.1. 指令集架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html">4.2. 区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x86.html">4.3. x86</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm.html">4.4. ARM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html">4.5. MIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ppc.html">4.6. PowerPC</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -176,33 +178,39 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">目录:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="diff.html">4.1. 区别</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id2">4.1.1. 前缀</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id3">4.1.2. 立即操作数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id4">4.1.3. 操作数顺序</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id5">4.1.4. 字长</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id6">4.1.5. 绝对转移和调用指令</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id7">4.1.6. 远程转移指令和远程子调用指令</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diff.html#id8">4.1.7. 寻址</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isa.html">4.1. 指令集架构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="isa.html#id2">4.1.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isa.html#id3">4.1.2. 分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isa.html#id4">4.1.3. 指令类型</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="x86.html">4.2. x86</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="x86.html#id1">4.2.1. 寄存器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diff.html">4.2. 区别</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id2">4.2.1. 前缀</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id3">4.2.2. 立即操作数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id4">4.2.3. 操作数顺序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id5">4.2.4. 字长</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id6">4.2.5. 绝对转移和调用指令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id7">4.2.6. 远程转移指令和远程子调用指令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html#id8">4.2.7. 寻址</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="arm.html">4.3. ARM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mips.html">4.4. MIPS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id1">4.4.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id2">4.4.2. 指令特点</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id3">4.4.3. 数据类型</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id4">4.4.4. 寄存器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id6">4.4.5. 读写操作</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id7">4.4.6. 寻址</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id8">4.4.7. 算术指令集</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mips.html#id9">4.4.8. 控制流</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x86.html">4.3. x86</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="x86.html#id1">4.3.1. 寄存器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ppc.html">4.5. PowerPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arm.html">4.4. ARM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mips.html">4.5. MIPS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id1">4.5.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id2">4.5.2. 指令特点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id3">4.5.3. 数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id4">4.5.4. 寄存器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id6">4.5.5. 读写操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id7">4.5.6. 寻址</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id8">4.5.7. 算术指令集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mips.html#id9">4.5.8. 控制流</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ppc.html">4.6. PowerPC</a></li>
 </ul>
 </div>
 </div>
@@ -215,7 +223,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="diff.html" class="btn btn-neutral float-right" title="4.1. 区别" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="isa.html" class="btn btn-neutral float-right" title="4.1. 指令集架构" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../firmware/security.html" class="btn btn-neutral float-left" title="3.10. 安全性" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

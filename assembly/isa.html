@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4.4. ARM &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>4.1. 指令集架构 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.5. MIPS" href="mips.html" />
-    <link rel="prev" title="4.3. x86" href="x86.html" /> 
+    <link rel="next" title="4.2. 区别" href="diff.html" />
+    <link rel="prev" title="4. 汇编基础" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,10 +90,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 汇编基础</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="isa.html">4.1. 指令集架构</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. 指令集架构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.1.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.2. 分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.3. 指令类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.1.3.1. 数据处理和内存操作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.1.3.2. 算术和逻辑操作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">4.1.3.3. 控制流操作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">4.1.3.4. 协处理器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">4.1.3.5. 复杂指令集指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="diff.html">4.2. 区别</a></li>
 <li class="toctree-l2"><a class="reference internal" href="x86.html">4.3. x86</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. ARM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm.html">4.4. ARM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mips.html">4.5. MIPS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ppc.html">4.6. PowerPC</a></li>
 </ul>
@@ -156,13 +168,13 @@
         
           <li><a href="index.html">4. 汇编基础</a> &raquo;</li>
         
-      <li>4.4. ARM</li>
+      <li>4.1. 指令集架构</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/assembly/arm.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/assembly/isa.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,8 +187,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="arm">
-<h1>4.4. ARM<a class="headerlink" href="#arm" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1>4.1. 指令集架构<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>4.1.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>指令集体系结构 (Instruction set architecture, ISA)是计算机的抽象模型。它也称为体系结构或计算机体系结构。</p>
+</div>
+<div class="section" id="id3">
+<h2>4.1.2. 分类<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>ISA可以通过多种方式分类，常见的分类方式是根据架构的复杂性分为复杂指令集计算机（CISC，complex instruction set computer）和精简指令集计算机（RISC，reduced instruction set computer）。CISC具有许多专门的指令，其中某些指令可能很少在实际程序中使用。RISC通过仅有效地执行程序中经常使用的指令来简化处理器。</p>
+</div>
+<div class="section" id="id4">
+<h2>4.1.3. 指令类型<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>4.1.3.1. 数据处理和内存操作<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>给寄存器设置值</p></li>
+<li><p>将数据从内存拷贝到寄存器</p></li>
+<li><p>将数据从寄存器拷贝到内存</p></li>
+<li><p>从硬件设备中读取数据</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>4.1.3.2. 算术和逻辑操作<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>加/减/乘/除并设置状态寄存器</p></li>
+<li><p>位运算</p></li>
+<li><p>比较寄存器中的值</p></li>
+<li><p>浮点运算</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>4.1.3.3. 控制流操作<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>有条件跳转</p></li>
+<li><p>无条件跳转</p></li>
+<li><p>调用</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>4.1.3.4. 协处理器<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>从协处理器存/取数据</p></li>
+<li><p>协处理器操作</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>4.1.3.5. 复杂指令集指令<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>一次性操作多个寄存器 (e.g. 存/取到栈上)</p></li>
+<li><p>移动大块内存 (e.g. DMA操作)</p></li>
+<li><p>复杂的算术操作 (e.g. 开平方)</p></li>
+<li><p>SIMD 操作</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -187,10 +253,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mips.html" class="btn btn-neutral float-right" title="4.5. MIPS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="diff.html" class="btn btn-neutral float-right" title="4.2. 区别" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="x86.html" class="btn btn-neutral float-left" title="4.3. x86" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="4. 汇编基础" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

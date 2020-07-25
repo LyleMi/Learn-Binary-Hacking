@@ -6,6 +6,7 @@
 
    basic
    tech
+   virtio
    vmware
    kvm
    xen

@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.3. Virtio &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.4. VMWare" href="vmware.html" />
+    <link rel="prev" title="7.2. 虚拟化技术" href="tech.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 虚拟化</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic.html">7.1. 基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html">7.2. 虚拟化技术</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Virtio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.3.2. 架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.3.3. 设备类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id">7.3.3.1. 设备类型与ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">7.3.3.2. 网络设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">7.3.3.3. 块设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#console">7.3.3.4. Console设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">7.3.3.5. 熵设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#balloon">7.3.3.6. Balloon 设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scsi-host">7.3.3.7. SCSI Host 设备</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">7.3.4. 参考链接</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">7.3.4.1. 官方文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blog">7.3.4.2. Blog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">7.4. VMWare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kvm.html">7.5. KVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xen.html">7.6. Xen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu.html">7.7. QEMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.8. Unicorn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. 虚拟化</a> &raquo;</li>
+        
+      <li>7.3. Virtio</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/virtual/virtio.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtio">
+<h1>7.3. Virtio<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>7.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>virtio 是一种 I/O 半虚拟化解决方案，是一套通用 I/O 设备虚拟化的程序，是对半虚拟化 Hypervisor 中的一组通用 I/O 设备的抽象。提供了一套上层应用与各 Hypervisor 虚拟化设备（KVM，Xen，VMware等）之间的通信框架和编程接口，减少跨平台所带来的兼容性问题，大大提高驱动程序开发效率。</p>
+</div>
+<div class="section" id="id2">
+<h2>7.3.2. 架构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>virtio 可以分为四层，包括前端 guest 中各种驱动程序模块，后端 Hypervisor 上的处理程序模块，中间用于前后端通信的 virtio 层和 virtio-ring 层，virtio 这一层实现的是虚拟队列接口，算是前后端通信的桥梁，而 virtio-ring 则是该桥梁的具体实现，它实现了两个环形缓冲区，分别用于保存前端驱动程序和后端处理程序执行的信息。</p>
+</div>
+<div class="section" id="id3">
+<h2>7.3.3. 设备类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id">
+<h3>7.3.3.1. 设备类型与ID<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>设备 ID</p></th>
+<th class="head"><p>设备名称</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>reserved (invalid)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>network card</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>block device</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>console</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>entropy source</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>memory ballooning (traditional)</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>ioMemory</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>rpmsg</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>SCSI host</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>9P transport</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>mac80211 wlan</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>rproc serial</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>virtio CAIF</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>memory balloon</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>GPU device</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>Timer/Clock device</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>Input device</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>7.3.3.2. 网络设备<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>virtio网络设备是虚拟以太网卡，是virtio支持的最复杂的设备。</p>
+</div>
+<div class="section" id="id5">
+<h3>7.3.3.3. 块设备<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>virtio块设备是简单的虚拟块设备（即磁盘）。 读取和写入请求（以及其他请求）默认被放置在队列中，并由设备提供服务（可能是无序的）。</p>
+</div>
+<div class="section" id="console">
+<h3>7.3.3.4. Console设备<a class="headerlink" href="#console" title="Permalink to this headline">¶</a></h3>
+<p>virtio控制台设备是用于数据输入和输出的简单设备。 一台设备可以有一个或多个端口。 每个端口都有一对输入和输出虚拟队列。 此外，设备具有一对控制IO虚拟状态。 控制信息用于在设备和驱动程序之间传递有关在连接的任一侧打开和关闭端口的信息，从设备指示特定端口是否为控制台端口，添加新端口，端口热插拔/ 拔出等，并从驱动程序指示是否已成功添加端口或设备，端口打开/关闭等。对于数据IO，在接收队列中放置一个或多个空缓冲区，用于输入数据和输出字符。 放置在传输队列中。</p>
+</div>
+<div class="section" id="id6">
+<h3>7.3.3.5. 熵设备<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>熵设备提供了高度的随机性。</p>
+</div>
+<div class="section" id="balloon">
+<h3>7.3.3.6. Balloon 设备<a class="headerlink" href="#balloon" title="Permalink to this headline">¶</a></h3>
+<p>通常来说，要改变客户机占用的宿主机内存，是要先关闭客户机，修改启动时的内存配置，然后重启客户机才能实现。而内存的ballooning（气球）技术可以在客户机运行时动态地调整它所占用的宿主机内存资源，而不需要关闭客户机。</p>
+</div>
+<div class="section" id="scsi-host">
+<h3>7.3.3.7. SCSI Host 设备<a class="headerlink" href="#scsi-host" title="Permalink to this headline">¶</a></h3>
+<p>virtio SCSI Host设备将一个或多个虚拟逻辑单元（例如磁盘）组合在一起，并允许使用SCSI协议与其通信。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>7.3.4. 参考链接<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>7.3.4.1. 官方文档<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ozlabs.org/~rusty/virtio-spec/virtio-paper.pdf">virtio: Towards a De-Facto Standard For Virtual I/O Devices</a></p></li>
+<li><p><a class="reference external" href="http://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">Virtual I/O Device (VIRTIO) Version 1.0</a></p></li>
+</ul>
+</div>
+<div class="section" id="blog">
+<h3>7.3.4.2. Blog<a class="headerlink" href="#blog" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cnblogs.com/bakari/p/8309638.html">Virtio 简介</a></p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-virtio/index.html">Virtio：针对 Linux 的 I/O 虚拟化框架</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vmware.html" class="btn btn-neutral float-right" title="7.4. VMWare" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tech.html" class="btn btn-neutral float-left" title="7.2. 虚拟化技术" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

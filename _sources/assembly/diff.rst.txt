@@ -34,4 +34,3 @@ AT&T和Intel格式中的源操作数和目标操作数的位置正好相反。�
 寻址
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 AT&T 汇编格式中，内存操作数的寻址方式是 ``section:disp(base, index, scale)`` 。Intel汇编格式中，内存操作数的寻址方式为：``section:[base + index*scale + disp]`` 。
- 

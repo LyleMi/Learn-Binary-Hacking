@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4.4. MIPS &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>4.5. MIPS &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.5. PowerPC" href="ppc.html" />
-    <link rel="prev" title="4.3. ARM" href="arm.html" /> 
+    <link rel="next" title="4.6. PowerPC" href="ppc.html" />
+    <link rel="prev" title="4.4. ARM" href="arm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,36 +90,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">4. 汇编基础</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="diff.html">4.1. 区别</a></li>
-<li class="toctree-l2"><a class="reference internal" href="x86.html">4.2. x86</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arm.html">4.3. ARM</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. MIPS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. 简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">4.4.2. 指令特点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4.4.3. 数据类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">4.4.4. 寄存器</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">4.4.4.1. 寄存器编号及其用途</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isa.html">4.1. 指令集架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diff.html">4.2. 区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x86.html">4.3. x86</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm.html">4.4. ARM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.5. MIPS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.5.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.5.2. 指令特点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.5.3. 数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.5.4. 寄存器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.5.4.1. 寄存器编号及其用途</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4.4.5. 读写操作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">4.4.6. 寻址</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">4.4.7. 算术指令集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">4.4.8. 控制流</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.5.5. 读写操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.5.6. 寻址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.5.7. 算术指令集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">4.5.8. 控制流</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ppc.html">4.5. PowerPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ppc.html">4.6. PowerPC</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -167,7 +169,7 @@
         
           <li><a href="index.html">4. 汇编基础</a> &raquo;</li>
         
-      <li>4.4. MIPS</li>
+      <li>4.5. MIPS</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,13 +189,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mips">
-<h1>4.4. MIPS<a class="headerlink" href="#mips" title="Permalink to this headline">¶</a></h1>
+<h1>4.5. MIPS<a class="headerlink" href="#mips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>4.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>MIPS的意思是“无内部互锁流水级的微处理器”（Microprocessor without interlocked piped stages），其机制是尽量利用软件办法避免流水线中的数据相关问题。它最早是在80年代初期由斯坦福（Stanford）大学Hennessy教授领导的研究小组研制出来的。MIPS公司的R系列就是在此基础上开发的RISC工业产品的微处理器。这些系列产品为很多计算机公司采用构成各种工作站和计算机系统。</p>
 </div>
 <div class="section" id="id2">
-<h2>4.4.2. 指令特点<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.2. 指令特点<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>所有指令都是32位长</p></li>
 <li><dl class="simple">
@@ -209,7 +211,7 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2>4.4.3. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.3. 数据类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>所有MIPS指令都是32位</p></li>
 <li><p>单个字符用单引号，例如：’b’</p></li>
@@ -217,7 +219,7 @@
 </ul>
 </div>
 <div class="section" id="id4">
-<h2>4.4.4. 寄存器<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.4. 寄存器<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>MIPS下一共有32个通用寄存器</p></li>
 <li><p>在汇编中，寄存器标志由 <code class="docutils literal notranslate"><span class="pre">$</span></code> 符开头</p></li>
@@ -238,7 +240,7 @@
 <li><p>栈的走向是从高地址到低地址</p></li>
 </ul>
 <div class="section" id="id5">
-<h3>4.4.4.1. 寄存器编号及其用途<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>4.5.4.1. 寄存器编号及其用途<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
@@ -305,7 +307,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2>4.4.5. 读写操作<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.5. 读写操作<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>load word</dt><dd><ul>
@@ -338,7 +340,7 @@
 </ul>
 </div>
 <div class="section" id="id7">
-<h2>4.4.6. 寻址<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.6. 寻址<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>直接寻址</dt><dd><ul>
@@ -364,7 +366,7 @@
 </ul>
 </div>
 <div class="section" id="id8">
-<h2>4.4.7. 算术指令集<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.7. 算术指令集<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>sub</dt><dd><ul>
@@ -427,7 +429,7 @@
 </ul>
 </div>
 <div class="section" id="id9">
-<h2>4.4.8. 控制流<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>4.5.8. 控制流<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">b</span>&#160;&#160; <span class="pre">target</span></code></dt><dd><ul>
@@ -511,10 +513,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ppc.html" class="btn btn-neutral float-right" title="4.5. PowerPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ppc.html" class="btn btn-neutral float-right" title="4.6. PowerPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arm.html" class="btn btn-neutral float-left" title="4.3. ARM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arm.html" class="btn btn-neutral float-left" title="4.4. ARM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

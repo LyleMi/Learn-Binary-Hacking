@@ -5,7 +5,7 @@ I/O 设备
 ----------------------------------------
 I/O 设备是用于和计算机进行通信的外部硬件。输入/输出设备能够向计算机发送数据并从计算机接收数据。
 
-I/O 设备通常由机械组件(mechanical component)和电子组件(electronic component)构成，其中电子组件被称为设备控制器(device controller)或者适配器(adapter)。I/O 设备通常采用可插入（PCIe）扩展插槽的主板上的芯片或印刷电路卡的形式。
+I/O 设备通常由机械组件(mechanical component)和电子组件(electronic component)构成，其中电子组件被称为设备控制器(device controller)或者适配器(adapter)。I/O 设备通常采用可插入 PCI (Periheral Component Interconnect) 扩展插槽的主板上的芯片或印刷电路卡的形式。
 
 设备控制器
 ----------------------------------------
