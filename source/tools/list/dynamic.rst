@@ -23,6 +23,7 @@ gdb插件
 - `openresty systemtap toolkit <https://github.com/openresty/openresty-systemtap-toolkit>`_
 - `dtrace <https://github.com/dtrace4linux/linux>`_
 - `uftrace <https://github.com/namhyung/uftrace>`_
+- `qira <https://github.com/geohot/qira>`_ QEMU Interactive Runtime Analyse
 
 模拟执行
 ----------------------------------------

@@ -53,8 +53,16 @@ CPU 是执行指令的核心。一个 CPU 的执行周期是从内存中提取�
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ring0到ring3，ring0为最高权限，ring3最低，一般ring0为内核权限，ring3为用户权限，很少用ring1和ring2。
 
+Intel
+------------------------------------
+
+PT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Intel PT 是 Intel 的一个扩展功能, 它利用硬件以很小的开销来记录程序执行数据，这些数据内容包括: 时间,、程序流信息 (e.g. 分支目标, 分支是否执行)。 
+
 参考链接
 ------------------------------------
 - `List of Intel microprocessors <https://en.wikipedia.org/wiki/List_of_Intel_microprocessors>`_
 - `List of ARM microarchitectures <https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures>`_
 - `List of AMD microprocessors <https://en.wikipedia.org/wiki/List_of_AMD_microprocessors>`_
+- `Processor Tracing <https://software.intel.com/content/www/us/en/develop/blogs/processor-tracing.html>`_

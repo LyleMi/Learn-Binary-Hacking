@@ -18,6 +18,7 @@
    stack/index
    heap/index
    vulns/index
+   malware/index
    mitigations/index
    tools/index
    misc/index
