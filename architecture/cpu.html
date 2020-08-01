@@ -104,7 +104,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#id8">2.2.3.2. 权限</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">2.2.4. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intel">2.2.4. Intel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pt">2.2.4.1. PT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.2.5. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
@@ -118,14 +122,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
 </ul>
 
             
@@ -239,12 +244,20 @@
 <p>ring0到ring3，ring0为最高权限，ring3最低，一般ring0为内核权限，ring3为用户权限，很少用ring1和ring2。</p>
 </div>
 </div>
+<div class="section" id="intel">
+<h2>2.2.4. Intel<a class="headerlink" href="#intel" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pt">
+<h3>2.2.4.1. PT<a class="headerlink" href="#pt" title="Permalink to this headline">¶</a></h3>
+<p>Intel PT 是 Intel 的一个扩展功能, 它利用硬件以很小的开销来记录程序执行数据，这些数据内容包括: 时间,、程序流信息 (e.g. 分支目标, 分支是否执行)。</p>
+</div>
+</div>
 <div class="section" id="id9">
-<h2>2.2.4. 参考链接<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.5. 参考链接<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Intel_microprocessors">List of Intel microprocessors</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures">List of ARM microarchitectures</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_AMD_microprocessors">List of AMD microprocessors</a></p></li>
+<li><p><a class="reference external" href="https://software.intel.com/content/www/us/en/develop/blogs/processor-tracing.html">Processor Tracing</a></p></li>
 </ul>
 </div>
 </div>

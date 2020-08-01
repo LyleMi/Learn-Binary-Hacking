@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>13.6. 安全编程 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>14.6. 安全编程 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. 工具与资源" href="../tools/index.html" />
-    <link rel="prev" title="13.5. 沙箱机制" href="sandbox.html" /> 
+    <link rel="next" title="15. 工具与资源" href="../tools/index.html" />
+    <link rel="prev" title="14.5. 沙箱机制" href="sandbox.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,20 +98,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">13. 防御策略</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="aslr.html">13.1. ASLR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canary.html">13.2. Canary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cfi.html">13.3. CFI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dep.html">13.4. NX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sandbox.html">13.5. 沙箱机制</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">13.6. 安全编程</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">13.6.1. 内存安全</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">14. 防御策略</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aslr.html">14.1. ASLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canary.html">14.2. Canary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi.html">14.3. CFI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep.html">14.4. NX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox.html">14.5. 沙箱机制</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">14.6. 安全编程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">14.6.1. 内存安全</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -157,9 +158,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">13. 防御策略</a> &raquo;</li>
+          <li><a href="index.html">14. 防御策略</a> &raquo;</li>
         
-      <li>13.6. 安全编程</li>
+      <li>14.6. 安全编程</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,9 +180,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>13.6. 安全编程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>14.6. 安全编程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>13.6.1. 内存安全<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>14.6.1. 内存安全<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>初始化所有变量</p></li>
 <li><p>保持数组和缓冲区的边界检查</p></li>
@@ -200,10 +201,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tools/index.html" class="btn btn-neutral float-right" title="14. 工具与资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../tools/index.html" class="btn btn-neutral float-right" title="15. 工具与资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sandbox.html" class="btn btn-neutral float-left" title="13.5. 沙箱机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sandbox.html" class="btn btn-neutral float-left" title="14.5. 沙箱机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

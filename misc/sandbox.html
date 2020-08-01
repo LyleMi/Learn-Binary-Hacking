@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>15.2. 沙箱 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>16.2. 沙箱 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="15.1. 垃圾回收" href="gc.html" /> 
+    <link rel="prev" title="16.1. 垃圾回收" href="gc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,21 +97,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">15. 其他</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="gc.html">15.1. 垃圾回收</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">15.2. 沙箱</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">15.2.1. 虚拟环境检测</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">15.2.1.1. 检测进程名</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">15.2.1.2. 检测注册表</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">15.2.1.3. 硬盘文件检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">15.2.1.4. 运行服务检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mac">15.2.1.5. mac地址前缀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">16. 其他</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gc.html">16.1. 垃圾回收</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">16.2. 沙箱</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">16.2.1. 虚拟环境检测</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">16.2.1.1. 检测进程名</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">16.2.1.2. 检测注册表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">16.2.1.3. 硬盘文件检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">16.2.1.4. 运行服务检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mac">16.2.1.5. mac地址前缀</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">16.2.1.6. 硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">16.2.1.7. 文件系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">16.2.1.8. 虚拟指令</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">15.2.2. 沙箱环境检测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">15.2.3. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">16.2.2. 沙箱环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">16.2.3. 参考链接</a></li>
 </ul>
 </li>
 </ul>
@@ -161,9 +165,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">15. 其他</a> &raquo;</li>
+          <li><a href="index.html">16. 其他</a> &raquo;</li>
         
-      <li>15.2. 沙箱</li>
+      <li>16.2. 沙箱</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,11 +187,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>15.2. 沙箱<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>16.2. 沙箱<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>15.2.1. 虚拟环境检测<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>16.2.1. 虚拟环境检测<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>15.2.1.1. 检测进程名<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>16.2.1.1. 检测进程名<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>Vmware</dt><dd><ul>
@@ -210,7 +214,7 @@
 </ul>
 </div>
 <div class="section" id="id4">
-<h3>15.2.1.2. 检测注册表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>16.2.1.2. 检测注册表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>HKLMSOFTWAREVmware IncVmware Tools</p></li>
 <li><p>HKEY_CLASSES_ROOTApplicationsVMwareHostOpen.exe</p></li>
@@ -218,7 +222,7 @@
 </ul>
 </div>
 <div class="section" id="id5">
-<h3>15.2.1.3. 硬盘文件检测<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>16.2.1.3. 硬盘文件检测<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>VMware</dt><dd><ul>
@@ -252,7 +256,7 @@
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>15.2.1.4. 运行服务检测<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>16.2.1.4. 运行服务检测<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>VMTools</p></li>
 <li><p>Vmrawdsk</p></li>
@@ -265,7 +269,7 @@
 </ul>
 </div>
 <div class="section" id="mac">
-<h3>15.2.1.5. mac地址前缀<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
+<h3>16.2.1.5. mac地址前缀<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>00:05:69 (Vmware)</p></li>
 <li><p>00:0C:29 (Vmware)</p></li>
@@ -274,9 +278,35 @@
 <li><p>08:00:27 (VirtualBox)</p></li>
 </ul>
 </div>
-</div>
 <div class="section" id="id7">
-<h2>15.2.2. 沙箱环境检测<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h3>16.2.1.6. 硬件<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>CPU核心数</p></li>
+<li><p>CPU温度</p></li>
+<li><p>CPUID指令</p></li>
+<li><p>MAC地址</p></li>
+<li><p>内存大小</p></li>
+<li><p>磁盘大小</p></li>
+<li><p>注册表和文件路径</p></li>
+<li><p>主板序列号 / 主机型号</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>16.2.1.7. 文件系统<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>TEMP目录下的文件数量</p></li>
+<li><p>最近打开的文件</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>16.2.1.8. 虚拟指令<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>特定指令</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>16.2.2. 沙箱环境检测<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>延迟运行</dt><dd><ul>
@@ -299,10 +329,12 @@
 </dd>
 </dl>
 </li>
+<li><p>检测进程 / 服务</p></li>
+<li><p>代码运行时间</p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h2>15.2.3. 参考链接<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>16.2.3. 参考链接<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.freebuf.com/articles/system/202717.html">反虚拟机和沙箱检测的一些小技巧</a></p></li>
 <li><p><a class="reference external" href="https://github.com/sharepub/CheckVM-Sandbox">CheckVM Sandbox</a></p></li>
@@ -319,7 +351,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="gc.html" class="btn btn-neutral float-left" title="15.1. 垃圾回收" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gc.html" class="btn btn-neutral float-left" title="16.1. 垃圾回收" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

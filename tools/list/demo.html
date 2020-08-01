@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>15.6.3. CMake &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>15.1.7. Demo &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="15.7. ulimit" href="../ulimit.html" />
-    <link rel="prev" title="15.6.2. clang" href="clang.html" /> 
+    <link rel="next" title="15.1.8. 其他" href="misc.html" />
+    <link rel="prev" title="15.1.6. Android" href="android.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,20 +101,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">15. 工具与资源</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../list/index.html">15.1. 工具列表</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15.1. 工具列表</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="reverse.html">15.1.1. 逆向工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic.html">15.1.2. 动态分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compile.html">15.1.3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exploit.html">15.1.4. 漏洞利用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firm.html">15.1.5. 嵌入式设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android.html">15.1.6. Android</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.1.7. Demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hypervisor">15.1.7.1. Hypervisor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">15.1.8. 其他</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../booklist.html">15.2. 书单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../document.html">15.3. 文档资料</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reverse/index.html">15.4. 逆向工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../debuger/index.html">15.5. 调试器</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">15.6. 编译工具</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="gcc.html">15.6.1. gcc</a></li>
-<li class="toctree-l3"><a class="reference internal" href="clang.html">15.6.2. clang</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">15.6.3. CMake</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#flags">15.6.3.1. FLAGS</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">15.6. 编译工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ulimit.html">15.7. ulimit</a></li>
 </ul>
 </li>
@@ -166,15 +171,15 @@
         
           <li><a href="../index.html">15. 工具与资源</a> &raquo;</li>
         
-          <li><a href="index.html">15.6. 编译工具</a> &raquo;</li>
+          <li><a href="index.html">15.1. 工具列表</a> &raquo;</li>
         
-      <li>15.6.3. CMake</li>
+      <li>15.1.7. Demo</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/tools/compiler/cmake.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/tools/list/demo.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,18 +192,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cmake">
-<h1>15.6.3. CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="flags">
-<h2>15.6.3.1. FLAGS<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="demo">
+<h1>15.1.7. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hypervisor">
+<h2>15.1.7.1. Hypervisor<a class="headerlink" href="#hypervisor" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CC</span></code> 编译器</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CXX</span></code> C++ 编译器</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LD</span></code> 链接器</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> C 编译器的选项</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code>  C++ 编译器的选项</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> 链接器的选项</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LIBS</span></code> 链接器要链接的库</p></li>
+<li><p><a class="reference external" href="https://github.com/napocahv/napoca">Bitdefender Napoca Hypervisor</a></p></li>
 </ul>
 </div>
 </div>
@@ -211,10 +210,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ulimit.html" class="btn btn-neutral float-right" title="15.7. ulimit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="misc.html" class="btn btn-neutral float-right" title="15.1.8. 其他" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="clang.html" class="btn btn-neutral float-left" title="15.6.2. clang" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="android.html" class="btn btn-neutral float-left" title="15.1.6. Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

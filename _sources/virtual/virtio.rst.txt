@@ -69,6 +69,7 @@ virtio SCSI Host设备将一个或多个虚拟逻辑单元（例如磁盘）组�
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `virtio: Towards a De-Facto Standard For Virtual I/O Devices <https://www.ozlabs.org/~rusty/virtio-spec/virtio-paper.pdf>`_
 - `Virtual I/O Device (VIRTIO) Version 1.0 <http://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html>`_
+- `libvirt <https://wiki.libvirt.org/page/Main_Page>`_
 
 Blog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
