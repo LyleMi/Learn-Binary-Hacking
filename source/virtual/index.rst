@@ -12,3 +12,4 @@
    xen
    qemu
    unicorn
+   misc
