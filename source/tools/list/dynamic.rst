@@ -12,6 +12,7 @@
 符号执行
 ----------------------------------------
 - `Z3 <https://github.com/Z3Prover/z3>`_
+- `manticore <https://github.com/trailofbits/manticore>`_  Symbolic execution tool
 
 gdb插件
 ----------------------------------------
@@ -30,6 +31,8 @@ gdb插件
 - `qemu <https://github.com/qemu/>`_
 - `unicorn <https://github.com/unicorn-engine/unicorn>`_
 - `OpenEmu <https://github.com/OpenEmu/OpenEmu>`_
+- `panda <https://github.com/panda-re/panda>`_ Platform for Architecture-Neutral Dynamic Analysis
+- `avatar2 <https://github.com/avatartwo/avatar2>`_
 
 进程分析
 ----------------------------------------

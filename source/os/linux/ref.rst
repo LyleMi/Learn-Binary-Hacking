@@ -7,6 +7,7 @@
 - `The Linux Kernel documentation <https://www.kernel.org/doc/html/latest/>`_
 - `linux insides <https://github.com/0xAX/linux-insides>`_ A book-in-progress about the linux kernel and its insides
 - `Embedded Linux Wiki <https://elinux.org/Main_Page>`_
+- `namespaces Linux manual page <man7.org/linux/man-pages/man7/namespaces.7.html>`_
 
 调试
 ----------------------------------------
@@ -27,6 +28,7 @@
 - `深入理解overlayfs（一） <https://blog.csdn.net/luckyapple1028/article/details/77916194>`_
 - `深入理解overlayfs（二）：使用与原理分析 <https://blog.csdn.net/luckyapple1028/article/details/78075358>`_
 - `Overlayfs And Containers <http://people.redhat.com/vgoyal/papers-presentations/vault-2017/vivek-overlayfs-and-containers-presentation-valult-2017.pdf>`_
+- `Docker: About storage drivers <https://docs.docker.com/storage/storagedriver/>`_
 
 内核
 ----------------------------------------
@@ -44,3 +46,4 @@ blog
 - `The TTY demystified <http://www.linusakesson.net/programming/tty/index.php>`_
 - `linux中ELF加载过程分析 <http://wuxinwei.org/2015/04/19/Neteasy-cloud-linux-kernel/>`_
 - `ELF文件的加载过程 <https://blog.csdn.net/gatieme/java/article/details/51628257>`_
+- `Linux Namespace 简介 <https://www.cnblogs.com/sparkdev/p/9365405.html>`_
