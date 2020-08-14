@@ -113,10 +113,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#id7">7.7.8.3. 用户态</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">7.7.9. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.7.9. 参考链接</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">7.7.9.1. 官方材料</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blog">7.7.9.2. Blog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">7.7.9.3. 漏洞分析</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.8. Unicorn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">7.9. 其他</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
@@ -124,9 +130,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -202,11 +209,11 @@
 </div>
 <div class="section" id="id2">
 <h2>7.7.2. 架构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>QEMU 支持两种操作模式：用户模式仿真和系统模式仿真。用户模式仿真 允许一个 CPU 构建的进程在另一个 CPU 上执行（执行主机 CPU 指令的动态翻译并相应地转换 Linux 系统调用）。系统模式仿真 允许对整个系统进行仿真，包括处理器和配套的外围设备。</p>
-<p>在 x86 主机系统上仿真 x86 代码时，使用 QEMU 加速器 可以实现近似本地的性能。这让我们能够直接在主机 CPU 上执行仿真代码（在 Linux 上通过 kernel 模块执行）。</p>
-<p>但是从技术角度看，QEMU的优势在于其快速、可移植的动态翻译程序。动态翻译程序 允许在运行时将用于目标（来宾）CPU 的指令转换为用于主机 CPU，从而实现仿真。这可以通过一种强制方法实现（将指令从一个 CPU 映射到另一个 CPU），但是情况并非总是这样简单，在某些情况下，根据所翻译的架构，可能需要使用多个指令或行为更改。</p>
+<p>QEMU 支持两种操作模式：用户模式仿真和系统模式仿真。用户模式仿真 允许一种架构的 CPU 构建的程序在另一种架构的 CPU 上执行，动态翻译/转换相应的指令/系统调用等。如果在相同架构的系统上进行用户模式仿真，可以实现近似本地的性能。</p>
+<p>系统模式仿真允许对整个系统进行仿真，包括处理器和配套的外围设备。</p>
+<p>QEMU的优势在于其快速、可移植的动态翻译程序。动态翻译程序 允许在运行时将用于目标（Guest）CPU 的指令转换为用于主机 CPU，从而实现仿真。</p>
 <p>QEMU 实现动态翻译的方法是，首先将目标指令转换为微操作。这些微操作是一些编译成对象的 C 代码。然后构建核心翻译程序。它将目标指令映射到微操作以进行动态翻译。这不仅可产生高效率，而且还可以移植。</p>
-<p>QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的内存开销最小化。当初次使用目标代码块时，翻译该块并将其存储为翻译后的代码块。 QEMU 将最近使用的翻译后的代码块缓存在一个 16 MB 的块中。 QEMU 甚至可以通过在缓存中将翻译后的代码块变为无效来支持代码的自我修改。</p>
+<p>QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的内存开销最小化。当初次使用目标代码块时，翻译该块并将其存储为翻译后的代码块。QEMU 将最近使用的翻译后的代码块缓存在一个 16 MB 的块中。QEMU 甚至可以通过在缓存中将翻译后的代码块变为无效来支持代码的自我修改。</p>
 </div>
 <div class="section" id="id3">
 <h2>7.7.3. 外围设备<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -442,15 +449,30 @@
 </div>
 <div class="section" id="id8">
 <h2>7.7.9. 参考链接<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>7.7.9.1. 官方材料<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.qemu.org/">qemu</a></p></li>
 <li><p><a class="reference external" href="https://wiki.qemu.org/">qemu wiki</a></p></li>
 <li><p><a class="reference external" href="https://github.com/qemu/qemu">qemu source code on github</a></p></li>
 <li><p><a class="reference external" href="https://static.usenix.org/event/usenix05/tech/freenix/full_papers/bellard/bellard.pdf">QEMU, a Fast and Portable Dynamic Translator</a></p></li>
-<li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-qemu/index.html">使用 QEMU 进行系统仿真</a></p></li>
-<li><p><a class="reference external" href="https://programlife.net/2020/06/30/cve-2015-5165-qemu-rtl8139-vulnerability-analysis/">QEMU 信息泄露漏洞 CVE-2015-5165 分析及利用</a></p></li>
-<li><p><a class="reference external" href="https://blog.csdn.net/lwhuq/article/details/98642184">QEMU(1) - QOM</a></p></li>
 </ul>
+</div>
+<div class="section" id="blog">
+<h3>7.7.9.2. Blog<a class="headerlink" href="#blog" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-qemu/index.html">使用 QEMU 进行系统仿真</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/lwhuq/article/details/98642184">QEMU(1) - QOM</a></p></li>
+<li><p><a class="reference external" href="https://qemu.weilnetz.de/w64/2012/2012-12-04/qemu-tech.html">QEMU Internals</a></p></li>
+<li><p><a class="reference external" href="http://people.redhat.com/pbonzini/qemu-test-doc/_build/html/index.html">QEMU Emulator User Documentation</a></p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>7.7.9.3. 漏洞分析<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://programlife.net/2020/06/30/cve-2015-5165-qemu-rtl8139-vulnerability-analysis/">QEMU 信息泄露漏洞 CVE-2015-5165 分析及利用</a></p></li>
+</ul>
+</div>
 </div>
 </div>
 

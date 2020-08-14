@@ -114,7 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
 <li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">2.6. 设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">2.6. I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kernel.html">2.7. 内核</a></li>
 </ul>
 </li>
@@ -128,9 +128,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -204,7 +205,7 @@
 <p>CPU 是执行指令的核心。一个 CPU 的执行周期是从内存中提取一条指令、解码并决定它的类型和操作数，执行，然后再提取、解码执行后续的指令，一直重复这个循环。</p>
 <p>每个 CPU 都有一组可以执行的特定指令集，一般情况下不能执行其他指令集的指令。由于访问内存获取执行或数据要比执行指令花费的时间长，因此所有的 CPU 内部都会包含一些寄存器来保存关键变量和临时结果。</p>
 <p>大多数CPU都具有几个特殊的寄存器。其中之一是程序计数器(program counter)，程序计数器会指示下一条需要从内存提取指令的地址。提取指令后，程序计数器将更新为下一条需要提取的地址。</p>
-<p>另一个寄存器是 堆栈指针(stack pointer)，它指向内存中当前栈的顶端。堆栈指针会包含输入过程中的有关参数、局部变量以及没有保存在寄存器中的临时变量。</p>
+<p>另一个寄存器是堆栈指针(stack pointer)，它指向内存中当前栈的顶端。堆栈指针会包含输入过程中的有关参数、局部变量以及没有保存在寄存器中的临时变量。</p>
 <div class="section" id="id2">
 <h3>2.2.1.1. 特殊寄存器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>特殊用途寄存器，顾名思义是仅为一项任务而设计的寄存器。例如，cs/ds/gs 和其他段寄存器属于特殊目的寄存器，因为它们的存在是为了保存段号。eax，ecx等是一般用途的寄存器，可以无限制地使用。</p>

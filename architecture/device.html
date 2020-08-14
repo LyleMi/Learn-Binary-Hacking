@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.7. 内核" href="kernel.html" />
+    <link rel="next" title="2.7. I/O" href="io.html" />
     <link rel="prev" title="2.5. 总线" href="bus.html" /> 
 </head>
 
@@ -94,14 +94,15 @@
 <li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. 设备</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#i-o">2.6.1. I/O 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2.6.2. 设备控制器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.6.3. 内存映射 I/O</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">2.6.4. 直接内存访问</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">2.6.5. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-o">2.6.1. I/O 设备</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.6.1.1. 编址方式</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.7. 内核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.6.2. 设备控制器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">2.7. I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.8. 内核</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
@@ -114,9 +115,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -188,30 +190,30 @@
 <div class="section" id="i-o">
 <h2>2.6.1. I/O 设备<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
 <p>I/O 设备是用于和计算机进行通信的外部硬件。输入/输出设备能够向计算机发送数据并从计算机接收数据。</p>
-<p>I/O 设备通常由机械组件(mechanical component)和电子组件(electronic component)构成，其中电子组件被称为设备控制器(device controller)或者适配器(adapter)。I/O 设备通常采用可插入 PCI (Periheral Component Interconnect) 扩展插槽的主板上的芯片或印刷电路卡的形式。</p>
-</div>
+<p>I/O 设备通常由机械组件 (mechanical component) 和电子组件 (electronic component) 构成，其中电子组件被称为设备控制器 (device controller)或者适配器 (adapter)。I/O 设备通常采用可插入 PCI (Periheral Component Interconnect) 扩展插槽的主板上的芯片或印刷电路卡的形式。</p>
 <div class="section" id="id2">
-<h2>2.6.2. 设备控制器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>设备控制器是处理 CPU 传入和传出信号的系统。设备通过插头和插座连接到计算机，并且插座连接到设备控制器。设备控制器从连接的设备处接收数据，并将其存储在控制器内部的一些特殊目的寄存器(special purpose registers) 也就是本地缓冲区中。</p>
+<h3>2.6.1.1. 编址方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>统一编址</dt><dd><ul>
+<li><p>将 I/O 设备当做存储器地址的一部分</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>独立编址</dt><dd><ul>
+<li><p>将 I/O 设备与存储器地址分开，使用专门的 I/O 指令访问</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
-<h2>2.6.3. 内存映射 I/O<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>每个设备控制器都会有几个寄存器用来和 CPU 进行通信。通过写入这些寄存器，操作系统可以命令设备发送数据，接收数据、开启或者关闭设备等。通过从这些寄存器中读取信息，操作系统能够知道设备的状态，是否准备接受一个新命令等。</p>
-<p>为了控制寄存器，许多设备都会有数据缓冲区(data buffer)，来供系统进行读写。例如，在屏幕上显示一个像素的常规方法是使用一个视频 RAM，这一 RAM 基本上只是一个数据缓冲区，用来供程序和操作系统写入数据。</p>
-<p>CPU 与设备寄存器和设备数据缓冲区进行通信有三种方式。第一种方法是，每个控制寄存器都被分配一个 I/O 端口号，端口号是一个 8 位或 16 位的整数。操作系统可以使用类似 <code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">REG,PORT</span></code> / <code class="docutils literal notranslate"><span class="pre">OUT</span> <span class="pre">PORT,REG</span></code> 的指令访问。</p>
-<p>第二种方式是将所有控制寄存器映射到内存空间中。</p>
-<p>第三种方式是一种混合方式，这种方式具有与内存映射 I/O 的数据缓冲区，而控制寄存器则具有单独的 I/O 端口。</p>
-<p>在这种方式下，当 CPU 想要读入一个字的时候，将需要的地址放到总线地址线上，然后在总线的一条控制线上调用一个 READ 信号。还有第二条信号线来表明需要的是 I/O 空间还是内存空间。如果是内存空间，内存将响应请求。如果是 I/O 空间，那么 I/O 设备将响应请求。如果只有内存空间，那么每个内存模块和每个 I/O 设备都会将地址线和它所服务的地址范围进行比较。如果地址落在这一范围之内，它就会响应请求。</p>
-</div>
-<div class="section" id="id4">
-<h2>2.6.4. 直接内存访问<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>无论一个 CPU 是否具有内存映射 I/O，都需要寻址设备控制器以便与交换数据。CPU 可以从 I/O 控制器每次请求一个字节的数据，但是这么做会浪费 CPU 时间，所以经常会用到一种称为直接内存访问(Direct Memory Access) 的方案。</p>
-</div>
-<div class="section" id="id5">
-<h2>2.6.5. 参考链接<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://mp.weixin.qq.com/s/lkQlXs10U1VVnWn5QbZ7Gg">I/O 设备</a></p></li>
-</ul>
+<h2>2.6.2. 设备控制器<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>设备控制器是处理 CPU 传入和传出信号的系统。设备通过插头和插座连接到计算机，并且插座连接到设备控制器。设备控制器从连接的设备处接收数据，并将其存储在控制器内部的一些特殊目的寄存器 (special purpose registers) 也就是本地缓冲区中。</p>
 </div>
 </div>
 
@@ -223,7 +225,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kernel.html" class="btn btn-neutral float-right" title="2.7. 内核" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="io.html" class="btn btn-neutral float-right" title="2.7. I/O" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="bus.html" class="btn btn-neutral float-left" title="2.5. 总线" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

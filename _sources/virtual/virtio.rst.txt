@@ -36,8 +36,6 @@ virtio 可以分为四层，包括前端 guest 中各种驱动程序模块，后
 18              Input device 
 ============    ====================================
 
-
-
 网络设备
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 virtio网络设备是虚拟以太网卡，是virtio支持的最复杂的设备。
@@ -75,3 +73,4 @@ Blog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Virtio 简介 <https://www.cnblogs.com/bakari/p/8309638.html>`_
 - `Virtio：针对 Linux 的 I/O 虚拟化框架 <https://www.ibm.com/developerworks/cn/linux/l-virtio/index.html>`_
+- `半虚拟化 I/O 框架 virtio <https://abelsu7.top/2019/09/02/virtio-in-kvm>`_

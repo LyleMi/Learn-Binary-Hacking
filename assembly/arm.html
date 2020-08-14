@@ -93,7 +93,10 @@
 <li class="toctree-l2"><a class="reference internal" href="isa.html">4.1. 指令集架构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="diff.html">4.2. 区别</a></li>
 <li class="toctree-l2"><a class="reference internal" href="x86.html">4.3. x86</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. ARM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. ARM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#semihosting">4.4.1. Semihosting</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="mips.html">4.5. MIPS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ppc.html">4.6. PowerPC</a></li>
 </ul>
@@ -106,9 +109,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">13. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">15. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -177,6 +181,10 @@
             
   <div class="section" id="arm">
 <h1>4.4. ARM<a class="headerlink" href="#arm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="semihosting">
+<h2>4.4.1. Semihosting<a class="headerlink" href="#semihosting" title="Permalink to this headline">¶</a></h2>
+<p>Semihosting技术将应用程序中的IO请求通过一定的通道传送到主机(host)，由主机上的资源响应应用程序的IO请求，而不是像在主机上执行本地应用程序一样，由应用程序所在的计算机响应应用程序IO请求，也就是将目标板的输入/输出请求从应用程序代码传递到远程运行调试器的主机的一种机制。</p>
+</div>
 </div>
 
 

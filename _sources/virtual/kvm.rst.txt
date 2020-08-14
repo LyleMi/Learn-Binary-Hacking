@@ -10,3 +10,7 @@ KVM (Kernel-Based Virtual Machine) 是基于内核的虚拟机，是Linux内核�
 - 用户模式（User Mode）：主要处理I/O的模拟和管理，由QEMU实现。
 - 内核模式（Kernel Mode）：主要处理特别需要高性能和安全相关的指令，如处理客户模式到内核模式的转换，处理客户模式下的I/O指令或其他特权指令引起的退出（VM-Exit），处理影子内存管理（shadow MMU）。
 - 客户模式（Guest Mode）：主要执行guest OS中的大部分指令，I/O和一些特权指令除外。
+
+参考链接
+----------------------------------------
+- `Kernelgo KVM学习笔记 <https://luohao-brian.gitbooks.io/interrupt-virtualization/content/>`_

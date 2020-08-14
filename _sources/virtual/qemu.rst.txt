@@ -9,15 +9,15 @@ QEMU是一款开源的仿真执行工具，可以模拟运行多种CPU架构的�
 
 架构
 ----------------------------------------
-QEMU 支持两种操作模式：用户模式仿真和系统模式仿真。用户模式仿真 允许一个 CPU 构建的进程在另一个 CPU 上执行（执行主机 CPU 指令的动态翻译并相应地转换 Linux 系统调用）。系统模式仿真 允许对整个系统进行仿真，包括处理器和配套的外围设备。
+QEMU 支持两种操作模式：用户模式仿真和系统模式仿真。用户模式仿真 允许一种架构的 CPU 构建的程序在另一种架构的 CPU 上执行，动态翻译/转换相应的指令/系统调用等。如果在相同架构的系统上进行用户模式仿真，可以实现近似本地的性能。
 
-在 x86 主机系统上仿真 x86 代码时，使用 QEMU 加速器 可以实现近似本地的性能。这让我们能够直接在主机 CPU 上执行仿真代码（在 Linux 上通过 kernel 模块执行）。
+系统模式仿真允许对整个系统进行仿真，包括处理器和配套的外围设备。
 
-但是从技术角度看，QEMU的优势在于其快速、可移植的动态翻译程序。动态翻译程序 允许在运行时将用于目标（来宾）CPU 的指令转换为用于主机 CPU，从而实现仿真。这可以通过一种强制方法实现（将指令从一个 CPU 映射到另一个 CPU），但是情况并非总是这样简单，在某些情况下，根据所翻译的架构，可能需要使用多个指令或行为更改。
+QEMU的优势在于其快速、可移植的动态翻译程序。动态翻译程序 允许在运行时将用于目标（Guest）CPU 的指令转换为用于主机 CPU，从而实现仿真。
 
 QEMU 实现动态翻译的方法是，首先将目标指令转换为微操作。这些微操作是一些编译成对象的 C 代码。然后构建核心翻译程序。它将目标指令映射到微操作以进行动态翻译。这不仅可产生高效率，而且还可以移植。
 
-QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的内存开销最小化。当初次使用目标代码块时，翻译该块并将其存储为翻译后的代码块。 QEMU 将最近使用的翻译后的代码块缓存在一个 16 MB 的块中。 QEMU 甚至可以通过在缓存中将翻译后的代码块变为无效来支持代码的自我修改。
+QEMU 的动态翻译程序还缓存了翻译后的代码块，使翻译程序的内存开销最小化。当初次使用目标代码块时，翻译该块并将其存储为翻译后的代码块。QEMU 将最近使用的翻译后的代码块缓存在一个 16 MB 的块中。QEMU 甚至可以通过在缓存中将翻译后的代码块变为无效来支持代码的自我修改。
 
 外围设备
 ----------------------------------------
@@ -123,10 +123,21 @@ TCG 模式
 
 参考链接
 ----------------------------------------
+
+官方材料
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `qemu <https://www.qemu.org/>`_
 - `qemu wiki <https://wiki.qemu.org/>`_
 - `qemu source code on github <https://github.com/qemu/qemu>`_
 - `QEMU, a Fast and Portable Dynamic Translator <https://static.usenix.org/event/usenix05/tech/freenix/full_papers/bellard/bellard.pdf>`_
+
+Blog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `使用 QEMU 进行系统仿真 <https://www.ibm.com/developerworks/cn/linux/l-qemu/index.html>`_
-- `QEMU 信息泄露漏洞 CVE-2015-5165 分析及利用 <https://programlife.net/2020/06/30/cve-2015-5165-qemu-rtl8139-vulnerability-analysis/>`_
 - `QEMU(1) - QOM <https://blog.csdn.net/lwhuq/article/details/98642184>`_
+- `QEMU Internals <https://qemu.weilnetz.de/w64/2012/2012-12-04/qemu-tech.html>`_
+- `QEMU Emulator User Documentation <http://people.redhat.com/pbonzini/qemu-test-doc/_build/html/index.html>`_
+
+漏洞分析
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `QEMU 信息泄露漏洞 CVE-2015-5165 分析及利用 <https://programlife.net/2020/06/30/cve-2015-5165-qemu-rtl8139-vulnerability-analysis/>`_

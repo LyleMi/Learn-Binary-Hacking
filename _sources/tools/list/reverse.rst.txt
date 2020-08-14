@@ -27,11 +27,15 @@ IDA
 - `IDArling <https://github.com/IDArlingTeam/IDArling>`_
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
 - `awesome ida <https://github.com/xrkk/awesome-ida>`_
-- `golang loader assist <https://github.com/strazzere/golang_loader_assist>`_
-- `IDAGolangHelper <https://github.com/sibears/IDAGolangHelper>`_ Set of IDA Pro scripts for parsing GoLang types information stored in compiled binary
 - `abyss <https://github.com/patois/abyss>`_ IDAPython Plugin for Postprocessing of Hexrays Decompiler Output
 - `Sark <https://github.com/tmr232/Sark>`_ IDA Plugins & IDAPython Scripting Library
 - `IDA minsc <https://github.com/arizvisa/ida-minsc>`_ is a plugin for IDA Pro that assists a user with scripting the IDAPython plugin that is bundled with the disassembler
+
+Golang
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `golang loader assist <https://github.com/strazzere/golang_loader_assist>`_
+- `IDAGolangHelper <https://github.com/sibears/IDAGolangHelper>`_ Set of IDA Pro scripts for parsing GoLang types information stored in compiled binary
+- `go parser <https://github.com/0xjiayu/go_parser>`_ Yet Another Golang binary parser for IDAPro
 
 Ghidra
 ----------------------------------------
