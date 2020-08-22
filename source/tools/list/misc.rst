@@ -19,6 +19,7 @@ Sandbox
 - `Noriben <https://github.com/Rurik/Noriben>`_ Portable, Simple, Malware Analysis Sandbox
 - `Cuckoo <https://cuckoosandbox.org/>`_
 - `redmimicry <https://redmimicry.com/>`_
+- `LiSa <https://github.com/danieluhricek/LiSa>`_ Sandbox for automated Linux malware analysis
 
 Malware Sample
 ----------------------------------------
