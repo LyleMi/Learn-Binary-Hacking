@@ -16,4 +16,5 @@ Linux
    mitigation
    syscall
    cgroups
+   namespace
    ref
