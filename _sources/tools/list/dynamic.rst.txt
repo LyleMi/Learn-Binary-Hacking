@@ -17,6 +17,8 @@
 gdb插件
 ----------------------------------------
 - `peda <https://github.com/longld/peda>`_
+- `pwndbg <https://github.com/pwndbg/pwndbg>`_ Exploit Development and Reverse Engineering with GDB Made Easy
+- `GEF <https://github.com/hugsy/gef>`_ GDB Enhanced Features for exploit devs & reversers
 
 调试工具
 ----------------------------------------
