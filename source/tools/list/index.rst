@@ -11,5 +11,6 @@
    exploit
    firm
    android
+   fuzz
    demo
    misc

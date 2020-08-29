@@ -20,3 +20,11 @@ IoT
 - `Firmware Analysis Toolkit <https://github.com/attify/firmware-analysis-toolkit>`_
 - `fwanalyzer <https://github.com/cruise-automation/fwanalyzer>`_
 - `Firmware Slap <https://github.com/ChrisTheCoolHut/Firmware_Slap>`_ Discovering vulnerabilities in firmware through concolic analysis and function clustering.
+
+BLE
+----------------------------------------
+- `btlejack <https://github.com/virtualabs/btlejack>`_ Bluetooth Low Energy Swiss-army knife
+
+UEFI
+----------------------------------------
+- `UEFITool <https://github.com/LongSoft/UEFITool>`_ UEFI firmware image viewer and editor

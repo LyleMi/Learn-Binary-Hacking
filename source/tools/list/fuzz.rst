@@ -1,0 +1,24 @@
+模糊测试
+========================================
+
+AFL系列
+----------------------------------------
+- `afl <https://github.com/mirrorer/afl>`_
+
+内核
+----------------------------------------
+- `kAFL <https://github.com/RUB-SysSec/kAFL>`_  Code for the USENIX 2017 paper: kAFL: Hardware-Assisted Feedback Fuzzing for OS Kernels
+- `syzkaller <https://github.com/google/syzkaller>`_ is an unsupervised coverage-guided kernel fuzzer
+
+语料
+----------------------------------------
+- `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_
+
+ASAN系列
+----------------------------------------
+- `QASan <https://github.com/andreafioraldi/qasan>`_ a custom QEMU 3.1.1 that detects memory errors in the guest using AddressSanitizer
+
+
+变异器
+----------------------------------------
+- `radamsa <https://gitlab.com/akihe/radamsa>`_ Radamsa is a test case generator for robustness testing. It is typically used to test how well a program can withstand malformed and potentially malicious inputs. It works by reading sample files of valid data and generating interestringly different outputs from them. The main selling points of radamsa are that it has already found a slew of bugs in programs that actually matter, it is easily scriptable and, easy to get up and running.

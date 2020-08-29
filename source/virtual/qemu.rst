@@ -129,6 +129,7 @@ TCG 模式
 - `qemu <https://www.qemu.org/>`_
 - `qemu wiki <https://wiki.qemu.org/>`_
 - `qemu source code on github <https://github.com/qemu/qemu>`_
+- `QEMU Doc <https://www.qemu.org/docs/master/qemu-doc.html>`_
 - `QEMU, a Fast and Portable Dynamic Translator <https://static.usenix.org/event/usenix05/tech/freenix/full_papers/bellard/bellard.pdf>`_
 
 Blog
