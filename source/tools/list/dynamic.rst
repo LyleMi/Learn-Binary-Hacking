@@ -39,6 +39,7 @@ gdb插件
 进程分析
 ----------------------------------------
 - `Process Explorer <https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>`_
+- `PeDoll <https://github.com/matrixcascade/PeDoll>`_ Application behavior monitor based on inline hook
 
 hook
 ----------------------------------------

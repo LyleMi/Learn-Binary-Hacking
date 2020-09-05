@@ -10,6 +10,10 @@ AFL系列
 - `kAFL <https://github.com/RUB-SysSec/kAFL>`_  Code for the USENIX 2017 paper: kAFL: Hardware-Assisted Feedback Fuzzing for OS Kernels
 - `syzkaller <https://github.com/google/syzkaller>`_ is an unsupervised coverage-guided kernel fuzzer
 
+PT-Fuzz
+----------------------------------------
+- `libxdc <https://github.com/nyx-fuzz/libxdc>`_ The fastest Intel-PT decoder for fuzzing
+
 语料
 ----------------------------------------
 - `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_
