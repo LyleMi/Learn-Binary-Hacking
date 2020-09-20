@@ -22,6 +22,9 @@ ASAN系列
 ----------------------------------------
 - `QASan <https://github.com/andreafioraldi/qasan>`_ a custom QEMU 3.1.1 that detects memory errors in the guest using AddressSanitizer
 
+框架
+----------------------------------------
+- `onefuzz <https://github.com/microsoft/onefuzz>`_ A self-hosted Fuzzing-As-A-Service platform
 
 变异器
 ----------------------------------------

@@ -13,6 +13,10 @@ Linux
 ----------------------------------------
 - `Linux insides <https://github.com/0xAX/linux-insides>`_
 
+漏洞利用
+----------------------------------------
+- `Awesome ARM Exploitation <https://github.com/HenryHoggard/awesome-arm-exploitation>`_
+
 可信执行
 ----------------------------------------
 - `TEE reversing <https://github.com/enovella/TEE-reversing>`_
