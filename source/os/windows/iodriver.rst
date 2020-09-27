@@ -3,11 +3,11 @@ IO与驱动
 
 管理器
 ----------------------------------------
-- 输入输出管理器（I/O Manager）
-- 即插即用管理器 （Plug and Play Manager）
-- 电源管理器  （Power Manager）
+- 输入输出管理器(I/O Manager)
+- 即插即用管理器 (Plug and Play Manager)
+- 电源管理器  (Power Manager)
 
-输入输出管理器（I/O Manager）接收应用程序的请求 后，创建相应的IRP （I/O request packets，输入输 出请求数据包）并传送至驱动程序进行处理：
+输入输出管理器(I/O Manager)接收应用程序的请求 后，创建相应的IRP (I/O request packets，输入输 出请求数据包)并传送至驱动程序进行处理：
 
 - 根据IRP的请求，直接操作具体硬件设备，然后完成此IRP， 并返回
 - 将此IRP的请求，转发到更底层的驱动程序中去，并等待底层驱动的返回

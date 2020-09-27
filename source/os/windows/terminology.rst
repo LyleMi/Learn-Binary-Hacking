@@ -3,7 +3,7 @@
 
 SSDT
 ----------------------------------------
-SSDT（System Services Descriptor Table）是系统服务描述符表，这个表把 Ring3 的 Win32 API 和 Ring0 的内核 API 联系起来。
+SSDT(System Services Descriptor Table)是系统服务描述符表，这个表把 Ring3 的 Win32 API 和 Ring0 的内核 API 联系起来。
 
 SSDT 并不仅仅只包含一个庞大的地址索引表，它还包含着一些其它有用的信息，诸如地址索引的基地址、服务函数个数等。
 
@@ -13,15 +13,15 @@ SSDT 并不仅仅只包含一个庞大的地址索引表，它还包含着一些
 
 IDT
 ----------------------------------------
-IDT（Interrupt Descriptor Table）是中断描述符表，是操作系统用于处理中断的。
+IDT(Interrupt Descriptor Table)是中断描述符表，是操作系统用于处理中断的。
 
 GDT
 ----------------------------------------
-GDT，即全局描述表（GDT Global Descriptor Table）。
+GDT，即全局描述表(GDT Global Descriptor Table)。
 
 LDT
 ----------------------------------------
-LDT（Local Descriptor Table），即局部描述符表。
+LDT(Local Descriptor Table)，即局部描述符表。
 
 常见缩写
 ----------------------------------------
