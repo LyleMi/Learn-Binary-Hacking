@@ -54,3 +54,7 @@ Patch
 文件分析
 ----------------------------------------
 - `oletools <https://github.com/decalage2/oletools>`_ python tools to analyze MS OLE2 files and MS Office documents
+
+加壳
+----------------------------------------
+- `UPX <https://github.com/upx/upx>`_ the Ultimate Packer for eXecutables
