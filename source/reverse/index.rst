@@ -9,3 +9,4 @@
    elf
    pe
    dll
+   macho

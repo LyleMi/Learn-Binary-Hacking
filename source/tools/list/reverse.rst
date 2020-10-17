@@ -3,7 +3,6 @@
 
 二进制
 ----------------------------------------
-- `radare2 <https://github.com/radare/radare2>`_
 - `capstone <https://github.com/aquynh/capstone>`_
 - `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
 - `binary ninja <https://binary.ninja/>`_
@@ -23,15 +22,28 @@ Bytecode
 
 IDA
 ----------------------------------------
-- `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_
-- `IDArling <https://github.com/IDArlingTeam/IDArling>`_
+
+文档与资料
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `IDA Tutorials <https://www.hex-rays.com/products/ida/support/tutorials/>`_
+- `IDA SDK <https://www.hex-rays.com/products/ida/support/sdkdoc/index.html>`_
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
 - `awesome ida <https://github.com/xrkk/awesome-ida>`_
+
+辅助工具
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_ Find code patterns within the Hexrays AST
+
+插件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `IDArling <https://github.com/IDArlingTeam/IDArling>`_
 - `abyss <https://github.com/patois/abyss>`_ IDAPython Plugin for Postprocessing of Hexrays Decompiler Output
 - `Sark <https://github.com/tmr232/Sark>`_ IDA Plugins & IDAPython Scripting Library
 - `IDA minsc <https://github.com/arizvisa/ida-minsc>`_ is a plugin for IDA Pro that assists a user with scripting the IDAPython plugin that is bundled with the disassembler
+- `lucid <https://github.com/gaasedelen/lucid>`_ An Interactive Hex-Rays Microcode Explorer
+- `grap <https://github.com/QuoSecGmbH/grap/>`_ grap: define and match graph patterns within binaries
 
-Golang
+Golang插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `golang loader assist <https://github.com/strazzere/golang_loader_assist>`_
 - `IDAGolangHelper <https://github.com/sibears/IDAGolangHelper>`_ Set of IDA Pro scripts for parsing GoLang types information stored in compiled binary
@@ -39,8 +51,23 @@ Golang
 
 Ghidra
 ----------------------------------------
-- `ghidra <https://github.com/NationalSecurityAgency/ghidra>`_
+
+文档与资料
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `Ghidra <https://github.com/NationalSecurityAgency/ghidra>`_
+- `Ghidra API Overview <https://ghidra.re/ghidra_docs/api/>`_
+- `Ghidra Online Courses <https://ghidra.re/online-courses/>`_
+- `Awesome Ghidra <https://github.com/AllsafeCyberSecurity/awesome-ghidra>`_ A curated list of awesome Ghidra materials
+
+插件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Ghidra Cpp Class Analyzer <https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer>`_
+- `GhidraSnippets <https://github.com/cetfor/GhidraSnippets>`_ Python snippets for Ghidra's Program and Decompiler APIs
+
+Radare2
+----------------------------------------
+- `radare2 <https://github.com/radare/radare2>`_
+- `Radare2 Book <https://radare.gitbooks.io/radare2book/content/>`_
 
 Diff
 ----------------------------------------
