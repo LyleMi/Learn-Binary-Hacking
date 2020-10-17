@@ -8,7 +8,7 @@
    tech
    virtio
    vmware
-   kvm
+   kvm/index
    xen
    qemu/index
    unicorn
