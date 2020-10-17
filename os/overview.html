@@ -98,12 +98,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">6.1.1.2. 主要功能</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">6.1.2. 文件系统</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">6.1.2.1. 文件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">6.1.2.2. 文件访问</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.1.2. 内核分类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.1.2.1. 宏内核</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">6.1.2.2. 微内核</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">6.1.3. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">6.1.3. 文件系统</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">6.1.3.1. 文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6.1.3.2. 文件访问</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">6.1.4. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="boot.html">6.2. Boot</a></li>
@@ -114,14 +119,16 @@
 <li class="toctree-l2"><a class="reference internal" href="ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -273,21 +280,75 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h2>6.1.2. 文件系统<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>6.1.2. 内核分类<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
-<h3>6.1.2.1. 文件<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.2.1. 宏内核<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>宏内核，又称单核心，是操作系统核心架构的一种，此架构的特性是整个核心程序都是以核心空间（KernelSpace）的身份及监管者模式（Supervisor Mode）来运行。</p>
+<p>传统UNIX、BSD、Linux、MS-DOS、Windows 9x都是宏内核。</p>
+<p>宏内核效率高、反应快，但是耦合度高、灵活性差。</p>
+</div>
+<div class="section" id="id7">
+<h3>6.1.2.2. 微内核<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>微内核的基本原理是只有最基本的操作系统功能才能放在内核中，非基本的服务和应用程序在微内核之上构造，并在用户态下运行。尽管什么应该在微内核中、什么应该在微内核外，不同的设计有不同的分界线，但是共同的特点是许多传统上属于操作系统一部分的功能现在都是在外部子系统现代操作系统，包括设备驱动程序、文件系统、虚存管理程序、窗口系统和安全服务。他们可以与内核交互，也可以相互交互。</p>
+<p>第一代微内核主要是Mach，第二代微内核是QNX、L4，第三代微内核是Windows NT、Mac OS X。</p>
+<p>微内核主要有一下优势</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>一致接口</dt><dd><ul>
+<li><p>微内核设计为进程发出的请求提供一致接口，进程不需要区分是内核级服务还是用户级服务，因为所有服务都是通过消息传递提供的</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>可扩展性</dt><dd><ul>
+<li><p>微内核促进了可扩展性，允许增加新的服务以及在同一个功能区域中提供多个服务。因此，用户可以从各种服务现代操作系统中选取最适合的一种。当增加一个新功能时，只需要修改或添补选中的服务。新服务程序或修改过的服务程序的影响被限制在系统的一个子集中，而且修改不会导致需要构造一个新内核</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>灵活性</dt><dd><ul>
+<li><p>不仅可以在操作系统中增加新功能，还可以删减现有的功能，产生一个更小、更有效的实现</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>可移植性</dt><dd><ul>
+<li><p>在微内核结构中，所有或者至少大部分处理器的专用代码都在微内核中。因此，当把系统移植到一个新处理器上时只需要很少的变化，且易于进行逻辑上的归类。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>可靠性</dt><dd><ul>
+<li><p>小的微内核可以被严格地测试，他使用少量的应用程序编程接口（API），这就为内核外部的操作系统服务产生高质量的代码提供了机会。系统程序员只掌握有限数量的API和有限数量的交互方式，因此不易影响到其他系统部件</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>微内核结构有助于提供分布式系统支持，包括分布式操作系统控制的集群</p></li>
+<li><p>微内核结构也适用于面向对象操作系统环境</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>6.1.3. 文件系统<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>6.1.3.1. 文件<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>磁盘通常会提供最基础的读写操作，但是往往是以块为单位的。为了更好的提供数据检索、权限校验、判断块是否被占用等功能，提出了文件系统做为存储的抽象。</p>
 <p>文件(Files)是由进程创建的逻辑信息单元。一个磁盘会包含几千甚至几百万个文件，每个文件是独立于其他文件的。</p>
 <p>文件由操作系统进行管理，有关文件的构造、命名、访问、使用、保护、实现和管理方式都是操作系统设计的主要内容。从总体上看，操作系统中处理文件的部分称为文件系统(file system)。</p>
 </div>
-<div class="section" id="id7">
-<h3>6.1.2.2. 文件访问<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>6.1.3.2. 文件访问<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>早期的操作系统只有一种访问方式：序列访问(sequential access)。在这些系统中，进程可以按照顺序读取所有的字节或文件中的记录，但是不能跳过并乱序执行它们。顺序访问文件是可以返回到起点的，需要时可以多次读取该文件。当存储介质是磁带而不是磁盘时，顺序访问文件很方便。</p>
 <p>在使用磁盘来存储文件时，可以不按照顺序读取文件中的字节或者记录，或者按照关键字而不是位置来访问记录。这种能够以任意次序进行读取的称为随机访问文件(random access file)。</p>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>6.1.3. 参考链接<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>6.1.4. 参考链接<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://mp.weixin.qq.com/s/jSG6qLcXWuJTvo1ROBLDtA">一文带你彻底理解文件系统</a></p></li>
 </ul>

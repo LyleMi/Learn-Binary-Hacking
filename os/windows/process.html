@@ -107,30 +107,35 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.6. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.7. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.8. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.9. 网络机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.10. 注册表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.11. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.12. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.13. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.14. 术语与缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.15. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
+<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -203,40 +208,40 @@
 <h1>6.5.4. 进程与线程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>6.5.4.1. 进程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>进程（Process）是一个应用程序运行的实例，包含以下一些基本组件：私有虚拟地址、可执行体程序、被操作系统分配的一份资源句柄（Handles）列表、访问控制令牌（Token）、进程标识号一个或多个线程。</p>
-<p>访问控制令牌是用以唯一的标识所有者及其所属组以及和该进程相关联的特权（Privilege）信息。</p>
+<p>进程(Process)是一个应用程序运行的实例，包含以下一些基本组件：私有虚拟地址、可执行体程序、被操作系统分配的一份资源句柄(Handles)列表、访问控制令牌(Token)、进程标识号一个或多个线程。</p>
+<p>访问控制令牌是用以唯一的标识所有者及其所属组以及和该进程相关联的特权(Privilege)信息。</p>
 <p>进程创建步骤分为七步：</p>
 <ul class="simple">
 <li><p>转换并校验参数和标记</p></li>
-<li><p>打开可执行映像文件（.exe）</p></li>
+<li><p>打开可执行映像文件(.exe)</p></li>
 <li><p>创建Windows执行体进程对象</p></li>
-<li><p>创建初始线程（栈，上下文和 执行体线程对象等）</p></li>
+<li><p>创建初始线程(栈，上下文和 执行体线程对象等)</p></li>
 <li><p>通知Windows子系统初始化了一个进程</p></li>
-<li><p>开始运行初始线程。（除非进程创建的时候被挂起）</p></li>
-<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</p></li>
+<li><p>开始运行初始线程。(除非进程创建的时候被挂起)</p></li>
+<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化( 比如加载必需的DLL文件)并开始执行程序</p></li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h2>6.5.4.2. 线程<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>线程（Thread）是CPU调度执行的基本单元，其包含CPU状态、两个栈、线程本地存储（TLS）、线程标识号和访问控制令牌（Access Token）。</p>
-<p>线程的两个栈分别用于内核模式和用户模式。线程本地存储（TLS）包含一个私有存储空间，用来保存子系统、运行时库以及DLL文件等。</p>
-<p>访问控制令牌（Access Token），用以唯一的标识所有者及其所属组以及和该线程相关联的特权（Privilege）信息</p>
+<p>线程(Thread)是CPU调度执行的基本单元，其包含CPU状态、两个栈、线程本地存储(TLS)、线程标识号和访问控制令牌(Access Token)。</p>
+<p>线程的两个栈分别用于内核模式和用户模式。线程本地存储(TLS)包含一个私有存储空间，用来保存子系统、运行时库以及DLL文件等。</p>
+<p>访问控制令牌(Access Token)，用以唯一的标识所有者及其所属组以及和该线程相关联的特权(Privilege)信息</p>
 <p>进程创建的主要过程：</p>
 <ul class="simple">
 <li><p>转换并校验参数和标记</p></li>
-<li><p>打开可执行映像文件（.exe）</p></li>
+<li><p>打开可执行映像文件(.exe)</p></li>
 <li><p>创建Windows执行体进程对象</p></li>
-<li><p>创建初始线程（栈，上下文和 执行体线程对象等）</p></li>
+<li><p>创建初始线程(栈，上下文和 执行体线程对象等)</p></li>
 <li><p>通知Windows子系统初始化 了一个进程</p></li>
-<li><p>开始运行初始线程（除非进程创建的时候被挂起）</p></li>
-<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化（ 比如加载必需的DLL文件）并开始执行程序</p></li>
+<li><p>开始运行初始线程(除非进程创建的时候被挂起)</p></li>
+<li><p>在新进程和线程的上下文空间中，完成地址空间的初始化( 比如加载必需的DLL文件)并开始执行程序</p></li>
 </ul>
 </div>
 <div class="section" id="id4">
 <h2>6.5.4.3. 数据结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>每个Windows进程都是由一个执行体进程（EPROCESS）块来表示，包含与进程有关的属性及其他的相关数据结构（一个或者多个线程）。线程由执行体线程（ETHREAD） 块来表示。</p></li>
-<li><p>EPROCESS块和相关的数据结构位于系统地址空间中，不过PEB （进程环境块）和TEB（线程环境块）则位于进程地址空间中</p></li>
+<li><p>每个Windows进程都是由一个执行体进程(EPROCESS)块来表示，包含与进程有关的属性及其他的相关数据结构(一个或者多个线程)。线程由执行体线程(ETHREAD) 块来表示。</p></li>
+<li><p>EPROCESS块和相关的数据结构位于系统地址空间中，不过PEB (进程环境块)和TEB(线程环境块)则位于进程地址空间中</p></li>
 </ul>
 </div>
 </div>

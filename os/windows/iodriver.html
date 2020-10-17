@@ -107,29 +107,33 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.8. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.9. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.10. 网络机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.11. 注册表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.12. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.13. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.14. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.15. 术语与缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.16. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
+<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -203,11 +207,11 @@
 <div class="section" id="id1">
 <h2>6.5.6.1. 管理器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>输入输出管理器（I/O Manager）</p></li>
-<li><p>即插即用管理器 （Plug and Play Manager）</p></li>
-<li><p>电源管理器  （Power Manager）</p></li>
+<li><p>输入输出管理器(I/O Manager)</p></li>
+<li><p>即插即用管理器 (Plug and Play Manager)</p></li>
+<li><p>电源管理器  (Power Manager)</p></li>
 </ul>
-<p>输入输出管理器（I/O Manager）接收应用程序的请求 后，创建相应的IRP （I/O request packets，输入输 出请求数据包）并传送至驱动程序进行处理：</p>
+<p>输入输出管理器(I/O Manager)接收应用程序的请求 后，创建相应的IRP (I/O request packets，输入输 出请求数据包)并传送至驱动程序进行处理：</p>
 <ul class="simple">
 <li><p>根据IRP的请求，直接操作具体硬件设备，然后完成此IRP， 并返回</p></li>
 <li><p>将此IRP的请求，转发到更底层的驱动程序中去，并等待底层驱动的返回</p></li>

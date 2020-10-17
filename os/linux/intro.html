@@ -97,17 +97,22 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.1. 简介</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">6.3.1.1. 启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.3.1.2. 内核功能划分</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.7. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.8. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.10. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="namespace.html">6.3.13. namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -116,14 +121,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -251,6 +258,16 @@
 </li>
 </ul>
 <p>然后根据不同的运行级别执行 <code class="docutils literal notranslate"><span class="pre">/etc/rcX.d/</span></code> 目录下的文件， 例如运行级别为5时，执行 <code class="docutils literal notranslate"><span class="pre">/etc/rc5.d/</span></code> 下的文件，接着执行 <code class="docutils literal notranslate"><span class="pre">/etc/rc.d/rc.local</span></code> ，最后设置好tty，为用户登录做准备。</p>
+</div>
+<div class="section" id="id4">
+<h2>6.3.1.2. 内核功能划分<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>进程管理：进程管理负责创建和销毁进程，不同进程之间的通信也有内核处理。</p></li>
+<li><p>内存管理：内存是计算机的主要资源之一。</p></li>
+<li><p>文件系统：类Unix系统的对象几乎都可以当作文件处理。</p></li>
+<li><p>设备控制：几乎所有系统操作都会映射到物理设备上，需要通过相应的代码完成，这段代码被称为驱动程序。</p></li>
+<li><p>网络功能：操作系统通过在应用程序和网络接口之间传递数据包，并根据网络活动控制程序执行。</p></li>
+</ul>
 </div>
 </div>
 

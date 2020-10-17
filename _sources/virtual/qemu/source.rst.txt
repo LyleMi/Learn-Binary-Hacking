@@ -1,0 +1,41 @@
+源码结构
+----------------------------------------
+主要文件
+
+- accel/tcg
+    - cpu-exec.c
+        - 寻找下一个二进制翻译代码块
+        - 如果没有找到就请求得到下一个代码块，并且操作生成的代码块
+    - translate-all.c
+        - cpu_gen_code 函数，初始化真正代码生成
+- hw
+    - 硬件目录
+- 主目录
+    - vl.c
+        - main 函数
+        - main_loop 函数，条件判断
+        - 最主要的模拟循环，虚拟机环境初始化，和 CPU 的执行
+    - cpu-exec.c
+        - cpu_exec 函数，主要的执行循环
+        - 寻找下一个二进制翻译代码块
+        - 如果没有找到就请求得到下一个代码块，并且操作生成的代码块
+    - cpus.c
+        - qemu_main_loop_start 函数，分时运行 CPU 核
+    - exec-all.c
+        - ``struct TranslationBlock``
+            - TB（二进制翻译代码块） 结构体
+    - exec.c
+- target
+    - 不同架构的对应目录
+    - 将客户CPU架构的TBs转化成TCG中间代码
+    - TCG前的前端
+    - target/<arch>/translate.c
+        - 将 guest 代码翻译成不同架构的 TCG 操作码
+    - target/<arch>/cpu.h
+        - CPU 状态结构体
+- tcg
+    - tcg/tcg.c
+        - 主要的 TCG 代码
+    - tcg/<arch>/tcg-target.c
+        - 将 TCG 代码转化生成主机代码
+    - TCG前的后端

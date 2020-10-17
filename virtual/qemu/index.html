@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.7. QEMU &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.7.1. 背景" href="basic.html" />
+    <link rel="prev" title="7.6. Xen" href="../xen.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">7. 虚拟化</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../basic.html">7.1. 基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tech.html">7.2. 虚拟化技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../virtio.html">7.3. Virtio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vmware.html">7.4. VMWare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvm/index.html">7.5. KVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xen.html">7.6. Xen</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.7. QEMU</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic.html">7.7.1. 背景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arch.html">7.7.2. 架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">7.7.3. 事件处理机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iothread.html">7.7.4. iothread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">7.7.5. 外围设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runtime.html">7.7.6. 启动流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qmp.html">7.7.7. QMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.html">7.7.8. 源码结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec.html">7.7.9. 安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">7.7.10. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opts.html">7.7.11. 常用选项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">7.7.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../unicorn.html">7.8. Unicorn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">7.9. 其他</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">7. 虚拟化</a> &raquo;</li>
+        
+      <li>7.7. QEMU</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/virtual/qemu/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qemu">
+<h1>7.7. QEMU<a class="headerlink" href="#qemu" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic.html">7.7.1. 背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">7.7.2. 架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event.html">7.7.3. 事件处理机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="event.html#id2">7.7.3.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="event.html#id3">7.7.3.2. 主事件循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="event.html#id4">7.7.3.3. 状态机</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="iothread.html">7.7.4. iothread</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iothread.html#id1">7.7.4.1. 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">7.7.5. 外围设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtime.html">7.7.6. 启动流程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="runtime.html#kvm">7.7.6.1. KVM交互</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runtime.html#tcg">7.7.6.2. TCG 模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runtime.html#id2">7.7.6.3. 用户态</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qmp.html">7.7.7. QMP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qmp.html#id1">7.7.7.1. 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source.html">7.7.8. 源码结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec.html">7.7.9. 安全</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec.html#cve">7.7.9.1. 相关CVE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">7.7.10. 其他</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#ioctl">7.7.10.1. ioctl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#qom">7.7.10.2. QOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#tcg">7.7.10.3. TCG</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opts.html">7.7.11. 常用选项</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opts.html#id2">7.7.11.1. 用户模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opts.html#id3">7.7.11.2. 系统模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">7.7.12. 参考链接</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id2">7.7.12.1. 官方材料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#blog">7.7.12.2. Blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id4">7.7.12.3. 漏洞分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id5">7.7.12.4. 漏洞利用</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="basic.html" class="btn btn-neutral float-right" title="7.7.1. 背景" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../xen.html" class="btn btn-neutral float-left" title="7.6. Xen" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

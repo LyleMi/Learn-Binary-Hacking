@@ -3,24 +3,59 @@
 
 操作系统
 ----------------------------------------
-- Linux系统编程
-- Linux内核情景分析
-- 深入理解Linux网络内幕
-- 深入理解Linux虚拟内存管理
-- Linux内核完全注释
-- Linux设备驱动程序
-- 《深入理解Linux内核》 【美】DanielP.Bovet
+
+综合
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - CSAPP
-- Windows Internal
-- 深入理解Mac OS X & iOS操作系统
 - 程序员的自我修养：链接、装载与库
-- `Unix环境高级编程 <https://book.douban.com/subject/25900403/>`_
 - `现代操作系统 <https://book.douban.com/subject/1390650/>`_
 - `自己动手写操作系统 <https://book.douban.com/subject/1422377/>`_
 - 《编码：隐匿在计算机软硬件背后的语言》 【美】Charles Petzold
 - 《深入理解计算机系统》【美】Randal E.Bryant
-- 《深入理解Windows操作系统》【美】Russinovich,M.E.；Solomon,D.A.
+- 性能之巅
+
+Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `Unix环境高级编程 <https://book.douban.com/subject/25900403/>`_
+- Linux内核完全注释
+- Linux内核情景分析
+- Linux内核源代码情景分析
+- Linux系统编程 第2版
+- Linux设备驱动程序
 - 《Linux内核设计与实现》【美】Robert Love
+- 《深入理解Linux内核》 【美】DanielP.Bovet
+- 深入理解Linux网络内幕
+- 深入理解Linux虚拟内存管理
+
+Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- 《深入理解Windows操作系统》【美】Russinovich,M.E.；Solomon,D.A.
+- Windows程序设计
+- COM技术内幕
+- COM原理与应用
+- Windows核心编程
+- 深入解析windows操作系统 (Windows Internals)
+
+Mac OS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- 深入理解Mac OS X & iOS操作系统  【美】Jonathan Levin
+
+Android
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Android内核剖析
+- Android软件安全与逆向分析
+- 《Android Dalvik虚拟机结构及机制剖析（第1、2卷）》吴艳霞；张国印
+- 《Android Internals::Power User's View》【美】Jonathan Levin
+- 《Android系统源代码情景分析》罗升阳
+- 深入理解Android
+- 深入理解Android内核设计思想
+- 第一行代码
+
+嵌入式
+----------------------------------------
+- 计算机组成与设计硬件\软件接口 https://book.douban.com/subject/2110638/
+- ARM嵌入式系统开发 https://book.douban.com/subject/1435663/
+- MIPS体系结构透视 https://book.douban.com/subject/3099520/
 
 编译原理
 ----------------------------------------
@@ -38,13 +73,6 @@
 IoT
 ----------------------------------------
 - 揭密家用路由器0day漏洞挖掘技术
-
-Android
-----------------------------------------
-- Android软件安全与逆向分析
-- 《Android系统源代码情景分析》罗升阳
-- 《Android Dalvik虚拟机结构及机制剖析（第1、2卷）》吴艳霞；张国印
-- 《Android Internals::Power User's View》【美】Jonathan Levin
 
 体系架构
 ----------------------------------------
@@ -77,6 +105,10 @@ Android
 - 《Android软件安全与逆向分析》丰生强
 - 《macOS软件安全与逆向分析》丰生强
 - 《iOS应用逆向工程（第2版）》沙梓社；吴航
+
+算法
+----------------------------------------
+- Introductionto Algorithms (算法导论)
 
 程序优化
 ----------------------------------------

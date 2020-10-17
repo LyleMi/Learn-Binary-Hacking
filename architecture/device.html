@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.6. 设备 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>2.7. 设备 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.7. I/O" href="io.html" />
-    <link rel="prev" title="2.5. 总线" href="bus.html" /> 
+    <link rel="next" title="2.8. I/O" href="io.html" />
+    <link rel="prev" title="2.6. 总线" href="bus.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,19 +90,20 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
-<li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. 设备</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#i-o">2.6.1. I/O 设备</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">2.6.1.1. 编址方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bios.html">2.3. BIOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">2.4. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.5. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.6. 总线</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. 设备</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-o">2.7.1. I/O 设备</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.7.1.1. 编址方式</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.6.2. 设备控制器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.7.2. 设备控制器</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="io.html">2.7. I/O</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.8. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">2.8. I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.9. 内核</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
@@ -166,7 +167,7 @@
         
           <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
         
-      <li>2.6. 设备</li>
+      <li>2.7. 设备</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,13 +187,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>2.6. 设备<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>2.7. 设备<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="i-o">
-<h2>2.6.1. I/O 设备<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+<h2>2.7.1. I/O 设备<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
 <p>I/O 设备是用于和计算机进行通信的外部硬件。输入/输出设备能够向计算机发送数据并从计算机接收数据。</p>
 <p>I/O 设备通常由机械组件 (mechanical component) 和电子组件 (electronic component) 构成，其中电子组件被称为设备控制器 (device controller)或者适配器 (adapter)。I/O 设备通常采用可插入 PCI (Periheral Component Interconnect) 扩展插槽的主板上的芯片或印刷电路卡的形式。</p>
 <div class="section" id="id2">
-<h3>2.6.1.1. 编址方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>2.7.1.1. 编址方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>统一编址</dt><dd><ul>
@@ -212,7 +213,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2>2.6.2. 设备控制器<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>2.7.2. 设备控制器<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>设备控制器是处理 CPU 传入和传出信号的系统。设备通过插头和插座连接到计算机，并且插座连接到设备控制器。设备控制器从连接的设备处接收数据，并将其存储在控制器内部的一些特殊目的寄存器 (special purpose registers) 也就是本地缓冲区中。</p>
 </div>
 </div>
@@ -225,10 +226,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="io.html" class="btn btn-neutral float-right" title="2.7. I/O" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="io.html" class="btn btn-neutral float-right" title="2.8. I/O" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="bus.html" class="btn btn-neutral float-left" title="2.5. 总线" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="bus.html" class="btn btn-neutral float-left" title="2.6. 总线" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.3. 内存 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>2.4. 内存 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.4. 硬盘" href="disk.html" />
-    <link rel="prev" title="2.2. CPU" href="cpu.html" /> 
+    <link rel="next" title="2.5. 硬盘" href="disk.html" />
+    <link rel="prev" title="2.3. BIOS" href="bios.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,28 +90,32 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. 内存</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ram">2.3.1. RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bios.html">2.3. BIOS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. 内存</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ram">2.4.1. RAM</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">2.6. 设备</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.7. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.5. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.6. 总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">2.7. 设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">2.8. I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.9. 内核</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -159,7 +163,7 @@
         
           <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
         
-      <li>2.3. 内存</li>
+      <li>2.4. 内存</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,9 +183,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>2.3. 内存<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>2.4. 内存<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="ram">
-<h2>2.3.1. RAM<a class="headerlink" href="#ram" title="Permalink to this headline">¶</a></h2>
+<h2>2.4.1. RAM<a class="headerlink" href="#ram" title="Permalink to this headline">¶</a></h2>
 <p>主存通常被称做 RAM(Random Access Memory)，由于 1950 年代和 1960 年代的计算机使用微小的可磁化铁氧体磁芯作为主存储器，因此有时将其称为核心存储器。所有不能再高速缓存中得到满足的内存访问请求都会转往主存中。</p>
 </div>
 </div>
@@ -194,10 +198,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="disk.html" class="btn btn-neutral float-right" title="2.4. 硬盘" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="disk.html" class="btn btn-neutral float-right" title="2.5. 硬盘" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cpu.html" class="btn btn-neutral float-left" title="2.2. CPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="bios.html" class="btn btn-neutral float-left" title="2.3. BIOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

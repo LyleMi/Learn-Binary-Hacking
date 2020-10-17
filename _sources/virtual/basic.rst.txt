@@ -148,6 +148,16 @@ CPU虚拟化
     - 缺点
         - 硬件实现不够优化，还有提高空间
 
+内存虚拟化
+----------------------------------------
+
+地址类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Guest虚拟地址 (Guest Virtual Address, GVA)
+- Guest物理地址 (Guest Physical Address, GPA)
+- Host虚拟地址 (Host Virtual Address, HVA)
+- Host物理地址 (Host Physical Address, HPA)
+
 虚拟化技术应用
 ----------------------------------------
 

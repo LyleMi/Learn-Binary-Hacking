@@ -106,11 +106,12 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamic.html">15.1.2. 动态分析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="compile.html">15.1.3. 编译</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exploit.html">15.1.4. 漏洞利用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="firm.html">15.1.5. 嵌入式设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="android.html">15.1.6. Android</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fuzz.html">15.1.7. 模糊测试</a></li>
-<li class="toctree-l3"><a class="reference internal" href="demo.html">15.1.8. Demo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="misc.html">15.1.9. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="persistence.html">15.1.5. 持久化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firm.html">15.1.6. 嵌入式设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android.html">15.1.7. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fuzz.html">15.1.8. 模糊测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="demo.html">15.1.9. Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">15.1.10. 其他</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../booklist.html">15.2. 书单</a></li>
@@ -199,9 +200,11 @@
 <li class="toctree-l2"><a class="reference internal" href="reverse.html#bytecode">15.1.1.3. Bytecode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reverse.html#ida">15.1.1.4. IDA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reverse.html#ghidra">15.1.1.5. Ghidra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reverse.html#diff">15.1.1.6. Diff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reverse.html#patch">15.1.1.7. Patch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reverse.html#id4">15.1.1.8. 文件分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse.html#radare2">15.1.1.6. Radare2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse.html#diff">15.1.1.7. Diff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse.html#patch">15.1.1.8. Patch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse.html#id10">15.1.1.9. 文件分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse.html#id11">15.1.1.10. 加壳</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">15.1.2. 动态分析</a><ul>
@@ -226,38 +229,47 @@
 <li class="toctree-l2"><a class="reference internal" href="exploit.html#shellcode">15.1.4.3. ShellCode</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="firm.html">15.1.5. 嵌入式设备</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="firm.html#iot">15.1.5.1. IoT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firm.html#id2">15.1.5.2. 仿真</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firm.html#id3">15.1.5.3. 漏洞分析工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firm.html#ble">15.1.5.4. BLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firm.html#uefi">15.1.5.5. UEFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="persistence.html">15.1.5. 持久化</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html#rootkit">15.1.5.1. rootkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html#id2">15.1.5.2. 免杀</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html#id3">15.1.5.3. 无文件马</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html#id4">15.1.5.4. 后门</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="android.html">15.1.6. Android</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="android.html#id1">15.1.6.1. 分析工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="android.html#id2">15.1.6.2. 漏洞</a></li>
-<li class="toctree-l2"><a class="reference internal" href="android.html#id3">15.1.6.3. 改机工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firm.html">15.1.6. 嵌入式设备</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firm.html#iot">15.1.6.1. IoT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firm.html#id2">15.1.6.2. 仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firm.html#id3">15.1.6.3. 漏洞分析工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firm.html#ble">15.1.6.4. BLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firm.html#uefi">15.1.6.5. UEFI</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fuzz.html">15.1.7. 模糊测试</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fuzz.html#afl">15.1.7.1. AFL系列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id3">15.1.7.2. 内核</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id4">15.1.7.3. 语料</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fuzz.html#asan">15.1.7.4. ASAN系列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id5">15.1.7.5. 变异器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="android.html">15.1.7. Android</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="android.html#id1">15.1.7.1. 分析工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android.html#id2">15.1.7.2. 漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android.html#id3">15.1.7.3. 改机工具</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="demo.html">15.1.8. Demo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="demo.html#hypervisor">15.1.8.1. Hypervisor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fuzz.html">15.1.8. 模糊测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#afl">15.1.8.1. AFL系列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id3">15.1.8.2. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#pt-fuzz">15.1.8.3. PT-Fuzz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id4">15.1.8.4. 语料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#asan">15.1.8.5. ASAN系列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id5">15.1.8.6. 框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fuzz.html#id6">15.1.8.7. 变异器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="misc.html">15.1.9. 其他</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#id2">15.1.9.1. 静态工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#sandbox">15.1.9.2. Sandbox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#malware-sample">15.1.9.3. Malware Sample</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#id3">15.1.9.4. 实验环境</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#id4">15.1.9.5. 系统交互</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo.html">15.1.9. Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="demo.html#hypervisor">15.1.9.1. Hypervisor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">15.1.10. 其他</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#id2">15.1.10.1. 静态工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#sandbox">15.1.10.2. Sandbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#malware-sample">15.1.10.3. Malware Sample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#id3">15.1.10.4. 实验环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#id4">15.1.10.5. 系统交互</a></li>
 </ul>
 </li>
 </ul>

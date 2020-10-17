@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3.6. ELF &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.3.7. ELF &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.7. 进程" href="process.html" />
-    <link rel="prev" title="6.3.5. 内存管理" href="mem.html" /> 
+    <link rel="next" title="6.3.8. 进程" href="process.html" />
+    <link rel="prev" title="6.3.6. 内存管理" href="mem.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,19 +99,22 @@
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.6. ELF</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.6.1. 加载</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#execve">6.3.6.2. execve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.6.3. 注册机制</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#load-elf">6.3.6.4. Load ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.7. ELF</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.7.1. 加载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execve">6.3.7.2. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.7.3. 注册机制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-elf">6.3.7.4. Load ELF</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.8. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.9. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.10. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.11. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="namespace.html">6.3.13. namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -126,9 +129,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">13. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">14. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">15. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -178,7 +182,7 @@
         
           <li><a href="index.html">6.3. Linux</a> &raquo;</li>
         
-      <li>6.3.6. ELF</li>
+      <li>6.3.7. ELF</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,15 +202,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="elf">
-<h1>6.3.6. ELF<a class="headerlink" href="#elf" title="Permalink to this headline">¶</a></h1>
+<h1>6.3.7. ELF<a class="headerlink" href="#elf" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>6.3.6.1. 加载<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.7.1. 加载<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>从编译/链接和运行的角度看，应用程序和库程序的链接有两种方式。
 一种是固定的、静态的链接，在编译时将要用到的库函数的代码从代码库中抽取出来，链接进应用软件中。另一种是动态链接，在编译阶段并不完成跟库函数的链接，到程序时才把链接库的映像装入用户空间并加以定位。</p>
 <p>其中ELF的载入在Linux内核中完成，动态链接的实现在用户空间中由 <code class="docutils literal notranslate"><span class="pre">ld-linux.so</span></code> 来完成，解释器的启动由内核负责。</p>
 </div>
 <div class="section" id="execve">
-<h2>6.3.6.2. execve<a class="headerlink" href="#execve" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.7.2. execve<a class="headerlink" href="#execve" title="Permalink to this headline">¶</a></h2>
 <p>在用户层面，shell进行会调用 <code class="docutils literal notranslate"><span class="pre">fork()</span></code> 系统调用创建一个新进程，新进程调用 <code class="docutils literal notranslate"><span class="pre">execve()</span></code> 系统调用执行指定的ELF文件。</p>
 <p>在内核中， <code class="docutils literal notranslate"><span class="pre">execve</span></code> 系统调用的相应入口是 <code class="docutils literal notranslate"><span class="pre">sys_execve</span></code> ，在执行 <code class="docutils literal notranslate"><span class="pre">sys_execve</span></code> 之后，内核会调用 <code class="docutils literal notranslate"><span class="pre">do_execve</span></code> / <code class="docutils literal notranslate"><span class="pre">search_binary_handle</span></code> / <code class="docutils literal notranslate"><span class="pre">load_elf_binary</span></code> 等函数来完成加载。 <code class="docutils literal notranslate"><span class="pre">do_execve</span></code> 相关代码如下：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">do_execve</span><span class="p">(</span><span class="k">struct</span> <span class="n">filename</span> <span class="o">*</span><span class="n">filename</span><span class="p">,</span>
@@ -252,7 +256,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2>6.3.6.3. 注册机制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.7.3. 注册机制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Linux支持不同格式的可执行程序，这些程序用 <code class="docutils literal notranslate"><span class="pre">linux_binfmt</span></code> 来描述，其定义在 <code class="docutils literal notranslate"><span class="pre">include/linux/binfmts.h</span></code> 中。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm"> * This structure defines the functions that are used to load the binary formats that linux accepts.</span>
@@ -292,7 +296,7 @@
 </div>
 </div>
 <div class="section" id="load-elf">
-<h2>6.3.6.4. Load ELF<a class="headerlink" href="#load-elf" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.7.4. Load ELF<a class="headerlink" href="#load-elf" title="Permalink to this headline">¶</a></h2>
 <p>在ELF文件格式中，处理函数是 <code class="docutils literal notranslate"><span class="pre">load_elf_binary</span></code> 函数，流程如下：</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -383,10 +387,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="process.html" class="btn btn-neutral float-right" title="6.3.7. 进程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="process.html" class="btn btn-neutral float-right" title="6.3.8. 进程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mem.html" class="btn btn-neutral float-left" title="6.3.5. 内存管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mem.html" class="btn btn-neutral float-left" title="6.3.6. 内存管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

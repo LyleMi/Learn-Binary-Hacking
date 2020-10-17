@@ -28,19 +28,19 @@ FAT16使用了32位的空间来表示每个扇区(Sector)配置文件的状态�
 
 exFAT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-exFAT（Extended File Allocation Table File System）又称扩展FAT或扩展文件分配表。
+exFAT(Extended File Allocation Table File System)又称扩展FAT或扩展文件分配表。
 
 NTFS
 ----------------------------------------
-NTFS（New Technology File System）是Windows NT内核的系列操作系统支持的、一个特别为网络和磁盘配额、文件加密等管理安全特性设计的磁盘格式，提供长文件名、数据保护和恢复，能通过目录和文件许可实现安全性，并支持跨越分区。 
+NTFS(New Technology File System)是Windows NT内核的系列操作系统支持的、一个特别为网络和磁盘配额、文件加密等管理安全特性设计的磁盘格式，提供长文件名、数据保护和恢复，能通过目录和文件许可实现安全性，并支持跨越分区。 
 
 NTFS支持功能
 
-- 访问控制（Access control）
-- 磁盘配额（Disk quotas）
-- 加密文件系统（Encrypting File System, EFS）
-- 支持多重数据流（Multiple data streams）
-- 支持硬链接和联结点（Hard links and junction points）
+- 访问控制(Access control)
+- 磁盘配额(Disk quotas)
+- 加密文件系统(Encrypting File System, EFS)
+- 支持多重数据流(Multiple data streams)
+- 支持硬链接和联结点(Hard links and junction points)
 - 基于Unicode的命名方式
 
 权限管理
@@ -70,4 +70,4 @@ NTFS支持功能
 
 ReFS
 ----------------------------------------
-ReFS（Resilient File System，弹性文件系统） 是在Windows Server 2012中新引入的一个文件系统。只能应用于存储数据，不能引导系统。ReFS是与NTFS大部分兼容的，其主要目的 是为了保持较高的稳定性，可以自动验证数据是否损坏，并尽力恢复数据。
+ReFS(Resilient File System，弹性文件系统) 是在Windows Server 2012中新引入的一个文件系统。只能应用于存储数据，不能引导系统。ReFS是与NTFS大部分兼容的，其主要目的 是为了保持较高的稳定性，可以自动验证数据是否损坏，并尽力恢复数据。

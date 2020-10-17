@@ -108,18 +108,22 @@
 <li class="toctree-l4"><a class="reference internal" href="#bytecode">15.1.1.3. Bytecode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ida">15.1.1.4. IDA</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ghidra">15.1.1.5. Ghidra</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#diff">15.1.1.6. Diff</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#patch">15.1.1.7. Patch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">15.1.1.8. 文件分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radare2">15.1.1.6. Radare2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#diff">15.1.1.7. Diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">15.1.1.8. Patch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">15.1.1.9. 文件分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">15.1.1.10. 加壳</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamic.html">15.1.2. 动态分析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="compile.html">15.1.3. 编译</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exploit.html">15.1.4. 漏洞利用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="firm.html">15.1.5. 嵌入式设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="android.html">15.1.6. Android</a></li>
-<li class="toctree-l3"><a class="reference internal" href="demo.html">15.1.7. Demo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="misc.html">15.1.8. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="persistence.html">15.1.5. 持久化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firm.html">15.1.6. 嵌入式设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android.html">15.1.7. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fuzz.html">15.1.8. 模糊测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="demo.html">15.1.9. Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html">15.1.10. 其他</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../booklist.html">15.2. 书单</a></li>
@@ -127,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reverse/index.html">15.4. 逆向工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../debuger/index.html">15.5. 调试器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">15.6. 编译工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ulimit.html">15.7. ulimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../systool.html">15.7. 系统工具</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
@@ -204,7 +208,6 @@
 <div class="section" id="id2">
 <h2>15.1.1.1. 二进制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/radare/radare2">radare2</a></p></li>
 <li><p><a class="reference external" href="https://github.com/aquynh/capstone">capstone</a></p></li>
 <li><p><a class="reference external" href="https://github.com/0xd4d/dnspy">dnspy</a> .NET debugger and assembly editor</p></li>
 <li><p><a class="reference external" href="https://binary.ninja/">binary ninja</a></p></li>
@@ -229,17 +232,34 @@
 </div>
 <div class="section" id="ida">
 <h2>15.1.1.4. IDA<a class="headerlink" href="#ida" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>15.1.1.4.1. 文档与资料<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/igogo-x86/HexRaysPyTools">HexRaysPyTools</a></p></li>
-<li><p><a class="reference external" href="https://github.com/IDArlingTeam/IDArling">IDArling</a></p></li>
+<li><p><a class="reference external" href="https://www.hex-rays.com/products/ida/support/tutorials/">IDA Tutorials</a></p></li>
+<li><p><a class="reference external" href="https://www.hex-rays.com/products/ida/support/sdkdoc/index.html">IDA SDK</a></p></li>
 <li><p><a class="reference external" href="https://github.com/inforion/idapython-cheatsheet">idapython cheatsheet</a></p></li>
 <li><p><a class="reference external" href="https://github.com/xrkk/awesome-ida">awesome ida</a></p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>15.1.1.4.2. 辅助工具<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/igogo-x86/HexRaysPyTools">HexRaysPyTools</a> Find code patterns within the Hexrays AST</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>15.1.1.4.3. 插件<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/IDArlingTeam/IDArling">IDArling</a></p></li>
 <li><p><a class="reference external" href="https://github.com/patois/abyss">abyss</a> IDAPython Plugin for Postprocessing of Hexrays Decompiler Output</p></li>
 <li><p><a class="reference external" href="https://github.com/tmr232/Sark">Sark</a> IDA Plugins &amp; IDAPython Scripting Library</p></li>
 <li><p><a class="reference external" href="https://github.com/arizvisa/ida-minsc">IDA minsc</a> is a plugin for IDA Pro that assists a user with scripting the IDAPython plugin that is bundled with the disassembler</p></li>
+<li><p><a class="reference external" href="https://github.com/gaasedelen/lucid">lucid</a> An Interactive Hex-Rays Microcode Explorer</p></li>
+<li><p><a class="reference external" href="https://github.com/QuoSecGmbH/grap/">grap</a> grap: define and match graph patterns within binaries</p></li>
 </ul>
+</div>
 <div class="section" id="golang">
-<h3>15.1.1.4.1. Golang<a class="headerlink" href="#golang" title="Permalink to this headline">¶</a></h3>
+<h3>15.1.1.4.4. Golang插件<a class="headerlink" href="#golang" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/strazzere/golang_loader_assist">golang loader assist</a></p></li>
 <li><p><a class="reference external" href="https://github.com/sibears/IDAGolangHelper">IDAGolangHelper</a> Set of IDA Pro scripts for parsing GoLang types information stored in compiled binary</p></li>
@@ -249,28 +269,53 @@
 </div>
 <div class="section" id="ghidra">
 <h2>15.1.1.5. Ghidra<a class="headerlink" href="#ghidra" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>15.1.1.5.1. 文档与资料<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/NationalSecurityAgency/ghidra">ghidra</a></p></li>
+<li><p><a class="reference external" href="https://github.com/NationalSecurityAgency/ghidra">Ghidra</a></p></li>
+<li><p><a class="reference external" href="https://ghidra.re/ghidra_docs/api/">Ghidra API Overview</a></p></li>
+<li><p><a class="reference external" href="https://ghidra.re/online-courses/">Ghidra Online Courses</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AllsafeCyberSecurity/awesome-ghidra">Awesome Ghidra</a> A curated list of awesome Ghidra materials</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>15.1.1.5.2. 插件<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p><a class="reference external" href="https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer">Ghidra Cpp Class Analyzer</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cetfor/GhidraSnippets">GhidraSnippets</a> Python snippets for Ghidra’s Program and Decompiler APIs</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="radare2">
+<h2>15.1.1.6. Radare2<a class="headerlink" href="#radare2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/radare/radare2">radare2</a></p></li>
+<li><p><a class="reference external" href="https://radare.gitbooks.io/radare2book/content/">Radare2 Book</a></p></li>
 </ul>
 </div>
 <div class="section" id="diff">
-<h2>15.1.1.6. Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
+<h2>15.1.1.7. Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/joxeankoret/diaphora">diaphora</a></p></li>
 <li><p><a class="reference external" href="https://github.com/seemoo-lab/polypyus">polypyus</a></p></li>
 </ul>
 </div>
 <div class="section" id="patch">
-<h2>15.1.1.7. Patch<a class="headerlink" href="#patch" title="Permalink to this headline">¶</a></h2>
+<h2>15.1.1.8. Patch<a class="headerlink" href="#patch" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/GJDuck/e9patch">e9patch</a> A powerful static binary rewriting tool</p></li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>15.1.1.8. 文件分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>15.1.1.9. 文件分析<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/decalage2/oletools">oletools</a> python tools to analyze MS OLE2 files and MS Office documents</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>15.1.1.10. 加壳<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/upx/upx">UPX</a> the Ultimate Packer for eXecutables</p></li>
 </ul>
 </div>
 </div>

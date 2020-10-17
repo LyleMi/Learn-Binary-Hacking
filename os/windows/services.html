@@ -105,30 +105,35 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="process.html">6.5.4. 进程与线程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.5.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.6. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.7. 身份认证</a></li>
-<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.8. 访问控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.9. 网络机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.10. 注册表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.11. WMI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.12. 安全机制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.13. 恶意软件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.14. 术语与缩写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.15. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iodriver.html">6.5.6. IO与驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs.html">6.5.7. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsenc.html">6.5.8. 文件加密与安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ident.html">6.5.9. 身份认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acl.html">6.5.10. 访问控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.5.11. 网络机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html">6.5.12. 注册表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmi.html">6.5.13. WMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">6.5.14. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
+<li class="toctree-l3"><a class="reference internal" href="malware.html">6.5.16. 恶意软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminology.html">6.5.17. 术语与缩写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.5.18. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android.html">6.6. Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -201,8 +206,8 @@
 <h1>6.5.3. 服务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>6.5.3.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>服务（Services）程序是后台运行的进程，常用来执行特定的任务，不需要和用户进行交互。比如自动更新服务、后台智能传输服务、事件日志服务等。</p>
-<p>服务程序受Service Control Manager（SCM，即services.exe进程）所控制，其服务程序的配置数据位于 <code class="docutils literal notranslate"><span class="pre">HKLM\System\CurrentControlSet\Services</span></code> 。</p>
+<p>服务(Services)程序是后台运行的进程，常用来执行特定的任务，不需要和用户进行交互。比如自动更新服务、后台智能传输服务、事件日志服务等。</p>
+<p>服务程序受Service Control Manager(SCM，即services.exe进程)所控制，其服务程序的配置数据位于 <code class="docutils literal notranslate"><span class="pre">HKLM\System\CurrentControlSet\Services</span></code> 。</p>
 <p>服务通常由三个部分组成：服务应用、服务控制程序 (service control program, SCP)、服务控制管理器 (service control manager, SCM)。</p>
 <p>Windows提供了内置的SCP，可以启动、停止、继续运行程序。用户也可以自定义SCP程序来玩橙更细粒度的控制。服务程序是普通的Windows可执行程序，只是会有一些附加模块和SCM通信。</p>
 </div>

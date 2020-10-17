@@ -126,14 +126,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -216,8 +218,8 @@
 </li>
 <li><dl class="simple">
 <dt>网络API DLL及TDI客户端</dt><dd><ul>
-<li><p>对应OSI会话层与表示层，为应用程序提供 了独立于具体协议的网络交互实现方式，包括Windows套接字（Winsock）、远程过程 调用（RPC）、Web访问API、命名管道和 邮件槽以及其他网络API接口。</p></li>
-<li><p>TDI客户端作为内核模式驱动程序，是网络 API接口内核部分的具体实现：将网络API的请求转换成IRP，通过TDI标准格式化后，发 送给下层的协议驱动（TDI传输器）。</p></li>
+<li><p>对应OSI会话层与表示层，为应用程序提供 了独立于具体协议的网络交互实现方式，包括Windows套接字(Winsock)、远程过程 调用(RPC)、Web访问API、命名管道和 邮件槽以及其他网络API接口。</p></li>
+<li><p>TDI客户端作为内核模式驱动程序，是网络 API接口内核部分的具体实现：将网络API的请求转换成IRP，通过TDI标准格式化后，发 送给下层的协议驱动(TDI传输器)。</p></li>
 </ul>
 </dd>
 </dl>
@@ -226,16 +228,16 @@
 </div>
 <div class="section" id="tdi">
 <h2>6.5.11.2. TDI<a class="headerlink" href="#tdi" title="Permalink to this headline">¶</a></h2>
-<p>TDI（Transport Driver Interface）传输驱动程序接口，也被称之为TDI传输器、NDIS协议驱动程序 、协议驱动程序等，对应OSI的网络层和传输层，实现了TCP/IP、NetBEUI、IPX等协议栈，接受上层TDI客户端的IRP请求，并 调用NDIS库中提供的网卡驱动程序功能进行网络传输。</p>
+<p>TDI(Transport Driver Interface)传输驱动程序接口，也被称之为TDI传输器、NDIS协议驱动程序 、协议驱动程序等，对应OSI的网络层和传输层，实现了TCP/IP、NetBEUI、IPX等协议栈，接受上层TDI客户端的IRP请求，并 调用NDIS库中提供的网卡驱动程序功能进行网络传输。</p>
 <p>TDI传输器通过透明地进行如分片与重组、排序确认与重传等一 系列消息操作，为上层网络应用提供了便捷的支持。
-Windows Vista之后，不再使用TDI，而是Windows filter  platform（WFP）和Winsock kernel（WSK）了。</p>
+Windows Vista之后，不再使用TDI，而是Windows filter  platform(WFP)和Winsock kernel(WSK)了。</p>
 <p>WSK，Winsock内核：提供内核模式下的网络通信，使用类似 于用户态Winsock的编程语法，但也提供IRP和事件回调函数的 异步I/O操作等特性。WSK还在Windows下一代TCP/IP网络协议 栈中默认支持IPv6功能。</p>
 <p>WFP，Windows过滤平台：一套API函数和系统服务，提供创建 网络过滤应用程序的能力，允许应用程序追踪、过滤甚至修改网 络数据包</p>
 </div>
 <div class="section" id="ndis">
 <h2>6.5.11.3. NDIS<a class="headerlink" href="#ndis" title="Permalink to this headline">¶</a></h2>
-<p>NDIS（Network Driver Interface Specification）库及小端 口（miniport）驱动程序位于OSI的链路层，为各种不同的网卡驱动程序和TDI传输层之间 构建一个封装接口。</p>
-<p>NDIS库（ndis.sys）对于上层为网络程序模块屏蔽了不同的网 卡硬件类型，NDIS miniport驱动对于下层，为网卡制造商开发设备驱动程序提供了屏蔽Windows内核环境细节信息的编程接口。</p>
+<p>NDIS(Network Driver Interface Specification)库及小端 口(miniport)驱动程序位于OSI的链路层，为各种不同的网卡驱动程序和TDI传输层之间 构建一个封装接口。</p>
+<p>NDIS库(ndis.sys)对于上层为网络程序模块屏蔽了不同的网 卡硬件类型，NDIS miniport驱动对于下层，为网卡制造商开发设备驱动程序提供了屏蔽Windows内核环境细节信息的编程接口。</p>
 <p>NDIS包含各种网卡硬件的设备驱动程序，处于OSI模型的物理层。</p>
 </div>
 </div>

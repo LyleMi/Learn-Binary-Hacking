@@ -10,6 +10,10 @@ AFL系列
 - `kAFL <https://github.com/RUB-SysSec/kAFL>`_  Code for the USENIX 2017 paper: kAFL: Hardware-Assisted Feedback Fuzzing for OS Kernels
 - `syzkaller <https://github.com/google/syzkaller>`_ is an unsupervised coverage-guided kernel fuzzer
 
+PT-Fuzz
+----------------------------------------
+- `libxdc <https://github.com/nyx-fuzz/libxdc>`_ The fastest Intel-PT decoder for fuzzing
+
 语料
 ----------------------------------------
 - `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_
@@ -18,6 +22,9 @@ ASAN系列
 ----------------------------------------
 - `QASan <https://github.com/andreafioraldi/qasan>`_ a custom QEMU 3.1.1 that detects memory errors in the guest using AddressSanitizer
 
+框架
+----------------------------------------
+- `onefuzz <https://github.com/microsoft/onefuzz>`_ A self-hosted Fuzzing-As-A-Service platform
 
 变异器
 ----------------------------------------

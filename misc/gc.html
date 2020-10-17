@@ -102,7 +102,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">16. 其他</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">16.1. 垃圾回收</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">16.1. 垃圾回收</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">16.1.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">16.1.2. 常用概念</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mutator">16.1.2.1. mutator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">16.1.2.2. 堆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">16.1.2.3. 活动对象/非活动对象</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">16.1.2.4. 分配</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">16.1.3. 评价标准</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gc">16.1.4. GC算法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mark-sweep-gc">16.1.4.1. 标记 - 清除算法 （Mark Sweep GC）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">16.1.4.2. 引用计数算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="sandbox.html">16.2. 沙箱</a></li>
 </ul>
 </li>
@@ -174,6 +190,58 @@
             
   <div class="section" id="id1">
 <h1>16.1. 垃圾回收<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>16.1.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>垃圾回收(Garbage Collection, GC)指程序不用的内存空间。</p>
+<p>满足 <cite>找到内存空间里的垃圾</cite> + <cite>回收垃圾，让程序员能再次利用</cite> 两项功能的程序就是GC。由John McCarthy在1960年首次发布。</p>
+</div>
+<div class="section" id="id3">
+<h2>16.1.2. 常用概念<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mutator">
+<h3>16.1.2.1. mutator<a class="headerlink" href="#mutator" title="Permalink to this headline">¶</a></h3>
+<p>用于生成对象和更新指针。</p>
+</div>
+<div class="section" id="id4">
+<h3>16.1.2.2. 堆<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>用于动态存放对象的内存空间，当mutator申请存放对象时，所需的内存空间就会从堆分配给mutator。</p>
+</div>
+<div class="section" id="id5">
+<h3>16.1.2.3. 活动对象/非活动对象<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>活动对象指能通过mutator引用的对象，非活动对象指不能通过程序引用的对象。</p>
+</div>
+<div class="section" id="id6">
+<h3>16.1.2.4. 分配<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>分配（allocation）在内存空间中分配对象。当没有可分配空间时，GC有两种选择：销毁所有的计算结果，输出错误信息，扩大堆，分配可用空间。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>16.1.3. 评价标准<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>评价GC算法的性能，采用吞吐量、最大暂停时间、堆使用效率、访问的局部性4个标准。</p>
+<p>其中吞吐量指单位时间内的处理能力。最大暂停时间指因执行GC而暂停执行mutator的最长时间。</p>
+</div>
+<div class="section" id="gc">
+<h2>16.1.4. GC算法<a class="headerlink" href="#gc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mark-sweep-gc">
+<h3>16.1.4.1. 标记 - 清除算法 （Mark Sweep GC）<a class="headerlink" href="#mark-sweep-gc" title="Permalink to this headline">¶</a></h3>
+<p>分为标记阶段和清除阶段两个阶段。
+标记阶段为对象打上标签。
+collector会遍历整个堆，回收没有打上标签的对象</p>
+<p>分配策略：</p>
+<ul class="simple">
+<li><p>First-fit 分配找到的第一个大于等于size的分块</p></li>
+<li><p>Best-fit 返回大于等于size的最小分块</p></li>
+<li><p>Worst-fit 找最大的分块</p></li>
+</ul>
+<p>优点在于实现简单，与保守式GC算法兼容。</p>
+<p>缺点在于碎片化，分配速度慢，与写时复制技术不兼容。</p>
+</div>
+<div class="section" id="id8">
+<h3>16.1.4.2. 引用计数算法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>引入计数器的概念，表示对象的人气指数。</p>
+<p>优点在于可即刻回收垃圾，最大暂停时间短，没有必要沿指针查找。</p>
+<p>缺点在于计数器值增减处理繁重，计数器需要占用很多位，实现烦琐复杂，循环引用无法回收。</p>
+</div>
+</div>
 </div>
 
 

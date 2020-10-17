@@ -90,10 +90,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 嵌入式设备</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. 固件解包</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">3.1.1. 获取固件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.2. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.1.3. 常见模式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">3.1.4. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1.1. 固件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.2. 获取固件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.1.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.1.4. 常见模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.1.5. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hal.html">3.2. HAL</a></li>
@@ -110,14 +111,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -187,7 +190,12 @@
   <div class="section" id="id1">
 <h1>3.1. 固件解包<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>3.1.1. 获取固件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>3.1.1. 固件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在电子系统和计算中，固件是一种特定的计算机软件类，它为设备的特定硬件提供低级控制。固件可以为设备的更复杂的软件提供标准化的操作环境，或者对于较不复杂的设备，充当设备的完整操作系统，执行所有的控制、监视和数据操作功能。包含固件的设备的典型例子是嵌入式系统、消费设备、计算机、计算机外设等。几乎所有电子设备都包含固件。</p>
+<p>计算机固件是计算机系统中不可缺少的底层基础系统。这些固件往往是以软件的形式固化存储在硬件芯片中。计算机主板上有最重要、最核心的计算机固件，通过称为BIOS(Basic Input / Output System，基本输入输出系统)，计算机加电时，中央处理器(CPU)取得并执行的第一条指令，就储存在固件中。</p>
+</div>
+<div class="section" id="id3">
+<h2>3.1.2. 获取固件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>直接从开发团队、制造商/供应商或用户获取</p></li>
 <li><p>使用制造商提供的项目从头编译</p></li>
@@ -201,18 +209,18 @@
 <li><p>从主板卸下闪存芯片（如：SPI ）或 MCU，以进行离线分析和数据提取</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h2>3.1.2. 文件系统<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>3.1.3. 文件系统<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>常见的文件系统类型有squashfs、ubifs、romfs、rootfs、jffs2、yaffs2、cramfs、initramfs等。</p>
 </div>
-<div class="section" id="id4">
-<h2>3.1.3. 常见模式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>3.1.4. 常见模式<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>无加密，使用binwalk等工具解包即可。</p>
 <p>加密但是在运行后会解密，提取nvram可获得固件。</p>
 <p>若之前版本存在无加密固件，可通过劫持升级过程获得新版本固件。</p>
 </div>
-<div class="section" id="id5">
-<h2>3.1.4. 参考链接<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>3.1.5. 参考链接<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scriptingxss.gitbook.io/firmware-security-testing-methodology/">OWASP Firmware Security Testing Methodology</a></p></li>
 </ul>

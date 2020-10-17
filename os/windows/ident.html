@@ -125,14 +125,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -216,7 +218,7 @@
 </dd>
 </dl>
 </li>
-<li><p>从Windows Vista/Server 2008（NT 6.0）开始，每个服务程序都 有自己的SID，而账户的名称则为“NT SERVICE&lt;服务名称&gt;”</p></li>
+<li><p>从Windows Vista/Server 2008(NT 6.0)开始，每个服务程序都 有自己的SID，而账户的名称则为“NT SERVICE&lt;服务名称&gt;”</p></li>
 <li><dl class="simple">
 <dt>查看服务SID及其账户名称</dt><dd><ul>
 <li><p>sc.exe showsid &lt;service name&gt;</p></li>
@@ -236,7 +238,7 @@
 <dt>可信任的进程，负责管理与安全有关的用户交互</dt><dd><ul>
 <li><p>协调登录过程，在登录时启动用户的第一个进程，处理注销过程，以管理其他各种与安全有关的操作，包括在登录时输入口令、更改口令、锁住/解锁工作站等。</p></li>
 <li><p>创建可用的桌面。</p></li>
-<li><p>向操作系统注册一个安全维护序列（SAS, Secure Attention  Sequence），默认为Ctrl+Alt+Delete。</p></li>
+<li><p>向操作系统注册一个安全维护序列(SAS, Secure Attention  Sequence)，默认为Ctrl+Alt+Delete。</p></li>
 <li><p>维护工作站状态。</p></li>
 <li><p>实现超时处理。</p></li>
 </ul>
@@ -287,7 +289,7 @@
 </li>
 <li><dl class="simple">
 <dt>Windows安装的身份验证程序包</dt><dd><ul>
-<li><p>独立（工作组）环境：MSV1_0， %SystemRoot%System32Msv1_0.dll</p></li>
+<li><p>独立(工作组)环境：MSV1_0， %SystemRoot%System32Msv1_0.dll</p></li>
 <li><p>域环境：Kerberos， %SystemRoot%System32Kerberos.dll</p></li>
 </ul>
 </dd>
@@ -307,7 +309,7 @@
 <h3>6.5.9.2.5. CP<a class="headerlink" href="#cp" title="Permalink to this headline">¶</a></h3>
 <p>CP，Credential provider，凭证提供者</p>
 <ul class="simple">
-<li><p>Credential provider是运行在LogonUI进程内的COM对象， 位于一些DLL文件中（触发SAS热键后由Winlogon按需启动 ），用来获取用户的用户名、密码、智能卡PIN码或者生物数据（比如指纹、视网膜信息）</p></li>
+<li><p>Credential provider是运行在LogonUI进程内的COM对象， 位于一些DLL文件中(触发SAS热键后由Winlogon按需启动 )，用来获取用户的用户名、密码、智能卡PIN码或者生物数据(比如指纹、视网膜信息)</p></li>
 <li><p>标准的CP是 %SystemRoot%System32authui.dll 和 %SystemRoot%System32SmartcardCredentialProvider.dll.</p></li>
 </ul>
 </div>

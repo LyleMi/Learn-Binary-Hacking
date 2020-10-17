@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3.11. namespace &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.3.13. namespace &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.12. 参考链接" href="ref.html" />
-    <link rel="prev" title="6.3.10. Cgroups" href="cgroups.html" /> 
+    <link rel="next" title="6.3.14. 参考链接" href="ref.html" />
+    <link rel="prev" title="6.3.12. Cgroups" href="cgroups.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,17 +99,19 @@
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.8. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.9. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.10. Cgroups</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.11. namespace</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.11.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.13. namespace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.3.13.1. 简介</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.12. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -177,7 +179,7 @@
         
           <li><a href="index.html">6.3. Linux</a> &raquo;</li>
         
-      <li>6.3.11. namespace</li>
+      <li>6.3.13. namespace</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -197,9 +199,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="namespace">
-<h1>6.3.11. namespace<a class="headerlink" href="#namespace" title="Permalink to this headline">¶</a></h1>
+<h1>6.3.13. namespace<a class="headerlink" href="#namespace" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>6.3.11.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.13.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>namespace 是 Linux 内核用来隔离内核资源的方式。通过 namespace 可以让一些进程只能看到与自己相关的一部分资源，而另外一些进程也只能看到与它们自己相关的资源，这两拨进程根本就感觉不到对方的存在。具体的实现方式是把一个或多个进程的相关资源指定在同一个 namespace 中。</p>
 <p>Linux 在很早的版本中就实现了部分的 namespace，比如内核 2.4 就实现了 mount namespace。大多数的 namespace 支持是在内核 2.6 中完成的，比如 IPC、Network、PID、和 UTS。还有个别的 namespace 比较特殊，比如 User，从内核 2.6 就开始实现了，但在内核 3.8 中才宣布完成。同时，随着 Linux 自身的发展以及容器技术持续发展带来的需求，也会有新的 namespace 被支持，比如在内核 4.6 中就添加了 Cgroup namespace。</p>
 </div>
@@ -213,10 +215,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ref.html" class="btn btn-neutral float-right" title="6.3.12. 参考链接" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ref.html" class="btn btn-neutral float-right" title="6.3.14. 参考链接" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cgroups.html" class="btn btn-neutral float-left" title="6.3.10. Cgroups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cgroups.html" class="btn btn-neutral float-left" title="6.3.12. Cgroups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

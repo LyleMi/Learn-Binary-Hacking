@@ -8,8 +8,8 @@
    tech
    virtio
    vmware
-   kvm
+   kvm/index
    xen
-   qemu
+   qemu/index
    unicorn
    misc

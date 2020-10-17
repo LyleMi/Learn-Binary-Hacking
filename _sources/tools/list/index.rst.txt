@@ -9,6 +9,7 @@
    dynamic
    compile
    exploit
+   persistence
    firm
    android
    fuzz

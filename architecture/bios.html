@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.3. BIOS &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.4. 内存" href="memory.html" />
+    <link rel="prev" title="2.2. CPU" href="cpu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 计算机体系结构</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. BIOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.2. 功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.3.3. 传统的BIOS缺陷</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">2.4. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.5. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.6. 总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">2.7. 设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">2.8. I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.9. 内核</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
+        
+      <li>2.3. BIOS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/architecture/bios.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bios">
+<h1>2.3. BIOS<a class="headerlink" href="#bios" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>2.3.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>BIOS这个字眼是在1975年第一次由CP/M操作系统中出现，是个人电脑启动时加载的第一个软件。</p>
+</div>
+<div class="section" id="id2">
+<h2>2.3.2. 功能<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>开机自检( Power On Self Test，POST)</dt><dd><ul>
+<li><p>计算机开机时系统将控制权交给BIOS，BIOS针对CPU各项寄存器、标志位等先检查CPU是否工作正常，接下来会检查8254定时器、8259A可编程中断控制器、8237DMA控制器等的状态，测试其是否正常工作</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>系统初始化</dt><dd><ul>
+<li><p>针对CPU Cache、DRAM、南北桥芯片组、显卡、PCI设备控制器、IDE设备控制器、网卡等的寄存器作初始化操作,填充相应寄存器的值,设定成可支持的默认工作模式,并检測是否能够正常工作</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>提供常驻内存的运行时服务( Runtime services)</dt><dd><ul>
+<li><p>这些服务程序常驻在某段系统内存中,操作系统和应用程序能够通过中断方式调用这些服务代码,典型的如Int 10h、Int13h、Int 15h等</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>系统设置</dt><dd><ul>
+<li><p>BIOS提供文本或图形界面的设置程序(通常称为BIOS Setup)供用户在进入操作系统前对系统的一些参数值进行设置，如BOS密码、光盘/硬盘/软盘引导顺序、系统时间等</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>引导操作系统</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>2.3.3. 传统的BIOS缺陷<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>传统固件BIOS仍然运行在16位实模式下，这使得Pentium 4的CPU在BIOS运行阶段只相当于一块高速的8086中央处理器。不能充分的发挥中央处理器硬件新技术上的优势</p></li>
+<li><p>传统固件BIOS封闭的开发方式严重阻碍了固件技术发展。传统固件BIOS缺乏统一和开放的架构，不同固件BIOS厂商其BIOS产品结构设计千差万别</p></li>
+<li><p>传统固件BIOS的设计，一开始就缺乏安全方面的考虑</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="memory.html" class="btn btn-neutral float-right" title="2.4. 内存" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cpu.html" class="btn btn-neutral float-left" title="2.2. CPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -94,7 +94,8 @@
 <li class="toctree-l2"><a class="reference internal" href="diff.html">4.2. 区别</a></li>
 <li class="toctree-l2"><a class="reference internal" href="x86.html">4.3. x86</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. ARM</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#semihosting">4.4.1. Semihosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. 基础</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#semihosting">4.4.2. Semihosting</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mips.html">4.5. MIPS</a></li>
@@ -181,8 +182,22 @@
             
   <div class="section" id="arm">
 <h1>4.4. ARM<a class="headerlink" href="#arm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>4.4.1. 基础<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>出于低功耗、封装限制等原因，以前的一些ARM处理器没有独立的硬件浮点运算单元，需要软件来实现浮点运算。随着技术发展，现在的高端ARM处理器基本都具备了硬件执行浮点操作的能力。</p>
+<p>因此新旧两种架构之间的差异就产生了两种不同的嵌入式应用程序二进制接口(EABI)软浮点与矢量浮点(VFP)。其中软浮点(soft float)和硬浮点(hard float)之间有向前兼容却没有向后兼容的能力。</p>
+<p>在ARM体系架构内核中，在没有fpu内核的情况下，是不能使用armel和armhf的。在有fpu的情况下，就可以通过gcc的选项 <code class="docutils literal notranslate"><span class="pre">-mfloat-abi</span></code> 来指定使用哪种，有如下三种值：</p>
+<ul class="simple">
+<li><p>soft：不用​fpu计算，即使有fpu浮点运算单元也不用。</p></li>
+<li><p>armel：(arm eabi little endian)也即softfp，用fpu计算，但是传参数用普通寄存器传，这样中断的时候，只需要保存普通寄存器，中断负荷小，但是参数需要转换成浮点的再计算。</p></li>
+<li><p>armhf：(arm hard float)也即hard，用fpu计算，传参数用fpu中的浮点寄存器传，省去了转换性能最好，但是中断负荷高。</p></li>
+<li><p>arm64：64位的arm默认就是hard float的，因此不需要hf的后缀。</p></li>
+</ul>
+<p>使用softfp模式，会存在不必要的浮点到整数、整数到浮点的转换。而使用hard模式，在每次浮点相关函数调用时，平均能节省20个CPU周期。对ARM这样每个周期都很重要的体系结构来说，这样的提升无疑是巨大的。</p>
+<p>在完全不改变源码和配置的情况下，在一些应用程序上，虽然armhf比armel硬件要求高一点，但是armhf能得到20-25%的性能提升。对一些严重依赖于浮点运算的程序，更是可以达到300%的性能提升。</p>
+</div>
 <div class="section" id="semihosting">
-<h2>4.4.1. Semihosting<a class="headerlink" href="#semihosting" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.2. Semihosting<a class="headerlink" href="#semihosting" title="Permalink to this headline">¶</a></h2>
 <p>Semihosting技术将应用程序中的IO请求通过一定的通道传送到主机(host)，由主机上的资源响应应用程序的IO请求，而不是像在主机上执行本地应用程序一样，由应用程序所在的计算机响应应用程序IO请求，也就是将目标板的输入/输出请求从应用程序代码传递到远程运行调试器的主机的一种机制。</p>
 </div>
 </div>

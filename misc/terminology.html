@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>16.3. 常见术语 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="16.2. 沙箱" href="sandbox.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">16. 其他</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gc.html">16.1. 垃圾回收</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox.html">16.2. 沙箱</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">16.3. 常见术语</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">16.3.1. 二进制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">16.3.1.1. 可执行文件</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">16.3.2. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">16.3.3. 硬件设备</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">16.3.3.1. 存储设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">16.3.3.2. 处理设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">16.3.3.3. 硬件接口</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">16.3.4. 数据交互</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">16.3.5. 指令集架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">16.3.6. 程序分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">16.3.7. 内存与地址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">16.3.8. 安全机制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">16. 其他</a> &raquo;</li>
+        
+      <li>16.3. 常见术语</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/misc/terminology.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>16.3. 常见术语<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>16.3.1. 二进制<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>最低有效位 (Least Significant Bit, LSB)</p></li>
+<li><p>最高有效位 (Most Significant Bit, MSB)</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>16.3.1.1. 可执行文件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>动态链接库 (Dynamic Linked Library, DLL)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>16.3.2. 编译<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>即时编译器 (Just In Time compiler, JIT)</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>16.3.3. 硬件设备<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>16.3.3.1. 存储设备<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>只读存储器 (Read Only Memory, ROM)</p></li>
+<li><p>随机存取存储器 (Random Access Memory, RAM)</p></li>
+<li><p>静态随机存取存储器 (Static Random Access Memory, SRAM)</p></li>
+<li><p>动态随机存取存储器 (Dynamic Random Access Memory, DRAM)</p></li>
+<li><p>非易失内存芯片 (Non-Volatile Memory)</p></li>
+<li><p>带电可擦可编程只读存储器 (Electrically Erasable Programmable Read-only Memory, EEPROM)</p></li>
+<li><p>非易失性随机访问存储器 (Non-Volatile Random Access Memory, NVRAM)</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>16.3.3.2. 处理设备<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>CPU (Central Process Unit)</p></li>
+<li><p>GPU (Graphic Process Unit)</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>16.3.3.3. 硬件接口<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>UART (Universal Asynchronous Receiver/Transmitter)</p></li>
+<li><p>JTAG (Joint Test Action Group)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>16.3.4. 数据交互<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>MMIO (Memory-Mapped Input/Output)</p></li>
+<li><p>PMIO (Port-Mapped Input/Output)</p></li>
+<li><p>DMA (direct memory access)</p></li>
+<li><p>应用二进制接口 (Application Binary Interface, ABI)</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>16.3.5. 指令集架构<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ISA (Industrial Standard Architecture)</p></li>
+<li><p>指令集体系结构 (Instruction Set Architecture)</p></li>
+<li><p>IRQ (Interrupt Request)</p></li>
+<li><p>复杂指令集运算 (Complex Instruction Set Computing, CISC)</p></li>
+<li><p>精简指令集运算 (Reduced Instruction Set Computing, RISC)</p></li>
+<li><p>显式并行指令集运算 (Explicitly Parallel Instruction Computing, EPIC)</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>16.3.6. 程序分析<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>S2E (Symbolic Sombolic Exection)</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2>16.3.7. 内存与地址<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Guest虚拟地址 (Guest Virtual Address, GVA)</p></li>
+<li><p>Guest物理地址 (Guest Physical Address, GPA)</p></li>
+<li><p>Host虚拟地址 (Host Virtual Address, HVA)</p></li>
+<li><p>Host物理地址 (Host Physical Address, HPA)</p></li>
+<li><p>内存管理单元 (Memory Management Unit, MMU)</p></li>
+<li><p>内存管理单元 (Paged Memory Management Unit, PMMU)</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h2>16.3.8. 安全机制<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>WDAC (Windows Defender Application Control)</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="sandbox.html" class="btn btn-neutral float-left" title="16.2. 沙箱" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

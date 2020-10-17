@@ -90,12 +90,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. 计算机体系结构</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="organization.html">2.1. 计算机系统构成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html">2.2. CPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="memory.html">2.3. 内存</a></li>
-<li class="toctree-l2"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">2.6. 设备</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io.html">2.7. I/O</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.8. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bios.html">2.3. BIOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">2.4. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disk.html">2.5. 硬盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bus.html">2.6. 总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">2.7. 设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">2.8. I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">2.9. 内核</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
@@ -194,30 +195,37 @@
 <li class="toctree-l2"><a class="reference internal" href="cpu.html#id3">2.2.2. 指令集架构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html#id6">2.2.3. 流水线</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpu.html#intel">2.2.4. Intel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpu.html#id9">2.2.5. 参考链接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpu.html#id9">2.2.5. 发展历史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpu.html#id10">2.2.6. 参考链接</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="memory.html">2.3. 内存</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="memory.html#ram">2.3.1. RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bios.html">2.3. BIOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bios.html#id1">2.3.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bios.html#id2">2.3.2. 功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bios.html#id3">2.3.3. 传统的BIOS缺陷</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="disk.html">2.4. 硬盘</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bus.html">2.5. 总线</a></li>
-<li class="toctree-l1"><a class="reference internal" href="device.html">2.6. 设备</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="device.html#i-o">2.6.1. I/O 设备</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html#id3">2.6.2. 设备控制器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">2.4. 内存</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#ram">2.4.1. RAM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="io.html">2.7. I/O</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="io.html#id1">2.7.1. I/O 接口</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io.html#id3">2.7.2. 内存映射 I/O</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io.html#id4">2.7.3. 直接内存访问</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io.html#id5">2.7.4. 参考链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disk.html">2.5. 硬盘</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bus.html">2.6. 总线</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">2.7. 设备</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="device.html#i-o">2.7.1. I/O 设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#id3">2.7.2. 设备控制器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="kernel.html">2.8. 内核</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html#id2">2.8.1. 宏内核</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html#id3">2.8.2. 微内核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">2.8. I/O</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io.html#id1">2.8.1. I/O 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#id3">2.8.2. 内存映射 I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#id4">2.8.3. 直接内存访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#id5">2.8.4. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kernel.html">2.9. 内核</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html#id2">2.9.1. 宏内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html#id3">2.9.2. 微内核</a></li>
 </ul>
 </li>
 </ul>

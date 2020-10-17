@@ -113,9 +113,9 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.5.14. 安全机制</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">6.5.14.1. 发展历史</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#amsi">6.5.14.2. AMSI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.14.3. 内存破坏漏洞防护机制</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">6.5.14.4. 其他安全机制</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">6.5.14.5. 安全审计</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.5.14.3. 内存破坏漏洞防护机制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6.5.14.4. 其他安全机制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.5.14.5. 安全审计</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="policy.html">6.5.15. 安全策略</a></li>
@@ -128,14 +128,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -213,7 +215,7 @@
 <li><p>Windows NT 内核引入了身份认证、访问控制和安全审计等安全控制机制</p></li>
 <li><p>Windows 2000 大部分的新增内容都集中在了安全方面 ，以活动目录为核心，包括公钥基础结构、组策略对象 、Kerberos、智能卡支持、IPSec、加密文件系统、安全配置工具集等安全功能</p></li>
 <li><p>Windows XP SP2 引入了一些安全特性，包括Windows 防火墙、Windows安全中心、DEP机制等</p></li>
-<li><p>Windows Vista 引入了众多新的安全机制，包括UAC（用户帐户控制）、 UIPI（用户界面权限隔离）、ASLR、服务会话隔离、文件/注册表虚拟化、高级安全防火墙、 IE低权限保护模式、内核PatchGuard、代码签名、Bitlocker等机制</p></li>
+<li><p>Windows Vista 引入了众多新的安全机制，包括UAC(用户帐户控制)、 UIPI(用户界面权限隔离)、ASLR、服务会话隔离、文件/注册表虚拟化、高级安全防火墙、 IE低权限保护模式、内核PatchGuard、代码签名、Bitlocker等机制</p></li>
 <li><p>Windows 7 基本延续了Windows Vista的安全特性，只是做了些微调和安全性改进</p></li>
 <li><p>Windows 8 尤其在内核和硬件的安全性防护层面作了不少细节上的改变或增强</p></li>
 <li><p>Windows 10 在系统内核、应用组件、应用程序层面均有安全改进，同时也提供了一些新的安全功能</p></li>
@@ -229,8 +231,8 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>空值引用保护（NULL dereference protection）</dt><dd><ul>
-<li><p>空值引用（NULL dereference）是由于声明变量时将变量初始化为Null，之后引用该对象却未进行空值判断造成的。如果攻击者能够故意触发空指针间接引用，攻击者就有可能利用引发的异常绕过安全逻辑，或致使应用程序泄漏调试信息，最终进行本地漏洞利用。</p></li>
+<dt>空值引用保护(NULL dereference protection)</dt><dd><ul>
+<li><p>空值引用(NULL dereference)是由于声明变量时将变量初始化为Null，之后引用该对象却未进行空值判断造成的。如果攻击者能够故意触发空指针间接引用，攻击者就有可能利用引发的异常绕过安全逻辑，或致使应用程序泄漏调试信息，最终进行本地漏洞利用。</p></li>
 <li><p>Windows 8之前，内核允许用户进程映射NULL页，而Windows 8则禁止对前64k的空间进行映射。</p></li>
 </ul>
 </dd>
@@ -255,15 +257,15 @@
 <li><p>不可执行的非分页池</p></li>
 <li><dl class="simple">
 <dt>UEFI启动技术</dt><dd><ul>
-<li><p>Windows 8 拥有新的保护机制来对抗Rootkit和Bootkit。所有版本的Windows 8都将包括统一可扩展固件接口（UEFI）安全开机功能（Secure Boot），该功能取代了标准BIOS来作为电脑的固件接口。</p></li>
-<li><p>UEFI 安全启动协议是实现跨平台和固件安全的基础，与体系结构无关。在执行固件映像之前，安全启动基于公钥基础结构（PKI）流程来验证固件映像，帮助降低遭受启动加载程序攻击的风险。</p></li>
+<li><p>Windows 8 拥有新的保护机制来对抗Rootkit和Bootkit。所有版本的Windows 8都将包括统一可扩展固件接口(UEFI)安全开机功能(Secure Boot)，该功能取代了标准BIOS来作为电脑的固件接口。</p></li>
+<li><p>UEFI 安全启动协议是实现跨平台和固件安全的基础，与体系结构无关。在执行固件映像之前，安全启动基于公钥基础结构(PKI)流程来验证固件映像，帮助降低遭受启动加载程序攻击的风险。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>Intel Secure Key 技术</dt><dd><ul>
-<li><p>Intel在2012年4月正式发布的Intel 第三代Core处理器中加入了Intel Secure Key技术（代号公牛山）。该技术提供对硬件实现的底层数字化随机数生成器（DRNG）的支持；提供基于硬件的高性能、高质量的熵和随机数生成器；引入新的指令RDRAND，Windows 8系统内核开始使用该指令产生随机数，如重要的Security Cookie/ASLR的生成过程</p></li>
+<li><p>Intel在2012年4月正式发布的Intel 第三代Core处理器中加入了Intel Secure Key技术(代号公牛山)。该技术提供对硬件实现的底层数字化随机数生成器(DRNG)的支持；提供基于硬件的高性能、高质量的熵和随机数生成器；引入新的指令RDRAND，Windows 8系统内核开始使用该指令产生随机数，如重要的Security Cookie/ASLR的生成过程</p></li>
 </ul>
 </dd>
 </dl>
@@ -276,7 +278,7 @@
 <li><dl class="simple">
 <dt>基于硬件虚拟化的安全隔离</dt><dd><ul>
 <li><p>Windows10引入了CredentialGuard和DeviceGuard安全功能，运用硬件虚拟化技术，实现安全隔离。这两项功能主要存在于Windows10企业版中。</p></li>
-<li><p>CredentialGuard使用硬件虚拟化功能（VSM）将证书/令牌 的存储和管理和真实操作系统隔离，使得恶意程序即使拥有系统内核权限，也无法获取用户的证书，避免攻击者使用例如Mimikatz之类的工具来实现企业网络的进一步渗透。</p></li>
+<li><p>CredentialGuard使用硬件虚拟化功能(VSM)将证书/令牌 的存储和管理和真实操作系统隔离，使得恶意程序即使拥有系统内核权限，也无法获取用户的证书，避免攻击者使用例如Mimikatz之类的工具来实现企业网络的进一步渗透。</p></li>
 <li><p>DeviceGuard则可以允许企业管理和锁定设备，禁止设备上安装未受信的软件。</p></li>
 </ul>
 </dd>
@@ -292,7 +294,7 @@
 <li><dl class="simple">
 <dt>Edge浏览器的安全改进</dt><dd><ul>
 <li><p>屏蔽了传统的ActiveXBHOToolbars的扩展以及一些过时的组件如VBScript，减少了尤其是第三方控件引入的攻击面。</p></li>
-<li><p>启用了全64位进程和增强保护模式沙箱保护（IE11默认仅使用32位进程和保护模式沙箱）。</p></li>
+<li><p>启用了全64位进程和增强保护模式沙箱保护(IE11默认仅使用32位进程和保护模式沙箱)。</p></li>
 <li><p>渲染引擎核心也增强了针对过去较多影响IE浏览器的一些漏洞的防护或缓解能力。</p></li>
 </ul>
 </dd>
@@ -300,14 +302,14 @@
 </li>
 <li><dl class="simple">
 <dt>内核模式字体引擎的安全改进</dt><dd><ul>
-<li><p>将内核模式字体引擎部分分离并放入隔离的用户模式环境中运行（即UMFD机制，User Mode Font Driver，用户模式字体驱动），有效防止了通过字体漏洞直接入侵Windows内核的攻击，同时也增加了可以通过组策略禁止或审计非系统字体加载的功能。</p></li>
+<li><p>将内核模式字体引擎部分分离并放入隔离的用户模式环境中运行(即UMFD机制，User Mode Font Driver，用户模式字体驱动)，有效防止了通过字体漏洞直接入侵Windows内核的攻击，同时也增加了可以通过组策略禁止或审计非系统字体加载的功能。</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>CFG（控制流保护/执行流保护）内存保护机制</dt><dd><ul>
-<li><p>Control Flow Guard（CFG） 技术是Win 10中开始默认启用的一种抵御内存泄露攻击的新机制（后来被Win 8.1 Update 3补丁加入），是为了弥补此前不完美的保护机制，例如地址空间布局随机化（ASLR）导致了堆喷射的发展，而数据执行保护（DEP）造成了返回导向编程（ROP）技术的发展。</p></li>
+<dt>CFG(控制流保护/执行流保护)内存保护机制</dt><dd><ul>
+<li><p>Control Flow Guard(CFG) 技术是Win 10中开始默认启用的一种抵御内存泄露攻击的新机制(后来被Win 8.1 Update 3补丁加入)，是为了弥补此前不完美的保护机制，例如地址空间布局随机化(ASLR)导致了堆喷射的发展，而数据执行保护(DEP)造成了返回导向编程(ROP)技术的发展。</p></li>
 <li><p>它是一种编译器和操作系统相结合的防护手段，目的在于防止不可信的间接调用。漏洞攻击过程中，常见的利用手法是通过溢出覆盖或者直接篡改某个寄存器的值，篡改间接调用的地址，进而控制了程序的执行流程。CFG通过在编译和链接期间，记录下所有的间接调用信息，并把他们记录在最终的可执行文件中，并且在所有的间接调用之前插入额外的校验，当间接调用的地址被篡改时，会触发一个异常，操作系统介入处理</p></li>
 </ul>
 </dd>
@@ -318,24 +320,33 @@
 </div>
 <div class="section" id="amsi">
 <h2>6.5.14.2. AMSI<a class="headerlink" href="#amsi" title="Permalink to this headline">¶</a></h2>
-<p>AMSI（Anti-Malware Scan Interface，反恶意软件扫描接口）是从Windows 10开始引入的一种机制。程序和服务可以将“数据”发送到安装在系统上的反恶意软件服务（例如Windows Defender）上。</p>
-<p>AMSI基于hook来实现检测，例如，AMSI会hook WSH（Windows Scripting Host）及PowerShell来分析正在执行的代码内容。</p>
-<p>在Windows中，实现AMSI的所有组件如下：</p>
+<p>AMSI(Anti-Malware Scan Interface，反恶意软件扫描接口)是从Windows 10开始引入的一种机制。程序和服务可以将“数据”发送到安装在系统上的反恶意软件服务(例如Windows Defender)上。</p>
+<p>AMSI基于hook来实现检测，例如，AMSI会hook WSH(Windows Scripting Host)及PowerShell来分析正在执行的代码内容。</p>
+<p>在Windows中，使用了AMSI的所有组件如下：</p>
 <ul class="simple">
-<li><p>UAC</p></li>
+<li><p>用户账户控制(UAC)</p></li>
 <li><p>PowerShell</p></li>
-<li><p>Windows Script Host</p></li>
-<li><p>VBScript</p></li>
+<li><p>Windows Script Host (wscript.exe / cscript.exe)</p></li>
+<li><p>JavaScript / VBScript</p></li>
 <li><p>Office VBA宏</p></li>
 </ul>
-</div>
 <div class="section" id="id3">
-<h2>6.5.14.3. 内存破坏漏洞防护机制<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>6.5.14.2.1. 绕过<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>hook amsi.dll</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)</span></code></p></li>
+<li><p>混淆代码隐藏关键字</p></li>
+<li><p>关键字字符串变形</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>6.5.14.3. 内存破坏漏洞防护机制<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="dep">
 <h3>6.5.14.3.1. DEP<a class="headerlink" href="#dep" title="Permalink to this headline">¶</a></h3>
-<p>DEP（Data Executive Protection，数据执行保护）从Windows XP SP2开始引入，缺省仅为基本的Windows程序和服务启用DEP。</p>
+<p>DEP(Data Executive Protection，数据执行保护)从Windows XP SP2开始引入，缺省仅为基本的Windows程序和服务启用DEP。</p>
 <p>DEP的基本原理是将数据所在的内存页标记为不可执行，当程序产生溢出，恶意代码试图在数据段执行指令时，CPU会产生异常而不去执行指令。</p>
-<p>实现DEP机制需要CPU的支持。为此AMD公司推出了EVP（enhanced virus protection）技术，Intel推出了EDB （execute disable bit）技术，这些技术在原理上均是在内存的页面表（Page Table）中加入一个特殊的标 识位（NX/XD）来标识是否允许在该页上执行指令。</p>
+<p>实现DEP机制需要CPU的支持。为此AMD公司推出了EVP(enhanced virus protection)技术，Intel推出了EDB (execute disable bit)技术，这些技术在原理上均是在内存的页面表(Page Table)中加入一个特殊的标 识位(NX/XD)来标识是否允许在该页上执行指令。</p>
 <p>DEP有四种可选参数：</p>
 <p>– Optin：对于大多数用户版本的操作系统来说，默认仅将DEP保护是仅仅为一些基本的Windows程序和服务启用。该模式可被应用程序动态关闭
 – Optout：系统为所有在所选列表外的程序和服务启用DEP，这种模式下，DEP仍可被应用程序关闭。该模式多用于服务器版本的操作系统，如Windows Server 2003/2008
@@ -344,62 +355,62 @@
 </div>
 <div class="section" id="aslr">
 <h3>6.5.14.3.2. ASLR<a class="headerlink" href="#aslr" title="Permalink to this headline">¶</a></h3>
-<p>ASLR（Address Space Layout Randomization， 内存地址空间布局随机化）在加载程序到内存空间时随机化各个模块的起始加载地址，防止攻击者定位攻击指令代码的位置。</p>
+<p>ASLR(Address Space Layout Randomization， 内存地址空间布局随机化)在加载程序到内存空间时随机化各个模块的起始加载地址，防止攻击者定位攻击指令代码的位置。</p>
 <p>ASLR需要操作系统及应用程序的双重支持才能发挥作用，支持ASLR的程序在PE头中会设置IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE标识表明其支持ASLR。</p>
 <p>ASLR主要影响的部分模块随机化、堆栈随机化和PEB/TEB随机化。模块随机化指系统将PE文件映射到内存时，对其加载基地址进行随机化处理， 基地址在系统启动时确定，系统重启后会变化。堆栈随机化指每次程序加载后，其内存空间中堆、栈的基址都会发生变化。于是内存中的变量所在的地址也会发生变化。</p>
 <p>ASLR在Windows Vista/7引入实现，但机制尚不完善，攻击者还能在一定范围内进行漏洞利用。比如使用堆喷射、利用没有随机化的系统或软件的EXE/DLL等方式。</p>
 <p>在安装了KB2639308更新的Windows 7以及Windows 8之后的版本，ASLR被强制开启。</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>6.5.14.4. 其他安全机制<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>6.5.14.4. 其他安全机制<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="epm">
 <h3>6.5.14.4.1. EPM<a class="headerlink" href="#epm" title="Permalink to this headline">¶</a></h3>
-<p>EPM（Enhanced Protection Mode，增强保护模式）也叫做“沙盒模式”（Sandbox Mode），本质上是隔离进程和降低权限。该机制Windows 8的IE 10开始引入，从Windows 8.1开始默认启用。</p>
+<p>EPM(Enhanced Protection Mode，增强保护模式)也叫做“沙盒模式”(Sandbox Mode)，本质上是隔离进程和降低权限。该机制Windows 8的IE 10开始引入，从Windows 8.1开始默认启用。</p>
 </div>
 <div class="section" id="patchguard">
 <h3>6.5.14.4.2. PatchGuard<a class="headerlink" href="#patchguard" title="Permalink to this headline">¶</a></h3>
 <p>PatchGuard是在64位版本的Windows操作系统中提供的新功能，用于保护操作系统的核心结构，防止他们被其他程序修改。</p>
-<p>其对系统服务描述符表SSDT（System Service Descriptor Table）、全局描述符表GDT（Global Descriptor Table）和中断描述符表IDT（Interrupt Descriptor Table）、系统映像System images（ntoskrnl.exe, ndis.sys, hal.dll）等进行保护。</p>
+<p>其对系统服务描述符表SSDT(System Service Descriptor Table)、全局描述符表GDT(Global Descriptor Table)和中断描述符表IDT(Interrupt Descriptor Table)、系统映像System images(ntoskrnl.exe, ndis.sys, hal.dll)等进行保护。</p>
 <p>PatchGuard处在系统任务的一个较高层面上，通过每隔一定时间进行一些固定的检查来确定这些系统关键内容是否更改。这些检查主要通过将核心内容与缓存中已保存的已知正确的备份进行对比，检测间隔大约为5-10分钟左右的某一随机选择时间。</p>
 <p>PatchGuard的缺点在于缺乏本地硬件水平的支持，只能通过轮询的形式，而不是采用事件驱动或硬件驱动的形式。</p>
 </div>
 <div class="section" id="code-signing">
 <h3>6.5.14.4.3. Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h3>
-<p>Code Signing（代码签名）检查机制需要加载到系统内核中运行的驱动程序必须有数字签名以保证 其代码的完整性，否则系统内核就不加载该驱动程序。</p>
+<p>Code Signing(代码签名)检查机制需要加载到系统内核中运行的驱动程序必须有数字签名以保证 其代码的完整性，否则系统内核就不加载该驱动程序。</p>
 <p>代码完整性检测被加载到内核中的驱动程序或系统文件是否已经被签名，或正在运行系统管理员账户权限的系统文件是否已被恶意软件篡改。在基于x64版本的操作系统下，内核模式的驱动程序必须进行数字签名后才能被加载。</p>
 </div>
 <div class="section" id="applocker">
 <h3>6.5.14.4.4. AppLocker<a class="headerlink" href="#applocker" title="Permalink to this headline">¶</a></h3>
-<p>AppLocker是Windows 7系统和Windows Server 2008 R2 中新增的一项安全功能，用以代替以前的“软件限制策略”（Software Restriction Policies），用于管理Windows运行的应用和文件，提供了各种不同程度的定制来方便用户/安全组制定规则。</p>
+<p>AppLocker是Windows 7系统和Windows Server 2008 R2 中新增的一项安全功能，用以代替以前的“软件限制策略”(Software Restriction Policies)，用于管理Windows运行的应用和文件，提供了各种不同程度的定制来方便用户/安全组制定规则。</p>
 <p>管理员可以非常方便地进行配置，以实现用户可在计算机上可运行哪些程序、安装哪些文件、运行哪些脚本，可以控制以下这些类型的应用程序文件：</p>
 <ul class="simple">
-<li><p>可执行程序（.exe、.com）</p></li>
-<li><p>动态链接库（.dll、.ocx）</p></li>
-<li><p>微软软件安装程序（.msi、.msp）</p></li>
-<li><p>Windows Powershell脚本程序（.ps1）</p></li>
-<li><p>批处理（.bat、.cmd）</p></li>
-<li><p>Visual Basic脚本（.vbs）</p></li>
-<li><p>JavaScript（.js）</p></li>
+<li><p>可执行程序(.exe、.com)</p></li>
+<li><p>动态链接库(.dll、.ocx)</p></li>
+<li><p>微软软件安装程序(.msi、.msp)</p></li>
+<li><p>Windows Powershell脚本程序(.ps1)</p></li>
+<li><p>批处理(.bat、.cmd)</p></li>
+<li><p>Visual Basic脚本(.vbs)</p></li>
+<li><p>JavaScript(.js)</p></li>
 </ul>
 </div>
 <div class="section" id="emet">
 <h3>6.5.14.4.5. EMET<a class="headerlink" href="#emet" title="Permalink to this headline">¶</a></h3>
-<p>EMET（Enhanced Mitigation Experience Toolkit，增强缓解体验工具包）在2010年10月9日推出，使得用户即使在未安装补丁的情况下也可以免受攻击。2014年发布了最新的5.1版。</p>
-<p>工具包括数据执行保护（DEP）、 结构化异常处理覆盖保护（SEHOP）、 随机地址空间分配（ASLR）、 空页（Null Page）保护等技术。最新版的还包括ASR （Attack Surface   Reduction）、EAF+ （Export   Address Table Filtering Plus）、 Deep Hook等机制。</p>
+<p>EMET(Enhanced Mitigation Experience Toolkit，增强缓解体验工具包)在2010年10月9日推出，使得用户即使在未安装补丁的情况下也可以免受攻击。2014年发布了最新的5.1版。</p>
+<p>工具包括数据执行保护(DEP)、 结构化异常处理覆盖保护(SEHOP)、 随机地址空间分配(ASLR)、 空页(Null Page)保护等技术。最新版的还包括ASR (Attack Surface   Reduction)、EAF+ (Export   Address Table Filtering Plus)、 Deep Hook等机制。</p>
 </div>
 <div class="section" id="wfp-wrp">
 <h3>6.5.14.4.6. WFP / WRP<a class="headerlink" href="#wfp-wrp" title="Permalink to this headline">¶</a></h3>
-<p>Windows 在 5.x 版本引入了 WFP（Windows文件保护），6.x版本引入了WRP（Windows资源保护）。防止Windows重要的系统文件被恶意篡改、替换或删除。</p>
+<p>Windows 在 5.x 版本引入了 WFP(Windows文件保护)，6.x版本引入了WRP(Windows资源保护)。防止Windows重要的系统文件被恶意篡改、替换或删除。</p>
 <p>WFP的隐藏存储目录为 <code class="docutils literal notranslate"><span class="pre">%systemroot%/system32/dllcache</span></code> ，WRP的隐藏存储目录为 <code class="docutils literal notranslate"><span class="pre">%systemroot%/winsxs/backup</span></code> 。</p>
 </div>
 <div class="section" id="srm">
 <h3>6.5.14.4.7. SRM<a class="headerlink" href="#srm" title="Permalink to this headline">¶</a></h3>
-<p>安全参考监视器(Security Reference Monitor, SRM) 是 Windows执行体ntoskrnl.exe（内核态）的一个组件，负责执行对象的访问控制、管理特权（用户权限）以及生成所有安全审计信息。</p>
+<p>安全参考监视器(Security Reference Monitor, SRM) 是 Windows执行体ntoskrnl.exe(内核态)的一个组件，负责执行对象的访问控制、管理特权(用户权限)以及生成所有安全审计信息。</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>访问控制和特权管理</dt><dd><ul>
-<li><p>根据LSA配置安全访问控制策略，联合对象管理器（Object  Manager）负责所有安全主体访问Windows资源对象的授权访问控制。</p></li>
+<li><p>根据LSA配置安全访问控制策略，联合对象管理器(Object  Manager)负责所有安全主体访问Windows资源对象的授权访问控制。</p></li>
 </ul>
 </dd>
 </dl>
@@ -447,7 +458,7 @@
 <p>LSASS策略数据库 LSASS policy database 包含本地系统安全策略设置的数据库，数据库存储在注册表HKLMSecurity子键下面，包含：</p>
 <ul class="simple">
 <li><p>哪些域是可信任的，从而可以认证用户的登录请求</p></li>
-<li><p>谁允许访问系统，以及如何访问（交互式登录、网络登录，或者服务登录）</p></li>
+<li><p>谁允许访问系统，以及如何访问(交互式登录、网络登录，或者服务登录)</p></li>
 <li><p>分配给谁哪些特权</p></li>
 <li><p>执行哪一种安全审计</p></li>
 <li><p>域登录在本地缓存的信息</p></li>
@@ -455,22 +466,22 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>6.5.14.5. 安全审计<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>6.5.14.5. 安全审计<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>对象管理器（Object Manager）可能会生成一些审计事件， 并以此作为一次访问检查的结果；此外，有些可供用户应用程序使用的Windows函数也可以直接生成审计事件。</p></li>
+<li><p>对象管理器(Object Manager)可能会生成一些审计事件， 并以此作为一次访问检查的结果；此外，有些可供用户应用程序使用的Windows函数也可以直接生成审计事件。</p></li>
 <li><p>内核模式的代码总是允许生成审计事件。</p></li>
 <li><dl class="simple">
 <dt>有两个特权与审计有关：</dt><dd><ul>
-<li><p>一个进程必须有SeSecurityPrivilege特权才能管理安全事件日志 （Event Log），以及查找或设置一个对象的SACL。</p></li>
+<li><p>一个进程必须有SeSecurityPrivilege特权才能管理安全事件日志 (Event Log)，以及查找或设置一个对象的SACL。</p></li>
 <li><p>一个进程要调用审计系统服务，必须有SeAuditPrivilege特权才能成功地生成一条审计纪录</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<div class="section" id="id6">
-<h3>6.5.14.5.1. 审核策略的类型<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>6.5.14.5.1. 审核策略的类型<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>审核策略更改</dt><dd><ul>
@@ -496,14 +507,14 @@
 <li><dl class="simple">
 <dt>审核账户管理</dt><dd><ul>
 <li><p>确定是否对计算机上的每个账户管理事件进行审核。包括创建、修改或删除用户账户或组；重命名、禁用或启用用户账户；设置或修改密码等</p></li>
-<li><p>确定是否对用户访问指定了自身 SACL（系统访问控制列表） 的对象（如文件、文件夹、注册表项和打印机等）的事件进行审核</p></li>
+<li><p>确定是否对用户访问指定了自身 SACL(系统访问控制列表) 的对象(如文件、文件夹、注册表项和打印机等)的事件进行审核</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>审核目录服务访问</dt><dd><ul>
-<li><p>确定是否对用户访问指定了自身 SACL 的Active Directory（活动目录）对象的事件进行审核</p></li>
+<li><p>确定是否对用户访问指定了自身 SACL 的Active Directory(活动目录)对象的事件进行审核</p></li>
 </ul>
 </dd>
 </dl>
