@@ -98,12 +98,12 @@
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
 <li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
@@ -113,9 +113,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">6.3.14.2. 调试</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">6.3.14.3. 漏洞利用</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">6.3.14.4. 文件系统</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">6.3.14.5. 网络</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">6.3.14.6. 内核</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">6.3.14.7. 安全机制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6.3.14.5. 网络</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">6.3.14.6. 内核</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">6.3.14.7. 安全机制</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#blog">6.3.14.8. blog</a></li>
 </ul>
 </li>
@@ -236,30 +236,43 @@
 <h2>6.3.14.4. 文件系统<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/">Linux 文件系统剖析</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/storage/storagedriver/">Docker: About storage drivers</a></p></li>
+<li><p><a class="reference external" href="https://blog.51cto.com/13578681/2307925">嵌入式文件系统简介(一) —— Linux MTD设备文件系统</a></p></li>
+</ul>
+<div class="section" id="overlayfs">
+<h3>6.3.14.4.1. OverlayFS<a class="headerlink" href="#overlayfs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/OverlayFS">OverlayFS Wiki</a></p></li>
 <li><p><a class="reference external" href="https://arkingc.github.io/2017/09/20/2017-09-20-linux-code-overlayfs-layerinfo/">内核OverlayFS 文件层次信息</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/luckyapple1028/article/details/77916194">深入理解overlayfs（一）</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/luckyapple1028/article/details/78075358">深入理解overlayfs（二）：使用与原理分析</a></p></li>
 <li><p><a class="reference external" href="http://people.redhat.com/vgoyal/papers-presentations/vault-2017/vivek-overlayfs-and-containers-presentation-valult-2017.pdf">Overlayfs And Containers</a></p></li>
-<li><p><a class="reference external" href="https://docs.docker.com/storage/storagedriver/">Docker: About storage drivers</a></p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h2>6.3.14.5. 网络<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jffs">
+<h3>6.3.14.4.2. jffs<a class="headerlink" href="#jffs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/cn/linux/l-jffs2/">JFFS2 文件系统及新特性介绍</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>6.3.14.5. 网络<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.kernel.org/doc/Documentation/networking/tuntap.txt">Universal TUN/TAP device driver</a></p></li>
 <li><p><a class="reference external" href="https://backreference.org/2010/03/26/tuntap-interface-tutorial/">Tun/Tap interface tutorial</a></p></li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h2>6.3.14.6. 内核<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>6.3.14.6. 内核<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://linux-kernel-labs.github.io/refs/heads/master/index.html">Linux Kernel Teaching</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/lukuen/article/details/6935068">slub算法</a></p></li>
+<li><p><a class="reference external" href="http://blog.chinaunix.net/uid-20321537-id-3483405.html">linux mmap 详解</a></p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h2>6.3.14.7. 安全机制<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>6.3.14.7. 安全机制<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md">Linux Crgoups 资源限制</a></p></li>
 </ul>

@@ -98,12 +98,12 @@
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.11. syscall</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">6.3.11.1. 简介</a></li>
@@ -111,6 +111,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#fcntl">6.3.11.3. fcntl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#execve">6.3.11.4. execve</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#select">6.3.11.5. select</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-openat">6.3.11.6. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mmap">6.3.11.7. mmap</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
@@ -236,6 +238,99 @@
 <li><p>获得/设置异步I/O所有权 <code class="docutils literal notranslate"><span class="pre">cmd=F_GETOWN或F_SETOWN</span></code></p></li>
 <li><p>获得/设置记录锁 <code class="docutils literal notranslate"><span class="pre">cmd=F_GETLK,F_SETLK或F_SETLKW</span></code></p></li>
 </ul>
+<p>cmd 选项有</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>F_DUPFD 返回一个如下的描述符:</dt><dd><ul>
+<li><p>最小的大于或等于arg的一个可用的描述符</p></li>
+<li><p>与原始操作符一样的某对象的引用</p></li>
+<li><p>如果对象是文件的话,返回一个新的描述符，这个描述符与arg共享相同的偏移量(offset)</p></li>
+<li><p>相同的访问模式(读、写或读/写)</p></li>
+<li><p>相同的文件状态标志(如:两个文件描述符共享相同的状态标志)</p></li>
+<li><p>与新的文件描述符结合在一起的close-on-exec标志被设置成交叉式访问execve系统调用</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>F_GETFD</dt><dd><ul>
+<li><p>取得与文件描述符fd联合close-on-exec标志，类似FD_CLOEXEC</p></li>
+<li><p>如果返回值和FD_CLOEXEC进行与运算结果是0的话，文件保持交叉式访问exec()</p></li>
+<li><p>否则如果通过exec运行的话，文件将被关闭(arg被忽略)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>F_SETFD</dt><dd><ul>
+<li><p>设置close-on-exec。该flag以参数arg的FD_CLOEXEC位决定</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>F_GETFL</dt><dd><ul>
+<li><p>取得fd的文件状态标志，如同下面的描述一样(arg被忽略)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>F_SETFL</dt><dd><ul>
+<li><p>设置给arg描述符状态标志，可以更改的几个标志是：O_APPEND、O_NONBLOCK、O_SYNC和O_ASYNC</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>F_GETOWN</dt><dd><ul>
+<li><p>取得当前正在接收SIGIO或者SIGURG信号的进程id或进程组id，进程组id返回成负值(arg被忽略)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>F_SETOWN</dt><dd><ul>
+<li><p>设置将接收SIGIO和SIGURG信号的进程id或进程组id，进程组id通过提供负值的arg来说明，否则arg将被认为是进程id</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>F_GETFL和F_SETFL的标志如下面的描述:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>O_NONBLOCK</dt><dd><ul>
+<li><p>非阻塞I/O</p></li>
+<li><p>如果read调用没有可读取的数据或者如果write操作将阻塞，read或write调用返回-1和EAGAIN错误</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>O_APPEND</dt><dd><ul>
+<li><p>强制每次写(write)操作都添加在文件大的末尾，相当于open的O_APPEND标志</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>O_DIRECT</dt><dd><ul>
+<li><p>最小化或去掉reading和writing的缓存影响，系统将企图避免缓存你的读或写的数据</p></li>
+<li><p>如果不能够避免缓存，那么它将最小化已经被缓存了的数 据造成的影响.如果这个标志用的不够好，将大大的降低性能</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>O_ASYNC</dt><dd><ul>
+<li><p>当I/O可用的时候，允许SIGIO信号发送到进程组，例如当有数据可以读的时候</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>fcntl的返回值与命令有关。如果出错，所有命令都返回-1，如果成功则返回某个其他值。下列三个命令有特定返回值：F_DUPFD、F_GETFD、F_GETFL以及F_GETOWN。第一个返回新的文件描述符，第二个返回相应标志，最后一个返回一个正的进程ID或负的进程组ID。</p>
 </div>
 <div class="section" id="execve">
 <h2>6.3.11.4. execve<a class="headerlink" href="#execve" title="Permalink to this headline">¶</a></h2>
@@ -253,6 +348,55 @@
            <span class="n">fd_set</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__writefds</span><span class="p">,</span>
            <span class="n">fd_set</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__exceptfds</span><span class="p">,</span>
            <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">__restrict</span> <span class="n">__timeout</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="open-openat">
+<h2>6.3.11.6. open / openat<a class="headerlink" href="#open-openat" title="Permalink to this headline">¶</a></h2>
+<p>当传给函数的路径名是绝对路径时，open与openat无区别，此时openat自动忽略第一个参数fd。</p>
+<p>当传给函数的是相对路径时，如果openat()函数的第一个参数fd是常量AT_FDCWD时，则其后的第二个参数路径名是以当前工作目录为基址的；否则以fd指定的目录文件描述符为基址。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">open</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">,</span> <span class="kt">int</span> <span class="n">oflag</span><span class="p">,</span> <span class="kt">mode_t</span> <span class="n">mode</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">openat</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">,</span> <span class="kt">int</span> <span class="n">oflag</span><span class="p">,</span> <span class="kt">mode_t</span> <span class="n">mode</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mmap">
+<h2>6.3.11.7. mmap<a class="headerlink" href="#mmap" title="Permalink to this headline">¶</a></h2>
+<p>内存映射函数mmap负责把文件内容映射到进程的虚拟内存空间，通过对这段内存的读取和修改，来实现对文件的读取和修改，而不需要再调用read/write等操作。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">mmap</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">prot</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">off_t</span> <span class="n">offset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>其中addr指定映射的起始地址, 通常设为NULL, 由内核指定。
+length表示映射到内存区域的大小。</p>
+<p>prot映射区的保护方式，可以是：</p>
+<ul class="simple">
+<li><p>PROT_EXEC: 映射区可被执行</p></li>
+<li><p>PROT_READ: 映射区可被读取</p></li>
+<li><p>PROT_WRITE: 映射区可被写入</p></li>
+<li><p>PROT_NONE: 映射区域不能存取</p></li>
+</ul>
+<p>flags表示映射区的特性，可以是:</p>
+<ul class="simple">
+<li><p>MAP_FIXED: 如果参数 <code class="docutils literal notranslate"><span class="pre">start</span></code> 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正，通常不鼓励用此flag。</p></li>
+<li><p>MAP_SHARED: 对映射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。</p></li>
+<li><p>MAP_PRIVATE: 对映射区域的写入操作会产生一个映射文件的复制，即私有的写入时复制(copy-on-write)对此区域作的任何修改都不会写回原来的文件内容。</p></li>
+<li><p>MAP_ANONYMOUS: 建立匿名映射。此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。</p></li>
+<li><p>MAP_DENYWRITE: 只允许对映射区域的写入操作，其他对文件直接写入的操作将会被拒绝。</p></li>
+<li><p>MAP_LOCKED: 将映射区域锁定住，这表示该区域不会被置换（swap）。</p></li>
+</ul>
+<p>fd是由open返回的文件描述符, 代表要映射的文件，如果使用匿名内存映射时，fd设为-1。当系统不支持匿名内存映射时，则可以使用fopen打开/dev/zero文件。</p>
+<p>offset表示以文件开始处的偏移量，必须是分页大小的整数倍，通常为0，表示从文件头开始映射。</p>
+<p>若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
+<p>具体的错误代码如下:</p>
+<ul class="simple">
+<li><p>EBADF: 参数fd 不是有效的文件描述词</p></li>
+<li><p>EACCES: 存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED则要有PROT_WRITE以及该文件要能写入</p></li>
+<li><p>EINVAL: 参数start、length 或offset有一个不合法</p></li>
+<li><p>EAGAIN: 文件被锁住，或是有太多内存被锁住</p></li>
+<li><p>ENOMEM: 内存不足</p></li>
+</ul>
+<p>解除映射可使用 <code class="docutils literal notranslate"><span class="pre">munmap</span></code> 函数，原型为</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">munmap</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">length</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

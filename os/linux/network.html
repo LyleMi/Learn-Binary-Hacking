@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3.9. 网络 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  <title>6.3.8. 网络 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.10. 防御措施" href="mitigation.html" />
-    <link rel="prev" title="6.3.8. 进程" href="process.html" /> 
+    <link rel="next" title="6.3.9. Socket" href="socket.html" />
+    <link rel="prev" title="6.3.7. 进程" href="process.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,16 +98,17 @@
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.9. 网络</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.9.1. 网桥</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tun-tap">6.3.9.2. tun/tap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.8. 网络</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.3.8.1. 网桥</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tun-tap">6.3.8.2. tun/tap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#veth-pair">6.3.8.3. veth-pair</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
 <li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
@@ -180,7 +181,7 @@
         
           <li><a href="index.html">6.3. Linux</a> &raquo;</li>
         
-      <li>6.3.9. 网络</li>
+      <li>6.3.8. 网络</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,16 +201,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>6.3.9. 网络<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6.3.8. 网络<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>6.3.9.1. 网桥<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.8.1. 网桥<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>网桥(Bridge)也称桥接器，是连接两个局域网的存储转发设备，用它可以完成具有相同或相似体系结构网络系统的连接。</p>
-<p>Linux网络协议栈已经支持了网桥的功能，但需要进行相关的配置才可以进行正常的转发。而要配置Linux网桥功能，需要配置工具bridge-utils，生成网桥配置的工具名称为brctl。</p>
+<p>Linux网络协议栈已经支持了网桥的功能，但需要进行相关的配置才可以进行正常的转发。而要配置Linux网桥功能，需要配置工具bridge-utils，生成网桥配置的工具有brctl、ip等。</p>
 <p>网桥可以理解为实现在内核中的二层交换机。</p>
+<p>配置方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">link</span> <span class="n">add</span> <span class="n">br0</span> <span class="nb">type</span> <span class="n">bridge</span>
+<span class="n">ip</span> <span class="n">link</span> <span class="nb">set</span> <span class="n">br0</span> <span class="n">up</span>
+<span class="n">ip</span> <span class="n">link</span> <span class="nb">set</span> <span class="n">br0</span> <span class="n">down</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="tun-tap">
-<h2>6.3.9.2. tun/tap<a class="headerlink" href="#tun-tap" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.8.2. tun/tap<a class="headerlink" href="#tun-tap" title="Permalink to this headline">¶</a></h2>
 <p>tun/tap设备支持很多的类UNIX平台。tun表示虚拟的是点对点设备，tap表示虚拟的是以太网设备。tap位于网络OSI模型的二层，tun位于网络的三层。</p>
+</div>
+<div class="section" id="veth-pair">
+<h2>6.3.8.3. veth-pair<a class="headerlink" href="#veth-pair" title="Permalink to this headline">¶</a></h2>
+<p>Virtual Ethernet Pair简称veth pair，是一对的虚拟设备接口，是一个成对的端口。所有从一端进入的数据包都将从另一端出来。</p>
+<p>veth 可以通过 <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">link</span> <span class="pre">add</span> <span class="pre">eth1-br1</span> <span class="pre">type</span> <span class="pre">veth</span> <span class="pre">peer</span> <span class="pre">name</span> <span class="pre">phy-br1</span></code> 命令创建。</p>
 </div>
 </div>
 
@@ -221,10 +233,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mitigation.html" class="btn btn-neutral float-right" title="6.3.10. 防御措施" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="socket.html" class="btn btn-neutral float-right" title="6.3.9. Socket" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="process.html" class="btn btn-neutral float-left" title="6.3.8. 进程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="process.html" class="btn btn-neutral float-left" title="6.3.7. 进程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

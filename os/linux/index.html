@@ -98,12 +98,12 @@
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
-<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
 <li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
@@ -211,45 +211,52 @@
 <li class="toctree-l2"><a class="reference internal" href="fs/intro.html">6.3.3.1. 基础知识</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fs/overlay.html">6.3.3.2. Overlayfs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fs/unionfs.html">6.3.3.3. UnionFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs/jffs.html">6.3.3.4. JFFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fs/yaffs.html">6.3.3.5. YAFFS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="device.html">6.3.4. 设备</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="device.html#id2">6.3.4.1. 设备分类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html#id6">6.3.4.2. 设备号</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html#tty-pts">6.3.4.3. TTY/PTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device/index.html">6.3.4. 设备</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="device/class.html">6.3.4.1. 设备分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device/driver.html">6.3.4.2. 驱动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device/operations.html">6.3.4.3. Linux字符设备驱动 file_operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device/mtd.html">6.3.4.4. MTD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device/misc.html">6.3.4.5. 其他</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="driver.html">6.3.5. 驱动</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="driver.html#id2">6.3.5.1. 错误码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mem.html#id2">6.3.5.1. 地址定位方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mem.html#id3">6.3.5.2. 内存管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mem.html#id6">6.3.5.3. 内存扩充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mem.html#id9">6.3.5.4. 分页存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mem.html#id11">6.3.5.5. 虚拟地址转换</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mem.html#id2">6.3.6.1. 地址定位方式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mem.html#id3">6.3.6.2. 内存管理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mem.html#id6">6.3.6.3. 内存扩充</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mem.html#id9">6.3.6.4. 分页存储</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mem.html#id11">6.3.6.5. 虚拟地址转换</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elf.html">6.3.6. ELF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id1">6.3.6.1. 加载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#execve">6.3.6.2. execve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#id2">6.3.6.3. 注册机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elf.html#load-elf">6.3.6.4. Load ELF</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elf.html">6.3.7. ELF</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id1">6.3.7.1. 加载</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#execve">6.3.7.2. execve</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#id2">6.3.7.3. 注册机制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elf.html#load-elf">6.3.7.4. Load ELF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">6.3.7. 进程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id2">6.3.7.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id3">6.3.7.2. 状态</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id4">6.3.7.3. 作业调度算法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id5">6.3.7.4. 组成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id6">6.3.7.5. 进程调度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id7">6.3.7.6. 进程间通信</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="process.html">6.3.8. 进程</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id2">6.3.8.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id3">6.3.8.2. 状态</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id4">6.3.8.3. 作业调度算法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id5">6.3.8.4. 组成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id6">6.3.8.5. 进程调度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id7">6.3.8.6. 进程间通信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">6.3.8. 网络</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="network.html#id2">6.3.8.1. 网桥</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#tun-tap">6.3.8.2. tun/tap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#veth-pair">6.3.8.3. veth-pair</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="network.html">6.3.9. 网络</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="network.html#id2">6.3.9.1. 网桥</a></li>
-<li class="toctree-l2"><a class="reference internal" href="network.html#tun-tap">6.3.9.2. tun/tap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket.html">6.3.9. Socket</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="socket.html#unix-socket">6.3.9.1. Unix Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socket.html#id1">6.3.9.2. 常见结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socket.html#id2">6.3.9.3. 常用函数</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a><ul>
@@ -263,6 +270,8 @@
 <li class="toctree-l2"><a class="reference internal" href="syscall.html#fcntl">6.3.11.3. fcntl</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syscall.html#execve">6.3.11.4. execve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syscall.html#select">6.3.11.5. select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall.html#open-openat">6.3.11.6. open / openat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall.html#mmap">6.3.11.7. mmap</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a><ul>
@@ -278,9 +287,9 @@
 <li class="toctree-l2"><a class="reference internal" href="ref.html#id3">6.3.14.2. 调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ref.html#id4">6.3.14.3. 漏洞利用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ref.html#id5">6.3.14.4. 文件系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id9">6.3.14.5. 网络</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id10">6.3.14.6. 内核</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id11">6.3.14.7. 安全机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id10">6.3.14.5. 网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id11">6.3.14.6. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id12">6.3.14.7. 安全机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ref.html#blog">6.3.14.8. blog</a></li>
 </ul>
 </li>

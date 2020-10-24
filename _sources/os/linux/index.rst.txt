@@ -7,12 +7,12 @@ Linux
    intro
    source
    fs/index
-   device
-   driver
+   device/index
    mem
    elf
    process
    network
+   socket
    mitigation
    syscall
    cgroups

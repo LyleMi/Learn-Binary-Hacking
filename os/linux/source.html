@@ -101,13 +101,17 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="device.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device/index.html">6.3.4. 设备</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.7. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.8. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.10. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="namespace.html">6.3.13. namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -116,14 +120,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -412,6 +418,13 @@
 </dl>
 </li>
 <li><dl class="simple">
+<dt>/proc/crypto</dt><dd><ul>
+<li><p>系统上已安装的内核使用的密码算法及每个算法的详细信息列表</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
 <dt>/proc/devices</dt><dd><ul>
 <li><p>字符设备和块设备的主设备号</p></li>
 </ul>
@@ -435,6 +448,13 @@
 <li><dl class="simple">
 <dt>/proc/interrupts</dt><dd><ul>
 <li><p>保留的中断</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>/proc/iomem</dt><dd><ul>
+<li><p>物理设备在系统内存中的映射信息</p></li>
 </ul>
 </dd>
 </dl>
@@ -505,6 +525,15 @@
 <li><dl class="simple">
 <dt>/proc/mounts</dt><dd><ul>
 <li><p>以 <code class="docutils literal notranslate"><span class="pre">/etc/mtab</span></code> 文件的格式给出当前系统所安装的文件系统信息</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>/proc/mtd</p></li>
+<li><dl class="simple">
+<dt>/proc/partitions</dt><dd><ul>
+<li><p>块设备每个分区的主设备号(major)和次设备号(minor)等信息</p></li>
+<li><p>同时包括每个分区所包含的块(block)数目</p></li>
 </ul>
 </dd>
 </dl>

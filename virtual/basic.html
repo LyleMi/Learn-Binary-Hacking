@@ -131,7 +131,8 @@
 <li class="toctree-l2"><a class="reference internal" href="xen.html">7.6. Xen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qemu/index.html">7.7. QEMU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.8. Unicorn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html">7.9. 其他</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intel.html">7.9. Intel虚拟化技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">7.10. 其他</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
@@ -217,7 +218,7 @@
 <h3>7.1.1.1. 发展历史<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>1959年 虚拟化概念提出 Christopher Strachey在国际信息处理大会上发表了虚拟化相关的文章</p></li>
-<li><p>1960年 早起计算机虚拟化 IBM研究出了IBM 7044计算机 让用户可以在一台大型机上运行多个系统</p></li>
+<li><p>1960年 早期计算机虚拟化 IBM研究出了IBM 7044计算机 让用户可以在一台大型机上运行多个系统</p></li>
 <li><p>1999年 现代计算机虚拟化实现 VMware解决了x86虚拟化的问题，推出了虚拟化软件</p></li>
 <li><p>2003年 开源虚拟化技术出现 Xen是剑桥的一个开源项目，是版虚拟化技术的代表</p></li>
 <li><p>2005年 硬件辅助虚拟化技术出现 Intel和ADM推出了支持虚拟化技术的处理器和芯片组，实现了硬件辅助虚拟化技术</p></li>
@@ -297,7 +298,7 @@
 <dt>Bochs</dt><dd><ul>
 <li><p>x86 PC模拟器 可以运行在大多主流平台上，包括x86 PowerPC Alpha Sun和MIPS</p></li>
 <li><p>翻译每一条指令</p></li>
-<li><p>从加电到重新启动模拟x86 CPU，为所有标准PC外围设备装配设备模型，支持无修改软件执行（包括操作系统）</p></li>
+<li><p>从加电到重新启动模拟x86 CPU，为所有标准PC外围设备装配设备模型，支持无修改软件执行(包括操作系统)</p></li>
 <li><p>模拟需要额外开销</p></li>
 </ul>
 </dd>
@@ -320,7 +321,7 @@
 <h3>7.1.2.2. 计算机虚拟化<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
-<dt>VMM（Virtual Machine Monitor） 虚拟机监控层：运行于服务器硬件和虚拟机之间的中间软件层，又称为hypervisor</dt><dd><ul>
+<dt>VMM(Virtual Machine Monitor) 虚拟机监控层：运行于服务器硬件和虚拟机之间的中间软件层，又称为hypervisor</dt><dd><ul>
 <li><p>管理所有的系统资源</p></li>
 <li><p>管理虚拟机，提供虚拟机硬件模拟</p></li>
 <li><p>协调虚拟机使用服务器硬件</p></li>
@@ -344,7 +345,7 @@
 <h2>7.1.3. 虚拟化方式分类<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
-<dt>半虚拟化 （Para-Virtualization）</dt><dd><ul>
+<dt>半虚拟化 (Para-Virtualization)</dt><dd><ul>
 <li><p>客户操作系统通过修改能和物理硬件进行互动，效率较高，代表是Xen</p></li>
 <li><p>实现方式：修改操作系统</p></li>
 <li><p>和全虚拟化相比，架构更精简，而且在整体速度上有一定的优势。</p></li>
@@ -354,7 +355,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>完全虚拟化 （Full Virtualization）</dt><dd><ul>
+<dt>完全虚拟化 (Full Virtualization)</dt><dd><ul>
 <li><p>客户操作系统不用修改，硬件由VMM模拟，指令也由VMM进行模拟并返回给客户操作系统</p></li>
 <li><dl class="simple">
 <dt>实现方式</dt><dd><ul>
@@ -414,7 +415,7 @@
 </li>
 <li><dl class="simple">
 <dt>CPU全虚拟化</dt><dd><ul>
-<li><p>客户操作系统运行在Ring 1级，VMM运行在Ring 0级，VMM提供给操作系统各种虚拟资源（虚拟BIOS、虚拟设备和虚拟内存管理等）。对于不能虚拟化的特权指令，通过二进制转换方式转换为同等效果的指令序列运行，而用户级指令可直接运行</p></li>
+<li><p>客户操作系统运行在Ring 1级，VMM运行在Ring 0级，VMM提供给操作系统各种虚拟资源(虚拟BIOS、虚拟设备和虚拟内存管理等)。对于不能虚拟化的特权指令，通过二进制转换方式转换为同等效果的指令序列运行，而用户级指令可直接运行</p></li>
 </ul>
 </dd>
 </dl>
@@ -586,7 +587,7 @@
 <div class="section" id="id16">
 <h3>7.1.5.3. 入侵检测<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>现有的入侵检测系统给系统管理员带来了两难的选择：如果将入侵检测系统部署在主机上，则它可以清晰的观察到主机的系统状态，但是容易遭到恶意攻击或者被屏蔽；如果将其部署在网络上，则它可以更好的抵御攻击，但是对主机内部的状态一无所知，因此可能让攻击者逃脱。</p>
-<p>基于虚拟化的入侵检测系统，可以做到既能够观察到被监控系统的内部状态，又能与被监控系统隔离。VMM能够直接观察到被监控系统的内部状态，可以通过直接访问其内存来重构出GuestOS的内核数据结构，通过单独运行的入侵检测系统来进行检测。这种在虚拟机外部监控虚拟机内部运行状态的方法称为虚拟机自省（virtual machine introspection, VMI）。</p>
+<p>基于虚拟化的入侵检测系统，可以做到既能够观察到被监控系统的内部状态，又能与被监控系统隔离。VMM能够直接观察到被监控系统的内部状态，可以通过直接访问其内存来重构出GuestOS的内核数据结构，通过单独运行的入侵检测系统来进行检测。这种在虚拟机外部监控虚拟机内部运行状态的方法称为虚拟机自省(virtual machine introspection, VMI)。</p>
 </div>
 <div class="section" id="id17">
 <h3>7.1.5.4. 恶意代码检测与分析<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>

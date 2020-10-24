@@ -12,4 +12,5 @@
    xen
    qemu/index
    unicorn
+   intel
    misc

@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.9. Intel虚拟化技术 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.10. 其他" href="misc.html" />
+    <link rel="prev" title="7.8. Unicorn" href="unicorn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 虚拟化</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic.html">7.1. 基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html">7.2. 虚拟化技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtio.html">7.3. Virtio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">7.4. VMWare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kvm/index.html">7.5. KVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xen.html">7.6. Xen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu/index.html">7.7. QEMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicorn.html">7.8. Unicorn</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.9. Intel虚拟化技术</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpuvt-x">7.9.1. CPU虚拟化技术VT-X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.9.2. 扩展页表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpuvt-d">7.9.3. CPU虚拟化技术VT-d</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">7.10. 其他</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. 虚拟化</a> &raquo;</li>
+        
+      <li>7.9. Intel虚拟化技术</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/virtual/intel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="intel">
+<h1>7.9. Intel虚拟化技术<a class="headerlink" href="#intel" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cpuvt-x">
+<h2>7.9.1. CPU虚拟化技术VT-X<a class="headerlink" href="#cpuvt-x" title="Permalink to this headline">¶</a></h2>
+<p>Intel增加了虚拟机扩展指令集 VMX(Virtual Machine Extensions)，该指令集包含了十条左右新增指令来支持与虚拟机向相关的操作，简称Intel VT-x技术。</p>
+<p>VT-x引入了根模式和非根模式两种操作模式，统称为VMX操作模式。</p>
+<p>根模式是VMM所处的模式。所有指令都可运行，行为与正常IA32一样。兼容所有原有软件。
+非根模式是客户机所处模式。所有敏感指令都会被重定义，使得他们不经虚拟化就直接运行或者通过陷入再模拟的方式处理。</p>
+<p>VT-x的VMCS能更好的支持虚拟化，VMCS保存在本地内存中的数据结构，包括</p>
+<ul class="simple">
+<li><p>vCPU标识信息：标识vCPU属性</p></li>
+<li><p>虚拟寄存器信息：上下文环境保存</p></li>
+<li><p>vCPU状态细信息</p></li>
+<li><p>额外寄存器/部件信息</p></li>
+<li><p>其他信息：优化字段等</p></li>
+</ul>
+<p>每个VMCS对应一个vCPU，CPU每发生VM-Exit和VM-Entry时会自动查询和更新VMCS。VMM也可以通过指令来配置VMCS而影响vCPU。</p>
+</div>
+<div class="section" id="id1">
+<h2>7.9.2. 扩展页表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>EPT(Extended Page Table)扩展页表用于搭配VT-x使用。</p>
+<p>EPT页表存放在VMM内核空间，由VMM维护，当一个逻辑CPU处于非根模式下运行客户机代码时，使用的地址是客户机虚拟地址，而访问这个虚拟地址时，同样会发生地址的转换，这里的转换还没有设计到VMM层，和正常的系统一样，这里依然是采用CR3作为基址，利用客户机页表进行地址转换，只是到这里虽然已经转换成物理地址，但是由于是客户机物理地址，不等同于宿主机的物理地址，所以并不能直接访问，需要借助于第二次的转换，也就是EPT的转换。</p>
+<p>不管是32位客户机还是64位客户机，统一按照64位物理地址来寻址。EPT页表是4级页表，页表的大小仍然是一个页即4KB，但是一个表项是8个字节，所以一张表只能容纳512个表项，需要9位来定位具体的表项。</p>
+</div>
+<div class="section" id="cpuvt-d">
+<h2>7.9.3. CPU虚拟化技术VT-d<a class="headerlink" href="#cpuvt-d" title="Permalink to this headline">¶</a></h2>
+<p>Intel VT-d技术通过在北桥MCH引入DMA重映射硬件，以提供设备重映射和设备直接分配的功能。在启动VT-d的平台上，设备所有的DMA传输都会被DMA重映射硬件截获。根据设备对应的IO页表，硬件可以对DMA中的地址进行转换，使设备只能访问到规定的内存。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="misc.html" class="btn btn-neutral float-right" title="7.10. 其他" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="unicorn.html" class="btn btn-neutral float-left" title="7.8. Unicorn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

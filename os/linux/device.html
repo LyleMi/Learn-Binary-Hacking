@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.3.5. 内存管理" href="mem.html" />
-    <link rel="prev" title="6.3.3. 文件系统" href="fs.html" /> 
+    <link rel="next" title="6.3.5. 驱动" href="driver.html" />
+    <link rel="prev" title="6.3.3.3. UnionFS" href="fs/unionfs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,19 +97,25 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6.3. Linux</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro.html">6.3.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.html">6.3.2. 源代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fs.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fs/index.html">6.3.3. 文件系统</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.4. 设备</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">6.3.4.1. 设备分类</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">6.3.4.2. 设备号</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tty-pts">6.3.4.3. TTY/PTS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux-file-operations">6.3.4.4. Linux字符设备驱动 file_operations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.5. 内存管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.6. ELF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.7. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.8. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.9. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.10. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="driver.html">6.3.5. 驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mem.html">6.3.6. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elf.html">6.3.7. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">6.3.8. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network.html">6.3.9. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.10. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.11. 防御措施</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.12. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.13. Cgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="namespace.html">6.3.14. namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.15. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -118,14 +124,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios.html">6.7. iOS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">16. 其他</a></li>
 </ul>
 
             
@@ -220,6 +228,154 @@
 <p>在计算机早期，人们将一种被称作teletype的设备连到计算机上，作为计算机的终端，使得人们可以操作计算机。计算机为了支持这些teletype，于是设计了名为TTY的子系统。而后随着计算机技术的不断发展，teletype这些设备逐渐消失，但是内核TTY驱动这一架构没有发生变化，和系统中的进程进行I/O交互时还是需要通过TTY设备，于是出现了各种终端模拟软件。tty理解成一个管道（pipe），将输入输出连接起来。</p>
 <p>对用户空间的程序来说，TTY与PTS是透明的，但是从内核的视角看，pts的另一端连接ptmx，tty的另一端连接内核的终端模拟器，ptmx和终端模拟器都只是负责维护会话和转发数据包。ptmx的另一端连接用户空间的应用程序，如sshd、tmux等，而内核终端模拟器的另一端连接的是具体的硬件，如键盘和显示器。</p>
 </div>
+<div class="section" id="linux-file-operations">
+<h2>6.3.4.4. Linux字符设备驱动 file_operations<a class="headerlink" href="#linux-file-operations" title="Permalink to this headline">¶</a></h2>
+<p>file_operations 在 <code class="docutils literal notranslate"><span class="pre">/include/linux/fs.h</span></code> 中被定义，其结构如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">file_operations</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="k">module</span> <span class="o">*</span><span class="n">owner</span><span class="p">;</span>
+    <span class="n">loff_t</span> <span class="p">(</span><span class="o">*</span><span class="n">llseek</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">read</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">write</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">read_iter</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iov_iter</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">write_iter</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iov_iter</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">iopoll</span><span class="p">)(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">kiocb</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">spin</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">iterate</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dir_context</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">iterate_shared</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dir_context</span> <span class="o">*</span><span class="p">);</span>
+    <span class="n">__poll_t</span> <span class="p">(</span><span class="o">*</span><span class="n">poll</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">poll_table_struct</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="p">(</span><span class="o">*</span><span class="n">unlocked_ioctl</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="p">(</span><span class="o">*</span><span class="n">compat_ioctl</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mmap</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">vm_area_struct</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">mmap_supported_flags</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">open</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">flush</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">fl_owner_t</span> <span class="n">id</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">release</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fsync</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">datasync</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fasync</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">lock</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file_lock</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">sendpage</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="nf">long</span> <span class="p">(</span><span class="o">*</span><span class="n">get_unmapped_area</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">check_flags</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">flock</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file_lock</span> <span class="o">*</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">splice_write</span><span class="p">)(</span><span class="k">struct</span> <span class="n">pipe_inode_info</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">splice_read</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">pipe_inode_info</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">setlease</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">long</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file_lock</span> <span class="o">**</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="p">(</span><span class="o">*</span><span class="n">fallocate</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">offset</span><span class="p">,</span>
+              <span class="n">loff_t</span> <span class="n">len</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">show_fdinfo</span><span class="p">)(</span><span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">f</span><span class="p">);</span>
+<span class="cp">#ifndef CONFIG_MMU</span>
+    <span class="kt">unsigned</span> <span class="p">(</span><span class="o">*</span><span class="n">mmap_capabilities</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+<span class="cp">#endif</span>
+    <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">copy_file_range</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span>
+            <span class="n">loff_t</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+    <span class="n">loff_t</span> <span class="p">(</span><span class="o">*</span><span class="n">remap_file_range</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file_in</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">pos_in</span><span class="p">,</span>
+                   <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file_out</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">pos_out</span><span class="p">,</span>
+                   <span class="n">loff_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">remap_flags</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fadvise</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">__randomize_layout</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="owner">
+<h3>6.3.4.4.1. owner<a class="headerlink" href="#owner" title="Permalink to this headline">¶</a></h3>
+<p>owner不是一个操作，它是一个指向拥有这个结构的模块的指针，这个成员用来阻止模块还在被使用时被重复卸载。在大部分场景下它被简单初始化为 THIS_MODULE, 一个在 &lt;linux/module.h&gt; 中定义的宏。</p>
+</div>
+<div class="section" id="llseek">
+<h3>6.3.4.4.2. llseek<a class="headerlink" href="#llseek" title="Permalink to this headline">¶</a></h3>
+<p>llseek指针参数filp为进行读取信息的目标文件结构体指针；参数 p 为文件定位的目标偏移量；参数orig为对文件定位的起始地址，这个值可以为文件开头(SEEK_SET,0)，当前位置(SEEK_CUR,1)，文件末尾(SEEK_END,2)。</p>
+<p>llseek 方法用作改变文件中的当前读/写位置, 并且新位置作为(正的)返回值。</p>
+<p>loff_t 参数是一个”long offset”，并且就算在 32位平台上也至少 64 位宽。错误由一个负返回值指示；如果这个函数指针是 NULL，seek调用会以潜在地无法预知的方式修改 file 结构中的位置计数器。</p>
+</div>
+<div class="section" id="read">
+<h3>6.3.4.4.3. read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h3>
+<p>指针参数 filp 为进行读取信息的目标文件，指针参数buffer为对应放置信息的缓冲区（即用户空间内存地址），参数size为要读取的信息长度，参数p为读的位置相对于文件开头的偏移，在读取信息后，这个指针一般都会移动，移动的值为要读取信息的长度值。</p>
+<p>这个函数用来从设备中获取数据。在这个位置的一个空指针导致 read 系统调用以 -EINVAL(“Invalid argument”) 失败。一个非负返回值代表了成功读取的字节数(返回值是一个 “signed size” 类型, 常常是目标平台本地的整数类型)。</p>
+</div>
+<div class="section" id="aio-read">
+<h3>6.3.4.4.4. aio_read<a class="headerlink" href="#aio-read" title="Permalink to this headline">¶</a></h3>
+<p>aio_read函数的第一、三个参数和本结构体中的read()函数的第一、三个参数是不同的，异步读写的第三个参数直接传递值，而同步读写的第三个参数传递的是指针，因为AIO从来不需要改变文件的位置。异步读写的第一个参数为指向kiocb结构体的指针，而同步读写的第一参数为指向file结构体的指针，每一个I/O请求都对应一个kiocb结构体。</p>
+</div>
+<div class="section" id="write">
+<h3>6.3.4.4.5. write<a class="headerlink" href="#write" title="Permalink to this headline">¶</a></h3>
+<p>参数filp为目标文件结构体指针，buffer为要写入文件的信息缓冲区，count为要写入信息的长度，ppos为当前的偏移位置，这个值通常是用来判断写文件是否越界。函数的返回值代表成功写的字节数。</p>
+</div>
+<div class="section" id="aio-write">
+<h3>6.3.4.4.6. aio_write<a class="headerlink" href="#aio-write" title="Permalink to this headline">¶</a></h3>
+<p>初始化设备上的一个异步写，参数类型同aio_read()函数。</p>
+</div>
+<div class="section" id="readdir">
+<h3>6.3.4.4.7. readdir<a class="headerlink" href="#readdir" title="Permalink to this headline">¶</a></h3>
+<p>对于设备文件这个成员应当为 NULL; 它用来读取目录, 并且仅对文件系统有意义。</p>
+</div>
+<div class="section" id="poll">
+<h3>6.3.4.4.8. poll<a class="headerlink" href="#poll" title="Permalink to this headline">¶</a></h3>
+<p>这是一个设备驱动中的轮询函数，第一个参数为file结构指针，第二个为轮询表指针。</p>
+<p>这个函数返回设备资源的可获取状态，即POLLIN、POLLOUT、POLLPRI、POLLERR、POLLNVAL等宏的位“或”结果。每个宏都表明设备的一种状态，如POLLIN（定义为0x0001）意味着设备可以无阻塞的读，POLLOUT（定义为0x0004）意味着设备可以无阻塞的写。</p>
+<p>poll方法是poll、epoll和select 3个系统调用的后端，都用作查询对一个或多个文件描述符的读或写是否会阻塞。</p>
+<p>poll方法应当返回一个位掩码指示是否非阻塞的读或写是可能的，并且提供给内核信息用来使调用进程睡眠直到 I/O 变为可能。如果一个驱动的 poll 方法为 NULL, 设备假定为不阻塞地可读可写。</p>
+<p>这里通常将设备看作一个文件进行相关的操作，而轮询操作的取值直接关系到设备的响应情况，可以是阻塞操作结果，同时也可以是非阻塞操作结果。</p>
+</div>
+<div class="section" id="ioctl">
+<h3>6.3.4.4.9. ioctl<a class="headerlink" href="#ioctl" title="Permalink to this headline">¶</a></h3>
+<p>inode 和 filp 指针是对应应用程序传递的文件描述符 fd 的值, 和传递给 open 方法的相同参数。cmd 参数从用户那里不改变地传下来, 并且可选的参数 arg 参数以一个 unsigned long 的形式传递，不管它是否由用户给定为一个整数或一个指针。如果调用程序不传递第 3 个参数，被驱动操作收到的arg值是无定义的。</p>
+<p>因为类型检查在这个额外参数上被关闭，编译器不能警告你如果一个无效的参数被传递给ioctl，并且任何关联的错误将难以查找。</p>
+<p>ioctl 系统调用提供了发出设备特定命令的方法。另外, 几个 ioctl 命令被内核识别而不必引用 fops 表。如果设备不提供 ioctl 方法, 对于任何未事先定义的请求，系统调用返回一个错误。</p>
+</div>
+<div class="section" id="mmap">
+<h3>6.3.4.4.10. mmap<a class="headerlink" href="#mmap" title="Permalink to this headline">¶</a></h3>
+<p>mmap 用来请求将设备内存映射到进程的地址空间。</p>
+</div>
+<div class="section" id="open">
+<h3>6.3.4.4.11. open<a class="headerlink" href="#open" title="Permalink to this headline">¶</a></h3>
+<p>inode 为文件节点,这个节点只有一个，无论用户打开多少个文件，都只是对应着一个inode结构；但是filp只要打开一个文件，就对应着一个file结构体，file结构体通常用来追踪文件在运行时的状态信息</p>
+</div>
+<div class="section" id="flush">
+<h3>6.3.4.4.12. flush<a class="headerlink" href="#flush" title="Permalink to this headline">¶</a></h3>
+<p>flush 操作在进程关闭它的设备文件描述符的拷贝时调用，它执行并且等待设备的任何未完成的操作。</p>
+</div>
+<div class="section" id="release">
+<h3>6.3.4.4.13. release<a class="headerlink" href="#release" title="Permalink to this headline">¶</a></h3>
+<p>当最后一个打开设备的用户进程执行close()系统调用的时候，内核将调用驱动程序release()函数。release函数的主要任务是清理未结束的输入输出操作，释放资源，用户自定义排他标志的复位等。在文件结构被释放时引用这个操作。如同 open，release可以为 NULL。</p>
+</div>
+<div class="section" id="synch">
+<h3>6.3.4.4.14. synch<a class="headerlink" href="#synch" title="Permalink to this headline">¶</a></h3>
+<p>刷新待处理的数据,允许进程把所有的脏缓冲区刷新到磁盘。</p>
+</div>
+<div class="section" id="aio-fsync">
+<h3>6.3.4.4.15. aio_fsync<a class="headerlink" href="#aio-fsync" title="Permalink to this headline">¶</a></h3>
+<p>aio_fsync是fsync方法的异步版本。所谓的fsync方法是一个系统调用函数。系统调用fsync把文件所指定的文件的所有脏缓冲区写到磁盘中（如果需要，还包括存有索引节点的缓冲区）。相应的服务例程获得文件对象的地址，并随后调用fsync方法。通常这个方法以调用函数__writeback_single_inode()结束，这个函数把与被选中的索引节点相关的脏页和索引节点本身都写回磁盘。</p>
+</div>
+<div class="section" id="fasync">
+<h3>6.3.4.4.16. fasync<a class="headerlink" href="#fasync" title="Permalink to this headline">¶</a></h3>
+<p>fasync函数是系统支持异步通知的设备驱动。</p>
+</div>
+<div class="section" id="lock">
+<h3>6.3.4.4.17. lock<a class="headerlink" href="#lock" title="Permalink to this headline">¶</a></h3>
+<p>lock 方法用来实现文件加锁。</p>
+</div>
+<div class="section" id="readv-writev">
+<h3>6.3.4.4.18. readv / writev<a class="headerlink" href="#readv-writev" title="Permalink to this headline">¶</a></h3>
+<p>readv / writev实现发散/汇聚读和写操作。应用程序偶尔需要做一个包含多个内存区的单个读或写操作，这些系统调用允许它们这样做而不必对数据进行额外拷贝。如果参数中的函数指针为 NULL，read 和 write 方法被调用。</p>
+</div>
+<div class="section" id="sendfile">
+<h3>6.3.4.4.19. sendfile<a class="headerlink" href="#sendfile" title="Permalink to this headline">¶</a></h3>
+<p>sendfile实现 sendfile 系统调用的读, 使用最少的拷贝从一个文件描述符搬移数据到另一个。</p>
+</div>
+<div class="section" id="sendpage">
+<h3>6.3.4.4.20. sendpage<a class="headerlink" href="#sendpage" title="Permalink to this headline">¶</a></h3>
+<p>sendpage 是 sendfile 的另一半; 它由内核调用来发送数据，一次一页，到对应的文件。</p>
+</div>
+<div class="section" id="get-unmapped-area">
+<h3>6.3.4.4.21. get_unmapped_area<a class="headerlink" href="#get-unmapped-area" title="Permalink to this headline">¶</a></h3>
+<p>这个方法的目的是在进程的地址空间找一个合适的位置来映射在底层设备上的内存段中。这个任务通常由内存管理代码进行，这个方法存在为了使驱动能强制特殊设备可能有的任何的对齐请求。大部分驱动可以置这个方法为 NULL。</p>
+</div>
+<div class="section" id="check-flags">
+<h3>6.3.4.4.22. check_flags<a class="headerlink" href="#check-flags" title="Permalink to this headline">¶</a></h3>
+<p>check_flags用于模块检查传递给 fnctl(F_SETFL…) 调用的标志。</p>
+</div>
+<div class="section" id="dir-notify">
+<h3>6.3.4.4.23. dir_notify<a class="headerlink" href="#dir-notify" title="Permalink to this headline">¶</a></h3>
+<p>dir_notify在应用程序使用 fcntl 来请求目录改变通知时调用。只对文件系统有用，驱动不需要实现 dir_notify。</p>
+</div>
+</div>
 </div>
 
 
@@ -230,10 +386,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mem.html" class="btn btn-neutral float-right" title="6.3.5. 内存管理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="driver.html" class="btn btn-neutral float-right" title="6.3.5. 驱动" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fs.html" class="btn btn-neutral float-left" title="6.3.3. 文件系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fs/unionfs.html" class="btn btn-neutral float-left" title="6.3.3.3. UnionFS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

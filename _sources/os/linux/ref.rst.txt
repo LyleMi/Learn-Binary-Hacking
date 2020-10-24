@@ -23,12 +23,20 @@
 文件系统
 ----------------------------------------
 - `Linux 文件系统剖析 <https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/>`_
+- `Docker: About storage drivers <https://docs.docker.com/storage/storagedriver/>`_
+- `嵌入式文件系统简介(一) —— Linux MTD设备文件系统 <https://blog.51cto.com/13578681/2307925>`_
+
+OverlayFS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `OverlayFS Wiki <https://en.wikipedia.org/wiki/OverlayFS>`_
 - `内核OverlayFS 文件层次信息 <https://arkingc.github.io/2017/09/20/2017-09-20-linux-code-overlayfs-layerinfo/>`_
 - `深入理解overlayfs（一） <https://blog.csdn.net/luckyapple1028/article/details/77916194>`_
 - `深入理解overlayfs（二）：使用与原理分析 <https://blog.csdn.net/luckyapple1028/article/details/78075358>`_
 - `Overlayfs And Containers <http://people.redhat.com/vgoyal/papers-presentations/vault-2017/vivek-overlayfs-and-containers-presentation-valult-2017.pdf>`_
-- `Docker: About storage drivers <https://docs.docker.com/storage/storagedriver/>`_
+
+jffs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `JFFS2 文件系统及新特性介绍 <https://www.ibm.com/developerworks/cn/linux/l-jffs2/>`_
 
 网络
 ----------------------------------------
@@ -39,6 +47,7 @@
 ----------------------------------------
 - `Linux Kernel Teaching <https://linux-kernel-labs.github.io/refs/heads/master/index.html>`_
 - `slub算法 <https://blog.csdn.net/lukuen/article/details/6935068>`_
+- `linux mmap 详解 <http://blog.chinaunix.net/uid-20321537-id-3483405.html>`_
 
 安全机制
 ----------------------------------------

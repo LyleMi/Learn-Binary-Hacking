@@ -9,3 +9,5 @@
    intro
    overlay
    unionfs
+   jffs
+   yaffs

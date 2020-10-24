@@ -15,6 +15,10 @@ PE工具
 - `DetectIt Easy <http://ntinfo.biz/index.html>`_
 - `StudyPE <https://bbs.pediy.com/thread-246459-1.htm>`_
 
+API
+----------------------------------------
+- `binaryninja api <https://github.com/Vector35/binaryninja-api>`_ Public API, examples, documentation and issues for Binary Ninja 
+
 Bytecode
 ----------------------------------------
 - `bytecode viewer <https://github.com/Konloch/bytecode-viewer>`_ A Java 8+ Jar & Android APK Reverse Engineering Suite (Decompiler, Editor, Debugger & More)
