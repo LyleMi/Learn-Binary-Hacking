@@ -14,4 +14,5 @@
    android
    fuzz
    demo
+   resources
    misc

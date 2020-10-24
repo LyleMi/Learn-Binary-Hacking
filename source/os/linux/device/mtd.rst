@@ -31,4 +31,4 @@ dev
 ----------------------------------------
 /dev/mtdN是Linux中的MTD架构中，系统自己实现的mtd分区所对应的字符设备，其里面添加了一些ioctl，支持很多命令，如MEMGETINFO，MEMERASE等。mtdN系列字符设备的主设备号为90，次设备号为0、2、4、6。
 
-/dev/mtdN和/dev/mtdblockN是同一个MTD设备的同一个分区，mtdblockN 块设备的主设备号为31，次设备号为0、1、2、3。
+``/dev/mtdN`` 和 ``/dev/mtdblockN`` 是同一个MTD设备的同一个分区，mtdblockN 块设备的主设备号为31，次设备号为0、1、2、3。

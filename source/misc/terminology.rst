@@ -26,6 +26,7 @@
 - 非易失内存芯片 (Non-Volatile Memory)
 - 带电可擦可编程只读存储器 (Electrically Erasable Programmable Read-only Memory, EEPROM)
 - 非易失性随机访问存储器 (Non-Volatile Random Access Memory, NVRAM) 
+- 内存技术设备 (Memory Technology Device, MTD)
 
 处理设备
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

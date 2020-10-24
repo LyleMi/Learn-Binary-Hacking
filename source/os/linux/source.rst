@@ -88,6 +88,8 @@
         - 内核命令的启动行
     - /proc/cpuinfo
         - 系统CPU的多种信息
+    - /proc/crypto
+        - 系统上已安装的内核使用的密码算法及每个算法的详细信息列表
     - /proc/devices
         - 字符设备和块设备的主设备号
     - /proc/dma
@@ -96,6 +98,8 @@
         - 可供使用的文件系统类型
     - /proc/interrupts
         - 保留的中断
+    - /proc/iomem
+        - 物理设备在系统内存中的映射信息
     - /proc/ioports
         - 设备驱动程序登记的I/O端口范围
     - /proc/kcore
@@ -116,6 +120,10 @@
         - 可加载内核模块的信息
     - /proc/mounts
         - 以 ``/etc/mtab`` 文件的格式给出当前系统所安装的文件系统信息
+    - /proc/mtd
+    - /proc/partitions
+        - 块设备每个分区的主设备号(major)和次设备号(minor)等信息
+        - 同时包括每个分区所包含的块(block)数目
     - /proc/pci
         - PCI设备的信息
     - /proc/stat
