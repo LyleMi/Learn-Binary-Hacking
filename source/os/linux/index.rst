@@ -14,7 +14,7 @@ Linux
    network
    socket
    mitigation
-   syscall
+   syscall/index
    cgroups
    namespace
    ref
