@@ -10,9 +10,10 @@ syscall
    ioctl
    fcntl
    mmap
-   select
    ptrace
    execve
    fork
    vfork
    clone
+   accept
+   select

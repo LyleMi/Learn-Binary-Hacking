@@ -7,12 +7,13 @@ ptrace函数原型为 ``long ptrace(enum __ptrace_request request, pid_t pid, vo
 其中request的选项包括：
 
 - PTRACE_TRACEME
-    - 表示本进程将被其父进程跟踪，交付给这个进程的所有信号(除SIGKILL之外)，都将使其停止，父进程将通过wait()获知这一情况
+    - 表示本进程将被其父进程跟踪
 - PTRACE_PEEKTEXT
     - 从内存地址中读取一个WORD，内存地址为addr
 - PTRACE_PEEKDATA
+    - 由于Linux不区分文本与数据段的地址空间，PTRACE_PEEKDATA与PTRACE_PEEKTEXT无区别
 - PTRACE_PEEKUSER
-    - 从USER区域中读取一个WORD，内存地址为addr
+    - 从USER区域中读取一个WORD，内存地址为addr，值将作为结果返回，其中偏移地址addr通常是是字对齐的，data将被忽略
 - PTRACE_PEEKTEXT
     - 向内存地址中写入一个WORD，内存地址为addr
 - PTRACE_PEEKDATA
@@ -20,6 +21,7 @@ ptrace函数原型为 ``long ptrace(enum __ptrace_request request, pid_t pid, vo
     - 向USER区域中写入一个WORD，内存地址为addr
 - PTRACE_CONT
     - 继续运行之前停止的子进程
+    - 如果data是非空的，它被解释为要发送给 Tracee 的信号
 - PTRACE_KILL
     - 杀掉子进程
 - PTRACE_SINGLESTEP
@@ -44,3 +46,5 @@ ptrace函数原型为 ``long ptrace(enum __ptrace_request request, pid_t pid, vo
 
 WORD的长度在64位程序中是64位，32位程序中是32位。
 ptrace系统调用在核心对应的处理函数为sys_ptrace。
+
+在trace中Tracer指追踪进程，Tracee指被追踪、被观察的进程。
