@@ -32,11 +32,13 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - CPU (Central Process Unit)
 - GPU (Graphic Process Unit)
+- 算术逻辑单元 (Arithmetic and Logic Unit, ALU)
 
 硬件接口
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - UART (Universal Asynchronous Receiver/Transmitter)
 - JTAG (Joint Test Action Group)
+- 外设部件互连标准 (Peripheral Component Interconnect, PCI)
 
 数据交互
 ----------------------------------------

@@ -15,6 +15,10 @@ Sandbox
 - `redmimicry <https://redmimicry.com/>`_
 - `LiSa <https://github.com/danieluhricek/LiSa>`_ Sandbox for automated Linux malware analysis
 
+沙箱检测
+----------------------------------------
+- `wsb detect <https://github.com/LloydLabs/wsb-detect>`_ enables you to detect if you are running in Windows Sandbox
+
 Malware Sample
 ----------------------------------------
 - `malware samples <https://github.com/InQuest/malware-samples>`_
