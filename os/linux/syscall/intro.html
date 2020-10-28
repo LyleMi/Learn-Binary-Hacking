@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.11.1. 基础 &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11.2. open / openat" href="open.html" />
+    <link rel="prev" title="6.3.11. syscall" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.11. syscall</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.11.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmap.html">6.3.11.5. mmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fork.html">6.3.11.8. fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket.html">6.3.11.11. socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bind.html">6.3.11.12. bind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accept.html">6.3.11.13. accept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="select.html">6.3.11.14. select</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.11. syscall</a> &raquo;</li>
+        
+      <li>6.3.11.1. 基础</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/syscall/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>6.3.11.1. 基础<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>6.3.11.1.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>syscall是内核提供用户空间程序与内核空间进行交互的一套标准接口，这些接口让用户态程序能受限访问硬件设备，比如申请系统资源、操作设备读写、创建新进程等。用户空间发起请求，内核空间负责执行，这些接口便是用户空间和内核空间共同识别的桥梁。</p>
+<p>Syscall是通过中断方式实现的，用户程序通过软中断让程序陷入内核态，执行相应的操作。Linux内核中，每个Syscall都有唯一的系统调用号对应。</p>
+<p>基于Syscall机制，内核驻留在受保护的地址空间，用户空间程序无法直接执行内核代码，也无法访问内核数据，通过系统调用</p>
+<p>系统调用列表可在 <code class="docutils literal notranslate"><span class="pre">linux/arch/sh/include/uapi/asm/unistd_64.h</span></code> 中找到，以arm为例，其他Syscall相关的源码包括：</p>
+<ul class="simple">
+<li><p>arch/arm/include/Uapi/asm/unistd.h</p></li>
+<li><p>arch/arm/kernel/calls.S</p></li>
+<li><p>arch/arm/kernel/entry-armv.S</p></li>
+<li><p>arch/arm/kernel/entry-common.S</p></li>
+<li><p>include/linux/syscalls.h</p></li>
+<li><p>include/uapi/asm-generic/unistd.h</p></li>
+<li><p>kernel/signal.c</p></li>
+</ul>
+</div>
+<div class="section" id="syscall">
+<h2>6.3.11.1.2. Syscall流程<a class="headerlink" href="#syscall" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="x86-64">
+<h3>6.3.11.1.2.1. x86/64<a class="headerlink" href="#x86-64" title="Permalink to this headline">¶</a></h3>
+<p>在x86/64架构上， <code class="docutils literal notranslate"><span class="pre">arch/x86/syscalls/syscall_64.tbl</span></code> 映射了系统调用号到函数定义的关系。同目录的syscalltbl.sh脚本，根据syscall_64.tbl生成一个头文件arch/x86/include/generated/asm/syscalls_64.h，并用__SYSCALL_COMMON将系统调用号和系统函数地址做映射，最终保存到sys_call_table数组。</p>
+<p>进程用户态执行syscall指令后进入到内核入口函数system_call()，此时寄存器状态：</p>
+<ul class="simple">
+<li><p>rax -&gt; 系统调用号</p></li>
+<li><p>rdi -&gt; 参数1</p></li>
+<li><p>rsi -&gt; 参数2</p></li>
+<li><p>rdx -&gt; 参数3</p></li>
+<li><p>r10 -&gt; 参数4</p></li>
+<li><p>r8  -&gt; 参数5</p></li>
+<li><p>r9  -&gt; 参数6</p></li>
+</ul>
+<p>system_call()的地址在内核初始化时被syscall_init()写入进MSR_LSTAR寄存器，该寄存器的作用是保存syscall指令的处理函数地址。</p>
+</div>
+<div class="section" id="arm">
+<h3>6.3.11.1.2.2. ARM<a class="headerlink" href="#arm" title="Permalink to this headline">¶</a></h3>
+<p>在ARM架构上，通过swi中断来实现系统调用，实现从用户态切换到内核态，发送软中断swi时，从中断向量表中查看跳转代码，其中异常向量表定义在文件 <code class="docutils literal notranslate"><span class="pre">arch/arm/kernel/entry-armv.S</span></code> 。当执行系统调用时会根据系统调用号从系统调用表中来查看目标函数的入口地址，在calls.S文件中声明了入口地址信息。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="open.html" class="btn btn-neutral float-right" title="6.3.11.2. open / openat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="6.3.11. syscall" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

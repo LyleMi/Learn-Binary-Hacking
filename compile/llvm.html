@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5.9. JIT" href="jit.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -102,7 +104,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">5.8.1. 简介</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">5.8.2. 组件</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">5.8.2.1. 前端</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ir-intermediate-representation">5.8.2.2. IR (Intermediate representation)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ir">5.8.2.2. IR</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">5.8.2.3. 后端</a></li>
 </ul>
 </li>
@@ -114,19 +116,22 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../os/index.html">6. 操作系统</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">7. 逆向工程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">8. 漏洞利用基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">9. 栈相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">10. 堆相关漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">11. 其他漏洞</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">12. 防御策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">13. 工具与资源</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">14. 其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">16. 其他</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -165,7 +170,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">5. 编译原理</a> &raquo;</li>
         
@@ -195,25 +200,24 @@
 <p>LLVM(Low Level Virtual Machine)项目是模块化和可重用的编译器和工具链技术的集合。
 虽然它的名称中Virtual Machine，但是LLVM与传统的虚拟机无关。</p>
 <p>LLVM 是 Illinois 大学发起的一个开源项目，和JVM以及.net Runtime这样的虚拟机不同，LLVM提供了一套中立的中间代码和编译基础设施，并围绕这些设施提供了一套全新的编译策略（使得优化能够在编译、连接、运行环境执行过程中，以及安装之后以有效的方式进行）和其他一些非常有意思的功能。</p>
-<p>LLVM可以提供完整的编译器系统的中间层，从编译器获取中间表示（IR）代码并发出优化的IR。然后可以将此新的IR转换并链接到目标平台的依赖于机器的汇编语言代码。 LLVM可以接受来自GNU编译器集合（GCC）工具链的IR，允许它与为该项目编写的大量现存编译器一起使用。</p>
+<p>LLVM可以提供完整的编译器系统的中间层，从编译器获取中间表示（IR）代码并发出优化的IR。然后可以将此新的IR转换并链接到目标平台的依赖于机器的汇编语言代码。LLVM可以接受来自GNU编译器集合（GCC）工具链的IR，允许它与为该项目编写的大量现存编译器一起使用。</p>
 <p>LLVM还可以在运行时在编译时或链接时甚至二进制机器代码生成可重定位的机器代码。</p>
-<p>LLVM支持独立于语言的指令集和类型系统。每个指令都是静态单一分配形式（SSA），这意味着每个变量（称为类型化寄存器）被分配一次然后被冻结。这有助于简化变量之间依赖关系的分析。 LLVM允许代码按照传统的GCC系统进行静态编译，也可以通过与Java类似的即时编译（JIT）从IR到机器代码进行后期编译。类型系统由基本类型（如整数或浮点数）和五个派生类型组成：指针，数组，向量，结构和函数。可以通过在LLVM中组合这些基本类型来表示具体语言的类型构造。例如，C++中的类可以通过结构，函数和函数指针数组的混合来表示。</p>
+<p>LLVM支持独立于语言的指令集和类型系统。每个指令都是静态单一分配形式（SSA），这意味着每个变量（称为类型化寄存器）被分配一次然后被冻结。这有助于简化变量之间依赖关系的分析。LLVM允许代码按照传统的GCC系统进行静态编译，也可以通过与Java类似的即时编译从IR到机器代码进行后期编译。类型系统由基本类型（如整数或浮点数）和五个派生类型组成：指针，数组，向量，结构和函数。可以通过在LLVM中组合这些基本类型来表示具体语言的类型构造。例如，C++中的类可以通过结构，函数和函数指针数组的混合来表示。</p>
 <p>LLVM JIT编译器可以在运行时从程序中优化不需要的静态分支，因此在程序具有许多选项的情况下对部分评估非常有用，其中大部分可以在特定环境中轻松确定。</p>
-<p>OpenGL堆栈中的图形代码可以保留在中间表示中，然后在目标机器上运行时进行编译。在具有高端图形处理单元（GPU）的系统上，由此产生的代码仍然相当薄弱，将指令传递给GPU并进行最小的更改。在具有低端GPU的系统上，LLVM将编译在本地中央处理单元（CPU）上运行的可选过程，以模拟GPU无法在内部运行的指令。 LLVM在使用英特尔GMA芯片组的低端机器上提高了性能。在Gallium3D LLVM管道下开发了一个类似的系统，并将其并入GNOME外壳，以便在没有正确加载的3D硬件驱动程序的情况下运行它。</p>
+<p>OpenGL堆栈中的图形代码可以保留在中间表示中，然后在目标机器上运行时进行编译。在具有高端图形处理单元（GPU）的系统上，由此产生的代码仍然相当薄弱，将指令传递给GPU并进行最小的更改。在具有低端GPU的系统上，LLVM将编译在本地中央处理单元（CPU）上运行的可选过程，以模拟GPU无法在内部运行的指令。LLVM在使用英特尔GMA芯片组的低端机器上提高了性能。在Gallium3D LLVM管道下开发了一个类似的系统，并将其并入GNOME外壳，以便在没有正确加载的3D硬件驱动程序的情况下运行它。</p>
 </div>
 <div class="section" id="id2">
 <h2>5.8.2. 组件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3>5.8.2.1. 前端<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>LLVM最初是为了替代GCC堆栈中的现有代码生成器，并且许多GCC前端已经修改以使用它。 LLVM目前支持使用各种前端编译Ada，C，C ++，D，Delphi，Fortran，Haskell，Objective-C和Swift。</p>
-<p>对LLVM的广泛兴趣导致了为各种语言开发新前端的一些努力。受到最多关注的是Clang，一个支持C，C ++和Objective-C的新编译器。主要由苹果公司支持，Clang的目标是在GCC系统中更换C / Objective-C编译器，该系统可以更容易地与集成开发环境（IDE）集成，并且对多线程有更广泛的支持。自2008年第3.8版起，支持OpenMP指令已被包括在Clang中。</p>
+<p>LLVM最初是为了替代GCC堆栈中的现有代码生成器，并且许多GCC前端已经修改以使用它。LLVM目前支持使用各种前端编译Ada，C，C++，D，Delphi，Fortran，Haskell，Objective-C和Swift。</p>
+<p>对LLVM的广泛兴趣导致了为各种语言开发新前端的一些努力。受到最多关注的是Clang，一个支持C，C++和Objective-C的新编译器。主要由苹果公司支持，Clang的目标是在GCC系统中更换C / Objective-C编译器，该系统可以更容易地与集成开发环境（IDE）集成，并且对多线程有更广泛的支持。自2008年第3.8版起，支持OpenMP指令已被包括在Clang中。</p>
 <p>Utrecht Haskell编译器可以为LLVM生成代码。虽然生成器处于开发的早期阶段，但在许多情况下，它比C代码生成器更有效。Glasgow Haskell Compiler (GHC) 具有工作的LLVM后端，可以通过GHC或C代码生成紧跟编译，实现编译代码相对于本地代码编译30％的加速。</p>
-<p>许多其他组件处于不同的开发阶段，包括但不限于Rust编译器，Java字节码前端，通用中间语言（CIL）前端，Ruby 1.9的MacRuby实现，标准ML的各种前端，和一个新的图形着色寄存器分配器</p>
+<p>许多其他组件处于不同的开发阶段，包括但不限于Rust编译器，Java字节码前端，通用中间语言（CIL）前端，Ruby 1.9的MacRuby实现，标准ML的各种前端，和一个新的图形着色寄存器分配器。</p>
 </div>
-<div class="section" id="ir-intermediate-representation">
-<h3>5.8.2.2. IR (Intermediate representation)<a class="headerlink" href="#ir-intermediate-representation" title="Permalink to this headline">¶</a></h3>
-<p>LLVM的核心是IR，一种类似于汇编的低级编程语言。 IR是一种RISC指令集，它可以摘录目标的细节。 例如，调用约定通过带有明确参数的调用和ret指令进行抽象。 而且，IR代替一组固定的寄存器，它使用了一个无限大小的形式为%0，%1等等。LLVM支持三种同构（即功能上等同的）形式的IR：
-一种人类可读的汇编格式，适用于前端的C ++对象格式，以及用于序列化的密码比特码格式。 一个简单的Hello World程序中的汇编格式：</p>
+<div class="section" id="ir">
+<h3>5.8.2.2. IR<a class="headerlink" href="#ir" title="Permalink to this headline">¶</a></h3>
+<p>LLVM的核心是IR，一种类似于汇编的低级编程语言。IR是一种RISC指令集，它可以摘录目标的细节。例如，调用约定通过带有明确参数的调用和ret指令进行抽象。而且，IR代替一组固定的寄存器，它使用了一个无限大小的形式为%0，%1等等。LLVM支持三种同构（即功能上等同的）形式的IR：一种人类可读的汇编格式，适用于前端的C++对象格式，以及用于序列化的密码比特码格式。一个简单的Hello World程序中的汇编格式如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">@.</span><span class="n">str</span> <span class="o">=</span> <span class="n">internal</span> <span class="n">constant</span> <span class="p">[</span><span class="mi">14</span> <span class="n">x</span> <span class="n">i8</span><span class="p">]</span> <span class="n">c</span><span class="s2">&quot;hello, world</span><span class="se">\0</span><span class="s2">A</span><span class="se">\00</span><span class="s2">&quot;</span>
 
 <span class="n">declare</span> <span class="n">i32</span> <span class="nd">@printf</span><span class="p">(</span><span class="n">i8</span><span class="o">*</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
@@ -229,8 +233,8 @@
 </div>
 <div class="section" id="id4">
 <h3>5.8.2.3. 后端<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>在版本3.4中，LLVM支持许多指令集，包括ARM，Qualcomm Hexagon，MIPS，Nvidia并行线程执行（PTX;在LLVM文档中称为NVPTX），PowerPC，AMD TeraScale， AMD Graphics Core Next（GCN），SPARC， z/Architecture（在LLVM文档中称为SystemZ），x86，x86-64和XCore。 某些功能在某些平台上不可用。 大多数功能都适用于x86，x86-64，z / Architecture，ARM和PowerPC。</p>
-<p>LLVM机器代码（MC）子项目是用于在文本形式和机器代码之间翻译机器指令的LLVM框架。 以前，LLVM依赖于系统汇编程序，或者是由工具链提供的汇编程序，将程序集翻译成机器代码。 LLVM MC的集成汇编器支持大多数LLVM目标，包括x86，x86-64，ARM和ARM64。 对于某些目标，包括各种MIPS指令集，集成程序集支持可用，但仍处于beta阶段。</p>
+<p>在版本3.4中，LLVM支持许多指令集，包括ARM，Qualcomm Hexagon，MIPS，Nvidia并行线程执行（PTX;在LLVM文档中称为NVPTX），PowerPC，AMD TeraScale，AMD Graphics Core Next（GCN），SPARC，z/Architecture（在LLVM文档中称为SystemZ），x86，x86-64和XCore。某些功能在某些平台上不可用。大多数功能都适用于x86，x86-64，z/Architecture，ARM和PowerPC。</p>
+<p>LLVM机器代码（MC）子项目是用于在文本形式和机器代码之间翻译机器指令的LLVM框架。以前，LLVM依赖于系统汇编程序，或者是由工具链提供的汇编程序，将程序集翻译成机器代码。LLVM MC的集成汇编器支持大多数LLVM目标，包括x86，x86-64，ARM和ARM64。对于某些目标，包括各种MIPS指令集，集成程序集支持可用，但仍处于beta阶段。</p>
 </div>
 </div>
 <div class="section" id="ref">
@@ -262,11 +266,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -277,7 +289,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

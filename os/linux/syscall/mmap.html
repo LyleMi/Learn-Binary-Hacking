@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.11.5. mmap &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11.6. ptrace" href="ptrace.html" />
+    <link rel="prev" title="6.3.11.4. fcntl" href="fcntl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.11. syscall</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="intro.html">6.3.11.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.11.5. mmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fork.html">6.3.11.8. fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket.html">6.3.11.11. socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bind.html">6.3.11.12. bind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accept.html">6.3.11.13. accept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="select.html">6.3.11.14. select</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.11. syscall</a> &raquo;</li>
+        
+      <li>6.3.11.5. mmap</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/syscall/mmap.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mmap">
+<h1>6.3.11.5. mmap<a class="headerlink" href="#mmap" title="Permalink to this headline">¶</a></h1>
+<p>内存映射函数mmap负责把文件内容映射到进程的虚拟内存空间，通过对这段内存的读取和修改，来实现对文件的读取和修改，而不需要再调用read/write等操作。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">mmap</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">prot</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">off_t</span> <span class="n">offset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>其中addr指定映射的起始地址, 通常设为NULL, 由内核指定。
+length表示映射到内存区域的大小。</p>
+<p>prot映射区的保护方式，可以是：</p>
+<ul class="simple">
+<li><p>PROT_EXEC: 映射区可被执行</p></li>
+<li><p>PROT_READ: 映射区可被读取</p></li>
+<li><p>PROT_WRITE: 映射区可被写入</p></li>
+<li><p>PROT_NONE: 映射区域不能存取</p></li>
+</ul>
+<p>flags表示映射区的特性，可以是:</p>
+<ul class="simple">
+<li><p>MAP_FIXED: 如果参数 <code class="docutils literal notranslate"><span class="pre">start</span></code> 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正，通常不鼓励用此flag。</p></li>
+<li><p>MAP_SHARED: 对映射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。</p></li>
+<li><p>MAP_PRIVATE: 对映射区域的写入操作会产生一个映射文件的复制，即私有的写入时复制(copy-on-write)对此区域作的任何修改都不会写回原来的文件内容。</p></li>
+<li><p>MAP_ANONYMOUS: 建立匿名映射。此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。</p></li>
+<li><p>MAP_DENYWRITE: 只允许对映射区域的写入操作，其他对文件直接写入的操作将会被拒绝。</p></li>
+<li><p>MAP_LOCKED: 将映射区域锁定住，这表示该区域不会被置换（swap）。</p></li>
+</ul>
+<p>fd是由open返回的文件描述符, 代表要映射的文件，如果使用匿名内存映射时，fd设为-1。当系统不支持匿名内存映射时，则可以使用fopen打开/dev/zero文件。</p>
+<p>offset表示以文件开始处的偏移量，必须是分页大小的整数倍，通常为0，表示从文件头开始映射。</p>
+<p>若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
+<p>具体的错误代码如下:</p>
+<ul class="simple">
+<li><p>EBADF: 参数fd 不是有效的文件描述词</p></li>
+<li><p>EACCES: 存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED则要有PROT_WRITE以及该文件要能写入</p></li>
+<li><p>EINVAL: 参数start、length 或offset有一个不合法</p></li>
+<li><p>EAGAIN: 文件被锁住，或是有太多内存被锁住</p></li>
+<li><p>ENOMEM: 内存不足</p></li>
+</ul>
+<p>解除映射可使用 <code class="docutils literal notranslate"><span class="pre">munmap</span></code> 函数，原型为</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">munmap</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ptrace.html" class="btn btn-neutral float-right" title="6.3.11.6. ptrace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fcntl.html" class="btn btn-neutral float-left" title="6.3.11.4. fcntl" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

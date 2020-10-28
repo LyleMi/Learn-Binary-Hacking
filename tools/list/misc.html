@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="15.2. 书单" href="../booklist.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,9 +117,10 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">15.1.11. 其他</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">15.1.11.1. 静态工具</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sandbox">15.1.11.2. Sandbox</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#malware-sample">15.1.11.3. Malware Sample</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">15.1.11.4. 实验环境</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">15.1.11.5. 系统交互</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">15.1.11.3. 沙箱检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#malware-sample">15.1.11.4. Malware Sample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">15.1.11.5. 实验环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">15.1.11.6. 系统交互</a></li>
 </ul>
 </li>
 </ul>
@@ -136,6 +139,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -174,7 +178,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">15. 工具与资源</a> &raquo;</li>
         
@@ -219,21 +223,27 @@
 <li><p><a class="reference external" href="https://github.com/danieluhricek/LiSa">LiSa</a> Sandbox for automated Linux malware analysis</p></li>
 </ul>
 </div>
+<div class="section" id="id3">
+<h2>15.1.11.3. 沙箱检测<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/LloydLabs/wsb-detect">wsb detect</a> enables you to detect if you are running in Windows Sandbox</p></li>
+</ul>
+</div>
 <div class="section" id="malware-sample">
-<h2>15.1.11.3. Malware Sample<a class="headerlink" href="#malware-sample" title="Permalink to this headline">¶</a></h2>
+<h2>15.1.11.4. Malware Sample<a class="headerlink" href="#malware-sample" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/InQuest/malware-samples">malware samples</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ytisf/theZoo">theZoo</a></p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h2>15.1.11.4. 实验环境<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>15.1.11.5. 实验环境<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/malrev/ABD">ABD</a> Course materials for Advanced Binary Deobfuscation by NTT Secure Platform Laboratories</p></li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>15.1.11.5. 系统交互<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>15.1.11.6. 系统交互<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/hakril/PythonForWindows">PythonForWindows</a>  is a base of code aimed to make interaction with Windows</p></li>
 </ul>
@@ -260,11 +270,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -275,7 +293,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

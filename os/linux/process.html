@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.3.8. 网络" href="network.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -104,19 +106,18 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.7. 进程</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">6.3.7.1. 概念</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">6.3.7.2. 状态</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">6.3.7.3. 作业调度算法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">6.3.7.4. 组成</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">6.3.7.5. 进程调度</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">6.3.7.6. 进程间通信</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.3.7.3. 进程创建</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6.3.7.4. 作业调度算法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.3.7.5. 组成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">6.3.7.6. 进程调度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">6.3.7.7. 进程间通信</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="network.html">6.3.8. 网络</a></li>
 <li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="namespace.html">6.3.13. namespace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall/index.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.12. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -140,6 +141,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -178,7 +180,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
         
@@ -211,44 +213,48 @@
 </div>
 <div class="section" id="id3">
 <h2>6.3.7.2. 状态<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>进程一般存在7种基础状态：D-不可中断睡眠、R-可执行、S-可中断睡眠、T-暂停态、t-跟踪态、X-死亡态、Z-僵尸态。</p>
+<p>进程一般存在7种基础状态：D-不可中断睡眠、R-可执行(TASK_RUNNING)、S-可中断睡眠、T-暂停态、t-跟踪态(TASK_TRACED)、X-死亡态、Z-僵尸态。</p>
 <p>不可中断睡眠态。位于这种状态的进程处于睡眠中，并且不允许被其他进程或中断)打断。因此这种状态的进程，是无法使用kill杀死的。这种状态一般由I/O等待(比如磁盘I/O、网络I/O、外设I/O等)引起，出现时间非常短暂。</p>
 <p>可执行态。这种状态的进程都位于CPU的可执行队列中，正在运行或者正在等待运行。</p>
 <p>可中断睡眠态。这种状态的进程虽然也处于睡眠中，但是是允许被中断的。这种进程一般在等待某事件的发生，而被挂起。系统中大部分进程都处于S态。SLEEP态进程不会占用任何CPU资源。</p>
 <p>暂停与跟踪态。这种两种状态的进程都处于运行停止的状态，暂停态进程会释放所有占用资源。</p>
-<p>僵尸态的进程实际上已经结束了，但是父进程还没有回收它的资源（比如进程的描述符、PID等）。僵尸态进程会释放除进程入口之外的所有资源。</p>
+<p>僵尸态的进程实际上已经结束了，但是父进程还没有回收它的资源(比如进程的描述符、PID等)。僵尸态进程会释放除进程入口之外的所有资源。</p>
 <p>死亡态。进程的真正结束态，这种状态一般在正常系统中无法被捕获到。</p>
 </div>
 <div class="section" id="id4">
-<h2>6.3.7.3. 作业调度算法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.7.3. 进程创建<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Linux有几种进程创建方式，一种是通过fork()系统调用创建进程，一种是在用户级通过pthread库中的pthread_create()创建线程，一种在内核级通过kthread_create()创建。</p>
+</div>
+<div class="section" id="id5">
+<h2>6.3.7.4. 作业调度算法<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>先来先服务（FCFS） 有利于长作业而不利于短作业。</p></li>
-<li><p>短作业优先（SJF） 较短的作业平均等待时间 ，较大的系统吞吐率。</p></li>
-<li><p>响应比高优先（HRN） 求等待时间与执行时间两者时间之比。相对等待时间长优先。</p></li>
+<li><p>先来先服务(FCFS) 有利于长作业而不利于短作业。</p></li>
+<li><p>短作业优先(SJF) 较短的作业平均等待时间 ，较大的系统吞吐率。</p></li>
+<li><p>响应比高优先(HRN) 求等待时间与执行时间两者时间之比。相对等待时间长优先。</p></li>
 <li><p>优先级调度 作业的紧急程度、资源要求、类别等。</p></li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2>6.3.7.4. 组成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>6.3.7.5. 组成<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>进程控制块（PCB）</p></li>
-<li><p>进程执行的程序（code）</p></li>
+<li><p>进程控制块(PCB)</p></li>
+<li><p>进程执行的程序(code)</p></li>
 <li><p>进程执行时所用的数据</p></li>
 <li><p>进程执行时使用的工作区</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2>6.3.7.5. 进程调度<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>6.3.7.6. 进程调度<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>先来先服务（FIFO）调度算法</p></li>
+<li><p>先来先服务(FIFO)调度算法</p></li>
 <li><p>时间片轮转法</p></li>
 <li><p>优先级调度算法</p></li>
 <li><p>多级反馈队列调度算法</p></li>
 <li><p>实时系统调度策略</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h2>6.3.7.6. 进程间通信<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>6.3.7.7. 进程间通信<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>消息通信</p></li>
 <li><p>共享存储区</p></li>
@@ -277,11 +283,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -292,7 +306,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

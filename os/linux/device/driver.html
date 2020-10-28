@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="6.3.4.3. Linux字符设备驱动 file_operations" href="operations.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -111,11 +113,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mitigation.html">6.3.10. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../syscall.html">6.3.11. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cgroups.html">6.3.12. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../namespace.html">6.3.13. namespace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.14. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../syscall/index.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
@@ -139,6 +139,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -177,7 +178,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
         
@@ -235,11 +236,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -250,7 +259,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

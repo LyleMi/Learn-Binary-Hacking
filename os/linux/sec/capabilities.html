@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.10.4. Capabilities &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11. syscall" href="../syscall/index.html" />
+    <link rel="prev" title="6.3.10.3. 漏洞利用缓解措施" href="mitigation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.10. 安全机制</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="cgroups.html">6.3.10.1. Cgroups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="namespace.html">6.3.10.2. namespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mitigation.html">6.3.10.3. 漏洞利用缓解措施</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.10.4. Capabilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../syscall/index.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.10. 安全机制</a> &raquo;</li>
+        
+      <li>6.3.10.4. Capabilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/sec/capabilities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="capabilities">
+<h1>6.3.10.4. Capabilities<a class="headerlink" href="#capabilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.3.10.4.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Capabilities机制是在 Linux 2.2 之后引入的，用于将之前与超级用户root(UID=0)关联的特权细分为不同的功能组，Capabilites 作为线程的属性存在，每个功能组都可以独立启用和禁用。其本质上就是将内核调用分门别类，具有相似功能的内核调用被分到同一组中。</p>
+<p>这样一来，权限检查的过程就变成了：在执行特权操作时，如果线程的有效身份不是 root，就去检查其是否具有该特权操作所对应的capabilities，并以此为依据，决定是否可以执行特权操作。</p>
+<p>Capabilities可以在进程执行时赋予，也可以直接从父进程继承。</p>
+</div>
+<div class="section" id="id2">
+<h2>6.3.10.4.2. 列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>CAP_AUDIT_CONTROL</dt><dd><ul>
+<li><p>启用和禁用内核审计</p></li>
+<li><p>改变审计过滤规则</p></li>
+<li><p>检索审计状态和过滤规则</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_AUDIT_READ</dt><dd><ul>
+<li><p>允许通过 multicast netlink 套接字读取审计日志</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_AUDIT_WRITE</dt><dd><ul>
+<li><p>将记录写入内核审计日志</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_BLOCK_SUSPEND</dt><dd><ul>
+<li><p>使用可以阻止系统挂起的特性</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_CHOWN</dt><dd><ul>
+<li><p>修改文件所有者的权限</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_DAC_OVERRIDE</dt><dd><ul>
+<li><p>忽略文件的 DAC 访问限制</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_DAC_READ_SEARCH</dt><dd><ul>
+<li><p>忽略文件读及目录搜索的 DAC 访问限制</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_FOWNER</dt><dd><ul>
+<li><p>忽略文件属主 ID 必须和进程用户 ID 相匹配的限制</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_FSETID</dt><dd><ul>
+<li><p>允许设置文件的 setuid 位</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_IPC_LOCK</dt><dd><ul>
+<li><p>允许锁定共享内存片段</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_IPC_OWNER</dt><dd><ul>
+<li><p>忽略 IPC 所有权检查</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_KILL</dt><dd><ul>
+<li><p>允许对不属于自己的进程发送信号</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_LEASE</dt><dd><ul>
+<li><p>允许修改文件锁的 FL_LEASE 标志</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_LINUX_IMMUTABLE</dt><dd><ul>
+<li><p>允许修改文件的 IMMUTABLE 和 APPEND 属性标志</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_MAC_ADMIN</dt><dd><ul>
+<li><p>允许 MAC 配置或状态更改</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_MAC_OVERRIDE</dt><dd><ul>
+<li><p>忽略文件的 DAC 访问限制</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_MKNOD</dt><dd><ul>
+<li><p>允许使用 mknod() 系统调用</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_NET_ADMIN</dt><dd><ul>
+<li><p>允许执行网络管理任务</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_NET_BIND_SERVICE</dt><dd><ul>
+<li><p>允许绑定到小于 1024 的端口</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_NET_BROADCAST</dt><dd><ul>
+<li><p>允许网络广播和多播访问</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_NET_RAW</dt><dd><ul>
+<li><p>允许使用原始套接字</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SETGID</dt><dd><ul>
+<li><p>允许改变进程的 GID</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SETFCAP</dt><dd><ul>
+<li><p>允许为文件设置任意的 capabilities</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>CAP_SETPCAP</p></li>
+<li><dl class="simple">
+<dt>CAP_SETUID</dt><dd><ul>
+<li><p>允许改变进程的 UID</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_ADMIN</dt><dd><ul>
+<li><p>允许执行系统管理任务，如加载或卸载文件系统、设置磁盘配额等</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_BOOT</dt><dd><ul>
+<li><p>允许重新启动系统</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_CHROOT</dt><dd><ul>
+<li><p>允许使用 chroot() 系统调用</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_MODULE</dt><dd><ul>
+<li><p>允许插入和删除内核模块</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_NICE</dt><dd><ul>
+<li><p>允许提升优先级及设置其他进程的优先级</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_PACCT</dt><dd><ul>
+<li><p>允许执行进程的 BSD 式审计</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_PTRACE</dt><dd><ul>
+<li><p>允许跟踪任何进程</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_RAWIO</dt><dd><ul>
+<li><p>允许直接访问 /devport、/dev/mem、/dev/kmem 及原始块设备</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_RESOURCE</dt><dd><ul>
+<li><p>忽略资源限制</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_TIME</dt><dd><ul>
+<li><p>允许改变系统时钟</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYS_TTY_CONFIG</dt><dd><ul>
+<li><p>允许配置 TTY 设备</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_SYSLOG</dt><dd><ul>
+<li><p>允许使用 syslog() 系统调用</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CAP_WAKE_ALARM</dt><dd><ul>
+<li><p>允许触发一些能唤醒系统的东西(比如 CLOCK_BOOTTIME_ALARM 计时器)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>6.3.10.4.3. 线程的 capabilities<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>每一个线程都有5个capabilities集合，每一个集合使用64位掩码来表示。这5个capabilities集合分别是：</p>
+<ul class="simple">
+<li><p>Permitted</p></li>
+<li><p>Effective</p></li>
+<li><p>Inheritable</p></li>
+<li><p>Bounding</p></li>
+<li><p>Ambient</p></li>
+</ul>
+<p>每个集合中都包含零个或多个capabilities。这5个集合的具体含义如下：</p>
+<div class="section" id="permitted">
+<h3>6.3.10.4.3.1. Permitted<a class="headerlink" href="#permitted" title="Permalink to this headline">¶</a></h3>
+<p>定义了线程能够使用的capabilities的上限。</p>
+</div>
+<div class="section" id="effective">
+<h3>6.3.10.4.3.2. Effective<a class="headerlink" href="#effective" title="Permalink to this headline">¶</a></h3>
+<p>内核检查Effective集合以判断线程是否可以进行特权操作时。</p>
+</div>
+<div class="section" id="inheritable">
+<h3>6.3.10.4.3.3. Inheritable<a class="headerlink" href="#inheritable" title="Permalink to this headline">¶</a></h3>
+<p>当执行exec()系统调用时，能够被新的可执行文件继承的capabilities。</p>
+</div>
+<div class="section" id="bounding">
+<h3>6.3.10.4.3.4. Bounding<a class="headerlink" href="#bounding" title="Permalink to this headline">¶</a></h3>
+<p>Bounding集合是Inheritable集合的超集，如果某个capability不在Bounding集合中，即使它在Permitted集合中，该线程也不能将该capability添加到它的Inheritable集合中。</p>
+<p>Bounding集合的capabilities在执行fork()系统调用时会传递给子进程的Bounding集合，并且在执行execve系统调用后保持不变。</p>
+<p>当线程运行时，不能向Bounding集合中添加capabilities。</p>
+<p>一旦某个capability被从Bounding集合中删除，便不能再添加回来。</p>
+<p>将某个capability从Bounding集合中删除后，如果之前Inherited集合包含该capability，将继续保留。但如果后续从Inheritable集合中删除了该capability，便不能再添加回来。</p>
+</div>
+<div class="section" id="ambient">
+<h3>6.3.10.4.3.5. Ambient<a class="headerlink" href="#ambient" title="Permalink to this headline">¶</a></h3>
+<p>Linux 4.3内核新增的capabilities集合，用于弥补Inheritable的不足。Ambient具有如下特性：</p>
+<ul class="simple">
+<li><p>Permitted和Inheritable未设置的capabilities，Ambient也不能设置。</p></li>
+<li><p>当Permitted和Inheritable关闭某权限(比如 CAP_SYS_BOOT)后，Ambient也随之关闭对应权限。确保进程降低权限后子进程也会降低权限。</p></li>
+<li><p>非特权用户如果在Permitted集合中有一个capability，那么可以添加到Ambient集合中，这样它的子进程可以获取这个capability。</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../syscall/index.html" class="btn btn-neutral float-right" title="6.3.11. syscall" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mitigation.html" class="btn btn-neutral float-left" title="6.3.10.3. 漏洞利用缓解措施" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -52,6 +52,7 @@ jffs
 安全机制
 ----------------------------------------
 - `Linux Crgoups 资源限制 <https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md>`_
+- `Linux Capabilities 入门 <https://mp.weixin.qq.com/s?__biz=MzU1MzY4NzQ1OA==&mid=2247484610&idx=1&sn=0f75f48b1651f03163bef421280c25f8>`_
 
 blog
 ----------------------------------------

@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.11.12. bind &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11.13. accept" href="accept.html" />
+    <link rel="prev" title="6.3.11.11. socket" href="socket.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.11. syscall</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="intro.html">6.3.11.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmap.html">6.3.11.5. mmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fork.html">6.3.11.8. fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket.html">6.3.11.11. socket</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.11.12. bind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accept.html">6.3.11.13. accept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="select.html">6.3.11.14. select</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.11. syscall</a> &raquo;</li>
+        
+      <li>6.3.11.12. bind</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/syscall/bind.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bind">
+<h1>6.3.11.12. bind<a class="headerlink" href="#bind" title="Permalink to this headline">¶</a></h1>
+<p>bind函数原型为 <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">bind(int</span> <span class="pre">sockfd,</span> <span class="pre">const</span> <span class="pre">struct</span> <span class="pre">sockaddr</span> <span class="pre">*addr,</span> <span class="pre">socklen_t</span> <span class="pre">addrlen);</span></code> 其中sockfd为套接字的文件描述符，addr指向存放地址信息的结构体的首地址，addrlen存放地址信息的结构体的大小。</p>
+<div class="section" id="id1">
+<h2>6.3.11.12.1. 内核实现<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>bind的内核实现如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">bind</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sockaddr</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">umyaddr</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">addrlen</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">socket</span> <span class="o">*</span><span class="n">sock</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">sockaddr_storage</span> <span class="n">address</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">,</span> <span class="n">fput_needed</span><span class="p">;</span>
+    <span class="c1">// 根据fd获取相应的socket结构体</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">sockfd_lookup_light</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fput_needed</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sock</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">move_addr_to_kernel</span><span class="p">(</span><span class="n">umyaddr</span><span class="p">,</span> <span class="n">addrlen</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">address</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">security_socket_bind</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">address</span><span class="p">,</span>
+                           <span class="n">addrlen</span><span class="p">);</span><span class="c1">//安全相关，暂不关注</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">err</span><span class="p">)</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">bind</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span>
+                              <span class="o">&amp;</span><span class="n">address</span><span class="p">,</span> <span class="n">addrlen</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">fput_light</span><span class="p">(</span><span class="n">sock</span><span class="o">-&gt;</span><span class="n">file</span><span class="p">,</span> <span class="n">fput_needed</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中sock-&gt;ops-&gt;bind指向的是inet_bind：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">inet_bind</span><span class="p">(</span><span class="k">struct</span> <span class="n">socket</span> <span class="o">*</span><span class="n">sock</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="n">uaddr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">addr_len</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="o">*</span><span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="o">*</span><span class="p">)</span><span class="n">uaddr</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">sock</span> <span class="o">*</span><span class="n">sk</span> <span class="o">=</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">sk</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">inet_sock</span> <span class="o">*</span><span class="n">inet</span> <span class="o">=</span> <span class="n">inet_sk</span><span class="p">(</span><span class="n">sk</span><span class="p">);</span>
+    <span class="k">struct</span> <span class="n">net</span> <span class="o">*</span><span class="n">net</span> <span class="o">=</span> <span class="n">sock_net</span><span class="p">(</span><span class="n">sk</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">snum</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">chk_addr_ret</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_prot</span><span class="o">-&gt;</span><span class="n">bind</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_prot</span><span class="o">-&gt;</span><span class="n">bind</span><span class="p">(</span><span class="n">sk</span><span class="p">,</span> <span class="n">uaddr</span><span class="p">,</span> <span class="n">addr_len</span><span class="p">);</span>
+        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">addr_len</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_in</span><span class="p">))</span>
+        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_family</span> <span class="o">!=</span> <span class="n">AF_INET</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* Compatibility games : accept AF_UNSPEC (mapped to AF_INET)</span>
+<span class="cm">         * only if s_addr is INADDR_ANY.</span>
+<span class="cm">         */</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EAFNOSUPPORT</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_family</span> <span class="o">!=</span> <span class="n">AF_UNSPEC</span> <span class="o">||</span>
+            <span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">!=</span> <span class="n">htonl</span><span class="p">(</span><span class="n">INADDR_ANY</span><span class="p">))</span>
+            <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">chk_addr_ret</span> <span class="o">=</span> <span class="n">inet_addr_type</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span><span class="p">);</span>
+
+    <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EADDRNOTAVAIL</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">net</span><span class="o">-&gt;</span><span class="n">ipv4_sysctl_ip_nonlocal_bind</span> <span class="o">&amp;&amp;</span>
+        <span class="o">!</span><span class="p">(</span><span class="n">inet</span><span class="o">-&gt;</span><span class="n">freebind</span> <span class="o">||</span> <span class="n">inet</span><span class="o">-&gt;</span><span class="n">transparent</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">!=</span> <span class="n">htonl</span><span class="p">(</span><span class="n">INADDR_ANY</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="n">chk_addr_ret</span> <span class="o">!=</span> <span class="n">RTN_LOCAL</span> <span class="o">&amp;&amp;</span>
+        <span class="n">chk_addr_ret</span> <span class="o">!=</span> <span class="n">RTN_MULTICAST</span> <span class="o">&amp;&amp;</span>
+        <span class="n">chk_addr_ret</span> <span class="o">!=</span> <span class="n">RTN_BROADCAST</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+    <span class="n">snum</span> <span class="o">=</span> <span class="n">ntohs</span><span class="p">(</span><span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_port</span><span class="p">);</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EACCES</span><span class="p">;</span>
+
+    <span class="c1">// PROT_SOCK的值为1024，非root用户不能使用小于1024的端口号</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">snum</span> <span class="o">&amp;&amp;</span> <span class="n">snum</span> <span class="o">&lt;</span> <span class="n">PROT_SOCK</span> <span class="o">&amp;&amp;</span>
+        <span class="o">!</span><span class="n">ns_capable</span><span class="p">(</span><span class="n">net</span><span class="o">-&gt;</span><span class="n">user_ns</span><span class="p">,</span> <span class="n">CAP_NET_BIND_SERVICE</span><span class="p">))</span>
+        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+    <span class="n">lock_sock</span><span class="p">(</span><span class="n">sk</span><span class="p">);</span>
+
+    <span class="cm">/* Check these errors (active socket, double bind). */</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_state</span> <span class="o">!=</span> <span class="n">TCP_CLOSE</span> <span class="o">||</span> <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_num</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">out_release_sock</span><span class="p">;</span>
+
+    <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_rcv_saddr</span> <span class="o">=</span> <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_saddr</span> <span class="o">=</span> <span class="n">addr</span><span class="o">-&gt;</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">chk_addr_ret</span> <span class="o">==</span> <span class="n">RTN_MULTICAST</span> <span class="o">||</span> <span class="n">chk_addr_ret</span> <span class="o">==</span> <span class="n">RTN_BROADCAST</span><span class="p">)</span>
+        <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_saddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="cm">/* Use device */</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">snum</span> <span class="o">||</span> <span class="o">!</span><span class="n">inet</span><span class="o">-&gt;</span><span class="n">bind_address_no_port</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_prot</span><span class="o">-&gt;</span><span class="n">get_port</span><span class="p">(</span><span class="n">sk</span><span class="p">,</span> <span class="n">snum</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// 绑定失败，绑定的地址已经有人在使用</span>
+        <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_saddr</span> <span class="o">=</span> <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_rcv_saddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EADDRINUSE</span><span class="p">;</span>
+        <span class="k">goto</span> <span class="n">out_release_sock</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_rcv_saddr</span><span class="p">)</span>
+        <span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_userlocks</span> <span class="o">|=</span> <span class="n">SOCK_BINDADDR_LOCK</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">snum</span><span class="p">)</span>
+        <span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_userlocks</span> <span class="o">|=</span> <span class="n">SOCK_BINDPORT_LOCK</span><span class="p">;</span>
+    <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_sport</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_num</span><span class="p">);</span>
+    <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_daddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">inet</span><span class="o">-&gt;</span><span class="n">inet_dport</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">sk_dst_reset</span><span class="p">(</span><span class="n">sk</span><span class="p">);</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nl">out_release_sock</span><span class="p">:</span>
+    <span class="n">release_sock</span><span class="p">(</span><span class="n">sk</span><span class="p">);</span>
+<span class="nl">out</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="accept.html" class="btn btn-neutral float-right" title="6.3.11.13. accept" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="socket.html" class="btn btn-neutral float-left" title="6.3.11.11. socket" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

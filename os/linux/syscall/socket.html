@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.11.11. socket &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11.12. bind" href="bind.html" />
+    <link rel="prev" title="6.3.11.10. clone" href="clone.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.11. syscall</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="intro.html">6.3.11.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmap.html">6.3.11.5. mmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fork.html">6.3.11.8. fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.11.11. socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bind.html">6.3.11.12. bind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accept.html">6.3.11.13. accept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="select.html">6.3.11.14. select</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.11. syscall</a> &raquo;</li>
+        
+      <li>6.3.11.11. socket</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/syscall/socket.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="socket">
+<h1>6.3.11.11. socket<a class="headerlink" href="#socket" title="Permalink to this headline">¶</a></h1>
+<p>socket函数的原型为 <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">socket(int</span> <span class="pre">domain,</span> <span class="pre">int</span> <span class="pre">type,</span> <span class="pre">int</span> <span class="pre">protocol);</span></code> 。</p>
+<p>其中domain即协议域，又称为协议族(family)。常用的协议族有AF_INET、AF_INET6、AF_LOCAL(或称AF_UNIX，Unix域socket)、AF_ROUTE等等。协议族决定了socket的地址类型，在通信中必须采用对应的地址，如AF_INET决定了要用IPv4地址(32位的)与端口号(16位的)的组合、AF_UNIX要使用一个绝对路径名作为地址。</p>
+<p>支持的所有协议定义在 <code class="docutils literal notranslate"><span class="pre">/include/linux/socket.h</span></code> 中，具体内容如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Supported address families. */</span>
+<span class="cp">#define AF_UNSPEC   0</span>
+<span class="cp">#define AF_UNIX     1   </span><span class="cm">/* Unix domain sockets      */</span><span class="cp"></span>
+<span class="cp">#define AF_LOCAL    1   </span><span class="cm">/* POSIX name for AF_UNIX   */</span><span class="cp"></span>
+<span class="cp">#define AF_INET     2   </span><span class="cm">/* Internet IP Protocol     */</span><span class="cp"></span>
+<span class="cp">#define AF_AX25     3   </span><span class="cm">/* Amateur Radio AX.25      */</span><span class="cp"></span>
+<span class="cp">#define AF_IPX      4   </span><span class="cm">/* Novell IPX           */</span><span class="cp"></span>
+<span class="cp">#define AF_APPLETALK    5   </span><span class="cm">/* AppleTalk DDP        */</span><span class="cp"></span>
+<span class="cp">#define AF_NETROM   6   </span><span class="cm">/* Amateur Radio NET/ROM    */</span><span class="cp"></span>
+<span class="cp">#define AF_BRIDGE   7   </span><span class="cm">/* Multiprotocol bridge     */</span><span class="cp"></span>
+<span class="cp">#define AF_ATMPVC   8   </span><span class="cm">/* ATM PVCs         */</span><span class="cp"></span>
+<span class="cp">#define AF_X25      9   </span><span class="cm">/* Reserved for X.25 project    */</span><span class="cp"></span>
+<span class="cp">#define AF_INET6    10  </span><span class="cm">/* IP version 6         */</span><span class="cp"></span>
+<span class="cp">#define AF_ROSE     11  </span><span class="cm">/* Amateur Radio X.25 PLP   */</span><span class="cp"></span>
+<span class="cp">#define AF_DECnet   12  </span><span class="cm">/* Reserved for DECnet project  */</span><span class="cp"></span>
+<span class="cp">#define AF_NETBEUI  13  </span><span class="cm">/* Reserved for 802.2LLC project*/</span><span class="cp"></span>
+<span class="cp">#define AF_SECURITY 14  </span><span class="cm">/* Security callback pseudo AF */</span><span class="cp"></span>
+<span class="cp">#define AF_KEY      15      </span><span class="cm">/* PF_KEY key management API */</span><span class="cp"></span>
+<span class="cp">#define AF_NETLINK  16</span>
+<span class="cp">#define AF_ROUTE    AF_NETLINK </span><span class="cm">/* Alias to emulate 4.4BSD */</span><span class="cp"></span>
+<span class="cp">#define AF_PACKET   17  </span><span class="cm">/* Packet family        */</span><span class="cp"></span>
+<span class="cp">#define AF_ASH      18  </span><span class="cm">/* Ash              */</span><span class="cp"></span>
+<span class="cp">#define AF_ECONET   19  </span><span class="cm">/* Acorn Econet         */</span><span class="cp"></span>
+<span class="cp">#define AF_ATMSVC   20  </span><span class="cm">/* ATM SVCs         */</span><span class="cp"></span>
+<span class="cp">#define AF_RDS      21  </span><span class="cm">/* RDS sockets          */</span><span class="cp"></span>
+<span class="cp">#define AF_SNA      22  </span><span class="cm">/* Linux SNA Project (nutters!) */</span><span class="cp"></span>
+<span class="cp">#define AF_IRDA     23  </span><span class="cm">/* IRDA sockets         */</span><span class="cp"></span>
+<span class="cp">#define AF_PPPOX    24  </span><span class="cm">/* PPPoX sockets        */</span><span class="cp"></span>
+<span class="cp">#define AF_WANPIPE  25  </span><span class="cm">/* Wanpipe API Sockets */</span><span class="cp"></span>
+<span class="cp">#define AF_LLC      26  </span><span class="cm">/* Linux LLC            */</span><span class="cp"></span>
+<span class="cp">#define AF_IB       27  </span><span class="cm">/* Native InfiniBand address    */</span><span class="cp"></span>
+<span class="cp">#define AF_MPLS     28  </span><span class="cm">/* MPLS */</span><span class="cp"></span>
+<span class="cp">#define AF_CAN      29  </span><span class="cm">/* Controller Area Network      */</span><span class="cp"></span>
+<span class="cp">#define AF_TIPC     30  </span><span class="cm">/* TIPC sockets         */</span><span class="cp"></span>
+<span class="cp">#define AF_BLUETOOTH    31  </span><span class="cm">/* Bluetooth sockets        */</span><span class="cp"></span>
+<span class="cp">#define AF_IUCV     32  </span><span class="cm">/* IUCV sockets         */</span><span class="cp"></span>
+<span class="cp">#define AF_RXRPC    33  </span><span class="cm">/* RxRPC sockets        */</span><span class="cp"></span>
+<span class="cp">#define AF_ISDN     34  </span><span class="cm">/* mISDN sockets        */</span><span class="cp"></span>
+<span class="cp">#define AF_PHONET   35  </span><span class="cm">/* Phonet sockets       */</span><span class="cp"></span>
+<span class="cp">#define AF_IEEE802154   36  </span><span class="cm">/* IEEE802154 sockets       */</span><span class="cp"></span>
+<span class="cp">#define AF_CAIF     37  </span><span class="cm">/* CAIF sockets         */</span><span class="cp"></span>
+<span class="cp">#define AF_ALG      38  </span><span class="cm">/* Algorithm sockets        */</span><span class="cp"></span>
+<span class="cp">#define AF_NFC      39  </span><span class="cm">/* NFC sockets          */</span><span class="cp"></span>
+<span class="cp">#define AF_VSOCK    40  </span><span class="cm">/* vSockets         */</span><span class="cp"></span>
+<span class="cp">#define AF_KCM      41  </span><span class="cm">/* Kernel Connection Multiplexor*/</span><span class="cp"></span>
+<span class="cp">#define AF_QIPCRTR  42  </span><span class="cm">/* Qualcomm IPC Router          */</span><span class="cp"></span>
+<span class="cp">#define AF_SMC      43  </span><span class="cm">/* smc sockets: reserve number for</span>
+<span class="cm">                 * PF_SMC protocol family that</span>
+<span class="cm">                 * reuses AF_INET address family</span>
+<span class="cm">                 */</span><span class="cp"></span>
+<span class="cp">#define AF_XDP      44  </span><span class="cm">/* XDP sockets          */</span><span class="cp"></span>
+
+<span class="cp">#define AF_MAX      45  </span><span class="cm">/* For now.. */</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>type指定socket类型，常用的socket类型为:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">sock_type</span> <span class="p">{</span>
+    <span class="n">SOCK_STREAM</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// 字节流套接字</span>
+    <span class="n">SOCK_DGRAM</span>  <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// 数据报文套接字</span>
+    <span class="n">SOCK_RAW</span>    <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">// 原始套接字</span>
+    <span class="n">SOCK_RDM</span>    <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">SOCK_SEQPACKET</span>  <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="c1">// 有序分组套接字</span>
+    <span class="n">SOCK_DCCP</span>   <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">SOCK_PACKET</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>protocol指协议，常用的协议类型为:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Standard well-defined IP protocols.  */</span>
+<span class="k">enum</span> <span class="p">{</span>
+  <span class="n">IPPROTO_IP</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>       <span class="cm">/* Dummy protocol for TCP       */</span>
+<span class="cp">#define IPPROTO_IP      IPPROTO_IP</span>
+  <span class="n">IPPROTO_ICMP</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>     <span class="cm">/* Internet Control Message Protocol    */</span>
+<span class="cp">#define IPPROTO_ICMP        IPPROTO_ICMP</span>
+  <span class="n">IPPROTO_IGMP</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>     <span class="cm">/* Internet Group Management Protocol   */</span>
+<span class="cp">#define IPPROTO_IGMP        IPPROTO_IGMP</span>
+  <span class="n">IPPROTO_IPIP</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>     <span class="cm">/* IPIP tunnels (older KA9Q tunnels use 94) */</span>
+<span class="cp">#define IPPROTO_IPIP        IPPROTO_IPIP</span>
+  <span class="n">IPPROTO_TCP</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>      <span class="cm">/* Transmission Control Protocol    */</span>
+<span class="cp">#define IPPROTO_TCP     IPPROTO_TCP</span>
+  <span class="n">IPPROTO_EGP</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>      <span class="cm">/* Exterior Gateway Protocol        */</span>
+<span class="cp">#define IPPROTO_EGP     IPPROTO_EGP</span>
+  <span class="n">IPPROTO_PUP</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>     <span class="cm">/* PUP protocol             */</span>
+<span class="cp">#define IPPROTO_PUP     IPPROTO_PUP</span>
+  <span class="n">IPPROTO_UDP</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>     <span class="cm">/* User Datagram Protocol       */</span>
+<span class="cp">#define IPPROTO_UDP     IPPROTO_UDP</span>
+  <span class="n">IPPROTO_IDP</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>     <span class="cm">/* XNS IDP protocol         */</span>
+<span class="cp">#define IPPROTO_IDP     IPPROTO_IDP</span>
+  <span class="n">IPPROTO_TP</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>      <span class="cm">/* SO Transport Protocol Class 4    */</span>
+<span class="cp">#define IPPROTO_TP      IPPROTO_TP</span>
+  <span class="n">IPPROTO_DCCP</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>        <span class="cm">/* Datagram Congestion Control Protocol */</span>
+<span class="cp">#define IPPROTO_DCCP        IPPROTO_DCCP</span>
+  <span class="n">IPPROTO_IPV6</span> <span class="o">=</span> <span class="mi">41</span><span class="p">,</span>        <span class="cm">/* IPv6-in-IPv4 tunnelling      */</span>
+<span class="cp">#define IPPROTO_IPV6        IPPROTO_IPV6</span>
+  <span class="n">IPPROTO_RSVP</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span>        <span class="cm">/* RSVP Protocol            */</span>
+<span class="cp">#define IPPROTO_RSVP        IPPROTO_RSVP</span>
+  <span class="n">IPPROTO_GRE</span> <span class="o">=</span> <span class="mi">47</span><span class="p">,</span>     <span class="cm">/* Cisco GRE tunnels (rfc 1701,1702)    */</span>
+<span class="cp">#define IPPROTO_GRE     IPPROTO_GRE</span>
+  <span class="n">IPPROTO_ESP</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>     <span class="cm">/* Encapsulation Security Payload protocol */</span>
+<span class="cp">#define IPPROTO_ESP     IPPROTO_ESP</span>
+  <span class="n">IPPROTO_AH</span> <span class="o">=</span> <span class="mi">51</span><span class="p">,</span>      <span class="cm">/* Authentication Header protocol   */</span>
+<span class="cp">#define IPPROTO_AH      IPPROTO_AH</span>
+  <span class="n">IPPROTO_MTP</span> <span class="o">=</span> <span class="mi">92</span><span class="p">,</span>     <span class="cm">/* Multicast Transport Protocol     */</span>
+<span class="cp">#define IPPROTO_MTP     IPPROTO_MTP</span>
+  <span class="n">IPPROTO_BEETPH</span> <span class="o">=</span> <span class="mi">94</span><span class="p">,</span>      <span class="cm">/* IP option pseudo header for BEET */</span>
+<span class="cp">#define IPPROTO_BEETPH      IPPROTO_BEETPH</span>
+  <span class="n">IPPROTO_ENCAP</span> <span class="o">=</span> <span class="mi">98</span><span class="p">,</span>       <span class="cm">/* Encapsulation Header         */</span>
+<span class="cp">#define IPPROTO_ENCAP       IPPROTO_ENCAP</span>
+  <span class="n">IPPROTO_PIM</span> <span class="o">=</span> <span class="mi">103</span><span class="p">,</span>        <span class="cm">/* Protocol Independent Multicast   */</span>
+<span class="cp">#define IPPROTO_PIM     IPPROTO_PIM</span>
+  <span class="n">IPPROTO_COMP</span> <span class="o">=</span> <span class="mi">108</span><span class="p">,</span>       <span class="cm">/* Compression Header Protocol      */</span>
+<span class="cp">#define IPPROTO_COMP        IPPROTO_COMP</span>
+  <span class="n">IPPROTO_SCTP</span> <span class="o">=</span> <span class="mi">132</span><span class="p">,</span>       <span class="cm">/* Stream Control Transport Protocol    */</span>
+<span class="cp">#define IPPROTO_SCTP        IPPROTO_SCTP</span>
+  <span class="n">IPPROTO_UDPLITE</span> <span class="o">=</span> <span class="mi">136</span><span class="p">,</span>    <span class="cm">/* UDP-Lite (RFC 3828)          */</span>
+<span class="cp">#define IPPROTO_UDPLITE     IPPROTO_UDPLITE</span>
+  <span class="n">IPPROTO_MPLS</span> <span class="o">=</span> <span class="mi">137</span><span class="p">,</span>       <span class="cm">/* MPLS in IP (RFC 4023)        */</span>
+<span class="cp">#define IPPROTO_MPLS        IPPROTO_MPLS</span>
+  <span class="n">IPPROTO_ETHERNET</span> <span class="o">=</span> <span class="mi">143</span><span class="p">,</span>   <span class="cm">/* Ethernet-within-IPv6 Encapsulation   */</span>
+<span class="cp">#define IPPROTO_ETHERNET    IPPROTO_ETHERNET</span>
+  <span class="n">IPPROTO_RAW</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span>        <span class="cm">/* Raw IP packets           */</span>
+<span class="cp">#define IPPROTO_RAW     IPPROTO_RAW</span>
+  <span class="n">IPPROTO_MPTCP</span> <span class="o">=</span> <span class="mi">262</span><span class="p">,</span>      <span class="cm">/* Multipath TCP connection     */</span>
+<span class="cp">#define IPPROTO_MPTCP       IPPROTO_MPTCP</span>
+  <span class="n">IPPROTO_MAX</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bind.html" class="btn btn-neutral float-right" title="6.3.11.12. bind" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clone.html" class="btn btn-neutral float-left" title="6.3.11.10. clone" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

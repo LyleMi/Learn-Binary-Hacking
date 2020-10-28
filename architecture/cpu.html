@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.3. BIOS" href="bios.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -94,22 +96,32 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">2.2.1.1. 特殊寄存器</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">2.2.2. 指令集架构</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">2.2.2.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.2.2.2. 分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.2.2. CPU结构</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.2.2.1. 冯·诺依曼结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.2.2.2. 哈佛结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.2.2.3. 改进型哈佛结构</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">2.2.3. 流水线</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">2.2.3.1. 流水线优化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">2.2.3.2. 权限</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.2.3. 指令集架构</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.2.3.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">2.2.3.2. 分类</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#intel">2.2.4. Intel</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pt">2.2.4.1. PT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2.2.4. 流水线</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">2.2.4.1. 流水线优化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">2.2.4.2. 权限</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">2.2.5. 发展历史</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">2.2.6. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intel">2.2.5. Intel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pt">2.2.5.1. PT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">2.2.6. 发展历史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">2.2.7. 参考链接</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">2.2.7.1. 官方文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blog">2.2.7.2. Blog</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bios.html">2.3. BIOS</a></li>
@@ -140,6 +152,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -178,7 +191,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">2. 计算机体系结构</a> &raquo;</li>
         
@@ -217,25 +230,56 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2>2.2.2. 指令集架构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.2. CPU结构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
-<h3>2.2.2.1. 简介<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2.1. 冯·诺依曼结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>冯·诺依曼结构又称作普林斯顿体系结构（Princetionarchitecture）。</p>
+<p>1945年，冯·诺依曼首先提出了“存储程序”的概念和二进制原理，后来，人们把利用这种概念和原理设计的电子计算机系统统称为“冯·诺依曼型结构”计算机。冯·诺依曼结构的处理器使用同一个存储器，经由同一个总线传输。</p>
+<p>冯·诺依曼结构处理器具有以下几个特点：</p>
+<ul class="simple">
+<li><p>有一个存储器</p></li>
+<li><p>有一个控制器</p></li>
+<li><p>有一个运算器，用于完成算术运算和逻辑运算</p></li>
+<li><p>有输入和输出设备，用于进行人机通信</p></li>
+</ul>
+<p>冯·诺依曼的主要贡献就是提出并实现了“存储程序”的概念。由于指令和数据都是二进制码，指令和操作数的地址又密切相关，因此，当初选择这种结构是自然的。但是，这种指令和数据共享同一总线的结构，使得信息流的传输成为限制计算机性能的瓶颈，影响了数据处理速度的提高。</p>
+<p>在典型情况下，完成一条指令需要3个步骤，即：取指令、指令译码和执行指令。从指令流的定时关系也可看出冯·诺依曼结构与哈佛结构处理方式的差别。举一个最简单的对存储器进行读写操作的指令，指令1至指令3均为存、取数指令，对冯·诺依曼结构处理器，由于取指令和存取数据要从同一个存储空间存取，经由同一总线传输，因而它们无法重叠执行，只有一个完成后再进行下一个。</p>
+</div>
+<div class="section" id="id5">
+<h3>2.2.2.2. 哈佛结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，即程序存储器和数据存储器是两个独立的存储器，每个存储器独立编址、独立访问，目的是为了减轻程序运行时的访存瓶颈。</p>
+<p>例如最常见的卷积运算中，一条指令同时取两个操作数， 在流水线处理时， 同时还有一个取指操作，如果程序和数据通过一条总线访问，取指和取数必会产生冲突， 而这对大运算量的循环的执行效率是很不利的。</p>
+<p>哈佛结构能基本上解决取指和取数的冲突问题。</p>
+<p>目前使用哈佛结构的中央处理器和微控制器有很多，除了Microchip公司的PIC系列芯片，还有摩托罗拉公司的MC68系列、Zilog公司的Z8系列、ATMEL公司的AVR系列和ARM公司的ARM9、ARM10和ARM11。</p>
+</div>
+<div class="section" id="id6">
+<h3>2.2.2.3. 改进型哈佛结构<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>改进型哈佛结构虽然也使用两个不同的存储器：程序存储器和数据存储器，但它把两个存储器的地址总线合并了，数据总线也进行了合并，即原来的哈佛结构需要４条不同的总线，改进后需要两条总线。</p>
+<p>改进型哈佛结构其结构特点为：使用两个独立的存储器模块，分别存储指令和数据，每个存储模块都不允许指令和数据并存，以便实现并行处理。</p>
+<p>具有一条独立的地址总线和一条独立的数据总线，利用公用地址总线访问两个存储模块（程序存储模块和数据存储模块），公用数据总线则被用来完成程序存储模块或数据存储模块与CPU之间的数据传输。</p>
+<p>两条总线由程序存储器和数据存储器分时共用。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>2.2.3. 指令集架构<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>2.2.3.1. 简介<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>指令集架构（英语：Instruction Set Architecture，缩写为ISA），又称指令集或指令集体系，是计算机体系结构中与程序设计有关的部分，包含了基本数据类型、指令集、寄存器、寻址模式、存储体系、中断、异常处理以及外部I/O。指令集架构包含一系列的opcode即操作码（机器语言），以及由特定处理器执行的基本命令。</p>
 <p>指令集体系与微架构（一套用于执行指令集的微处理器设计方法）不同。使用不同微架构的计算机可以共享一种指令集。例如，Intel的Pentium和AMD的AMD Athlon，两者几乎采用相同版本的x86指令集体系，但是两者在内部设计上有本质的区别。</p>
 </div>
-<div class="section" id="id5">
-<h3>2.2.2.2. 分类<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>2.2.3.2. 分类<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>指令集分为复杂指令集（Complex Instruction Set Computing，CISC）和精简指令集（Reduced Instruction Set Computing，RISC）。</p>
 <p>复杂指令集计算机包含许多应用程序中很少使用的特定指令，由此产生的缺陷是指令长度不固定。精简指令集计算机通过只执行在程序中经常使用的指令来简化处理器的结构，而特殊操作则以子程序的方式实现，它们的特殊使用通过处理器额外的执行时间来弥补。</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>2.2.3. 流水线<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>2.2.4. 流水线<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>流水线（pipeline）技术是指在CPU执行时多条指令同时进行操作的一种准并行处理实现技术。</p>
 <p>主要是使用不同的电路功能单元组成一条指令处理流水线，然后将一条指令分为多步来执行，这样可以在一个时钟周期内完成一条指令。</p>
 <p>一般一条指令可以分为取指、译指、执行、写回等步骤。</p>
-<div class="section" id="id7">
-<h3>2.2.3.1. 流水线优化<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>2.2.4.1. 流水线优化<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>分支预测</p></li>
 <li><p>指令冒险</p></li>
@@ -243,20 +287,20 @@
 <li><p>乱序执行</p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>2.2.3.2. 权限<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>2.2.4.2. 权限<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>ring0到ring3，ring0为最高权限，ring3最低，一般ring0为内核权限，ring3为用户权限，很少用ring1和ring2。</p>
 </div>
 </div>
 <div class="section" id="intel">
-<h2>2.2.4. Intel<a class="headerlink" href="#intel" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.5. Intel<a class="headerlink" href="#intel" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pt">
-<h3>2.2.4.1. PT<a class="headerlink" href="#pt" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.5.1. PT<a class="headerlink" href="#pt" title="Permalink to this headline">¶</a></h3>
 <p>Intel PT 是 Intel 的一个扩展功能, 它利用硬件以很小的开销来记录程序执行数据，这些数据内容包括: 时间,、程序流信息 (e.g. 分支目标, 分支是否执行)。</p>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>2.2.5. 发展历史<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>2.2.6. 发展历史<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>1971年，Intel推出了世界上第一款微处理器4004，它是一个包含了2300个晶体管的4位CPU。随后英特尔又推出了8008，由于运算性能很差，其市场反应十分不理想。1974年，8008发展成8080，成为第二代微处理器。</p>
 <p>1978年，Intel推出了具有16位数据通道、内存寻址能力为 1MB、最大运行速度8MHz的8086，同时还生产出与之配合的数学协处理器8087，这两种芯片使用相互兼容的指令集，这种指令集之后称之为x86指令集。随后，Intel又推出了80186和80188。</p>
 <p>1979年，Intel公司推出了8088芯片，它是第一块成功用于个人电脑的CPU。1981年8088芯片首次用于IBM PC机中，开创了全新的微机时代。</p>
@@ -265,14 +309,23 @@
 <p>1989年，Intel推出80486芯片，它的特殊意义在于这块芯片首次突破了100万个晶体管的界限，集成了120万个晶体管。80486将80386和数学协处理器80387以及一个8KB的高速缓存集成在一个芯片内，并且在80X86系列中首次采用了RISC技术。它还采用了突发总线（Burst）方式，大大提高了与内存的数据交换速度。</p>
 <p>随后，AMD、Cyrix 等陆续推出了80486的兼容CPU。在之后，Intel没有将486的后一代产品称为586，而是使用了注册商标Pentium。</p>
 </div>
-<div class="section" id="id10">
-<h2>2.2.6. 参考链接<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h2>2.2.7. 参考链接<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>2.2.7.1. 官方文档<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Intel_microprocessors">List of Intel microprocessors</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures">List of ARM microarchitectures</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_AMD_microprocessors">List of AMD microprocessors</a></p></li>
 <li><p><a class="reference external" href="https://software.intel.com/content/www/us/en/develop/blogs/processor-tracing.html">Processor Tracing</a></p></li>
 </ul>
+</div>
+<div class="section" id="blog">
+<h3>2.2.7.2. Blog<a class="headerlink" href="#blog" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cnblogs.com/amanlikethis/p/3344558.html">对ARM9哈佛结构的认识</a></p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -296,11 +349,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -311,7 +372,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

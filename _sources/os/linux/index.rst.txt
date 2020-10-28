@@ -13,8 +13,6 @@ Linux
    process
    network
    socket
-   mitigation
-   syscall
-   cgroups
-   namespace
+   sec/index
+   syscall/index
    ref

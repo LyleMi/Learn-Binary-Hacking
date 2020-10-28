@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.3.1. 简介" href="intro.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -104,11 +106,9 @@
 <li class="toctree-l3"><a class="reference internal" href="process.html">6.3.7. 进程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="network.html">6.3.8. 网络</a></li>
 <li class="toctree-l3"><a class="reference internal" href="socket.html">6.3.9. Socket</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a></li>
-<li class="toctree-l3"><a class="reference internal" href="syscall.html">6.3.11. syscall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="namespace.html">6.3.13. namespace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syscall/index.html">6.3.11. syscall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref.html">6.3.12. 参考链接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../macos.html">6.4. Mac OS</a></li>
@@ -132,6 +132,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -170,7 +171,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">6. 操作系统</a> &raquo;</li>
         
@@ -241,10 +242,11 @@
 <li class="toctree-l1"><a class="reference internal" href="process.html">6.3.7. 进程</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="process.html#id2">6.3.7.1. 概念</a></li>
 <li class="toctree-l2"><a class="reference internal" href="process.html#id3">6.3.7.2. 状态</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id4">6.3.7.3. 作业调度算法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id5">6.3.7.4. 组成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id6">6.3.7.5. 进程调度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process.html#id7">6.3.7.6. 进程间通信</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id4">6.3.7.3. 进程创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id5">6.3.7.4. 作业调度算法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id6">6.3.7.5. 组成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id7">6.3.7.6. 进程调度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html#id8">6.3.7.7. 进程间通信</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="network.html">6.3.8. 网络</a><ul>
@@ -259,38 +261,39 @@
 <li class="toctree-l2"><a class="reference internal" href="socket.html#id2">6.3.9.3. 常用函数</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mitigation.html">6.3.10. 防御措施</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mitigation.html#kptr-restrict">6.3.10.1. kptr_restrict</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mitigation.html#smep">6.3.10.2. SMEP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec/index.html">6.3.10. 安全机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec/cgroups.html">6.3.10.1. Cgroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec/namespace.html">6.3.10.2. namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec/mitigation.html">6.3.10.3. 漏洞利用缓解措施</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec/capabilities.html">6.3.10.4. Capabilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syscall.html">6.3.11. syscall</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#id1">6.3.11.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#ioctl">6.3.11.2. ioctl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#fcntl">6.3.11.3. fcntl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#execve">6.3.11.4. execve</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#select">6.3.11.5. select</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#open-openat">6.3.11.6. open / openat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syscall.html#mmap">6.3.11.7. mmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syscall/index.html">6.3.11. syscall</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syscall/intro.html">6.3.11.1. 基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/mmap.html">6.3.11.5. mmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/fork.html">6.3.11.8. fork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/socket.html">6.3.11.11. socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/bind.html">6.3.11.12. bind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/accept.html">6.3.11.13. accept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall/select.html">6.3.11.14. select</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cgroups.html">6.3.12. Cgroups</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cgroups.html#id1">6.3.12.1. 四个组件</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="namespace.html">6.3.13. namespace</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="namespace.html#id1">6.3.13.1. 简介</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ref.html">6.3.14. 参考链接</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id2">6.3.14.1. 文档与资源</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id3">6.3.14.2. 调试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id4">6.3.14.3. 漏洞利用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id5">6.3.14.4. 文件系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id10">6.3.14.5. 网络</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id11">6.3.14.6. 内核</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#id12">6.3.14.7. 安全机制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#blog">6.3.14.8. blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">6.3.12. 参考链接</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id2">6.3.12.1. 文档与资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id3">6.3.12.2. 调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id4">6.3.12.3. 漏洞利用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id5">6.3.12.4. 文件系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id10">6.3.12.5. 网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id11">6.3.12.6. 内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#id12">6.3.12.7. 安全机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#blog">6.3.12.8. blog</a></li>
 </ul>
 </li>
 </ul>
@@ -317,11 +320,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -332,7 +343,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

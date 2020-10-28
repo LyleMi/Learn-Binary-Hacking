@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.11.13. accept &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11.14. select" href="select.html" />
+    <link rel="prev" title="6.3.11.12. bind" href="bind.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.11. syscall</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="intro.html">6.3.11.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmap.html">6.3.11.5. mmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fork.html">6.3.11.8. fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket.html">6.3.11.11. socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bind.html">6.3.11.12. bind</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.11.13. accept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="select.html">6.3.11.14. select</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.11. syscall</a> &raquo;</li>
+        
+      <li>6.3.11.13. accept</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/syscall/accept.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="accept">
+<h1>6.3.11.13. accept<a class="headerlink" href="#accept" title="Permalink to this headline">¶</a></h1>
+<p>accept函数原型为 <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">accept(int</span> <span class="pre">sockfd,</span> <span class="pre">struct</span> <span class="pre">sockaddr</span> <span class="pre">*addr,</span> <span class="pre">socklen_t</span> <span class="pre">*addrlen);</span></code> 其中sockfd为套接字的文件描述符，addr指向存放地址信息的结构体的首地址，addrlen存放地址信息的结构体的大小。</p>
+<p>accept在socket()、bind()、listen()之后调用，用于监听TCP请求。如果accpet成功，那么其返回值是由内核自动生成的一个的描述字，代表与返回客户的TCP连接。</p>
+<p>具体来说，accept的执行流程为：</p>
+<ul class="simple">
+<li><p>创建一个socket结构体</p></li>
+<li><p>获取一个未使用的文件描述符fd</p></li>
+<li><p>创建一个file结构体，并和socket关联</p></li>
+<li><p>从全连接队列中获取客户端发来的请求</p></li>
+<li><p>根据请求获取之前新建的sock结构体返回</p></li>
+<li><p>将请求中的sock结构体和开始分配的socket结构体关联</p></li>
+<li><p>将文件描述符fd和文件结构体file关联，并返回fd供用户使用</p></li>
+</ul>
+<div class="section" id="id1">
+<h2>6.3.11.13.1. 内核实现<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>accept的内核实现如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">accept</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sockaddr</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">upeer_sockaddr</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">upeer_addrlen</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">sys_accept4</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">upeer_sockaddr</span><span class="p">,</span> <span class="n">upeer_addrlen</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>最终调用的是 SYSCALL_DEFINE4：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SYSCALL_DEFINE4</span><span class="p">(</span><span class="n">accept4</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sockaddr</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">upeer_sockaddr</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">upeer_addrlen</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">socket</span> <span class="o">*</span><span class="n">sock</span><span class="p">,</span> <span class="o">*</span><span class="n">newsock</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">newfile</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">newfd</span><span class="p">,</span> <span class="n">fput_needed</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">sockaddr_storage</span> <span class="n">address</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">SOCK_CLOEXEC</span> <span class="o">|</span> <span class="n">SOCK_NONBLOCK</span><span class="p">))</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">SOCK_NONBLOCK</span> <span class="o">!=</span> <span class="n">O_NONBLOCK</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">SOCK_NONBLOCK</span><span class="p">))</span>
+        <span class="n">flags</span> <span class="o">=</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">SOCK_NONBLOCK</span><span class="p">)</span> <span class="o">|</span> <span class="n">O_NONBLOCK</span><span class="p">;</span>
+
+    <span class="c1">// 根据fd获取对应的socket结构</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">sockfd_lookup_light</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fput_needed</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sock</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+    <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENFILE</span><span class="p">;</span>
+    <span class="c1">// 分配一个新的socket结构体</span>
+    <span class="n">newsock</span> <span class="o">=</span> <span class="n">sock_alloc</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">newsock</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">out_put</span><span class="p">;</span>
+
+    <span class="n">newsock</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">=</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">;</span>
+    <span class="n">newsock</span><span class="o">-&gt;</span><span class="n">ops</span> <span class="o">=</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">ops</span><span class="p">;</span>
+
+    <span class="n">__module_get</span><span class="p">(</span><span class="n">newsock</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">owner</span><span class="p">);</span>
+
+    <span class="c1">// 获取一个未使用的文件描述符，这个描述符也就是accept()返回的fd</span>
+    <span class="n">newfd</span> <span class="o">=</span> <span class="n">get_unused_fd_flags</span><span class="p">(</span><span class="n">flags</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">newfd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">newfd</span><span class="p">;</span>
+        <span class="n">sock_release</span><span class="p">(</span><span class="n">newsock</span><span class="p">);</span>
+        <span class="k">goto</span> <span class="n">out_put</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 创建一个file结构体，同时将这个file结构体和刚刚创建的socket关联</span>
+    <span class="c1">// file-&gt;private_data 指向socket</span>
+    <span class="n">newfile</span> <span class="o">=</span> <span class="n">sock_alloc_file</span><span class="p">(</span><span class="n">newsock</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">sk</span><span class="o">-&gt;</span><span class="n">sk_prot_creator</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">newfile</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">newfile</span><span class="p">);</span>
+        <span class="n">put_unused_fd</span><span class="p">(</span><span class="n">newfd</span><span class="p">);</span>
+        <span class="n">sock_release</span><span class="p">(</span><span class="n">newsock</span><span class="p">);</span>
+        <span class="k">goto</span> <span class="n">out_put</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">err</span> <span class="o">=</span> <span class="n">security_socket_accept</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">newsock</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">out_fd</span><span class="p">;</span>
+
+    <span class="c1">// 调用inet_accept()执行主处理操作</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">accept</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">newsock</span><span class="p">,</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_flags</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">out_fd</span><span class="p">;</span>
+    <span class="c1">// 如果要获取对端连接信息，那么拷贝对应信息到用户空间</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">upeer_sockaddr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 调用inet_getname()获取对端信息</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">newsock</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">getname</span><span class="p">(</span><span class="n">newsock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">address</span><span class="p">,</span>
+                      <span class="o">&amp;</span><span class="n">len</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">ECONNABORTED</span><span class="p">;</span>
+            <span class="k">goto</span> <span class="n">out_fd</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">move_addr_to_user</span><span class="p">(</span><span class="o">&amp;</span><span class="n">address</span><span class="p">,</span>
+                    <span class="n">len</span><span class="p">,</span> <span class="n">upeer_sockaddr</span><span class="p">,</span> <span class="n">upeer_addrlen</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">goto</span> <span class="n">out_fd</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* File flags are not inherited via accept() unlike another OSes. */</span>
+    <span class="c1">// 将文件描述符fd和文件结构体file关联到一起</span>
+    <span class="n">fd_install</span><span class="p">(</span><span class="n">newfd</span><span class="p">,</span> <span class="n">newfile</span><span class="p">);</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">newfd</span><span class="p">;</span>
+
+<span class="nl">out_put</span><span class="p">:</span>
+    <span class="n">fput_light</span><span class="p">(</span><span class="n">sock</span><span class="o">-&gt;</span><span class="n">file</span><span class="p">,</span> <span class="n">fput_needed</span><span class="p">);</span>
+<span class="nl">out</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="nl">out_fd</span><span class="p">:</span>
+    <span class="n">fput</span><span class="p">(</span><span class="n">newfile</span><span class="p">);</span>
+    <span class="n">put_unused_fd</span><span class="p">(</span><span class="n">newfd</span><span class="p">);</span>
+    <span class="k">goto</span> <span class="n">out_put</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>inet_accept函数调用传输层的accept操作，并且返回新的连接控制块，新的连接控制块需要与新的socket进行关联，accept完成，将新socket的状态设置为已连接状态；</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> *    Accept a pending connection. The TCP layer now gives BSD semantics.</span>
+<span class="cm"> */</span>
+
+<span class="kt">int</span> <span class="nf">inet_accept</span><span class="p">(</span><span class="k">struct</span> <span class="n">socket</span> <span class="o">*</span><span class="n">sock</span><span class="p">,</span> <span class="k">struct</span> <span class="n">socket</span> <span class="o">*</span><span class="n">newsock</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span>
+        <span class="kt">bool</span> <span class="n">kern</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">sock</span> <span class="o">*</span><span class="n">sk1</span> <span class="o">=</span> <span class="n">sock</span><span class="o">-&gt;</span><span class="n">sk</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+    <span class="cm">/* 执行传输层的accept操作 */</span>
+    <span class="k">struct</span> <span class="n">sock</span> <span class="o">*</span><span class="n">sk2</span> <span class="o">=</span> <span class="n">sk1</span><span class="o">-&gt;</span><span class="n">sk_prot</span><span class="o">-&gt;</span><span class="n">accept</span><span class="p">(</span><span class="n">sk1</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">,</span> <span class="n">kern</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sk2</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">do_err</span><span class="p">;</span>
+
+    <span class="n">lock_sock</span><span class="p">(</span><span class="n">sk2</span><span class="p">);</span>
+
+    <span class="cm">/* rps处理 */</span>
+    <span class="n">sock_rps_record_flow</span><span class="p">(</span><span class="n">sk2</span><span class="p">);</span>
+    <span class="n">WARN_ON</span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">sk2</span><span class="o">-&gt;</span><span class="n">sk_state</span><span class="p">)</span> <span class="o">&amp;</span>
+          <span class="p">(</span><span class="n">TCPF_ESTABLISHED</span> <span class="o">|</span> <span class="n">TCPF_SYN_RECV</span> <span class="o">|</span>
+          <span class="n">TCPF_CLOSE_WAIT</span> <span class="o">|</span> <span class="n">TCPF_CLOSE</span><span class="p">)));</span>
+
+    <span class="cm">/* 控制块连接到新的socket */</span>
+    <span class="n">sock_graft</span><span class="p">(</span><span class="n">sk2</span><span class="p">,</span> <span class="n">newsock</span><span class="p">);</span>
+
+    <span class="cm">/* 设置新socket的状态为连接 */</span>
+    <span class="n">newsock</span><span class="o">-&gt;</span><span class="n">state</span> <span class="o">=</span> <span class="n">SS_CONNECTED</span><span class="p">;</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">release_sock</span><span class="p">(</span><span class="n">sk2</span><span class="p">);</span>
+<span class="nl">do_err</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">EXPORT_SYMBOL</span><span class="p">(</span><span class="n">inet_accept</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="select.html" class="btn btn-neutral float-right" title="6.3.11.14. select" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bind.html" class="btn btn-neutral float-left" title="6.3.11.12. bind" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

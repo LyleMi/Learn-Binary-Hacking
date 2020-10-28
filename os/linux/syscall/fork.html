@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3.11.8. fork &mdash; 二进制安全学习笔记 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.3.11.9. vfork" href="vfork.html" />
+    <link rel="prev" title="6.3.11.7. execve" href="execve.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../basic/index.html">1. 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. 计算机体系结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/index.html">3. 嵌入式设备</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assembly/index.html">4. 汇编基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../compile/index.html">5. 编译原理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">6. 操作系统</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">6.1. 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot.html">6.2. Boot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">6.3. Linux</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">6.3.1. 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source.html">6.3.2. 源代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fs/index.html">6.3.3. 文件系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">6.3.4. 设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mem.html">6.3.5. 内存管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../elf.html">6.3.6. ELF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../process.html">6.3.7. 进程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network.html">6.3.8. 网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socket.html">6.3.9. Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sec/index.html">6.3.10. 安全机制</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.3.11. syscall</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="intro.html">6.3.11.1. 基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="open.html">6.3.11.2. open / openat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ioctl.html">6.3.11.3. ioctl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fcntl.html">6.3.11.4. fcntl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mmap.html">6.3.11.5. mmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ptrace.html">6.3.11.6. ptrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execve.html">6.3.11.7. execve</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.3.11.8. fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfork.html">6.3.11.9. vfork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="clone.html">6.3.11.10. clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket.html">6.3.11.11. socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bind.html">6.3.11.12. bind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accept.html">6.3.11.13. accept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="select.html">6.3.11.14. select</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ref.html">6.3.12. 参考链接</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../macos.html">6.4. Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../windows/index.html">6.5. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android.html">6.6. Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ios.html">6.7. iOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../virtual/index.html">7. 虚拟化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reverse/index.html">8. 逆向工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exploit/index.html">9. 漏洞利用基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stack/index.html">10. 栈相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heap/index.html">11. 堆相关漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vulns/index.html">12. 其他漏洞</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../malware/index.html">13. 恶意软件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mitigations/index.html">14. 防御策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">15. 工具与资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/index.html">16. 其他</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">二进制安全学习笔记</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">6. 操作系统</a> &raquo;</li>
+        
+          <li><a href="../index.html">6.3. Linux</a> &raquo;</li>
+        
+          <li><a href="index.html">6.3.11. syscall</a> &raquo;</li>
+        
+      <li>6.3.11.8. fork</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/os/linux/syscall/fork.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fork">
+<h1>6.3.11.8. fork<a class="headerlink" href="#fork" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.3.11.8.1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>fork 系统调用将创建一个与父进程几乎一样的新进程，复制了父亲进程的资源，包括内存的内容task_struct内容</p>
+<p>在Linux的早期系统中，当发出fork()系统调用时，内核原样复制父进程的整个地址空间并把复制的那一份分配给子进程。这种完整复制需要如下操作：</p>
+<ul class="simple">
+<li><p>为子进程的页表分配页帧</p></li>
+<li><p>为子进程的页分配页帧</p></li>
+<li><p>初始化子进程的页表</p></li>
+<li><p>把父进程的页复制到子进程相应的页中</p></li>
+</ul>
+<p>现代的Linux内核采用一种更为有效的方法，称之为写时复制。父进程和子进程共享页帧而不是复制页帧。然而，只要页帧被共享，它们就不能被修改，即页帧被保护。无论父进程还是子进程何时试图写一个共享的页帧，就产生一个异常，这时内核就把这个页复制到一个新的页帧中并标记为可写。原来的页帧仍然是写保护的：当其他进程试图写入时，内核检查写进程是否是这个页帧的唯一属主，如果是，就把这个页帧标记为对这个进程是可写的。</p>
+<p>fork失败时返回值为负数，成功时子进程返回0，父进程返回子进程的pid。</p>
+</div>
+<div class="section" id="id2">
+<h2>6.3.11.8.2. 源码分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>fork 相关代码在以下的位置中：</p>
+<ul class="simple">
+<li><p>kernel/include/linux/sched.h</p></li>
+<li><p>kernel/include/linux/kthread.h</p></li>
+<li><p>kernel/arch/arm/include/asm/thread_info.h</p></li>
+<li><p>kernel/kernel/fork.c</p></li>
+<li><p>kernel/kernel/exit.c</p></li>
+<li><p>kernel/kernel/sched/core.c</p></li>
+</ul>
+<p>fork的调用流为 <code class="docutils literal notranslate"><span class="pre">fork-&gt;sys_fork-&gt;do_fork-&gt;copy_process</span></code> 。即用户空间调用fork()方法，经过syscall陷入内核空间，内核根据系统调用号找到相应的 <code class="docutils literal notranslate"><span class="pre">sys_fork</span></code> 系统调用。<code class="docutils literal notranslate"><span class="pre">sys_fork</span></code> 调用 <code class="docutils literal notranslate"><span class="pre">do_fork</span></code> 。<code class="docutils literal notranslate"><span class="pre">do_fork()</span></code> 会进行一些check过程，之后便是进入核心方法 <code class="docutils literal notranslate"><span class="pre">copy_process</span></code> 。</p>
+<p>其中fork/vfork/pthread_create等几个系统调用都最终调用了 <code class="docutils literal notranslate"><span class="pre">do_fork</span></code>，pthread_create调用的flags参数为 <code class="docutils literal notranslate"><span class="pre">CLONE_VM</span> <span class="pre">|</span> <span class="pre">CLONE_FS</span> <span class="pre">|</span> <span class="pre">CLONE_FILES</span> <span class="pre">|</span> <span class="pre">CLONE_SIGHAND</span></code> ，fork调用的flags参数为 <code class="docutils literal notranslate"><span class="pre">SIGCHLD</span></code> ，vfork调用的flags参数为 <code class="docutils literal notranslate"><span class="pre">CLONE_VFORK</span> <span class="pre">|</span> <span class="pre">CLONE_VM</span> <span class="pre">|</span> <span class="pre">SIGCHLD</span></code> 。关于flags参数的意义在clone调用的文档中可以看到。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SYSCALL_DEFINE0</span><span class="p">(</span><span class="n">fork</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">do_fork</span><span class="p">(</span><span class="n">SIGCHLD</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">do_fork</span></code> 的实现为</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="nf">do_fork</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">clone_flags</span><span class="p">,</span>
+        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">stack_start</span><span class="p">,</span>
+        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">stack_size</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">__user</span> <span class="o">*</span><span class="n">parent_tidptr</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">__user</span> <span class="o">*</span><span class="n">child_tidptr</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">_do_fork</span><span class="p">(</span><span class="n">clone_flags</span><span class="p">,</span> <span class="n">stack_start</span><span class="p">,</span> <span class="n">stack_size</span><span class="p">,</span>
+      <span class="n">parent_tidptr</span><span class="p">,</span> <span class="n">child_tidptr</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中clone_flags为clone方法传递过程的flags，标记子进程从父进程中需要继承的资源清单。</p>
+<p>stack_start为子进程用户态的堆栈地址，fork()过程该值为0，clone()过程赋予有效值。</p>
+<p>stack_size为不必要的参数，默认设置为0。</p>
+<p>parent_tidptr为用户态下父进程的tid地址。</p>
+<p>child_tidptr为用户态下子进程的tid地址。</p>
+<p><code class="docutils literal notranslate"><span class="pre">_do_fork</span></code> 主要流程为：</p>
+<ul class="simple">
+<li><p>执行copy_process，复制进程描述符，分配pid</p></li>
+<li><p>如果由vfork调用，则执行相应的初始化过程</p></li>
+<li><p>执行wake_up_new_task，唤醒子进程，分配CPU时间片</p></li>
+<li><p>如果由vfork调用，则父进程等待子进程执行exec函数来替换地址空间</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">copy_process</span></code> 的主要流程为：</p>
+<ul class="simple">
+<li><p>执行dup_task_struct()，拷贝当前进程task_struct</p></li>
+<li><p>检查进程数是否超过系统所允许的上限 (默认32678)</p></li>
+<li><p>执行sched_fork()，设置调度器相关信息，设置task进程状态为TASK_RUNNING，并分配CPU资源</p></li>
+<li><p>执行copy_xxx()，拷贝进程的files/fs/mm/io/sighand/signal等信息</p></li>
+<li><p>执行copy_thread_tls()，拷贝子进程的内核栈信息</p></li>
+<li><p>执行alloc_pid()，为新进程分配新pid</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>6.3.11.8.3. 缺点<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>不是线程安全的，fork 创建的子进程只有一个线程（调用线程的副本），当一个线程在 fork 时，如果另一个线程此时进行内存分配并持有堆锁，任何在子进程中分配内存的尝试（从而获得相同的锁）都将立即发生死锁。</p>
+<p>fork对性能有较大的消耗。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vfork.html" class="btn btn-neutral float-right" title="6.3.11.9. vfork" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="execve.html" class="btn btn-neutral float-left" title="6.3.11.7. execve" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2020, lyle
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

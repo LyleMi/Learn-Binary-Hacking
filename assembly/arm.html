@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4.5. MIPS" href="mips.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 二进制安全学习笔记
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> 二进制安全学习笔记
           
 
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -95,7 +97,9 @@
 <li class="toctree-l2"><a class="reference internal" href="x86.html">4.3. x86</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. ARM</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. 基础</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#semihosting">4.4.2. Semihosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.4.2. 工作模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.4.3. 工作状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#semihosting">4.4.4. Semihosting</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mips.html">4.5. MIPS</a></li>
@@ -119,6 +123,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -157,7 +162,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">4. 汇编基础</a> &raquo;</li>
         
@@ -196,8 +201,68 @@
 <p>使用softfp模式，会存在不必要的浮点到整数、整数到浮点的转换。而使用hard模式，在每次浮点相关函数调用时，平均能节省20个CPU周期。对ARM这样每个周期都很重要的体系结构来说，这样的提升无疑是巨大的。</p>
 <p>在完全不改变源码和配置的情况下，在一些应用程序上，虽然armhf比armel硬件要求高一点，但是armhf能得到20-25%的性能提升。对一些严重依赖于浮点运算的程序，更是可以达到300%的性能提升。</p>
 </div>
+<div class="section" id="id2">
+<h2>4.4.2. 工作模式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Arm处理器有7种基本工作模式：</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>User</dt><dd><ul>
+<li><p>非特权模式，大部分任务执行在这种模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>FIQ</dt><dd><ul>
+<li><p>当一个高优先级(fast)中断产生时将会进入这种模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IRQ</dt><dd><ul>
+<li><p>当一个低优先级(normal)中断产生时将会进入这种模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Supervisor</dt><dd><ul>
+<li><p>当复位或软中断指令执行时将会进入这种模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Abort</dt><dd><ul>
+<li><p>当存取异常时将会进入这种模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Undef</dt><dd><ul>
+<li><p>当执行未定义指令时会进入这种模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>System</dt><dd><ul>
+<li><p>使用和User模式相同寄存器集的特权模式</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>其中除User(用户模式)是Normal(普通模式)外，其他6种都是Privilege(特权模式)。</p>
+</div>
+<div class="section" id="id3">
+<h2>4.4.3. 工作状态<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>ARM体系的CPU有ARM和THumb两种工作状态，ARM状态执行字对齐的32位ARM指令。THumb执行半字对齐的16位指令。</p>
+</div>
 <div class="section" id="semihosting">
-<h2>4.4.2. Semihosting<a class="headerlink" href="#semihosting" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.4. Semihosting<a class="headerlink" href="#semihosting" title="Permalink to this headline">¶</a></h2>
 <p>Semihosting技术将应用程序中的IO请求通过一定的通道传送到主机(host)，由主机上的资源响应应用程序的IO请求，而不是像在主机上执行本地应用程序一样，由应用程序所在的计算机响应应用程序IO请求，也就是将目标板的输入/输出请求从应用程序代码传递到远程运行调试器的主机的一种机制。</p>
 </div>
 </div>
@@ -222,11 +287,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017-2020, lyle
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -237,7 +310,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
