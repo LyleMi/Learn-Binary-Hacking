@@ -15,5 +15,7 @@ syscall
    fork
    vfork
    clone
+   socket
+   bind
    accept
    select

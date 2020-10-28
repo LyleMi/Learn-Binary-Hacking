@@ -6,7 +6,10 @@ select是IO多种复用的一种实现，它将需要监控的fd分为读，写�
 
 .. code-block:: cpp
 
-    int select (int __nfds, fd_set *__restrict __readfds,
-               fd_set *__restrict __writefds,
-               fd_set *__restrict __exceptfds,
-               struct timeval *__restrict __timeout);
+    int select(
+        int __nfds,
+        fd_set *__restrict __readfds,
+        fd_set *__restrict __writefds,
+        fd_set *__restrict __exceptfds,
+        struct timeval *__restrict __timeout
+    );

@@ -2,7 +2,9 @@ accept
 ========================================
 accept函数原型为 ``int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);`` 其中sockfd为套接字的文件描述符，addr指向存放地址信息的结构体的首地址，addrlen存放地址信息的结构体的大小。
 
-accept的执行流程为：
+accept在socket()、bind()、listen()之后调用，用于监听TCP请求。如果accpet成功，那么其返回值是由内核自动生成的一个的描述字，代表与返回客户的TCP连接。
+
+具体来说，accept的执行流程为：
 
 - 创建一个socket结构体
 - 获取一个未使用的文件描述符fd
@@ -12,7 +14,9 @@ accept的执行流程为：
 - 将请求中的sock结构体和开始分配的socket结构体关联
 - 将文件描述符fd和文件结构体file关联，并返回fd供用户使用
 
-内核实现如下：
+内核实现
+----------------------------------------
+accept的内核实现如下：
 
 .. code-block:: cpp
 

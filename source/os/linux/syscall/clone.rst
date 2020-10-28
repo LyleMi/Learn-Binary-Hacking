@@ -1,5 +1,8 @@
 clone
 ========================================
+
+简介
+----------------------------------------
 clone的函数原型为 ``int clone(int (fn)(void ), void *child_stack, int flags, void *arg);`` 。
 
 其中fn是函数指针，child_stack是为子进程分配系统堆栈空间，flags标志用来描述需要从父进程继承哪些资源，arg是传给子进程的参数。
@@ -28,3 +31,34 @@ clone的函数原型为 ``int clone(int (fn)(void ), void *child_stack, int flag
 - CLONE_THREAD
     - Linux 2.4中增加以支持POSIX线程标准
     - 子进程与父进程共享相同的线程群
+
+源码分析
+----------------------------------------
+.. code-block:: cpp
+
+    #ifdef CONFIG_CLONE_BACKWARDS
+    SYSCALL_DEFINE5(clone, unsigned long, clone_flags, unsigned long, newsp,
+         int __user *, parent_tidptr,
+         unsigned long, tls,
+         int __user *, child_tidptr)
+    #elif defined(CONFIG_CLONE_BACKWARDS2)
+    SYSCALL_DEFINE5(clone, unsigned long, newsp, unsigned long, clone_flags,
+         int __user *, parent_tidptr,
+         int __user *, child_tidptr,
+         unsigned long, tls)
+    #elif defined(CONFIG_CLONE_BACKWARDS3)
+    SYSCALL_DEFINE6(clone, unsigned long, clone_flags, unsigned long, newsp,
+        int, stack_size,
+        int __user *, parent_tidptr,
+        int __user *, child_tidptr,
+        unsigned long, tls)
+    #else
+    SYSCALL_DEFINE5(clone, unsigned long, clone_flags, unsigned long, newsp,
+         int __user *, parent_tidptr,
+         int __user *, child_tidptr,
+         unsigned long, tls)
+    #endif
+    {
+      return _do_fork(clone_flags, newsp, 0, parent_tidptr, child_tidptr, tls);
+    }
+    #endif
