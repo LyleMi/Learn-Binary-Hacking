@@ -7,6 +7,8 @@ syscall
 
    intro
    open
+   read
+   write
    ioctl
    fcntl
    mmap
@@ -19,3 +21,4 @@ syscall
    bind
    accept
    select
+   wait

@@ -21,7 +21,7 @@ ptrace函数原型为 ``long ptrace(enum __ptrace_request request, pid_t pid, vo
     - 向USER区域中写入一个WORD，内存地址为addr
 - PTRACE_CONT
     - 继续运行之前停止的子进程
-    - 如果data是非空的，它被解释为要发送给 Tracee 的信号
+    - 如果data是非空的，它被解释为要发送给Tracee 的信号
 - PTRACE_KILL
     - 杀掉子进程
 - PTRACE_SINGLESTEP
@@ -43,8 +43,48 @@ ptrace函数原型为 ``long ptrace(enum __ptrace_request request, pid_t pid, vo
     - 进程在每次系统调用之后暂停
 - PT_DENY_ATTACH
     - 反调试
+- PTRACE_GETSIGINFO
+    - 获取导致子进程停止执行的信号信息，并将其存放在父进程内由data指向的位置
+    - addr参数将被忽略
+- PTRACE_SETSIGINFO
+    - 将父进程内由data指向的数据作为siginfo_t结构体拷贝到子进程
+    - addr参数将被忽略
+- PTRACE_SETOPTIONS
+    - 将父进程内由data指向的值设定为ptrace选项
+    - data作为位掩码来解释
+- PTRACE_GETEVENTMSG
+    - 获取刚发生的ptrace事件消息，并存放在data指向的位置
+    - addr参数将被忽略
+- PTRACE_SYSEMU
+    - 用于用户模式的程序仿真子进程的所有系统调用
+- PTRACE_SYSEMU_SINGLESTEP
+    - 用于用户模式的程序仿真子进程的所有系统调用
+
+其中PTRACE_TRACEME和PTRACE_ATTACH的区别为：PTRACE_TRACEME是子进程主动申请被TRACE。而PTRACE_ATTACH是父进程自己要attach到子进程，相当于子进程是被动的trace。
 
 WORD的长度在64位程序中是64位，32位程序中是32位。
 ptrace系统调用在核心对应的处理函数为sys_ptrace。
 
 在trace中Tracer指追踪进程，Tracee指被追踪、被观察的进程。
+
+PTRACE_SETOPTIONS 的取值可能为：
+
+- PTRACE_O_EXITKILL
+    - 当跟踪进程退出时，向所有被跟踪进程发送SIGKILL信号将其退出
+- PTRACE_O_TRACECLONE
+    - 被跟踪进程在下一次调用clone()时将其停止，并自动跟踪新产生的进程
+    - 新的进程在开始时收到SIGSTOP信号
+    - 其新产生的进程的pid可以通过PTRACE_GETEVENTMSG获取
+- PTRACE_O_TRACEEXEC
+    - 被跟踪进程在下一次调用exec()函数时使其停止
+- PTRACE_O_TRACEEXIT
+    - 被跟踪进程在退出是停止其执行
+    - 被跟踪进程的退出状态可通过PTRACE_GETEVENTMSG获得
+- PTRACE_O_TRACEFORK
+    - 被跟踪进程在下次调用fork()时停止执行，并自动跟踪新产生的进程
+    - 新的进程在开始时收到SIGSTOP信号
+    - 其新产生的进程的pid可以通过PTRACE_GETEVENTMSG获取
+- PTRACE_O_TRACEVFORK
+    - 被跟踪进程在下次调用vfork()时停止执行，并自动跟踪新产生的进程
+    - 新的进程在开始时收到SIGSTOP信号
+    - 其新产生的进程的pid可以通过PTRACE_GETEVENTMSG获取
