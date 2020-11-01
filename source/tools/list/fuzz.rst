@@ -47,3 +47,7 @@ ASAN系列
 论文列表
 ----------------------------------------
 - `fuzzing related paper <https://github.com/bin2415/fuzzing_paper>`_
+
+汇总
+----------------------------------------
+- `Google Fuzzing Forum <https://github.com/google/fuzzing>`_ Tutorials, examples, discussions, research proposals, and other resources related to fuzzing

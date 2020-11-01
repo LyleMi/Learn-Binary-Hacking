@@ -8,6 +8,7 @@
    isa
    diff
    x86
+   x64
    arm
    mips
    ppc

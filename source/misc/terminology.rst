@@ -13,6 +13,10 @@
 编译
 ----------------------------------------
 - 即时编译器 (Just In Time compiler, JIT)
+- 中间表示 (Intermediate Representation, IR)
+- 控制流图 (Control Flow Graph, CFG)
+- 抽象语法树 (Abstract Syntax Tree, AST)
+- 静态单赋值 (Static Single-Assignment, SSA)
 
 硬件设备
 ----------------------------------------
@@ -72,3 +76,7 @@
 安全机制
 ----------------------------------------
 - WDAC (Windows Defender Application Control)
+
+机制
+----------------------------------------
+- 写时复制 (Copy On Write, COW)
