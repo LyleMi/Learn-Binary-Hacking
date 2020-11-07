@@ -9,8 +9,7 @@ Linux
    fs/index
    device/index
    mem
-   elf
-   process
+   process/index
    network
    socket
    sec/index

@@ -6,6 +6,8 @@ mmap
 
     void* mmap(void * addr, size_t len, int prot, int flags, int fd, off_t offset)
 
+对应头文件为 ``#include <sys/mman.h>`` 。
+
 其中addr指定映射的起始地址, 通常设为NULL, 由内核指定。
 length表示映射到内存区域的大小。
 

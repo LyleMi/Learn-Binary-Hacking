@@ -9,6 +9,7 @@ syscall
    open
    read
    write
+   dup
    ioctl
    fcntl
    mmap
