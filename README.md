@@ -5,7 +5,7 @@
 
 这份笔记是笔者在学习二进制安全相关知识中的一些记录，用作整理思路、记录想法。笔者所学浅薄、精力有限，在整理笔记的过程中难免存在一些错误或是不完整的部分，正在逐步修正和补充。如果存在疏漏、错误，欢迎各位读者以[Issue](https://github.com/LyleMi/Learn-Binary-Hacking/issues/new)或者[PR](https://github.com/LyleMi/Learn-Binary-Hacking/pulls)的方式批评指正，感激不尽。
 
-在编写笔记的过程中参考、摘抄了很多资料，都在文末留下了相应的链接，十分感谢文章作者的分享。其中笔记的在线版本可以点击[这里](https://lylemi.github.io/Learn-Binary-Hacking/)查看。
+在编写笔记的过程中参考、摘抄了很多资料，都在文末留下了相应的链接，十分感谢文章作者的分享。其中笔记的在线版本可以点击[这里](https://binhack.readthedocs.io/zh/latest/)查看。
 
 ### 笔记大纲
 ---

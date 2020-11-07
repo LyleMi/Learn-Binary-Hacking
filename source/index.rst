@@ -20,6 +20,7 @@
    vulns/index
    malware/index
    mitigations/index
+   fuzz/index
    tools/index
    misc/index
 

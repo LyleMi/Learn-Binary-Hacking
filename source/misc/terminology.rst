@@ -9,6 +9,8 @@
 可执行文件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - 动态链接库 (Dynamic Linked Library, DLL)
+- 进程控制块 (Process Control Block, PCB)
+- 线程控制块 (Thread Control Block, TCB)
 
 编译
 ----------------------------------------
@@ -72,6 +74,8 @@
 - Host物理地址 (Host Physical Address, HPA)
 - 内存管理单元 (Memory Management Unit, MMU)
 - 内存管理单元 (Paged Memory Management Unit, PMMU)
+- 内存保护单元 (Memory Protection Unit, MPU)
+- 紧耦合内存 (Tightly Coupled Memory, TCM)
 
 安全机制
 ----------------------------------------
