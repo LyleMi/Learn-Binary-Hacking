@@ -54,7 +54,6 @@ gdb
 
 gdb-peda
 ----------------------------------------
-
 - ``aslr`` show aslr setting
 - ``checksec`` Check for various security options of binary
 - ``dumpargs`` Display arguments passed to a function when stopped at a call instruction
@@ -77,3 +76,7 @@ gdb-peda
 - ``skeleton`` Generate python exploit code template
 - ``vmmap`` Get virtual mapping address ranges of section(s) in debugged process
 - ``xormem`` XOR a memory region with a key
+
+参考链接
+----------------------------------------
+- `GDB Internals <http://www.deansys.com/doc/gdbInternals/gdbint_toc.html>`_

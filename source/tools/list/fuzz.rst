@@ -15,6 +15,10 @@ PT-Fuzz
 ----------------------------------------
 - `libxdc <https://github.com/nyx-fuzz/libxdc>`_ The fastest Intel-PT decoder for fuzzing
 
+性能加速
+----------------------------------------
+- `perf fuzz <https://github.com/sslab-gatech/perf-fuzz>`_ New OS Primitives Specialized for Fuzzing
+
 语料
 ----------------------------------------
 - `fuzzdata <https://github.com/MozillaSecurity/fuzzdata>`_

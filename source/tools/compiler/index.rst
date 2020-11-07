@@ -8,3 +8,4 @@
    gcc
    clang
    cmake
+   nasm
