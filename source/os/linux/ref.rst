@@ -43,6 +43,10 @@ jffs
 - `Universal TUN/TAP device driver <https://www.kernel.org/doc/Documentation/networking/tuntap.txt>`_
 - `Tun/Tap interface tutorial <https://backreference.org/2010/03/26/tuntap-interface-tutorial/>`_
 
+进程
+----------------------------------------
+- `Linux 信号signal处理机制 <https://www.cnblogs.com/taobataoma/archive/2007/08/30/875743.html>`_
+
 内核
 ----------------------------------------
 - `Linux Kernel Teaching <https://linux-kernel-labs.github.io/refs/heads/master/index.html>`_

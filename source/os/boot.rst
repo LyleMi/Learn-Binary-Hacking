@@ -31,3 +31,4 @@ GNU GRUB（GRand Unified Bootloader）是一个来自GNU项目的多操作系统
 ----------------------------------------
 - `UEFI <https://wiki.osdev.org/UEFI>`_
 - `计算机是如何启动的 <http://www.ruanyifeng.com/blog/2013/02/booting.html>`_
+- `Extensible Firmware Interface Specification <https://www.intel.com/content/dam/doc/product-specification/efi-v1-10-specification.pdf>`_

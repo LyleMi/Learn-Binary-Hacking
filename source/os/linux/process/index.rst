@@ -9,3 +9,4 @@
    thread
    elf
    dispatch
+   signal
