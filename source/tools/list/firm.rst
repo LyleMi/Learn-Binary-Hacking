@@ -28,3 +28,10 @@ BLE
 UEFI
 ----------------------------------------
 - `UEFITool <https://github.com/LongSoft/UEFITool>`_ UEFI firmware image viewer and editor
+- `UEFI Firmware Parser <https://github.com/theopolis/uefi-firmware-parser>`_ Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc
+- `UEFI RETool <https://github.com/yeggor/UEFI_RETool>`_ A tool for UEFI firmware reverse engineering
+- `EFI DXE Emulator <https://github.com/gdbinit/efi_dxe_emulator>`_ EFI DXE Emulator and Interactive Debugger 
+
+固件分析
+----------------------------------------
+- `chipsec <https://github.com/chipsec/chipsec>`_ Platform Security Assessment Framework

@@ -34,6 +34,12 @@ IDA
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
 - `awesome ida <https://github.com/xrkk/awesome-ida>`_
 
+插件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `EFI scripts for IDA Pro <https://github.com/snare/ida-efiutils>`_  Some scripts for IDA Pro to assist with reverse engineering EFI binaries
+- `EFISwissKnife <https://github.com/gdbinit/EFISwissKnife>`_ An IDA plugin to improve (U)EFI reversing
+- `efiXplorer <https://github.com/binarly-io/efiXplorer>`_ IDA plugin for UEFI firmware analysis and reverse engineering automation
+
 辅助工具
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_ Find code patterns within the Hexrays AST
@@ -67,11 +73,19 @@ Ghidra
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Ghidra Cpp Class Analyzer <https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer>`_
 - `GhidraSnippets <https://github.com/cetfor/GhidraSnippets>`_ Python snippets for Ghidra's Program and Decompiler APIs
+- `Ghidra Firmware Utilities <https://github.com/al3xtjames/ghidra-firmware-utils>`_  Ghidra utilities for analyzing PC firmware
 
 Radare2
 ----------------------------------------
 - `radare2 <https://github.com/radare/radare2>`_
+
+文档与资料
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Radare2 Book <https://radare.gitbooks.io/radare2book/content/>`_
+
+插件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `r2ghidra <https://github.com/radareorg/r2ghidra>`_ Deep ghidra decompiler and sleigh disassembler integration for radare2
 
 Diff
 ----------------------------------------

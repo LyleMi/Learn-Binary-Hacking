@@ -13,6 +13,7 @@
 ----------------------------------------
 - `Z3 <https://github.com/Z3Prover/z3>`_
 - `manticore <https://github.com/trailofbits/manticore>`_  Symbolic execution tool
+- `Triton <https://github.com/JonathanSalwan/Triton>`_ Dynamic Binary Analysis (DBA) framework
 
 gdb插件
 ----------------------------------------
