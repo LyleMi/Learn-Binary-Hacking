@@ -5,6 +5,7 @@ Linux
    :caption: 目录:
 
    intro
+   history
    source
    fs/index
    device/index

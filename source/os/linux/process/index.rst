@@ -9,4 +9,7 @@
    thread
    elf
    dispatch
+   ipc
+   shm
+   sem
    signal

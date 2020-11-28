@@ -7,5 +7,6 @@
    class
    driver
    operations
+   terminal
    mtd
    misc

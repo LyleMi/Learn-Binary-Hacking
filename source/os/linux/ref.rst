@@ -53,6 +53,14 @@ jffs
 - `slub算法 <https://blog.csdn.net/lukuen/article/details/6935068>`_
 - `linux mmap 详解 <http://blog.chinaunix.net/uid-20321537-id-3483405.html>`_
 
+设备
+----------------------------------------
+
+终端设备
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `pts(4) — Linux manual page <man7.org/linux/man-pages/man4/pts.4.html>`_
+- `pty(7) — Linux manual page <https://man7.org/linux/man-pages/man7/pty.7.html>`_
+
 安全机制
 ----------------------------------------
 - `Linux Crgoups 资源限制 <https://github.com/charSLee013/docker/blob/master/Docker%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90--Linux%20Crgoups%20%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6.md>`_
