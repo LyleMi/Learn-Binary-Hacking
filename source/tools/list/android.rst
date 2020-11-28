@@ -16,5 +16,6 @@ Android
 
 改机工具
 ----------------------------------------
-- `Xposed <https://github.com/rovo89/Xposed>`_
+- `Xposed <https://github.com/rovo89/Xposed>`_ The native part of the Xposed framework
 - `Magisk <https://github.com/topjohnwu/Magisk>`_
+- `TaiChi <https://github.com/taichi-framework/TaiChi>`_ A framework to use Xposed module with or without Root/Unlock bootloader

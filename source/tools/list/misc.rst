@@ -23,6 +23,7 @@ Malware Sample
 ----------------------------------------
 - `malware samples <https://github.com/InQuest/malware-samples>`_
 - `theZoo <https://github.com/ytisf/theZoo>`_
+- `MalwareSourceCode <https://github.com/vxunderground/MalwareSourceCode>`_  Collection of malware source code for a variety of platforms in an array of different programming languages
 
 实验环境
 ----------------------------------------
@@ -31,3 +32,7 @@ Malware Sample
 系统交互
 ----------------------------------------
 - `PythonForWindows <https://github.com/hakril/PythonForWindows>`_  is a base of code aimed to make interaction with Windows
+
+环境
+----------------------------------------
+- `SystemExplorer <https://github.com/zodiacon/SystemExplorer>`_  Windows System Explorer

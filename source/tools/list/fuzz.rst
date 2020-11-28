@@ -11,6 +11,10 @@ AFL系列
 - `syzkaller <https://github.com/google/syzkaller>`_ is an unsupervised coverage-guided kernel fuzzer
 - `VMI Kernel Fuzzer for Xen Project <https://github.com/intel/kernel-fuzzer-for-xen-project>`_
 
+密码学Fuzz
+----------------------------------------
+- `Cryptofuzz <https://github.com/guidovranken/cryptofuzz>`_ Differential cryptography fuzzing
+
 PT-Fuzz
 ----------------------------------------
 - `libxdc <https://github.com/nyx-fuzz/libxdc>`_ The fastest Intel-PT decoder for fuzzing

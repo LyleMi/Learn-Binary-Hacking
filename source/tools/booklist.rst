@@ -39,17 +39,23 @@ Windows
 Mac OS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - 深入理解Mac OS X & iOS操作系统  【美】Jonathan Levin
+- mac OS软件安全与逆向分析
 
 Android
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Android内核剖析
 - Android软件安全与逆向分析
+- Android安全攻防权威指南
 - 《Android Dalvik虚拟机结构及机制剖析（第1、2卷）》吴艳霞；张国印
 - 《Android Internals::Power User's View》【美】Jonathan Levin
 - 《Android系统源代码情景分析》罗升阳
 - 深入理解Android
 - 深入理解Android内核设计思想
 - 第一行代码
+
+iOS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- iOS应用安全权威指南
 
 嵌入式
 ----------------------------------------

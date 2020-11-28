@@ -3,7 +3,6 @@ gdb
 
 gdb
 ----------------------------------------
-
 - BreakPoint 断点
     - ``break [PROBE_MODIFIER] [LOCATION] [thread THREADNUM] [if CONDITION]``
     - 设置断点
@@ -25,6 +24,7 @@ gdb
     - ``i b`` breakpoints info
     - ``i f`` frame info
     - ``i s`` stack info
+    - ``i threads`` threads info
 - ``ignore <break_list> count``
     - break_list所指定的断点号将被忽略count次
 - ``n`` / ``next`` 单步运行
@@ -50,7 +50,7 @@ gdb
         - ``w`` 表示四字节
         - ``g`` 表示八字节
     - 地址可以是内存地址或者是寄存器
-
+- ``thread <id>`` thread 切换
 
 gdb-peda
 ----------------------------------------

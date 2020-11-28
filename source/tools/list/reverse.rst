@@ -52,6 +52,7 @@ IDA
 - `IDA minsc <https://github.com/arizvisa/ida-minsc>`_ is a plugin for IDA Pro that assists a user with scripting the IDAPython plugin that is bundled with the disassembler
 - `lucid <https://github.com/gaasedelen/lucid>`_ An Interactive Hex-Rays Microcode Explorer
 - `grap <https://github.com/QuoSecGmbH/grap/>`_ grap: define and match graph patterns within binaries
+- `keypatch <https://github.com/keystone-engine/keypatch>`_ Multi-architecture assembler for IDA Pro. Powered by Keystone Engine
 
 Golang插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
