@@ -19,7 +19,7 @@ bind的内核实现如下：
             err = move_addr_to_kernel(umyaddr, addrlen, &address);
             if (err >= 0) {
                 err = security_socket_bind(sock, (struct sockaddr *)&address,
-                               addrlen);//安全相关，暂不关注
+                               addrlen);
                 if (!err)
                     err = sock->ops->bind(sock, (struct sockaddr *)
                                   &address, addrlen);

@@ -10,3 +10,4 @@
    pe
    dll
    macho
+   antidebug

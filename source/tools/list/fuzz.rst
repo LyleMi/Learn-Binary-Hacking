@@ -59,6 +59,13 @@ ASAN系列
 ----------------------------------------
 - `fuzzing related paper <https://github.com/bin2415/fuzzing_paper>`_
 
+测试集
+----------------------------------------
+- `LAVA <https://github.com/panda-re/lava>`_ Large-scale Automated Vulnerability Addition
+- `DARPA Cyber Grand Challenge Sample Challenges <https://github.com/CyberGrandChallenge/samples>`_
+- `FuzzBench <https://github.com/google/fuzzbench>`_ Fuzzer benchmarking as a service
+- `fuzzer-test-suite <https://github.com/google/fuzzer-test-suite>`_  Set of tests for fuzzing engines 
+
 汇总
 ----------------------------------------
 - `Google Fuzzing Forum <https://github.com/google/fuzzing>`_ Tutorials, examples, discussions, research proposals, and other resources related to fuzzing

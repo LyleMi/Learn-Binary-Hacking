@@ -52,3 +52,12 @@ hook
 ----------------------------------------
 - `Triton <https://github.com/JonathanSalwan/Triton>`_
 - `bap <https://github.com/BinaryAnalysisPlatform/bap>`_ Binary Analysis BinaryAnalysisPlatform
+
+Sandbox
+----------------------------------------
+- `any.run <https://app.any.run/>`_
+- `Noriben <https://github.com/Rurik/Noriben>`_ Portable, Simple, Malware Analysis Sandbox
+- `Cuckoo <https://cuckoosandbox.org/>`_
+- `redmimicry <https://redmimicry.com/>`_
+- `LiSa <https://github.com/danieluhricek/LiSa>`_ Sandbox for automated Linux malware analysis
+- `Speakeasy <https://github.com/fireeye/speakeasy>`_ Windows kernel and user mode emulation

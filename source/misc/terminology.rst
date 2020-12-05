@@ -11,6 +11,10 @@
 - 动态链接库 (Dynamic Linked Library, DLL)
 - 进程控制块 (Process Control Block, PCB)
 - 线程控制块 (Thread Control Block, TCB)
+- 延迟绑定 (Procedure Linkage Table, PLT)
+- 位置无关代码 (Position Independent Code, PIC)
+- 全局偏移表 (Global Offset Table, GOT)
+- 导入地址表 (Import Address Table, IAT)
 
 编译
 ----------------------------------------
@@ -45,6 +49,7 @@
 - UART (Universal Asynchronous Receiver/Transmitter)
 - JTAG (Joint Test Action Group)
 - 外设部件互连标准 (Peripheral Component Interconnect, PCI)
+- 串行外设接口 (Serial Peripheral Interface, SPI)
 
 数据交互
 ----------------------------------------
@@ -52,6 +57,7 @@
 - PMIO (Port-Mapped Input/Output)
 - DMA (direct memory access)
 - 应用二进制接口 (Application Binary Interface, ABI)
+- 进程间通信 (Inter Process Communication, IPC)
 
 指令集架构
 ----------------------------------------
@@ -84,3 +90,9 @@
 机制
 ----------------------------------------
 - 写时复制 (Copy On Write, COW)
+
+其他
+----------------------------------------
+- POSIX (Portable Operating System Interface)
+- GNU (GNU is Not Unix)
+- BSD (Berkeley Software Distribution)

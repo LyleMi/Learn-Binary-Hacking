@@ -19,6 +19,7 @@ syscall
    vfork
    clone
    socket
+   setsockopt
    bind
    accept
    select

@@ -169,3 +169,7 @@ data段保存已初始化的全局变量和局部静态变量
 PLT与GOT
 ----------------------------------------
 在编译和链接阶段，链接器无法知知道进程运行起来之后外部函数的加载地址。因此程序编译时会采用两种表进行辅助，一个为程序链接表（PLT，Procedure Link Table），一个为全局偏移表（GOT, Global Offset Table）。
+
+参考链接
+----------------------------------------
+- `Executable and Linking Format <https://refspecs.linuxbase.org/elf/elf.pdf>`_

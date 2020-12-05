@@ -9,6 +9,7 @@
 - `QEMU Binaries for Windows and QEMU Documentation <https://qemu.weilnetz.de/>`_
 - `QEMU Doc <https://www.qemu.org/docs/master/qemu-doc.html>`_
 - `QEMU, a Fast and Portable Dynamic Translator <https://static.usenix.org/event/usenix05/tech/freenix/full_papers/bellard/bellard.pdf>`_
+- `QEMU’s documentation <https://qemu.readthedocs.io/en/latest/>`_
 
 Blog
 ----------------------------------------

@@ -36,16 +36,6 @@ IDA
 
 插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- `EFI scripts for IDA Pro <https://github.com/snare/ida-efiutils>`_  Some scripts for IDA Pro to assist with reverse engineering EFI binaries
-- `EFISwissKnife <https://github.com/gdbinit/EFISwissKnife>`_ An IDA plugin to improve (U)EFI reversing
-- `efiXplorer <https://github.com/binarly-io/efiXplorer>`_ IDA plugin for UEFI firmware analysis and reverse engineering automation
-
-辅助工具
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_ Find code patterns within the Hexrays AST
-
-插件
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `IDArling <https://github.com/IDArlingTeam/IDArling>`_
 - `abyss <https://github.com/patois/abyss>`_ IDAPython Plugin for Postprocessing of Hexrays Decompiler Output
 - `Sark <https://github.com/tmr232/Sark>`_ IDA Plugins & IDAPython Scripting Library
@@ -53,6 +43,16 @@ IDA
 - `lucid <https://github.com/gaasedelen/lucid>`_ An Interactive Hex-Rays Microcode Explorer
 - `grap <https://github.com/QuoSecGmbH/grap/>`_ grap: define and match graph patterns within binaries
 - `keypatch <https://github.com/keystone-engine/keypatch>`_ Multi-architecture assembler for IDA Pro. Powered by Keystone Engine
+
+EFI插件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `EFI scripts for IDA Pro <https://github.com/snare/ida-efiutils>`_  Some scripts for IDA Pro to assist with reverse engineering EFI binaries
+- `EFISwissKnife <https://github.com/gdbinit/EFISwissKnife>`_ An IDA plugin to improve (U)EFI reversing
+- `efiXplorer <https://github.com/binarly-io/efiXplorer>`_ IDA plugin for UEFI firmware analysis and reverse engineering automation
+
+辅助工具
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `HexRaysPyTools <https://github.com/igogo-x86/HexRaysPyTools>`_ Find code patterns within the Hexrays AST
 
 Golang插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,6 +75,7 @@ Ghidra
 - `Ghidra Cpp Class Analyzer <https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer>`_
 - `GhidraSnippets <https://github.com/cetfor/GhidraSnippets>`_ Python snippets for Ghidra's Program and Decompiler APIs
 - `Ghidra Firmware Utilities <https://github.com/al3xtjames/ghidra-firmware-utils>`_  Ghidra utilities for analyzing PC firmware
+- `ghidra_scripts <https://github.com/tacnetsol/ghidra_scripts>`_ Ghidra scripts to support IOT exploitation
 
 Radare2
 ----------------------------------------
