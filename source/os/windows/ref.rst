@@ -13,7 +13,12 @@
 - `windows kernel exploit tutorial <https://www.redog.me/tags/windows-kernel-exploit-tutorial/>`_
 - `HEVD <https://github.com/hacksysteam/HackSysExtremeVulnerableDriver>`_
 - `HolicPOC <https://github.com/leeqwind/HolicPOC>`_
+- `Basics of Windows shellcode writing <https://idafchev.github.io/exploit/2017/09/26/writing_windows_shellcode.html>`_
 
 漏洞
 ----------------------------------------
 - `进程注入 <https://github.com/suvllian/process-inject>`_
+
+系统架构
+----------------------------------------
+- `Deeper into Windows Architecture <https://docs.microsoft.com/zh-cn/archive/blogs/hanybarakat/deeper-into-windows-architecture>`_

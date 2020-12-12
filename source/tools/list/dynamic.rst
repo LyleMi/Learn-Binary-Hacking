@@ -28,14 +28,17 @@ gdb插件
 - `dtrace <https://github.com/dtrace4linux/linux>`_
 - `uftrace <https://github.com/namhyung/uftrace>`_
 - `qira <https://github.com/geohot/qira>`_ QEMU Interactive Runtime Analyse
+- `WinREPL <https://github.com/zerosum0x0/WinREPL>`_ x86 and x64 assembly "read-eval-print loop" shell for Windows
+- `rappel <https://github.com/yrp604/rappel>`_ A linux-based assembly REPL for x86, amd64, armv7, and armv8
 
 模拟执行
 ----------------------------------------
-- `qemu <https://github.com/qemu/>`_
+- `QEMU <https://github.com/qemu/>`_
 - `unicorn <https://github.com/unicorn-engine/unicorn>`_
-- `OpenEmu <https://github.com/OpenEmu/OpenEmu>`_
+- `OpenEmu <https://github.com/OpenEmu/OpenEmu>`_ Retro video game emulation for macOS
 - `panda <https://github.com/panda-re/panda>`_ Platform for Architecture-Neutral Dynamic Analysis
 - `avatar2 <https://github.com/avatartwo/avatar2>`_
+- `Qiling <https://github.com/qilingframework/qiling>`_ Advanced Binary Emulation Framework
 
 进程分析
 ----------------------------------------

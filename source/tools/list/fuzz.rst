@@ -66,6 +66,10 @@ ASAN系列
 - `FuzzBench <https://github.com/google/fuzzbench>`_ Fuzzer benchmarking as a service
 - `fuzzer-test-suite <https://github.com/google/fuzzer-test-suite>`_  Set of tests for fuzzing engines 
 
+覆盖率
+----------------------------------------
+- `lighthouse <https://github.com/gaasedelen/lighthouse>`_ A Code Coverage Explorer for Reverse Engineers
+
 汇总
 ----------------------------------------
 - `Google Fuzzing Forum <https://github.com/google/fuzzing>`_ Tutorials, examples, discussions, research proposals, and other resources related to fuzzing

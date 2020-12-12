@@ -28,3 +28,7 @@ Malware Sample
 环境
 ----------------------------------------
 - `SystemExplorer <https://github.com/zodiacon/SystemExplorer>`_  Windows System Explorer
+
+套件
+----------------------------------------
+- `Sysinternals Suite <https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite>`_
