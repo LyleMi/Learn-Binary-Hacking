@@ -29,6 +29,7 @@
 
 存储设备
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- 印制电路板 (Printed Circuit Board, PCB)
 - 只读存储器 (Read Only Memory, ROM)
 - 随机存取存储器 (Random Access Memory, RAM)
 - 静态随机存取存储器 (Static Random Access Memory, SRAM)

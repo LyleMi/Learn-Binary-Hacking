@@ -6,5 +6,29 @@ open / openat
 
 .. code-block:: cpp
 
+  int open(const char *path, int oflag);
   int open(const char *path, int oflag, mode_t mode);
   int openat(int fd, const char *path, int oflag, mode_t mode);
+
+其中oflag可取的值如下：
+
+- O_RDONLY: 只读打开
+- O_WRONLY: 只写打开
+- O_RDWR: 读，写打开
+- O_CREAT: 若文件不存在，则创建它，需要使用mode选项。来指明新文件的访问权限
+- O_APPEND: 追加写，如果文件已经有内容，这次打开文件所写的数据附加到文件的末尾而不覆盖原来的内容
+
+其中mode可取的值如下：
+
+- S_IRUSR
+    - 文件所有者有读 (r) 权限
+- S_IWUSR
+    - 文件所有者有写 (w) 权限
+- S_IRGRP
+    - 文件所属组有读 (r) 权限
+- S_IWGRP
+    - 文件所属组有写 (w) 权限
+- S_IROTH
+    - 文件所属other有读 (r) 权限
+- S_IWOTH
+    - 文件所属other有写 (w) 权限
