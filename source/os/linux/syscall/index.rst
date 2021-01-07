@@ -9,6 +9,7 @@ syscall
    open
    read
    write
+   close
    dup
    ioctl
    fcntl
@@ -19,8 +20,10 @@ syscall
    vfork
    clone
    socket
-   setsockopt
+   sockopt
    bind
    accept
    select
+   send
+   recv
    wait
