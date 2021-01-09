@@ -13,4 +13,5 @@
    qemu/index
    unicorn
    intel
+   detect
    misc
