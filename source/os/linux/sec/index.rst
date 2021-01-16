@@ -7,5 +7,6 @@
 
    cgroups
    namespace
+   seccomp
    mitigation
    capabilities

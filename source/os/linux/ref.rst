@@ -8,6 +8,7 @@
 - `linux insides <https://github.com/0xAX/linux-insides>`_ A book-in-progress about the linux kernel and its insides
 - `Embedded Linux Wiki <https://elinux.org/Main_Page>`_
 - `namespaces Linux manual page <man7.org/linux/man-pages/man7/namespaces.7.html>`_
+- `ArchLinux Wiki <https://wiki.archlinux.org/index.php>`_
 
 调试
 ----------------------------------------

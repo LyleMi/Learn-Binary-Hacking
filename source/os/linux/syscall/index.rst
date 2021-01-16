@@ -15,6 +15,7 @@ syscall
    fcntl
    mmap
    ptrace
+   signal
    execve
    fork
    vfork
