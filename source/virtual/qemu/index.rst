@@ -10,6 +10,7 @@ QEMU
    iothread
    device
    runtime
+   qom
    qmp
    source
    sec

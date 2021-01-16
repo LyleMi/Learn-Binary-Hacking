@@ -33,6 +33,7 @@ IDA
 - `IDA SDK <https://www.hex-rays.com/products/ida/support/sdkdoc/index.html>`_
 - `idapython cheatsheet <https://github.com/inforion/idapython-cheatsheet>`_
 - `awesome ida <https://github.com/xrkk/awesome-ida>`_
+- `idapython docs <https://www.hex-rays.com/products/ida/support/idapython_docs/>`_
 
 插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,7 +44,8 @@ IDA
 - `lucid <https://github.com/gaasedelen/lucid>`_ An Interactive Hex-Rays Microcode Explorer
 - `grap <https://github.com/QuoSecGmbH/grap/>`_ grap: define and match graph patterns within binaries
 - `keypatch <https://github.com/keystone-engine/keypatch>`_ Multi-architecture assembler for IDA Pro. Powered by Keystone Engine
-- `idaplugins list <https://github.com/onethawt/idaplugins-list>`_  A list of IDA Plugins 
+- `idaplugins list <https://github.com/onethawt/idaplugins-list>`_  A list of IDA Plugins
+- `LazyIDA <https://github.com/L4ys/LazyIDA>`_
 
 EFI插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

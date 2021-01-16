@@ -13,3 +13,8 @@ Blog
 - `Fuzzing for eBPF JIT bugs in the Linux kernel <https://scannell.me/fuzzing-for-ebpf-jit-bugs-in-the-linux-kernel/>`_ 在用户态测试内核态代码
 - `对 fuzz 的一点总结 <https://bbs.pediy.com/thread-249986.htm>`_
 - `从研究者的视角看Fuzzing技术发展30年 <https://mp.weixin.qq.com/s/rSoQvFhuv8R2kA3efbpJxA>`_
+
+Workshop
+----------------------------------------
+- `Fuzzing with AFL workshop <https://github.com/mykter/afl-training>`_
+- `libfuzzer-workshop <https://github.com/Dor1s/libfuzzer-workshop>`_

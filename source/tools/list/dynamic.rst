@@ -45,6 +45,7 @@ gdb插件
 - `Process Explorer <https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>`_
 - `PeDoll <https://github.com/matrixcascade/PeDoll>`_ Application behavior monitor based on inline hook
 - `libunwind <https://github.com/libunwind/libunwind>`_
+- `Dr.Memory <https://github.com/DynamoRIO/drmemory>`_ Memory Debugger for Windows, Linux, Mac, and Android
 
 hook
 ----------------------------------------
@@ -64,3 +65,6 @@ Sandbox
 - `redmimicry <https://redmimicry.com/>`_
 - `LiSa <https://github.com/danieluhricek/LiSa>`_ Sandbox for automated Linux malware analysis
 - `Speakeasy <https://github.com/fireeye/speakeasy>`_ Windows kernel and user mode emulation
+- `gVisor <https://github.com/google/gvisor>`_ Application Kernel for Containers
+- `nsjail <https://github.com/google/nsjail>`_ A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters
+- `Sandboxie <https://github.com/sandboxie-plus/Sandboxie>`_ Sandboxie is a sandbox-based isolation software for 32- and 64-bit Windows NT-based operating systems

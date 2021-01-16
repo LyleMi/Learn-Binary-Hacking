@@ -125,6 +125,7 @@ Intel PT 是 Intel 的一个扩展功能, 它利用硬件以很小的开销来�
 - `List of ARM microarchitectures <https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures>`_
 - `List of AMD microprocessors <https://en.wikipedia.org/wiki/List_of_AMD_microprocessors>`_
 - `Processor Tracing <https://software.intel.com/content/www/us/en/develop/blogs/processor-tracing.html>`_
+- `AMD Technologies for Processors <https://www.amd.com/en/technologies-processors>`_
 
 Blog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

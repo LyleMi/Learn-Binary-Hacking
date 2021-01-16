@@ -22,7 +22,9 @@ gcc
 ----------------------------------------
 - ``-fno-exceptions`` 不使用异常
 - ``-fno-stack-protector`` 不开启canary栈溢出检测
+- ``-fstack-protector-all`` 开启栈溢出保护选项
 - ``-z execstack`` 开启栈可执行关闭NX
+- ``-z noexecstack`` 开启NX保护
 
 体系结构相关选项
 ----------------------------------------

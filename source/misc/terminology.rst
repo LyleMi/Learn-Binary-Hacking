@@ -51,14 +51,17 @@
 - JTAG (Joint Test Action Group)
 - 外设部件互连标准 (Peripheral Component Interconnect, PCI)
 - 串行外设接口 (Serial Peripheral Interface, SPI)
+- RGMII (Reduced Gigabit Media Independent Interface)
 
 数据交互
 ----------------------------------------
 - MMIO (Memory-Mapped Input/Output)
 - PMIO (Port-Mapped Input/Output)
-- DMA (direct memory access)
+- DMA (Direct Memory Access)
+- 通用型输入输出 (General-Purpose Input/Output, GPIO)
 - 应用二进制接口 (Application Binary Interface, ABI)
 - 进程间通信 (Inter Process Communication, IPC)
+- I/O请求包 (I/O Request Package, IRP)
 
 指令集架构
 ----------------------------------------
