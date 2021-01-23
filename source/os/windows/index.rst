@@ -13,13 +13,10 @@ Windows
    iodriver
    fs
    fsenc
-   ident
-   acl
    network
    registry
    wmi
-   security
-   policy
+   security/index
    malware
    terminology
    ref
