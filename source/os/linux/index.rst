@@ -7,6 +7,7 @@ Linux
    intro
    history
    source
+   boot
    fs/index
    device/index
    process/index

@@ -9,6 +9,20 @@
     - 必要的一些二进制文件
 - /boot
     - boot loader的静态文件
+    - 系统Kernel的配置文件
+    - /boot/grub
+        - 启动管理程序GRUB的目录
+        - grub.conf
+            - 启动管理程序GRUB的配置文件
+        - stage1
+            - MBR的备份文件
+        - xxx_stage1_5
+            - 连接stage1到stage2的一个通道
+        - stage2
+            - GRUB的核心程序
+    - initrd文件: initial ram disk，启动系统所需加载的虚拟磁盘
+    - System.map: 系统Kernel中的变量对应表，包括变量或函数名称
+    - vmlinuz: 实际系统所使用的kernel
 - /etc
     - 各种config文件
     - /etc/fstab 开机自动挂载的配置文件
