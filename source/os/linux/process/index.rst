@@ -7,7 +7,8 @@
 
    process
    thread
-   elf
+   elfload
+   elfrun
    dispatch
    ipc
    shm

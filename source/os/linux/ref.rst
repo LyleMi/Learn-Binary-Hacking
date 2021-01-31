@@ -10,12 +10,12 @@
 - `namespaces Linux manual page <man7.org/linux/man-pages/man7/namespaces.7.html>`_
 - `ArchLinux Wiki <https://wiki.archlinux.org/index.php>`_
 
-调试
+内核调试
 ----------------------------------------
 - `Linux内核调试 <https://xz.aliyun.com/t/2024>`_
 - `利用KGDB调试内核驱动模块 <http://blog.nsfocus.net/gdb-kgdb-debug-application/>`_
 
-漏洞利用
+内核漏洞利用
 ----------------------------------------
 - `Linux kernel pwn notes <http://www.mamicode.com/info-detail-2399209.html>`_
 - `Linux kernel ROP <https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/>`_
@@ -44,9 +44,12 @@ jffs
 - `Universal TUN/TAP device driver <https://www.kernel.org/doc/Documentation/networking/tuntap.txt>`_
 - `Tun/Tap interface tutorial <https://backreference.org/2010/03/26/tuntap-interface-tutorial/>`_
 
-进程
+程序
 ----------------------------------------
 - `Linux 信号signal处理机制 <https://www.cnblogs.com/taobataoma/archive/2007/08/30/875743.html>`_
+- `linux中ELF加载过程分析 <http://wuxinwei.org/2015/04/19/Neteasy-cloud-linux-kernel/>`_
+- `ELF文件的加载过程 <https://blog.csdn.net/gatieme/java/article/details/51628257>`_
+- `Linux X86 程序启动 <https://luomuxiaoxiao.com/?p=516>`_
 
 内核
 ----------------------------------------
@@ -72,6 +75,4 @@ blog
 - `容器简史：从1979至今的日子 <https://www.freebuf.com/articles/network/229004.html>`_
 - `Linux TTY/PTS概述 <https://segmentfault.com/a/1190000009082089>`_
 - `The TTY demystified <http://www.linusakesson.net/programming/tty/index.php>`_
-- `linux中ELF加载过程分析 <http://wuxinwei.org/2015/04/19/Neteasy-cloud-linux-kernel/>`_
-- `ELF文件的加载过程 <https://blog.csdn.net/gatieme/java/article/details/51628257>`_
 - `Linux Namespace 简介 <https://www.cnblogs.com/sparkdev/p/9365405.html>`_

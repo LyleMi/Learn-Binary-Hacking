@@ -3,7 +3,7 @@
 
 AFL系列
 ----------------------------------------
-- `afl <https://github.com/mirrorer/afl>`_
+- `afl <https://github.com/google/AFL>`_ american fuzzy lop - a security-oriented fuzzer
 
 内核
 ----------------------------------------
