@@ -31,3 +31,4 @@ ICCID
 参考链接
 ----------------------------------------
 - `手机设备识别码类型分析 <https://mp.weixin.qq.com/s/Ly8XIfKanX3bgeZLe0QyeA>`_
+- `Android Security <https://github.com/anantshri/Android_Security>`_ suplimentary material for Android Training's done by Anant Shrivastava
