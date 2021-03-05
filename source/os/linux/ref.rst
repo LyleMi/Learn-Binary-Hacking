@@ -27,6 +27,7 @@
 - `Linux 文件系统剖析 <https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/>`_
 - `Docker: About storage drivers <https://docs.docker.com/storage/storagedriver/>`_
 - `嵌入式文件系统简介(一) —— Linux MTD设备文件系统 <https://blog.51cto.com/13578681/2307925>`_
+- `Linux文件存储抽象VFS <https://blog.csdn.net/u010487568/article/details/79606141>`_
 
 OverlayFS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
