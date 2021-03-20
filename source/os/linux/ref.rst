@@ -11,17 +11,6 @@
 - `namespaces Linux manual page <man7.org/linux/man-pages/man7/namespaces.7.html>`_
 - `ArchLinux Wiki <https://wiki.archlinux.org/index.php>`_
 
-内核调试
-----------------------------------------
-- `Linux内核调试 <https://xz.aliyun.com/t/2024>`_
-- `利用KGDB调试内核驱动模块 <http://blog.nsfocus.net/gdb-kgdb-debug-application/>`_
-
-内核漏洞利用
-----------------------------------------
-- `Linux kernel pwn notes <http://www.mamicode.com/info-detail-2399209.html>`_
-- `Linux kernel ROP <https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/>`_
-- `SMEP bypass <https://github.com/black-bunny/LinKern-x86_64-bypass-SMEP-KASLR-kptr_restric>`_
-
 文件系统
 ----------------------------------------
 - `Linux 文件系统剖析 <https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/>`_
@@ -55,9 +44,28 @@ jffs
 
 内核
 ----------------------------------------
+
+内核机制
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Linux Kernel Teaching <https://linux-kernel-labs.github.io/refs/heads/master/index.html>`_
 - `slub算法 <https://blog.csdn.net/lukuen/article/details/6935068>`_
 - `linux mmap 详解 <http://blog.chinaunix.net/uid-20321537-id-3483405.html>`_
+
+内核模块
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `Linux Kernel Module Sandbox <https://github.com/tpiekarski/lkm-sandbox>`_ Collection of Linux Kernel Modules and PoC to discover, learn and practice Linux Kernel Development
+
+内核调试
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `Linux内核调试 <https://xz.aliyun.com/t/2024>`_
+- `利用KGDB调试内核驱动模块 <http://blog.nsfocus.net/gdb-kgdb-debug-application/>`_
+
+内核漏洞利用
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `Linux kernel pwn notes <http://www.mamicode.com/info-detail-2399209.html>`_
+- `Linux kernel ROP <https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/>`_
+- `SMEP bypass <https://github.com/black-bunny/LinKern-x86_64-bypass-SMEP-KASLR-kptr_restric>`_
+- `Linux Kernel Exploitation <https://github.com/xairy/linux-kernel-exploitation>`_ A collection of links related to Linux kernel security and exploitation
 
 设备
 ----------------------------------------

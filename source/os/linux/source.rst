@@ -29,6 +29,10 @@
     - /etc/mtab 当前的分区挂载情况
     - /etc/passwd 用户文件
     - /etc/shadow 密码文件
+    - /etc/init.d/
+        - 自启动项
+    - /etc/rc.d/
+        - 自启动项
 - /usr
     - 共享的一些只读文件
     - /usr/local
@@ -76,24 +80,26 @@
 - /tmp
     - 临时文件，重启后删除
 - /dev
-    - /dev/hd[a-t]：IDE设备
-    - /dev/sd[a-z]：SCSI设备
+    - /dev/cdrom => /dev/hdc
+    - /dev/console：控制台
+    - /dev/cpu/<id>/msr
+        - CPU msr信息
+    - /dev/fb[0-31]：framebuffer
     - /dev/fd[0-7]：标准软驱
-    - /dev/md[0-31]：软raid设备
+    - /dev/hd[a-t]：IDE设备
     - /dev/loop[0-7]：本地回环设备
-    - /dev/ram[0-15]：内存
+    - /dev/lp[0-3]：并口
+    - /dev/md[0-31]：软raid设备
+    - /dev/modem => /dev/ttyS[0-9]
     - /dev/null：无限数据接收设备,相当于黑洞
-    - /dev/zero：无限零资源
+    - /dev/pilot => /dev/ttyS[0-9]
+    - /dev/ram[0-15]：内存
+    - /dev/random：随机数设备
+    - /dev/sd[a-z]：SCSI设备
     - /dev/tty[0-63]：虚拟终端
     - /dev/ttyS[0-3]：串口
-    - /dev/lp[0-3]：并口
-    - /dev/console：控制台
-    - /dev/fb[0-31]：framebuffer
-    - /dev/random：随机数设备
     - /dev/urandom：随机数设备
-    - /dev/cdrom => /dev/hdc
-    - /dev/modem => /dev/ttyS[0-9]
-    - /dev/pilot => /dev/ttyS[0-9]
+    - /dev/zero：无限零资源
 - /proc
     - 伪文件系统，它只存在内存当中，而不占用外存空间
     - 以文件系统的方式为访问系统内核数据的操作提供接口
@@ -148,14 +154,19 @@
         - 正在运行的内核版本
     - /proc/net
         - 联网代码的行为
+        - /proc/net/nf_conntrack 连接跟踪
     - /proc/scsi
         - SCSI设备的文件
+    - /proc/stat
+        - CPU运行状态
     - /proc/sys
         - 系统信息
 - /home
     - 用户文件
 - /lib
     - 库和内核模块
+    - /lib/modules
+        - 可供加载或已经加载的内核模块
 - /mnt
     - 挂载目录
 - /opt

@@ -13,8 +13,7 @@ Linux
    process/index
    io
    mem
-   network
-   socket
+   network/index
    sec/index
    syscall/index
    ref
