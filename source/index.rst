@@ -13,6 +13,7 @@
    compile/index
    os/index
    virtual/index
+   reanalyze/index
    reverse/index
    exploit/index
    stack/index

@@ -53,6 +53,11 @@
 - 串行外设接口 (Serial Peripheral Interface, SPI)
 - RGMII (Reduced Gigabit Media Independent Interface)
 
+文件系统
+----------------------------------------
+- 虚拟文件系统 (Virtual File System, VFS)
+- 用户态文件系统 (Filesystem in Userspace, FUSE)
+
 数据交互
 ----------------------------------------
 - MMIO (Memory-Mapped Input/Output)
@@ -71,6 +76,11 @@
 - 复杂指令集运算 (Complex Instruction Set Computing, CISC)
 - 精简指令集运算 (Reduced Instruction Set Computing, RISC)
 - 显式并行指令集运算 (Explicitly Parallel Instruction Computing, EPIC)
+
+虚拟化
+----------------------------------------
+- 基于内核的虚拟机 (Kernel-based Virtual Machine，KVM)
+- 虚拟机扩展 (Virtual Machine Extension, VMX)
 
 程序分析
 ----------------------------------------

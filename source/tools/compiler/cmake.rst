@@ -40,6 +40,15 @@ project
 
 项目名称是必需的，只能是字母、数字、下划线(_)和连字符(-)，通常只有字母和下划线在实践中使用。
 
+.. code-block:: cmake
+
+    project(<PROJECT-NAME> [LANGUAGES] [<language-name>...])
+    project(<PROJECT-NAME>
+            [VERSION <major>[.<minor>[.<patch>[.<tweak>]]]]
+            [LANGUAGES <language-name>...])
+
+其中LANGUAGES可以是 ``C`` / ``CXX`` / ``Fortran`` 等，在未给出参数时，默认为``C`` / ``CXX``。
+
 构建目标
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: cmake

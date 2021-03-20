@@ -35,3 +35,4 @@ UEFI
 固件分析
 ----------------------------------------
 - `chipsec <https://github.com/chipsec/chipsec>`_ Platform Security Assessment Framework
+- `flashrom <https://github.com/flashrom/flashrom>`_ a utility for detecting, reading, writing, verifying and erasing flash chips

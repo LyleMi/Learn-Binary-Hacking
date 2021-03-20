@@ -4,6 +4,7 @@
 逆向工程
 ----------------------------------------
 - `reverse engineering reference manual <https://github.com/yellowbyte/reverse-engineering-reference-manual>`_
+- `x86-sok <https://github.com/junxzm1990/x86-sok>`_
 
 硬件
 ----------------------------------------
@@ -28,3 +29,4 @@ Linux
 Fuzz
 ----------------------------------------
 - `Awesome AFL <https://github.com/Microsvuln/Awesome-AFL>`_
+- `fuzzingbook <https://github.com/uds-se/fuzzingbook>`_  The Book "Generating Software Tests"

@@ -4,10 +4,15 @@
 二进制
 ----------------------------------------
 - `capstone <https://github.com/aquynh/capstone>`_
-- `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
 - `binary ninja <https://binary.ninja/>`_
 - `HAL <https://github.com/emsec/hal>`_ The Hardware Analyzer
 - `LIEF <https://github.com/lief-project/LIEF>`_ Library to Instrument Executable Formats
+- `rizin <https://github.com/rizinorg/rizin>`_ UNIX-like reverse engineering framework and command-line toolset
+
+.NET
+----------------------------------------
+- `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor
+- `ILSpy <https://github.com/icsharpcode/ILSpy>`_ .NET Decompiler with support for PDB generation, ReadyToRun, Metadata
 
 PE工具
 ----------------------------------------
@@ -37,6 +42,7 @@ IDA
 
 插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `ida@tacnetsol <https://github.com/tacnetsol/ida>`_ Collection of IDA Python plugins/scripts/modules
 - `IDArling <https://github.com/IDArlingTeam/IDArling>`_
 - `abyss <https://github.com/patois/abyss>`_ IDAPython Plugin for Postprocessing of Hexrays Decompiler Output
 - `Sark <https://github.com/tmr232/Sark>`_ IDA Plugins & IDAPython Scripting Library
@@ -100,6 +106,10 @@ Diff
 Patch
 ----------------------------------------
 - `e9patch <https://github.com/GJDuck/e9patch>`_ A powerful static binary rewriting tool
+
+二进制重写
+----------------------------------------
+- `wcc <https://github.com/endrazine/wcc>`_ The Witchcraft Compiler Collection
 
 文件分析
 ----------------------------------------
