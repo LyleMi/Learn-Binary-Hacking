@@ -1,10 +1,18 @@
 持久化
 ========================================
 
+运行环境信息收集
+----------------------------------------
+- `scanlimits <https://github.com/taviso/scanlimits>`_ Tool to examine the behaviour of setuid binaries under constrained limits
+
 rootkit
 ----------------------------------------
 - `KasperskyHook <https://github.com/iPower/KasperskyHook>`_ Hook system calls on Windows by using Kaspersky's hypervisor
 - `MasterHide <https://github.com/crvvdev/MasterHide>`_
+
+内核hook
+----------------------------------------
+- `EDRs <https://github.com/Mr-Un1k0d3r/EDRs>`_ This repo contains information about EDRs that can be useful during red team exercise
 
 免杀
 ----------------------------------------

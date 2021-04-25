@@ -52,6 +52,7 @@ IDA
 - `keypatch <https://github.com/keystone-engine/keypatch>`_ Multi-architecture assembler for IDA Pro. Powered by Keystone Engine
 - `idaplugins list <https://github.com/onethawt/idaplugins-list>`_  A list of IDA Plugins
 - `LazyIDA <https://github.com/L4ys/LazyIDA>`_
+- `Karta <https://github.com/CheckPointSW/Karta>`_ source code assisted fast binary matching plugin for IDA
 
 EFI插件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

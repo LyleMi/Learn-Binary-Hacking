@@ -8,3 +8,4 @@
    gdb
    windbg
    trace
+   misc

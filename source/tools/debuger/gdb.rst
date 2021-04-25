@@ -22,6 +22,7 @@ gdb
         - ``en[able] 1`` Enable breakpoint 1
 - ``c[ontinue]`` 运行至下一个断点或程序结束
 - ``command`` 设置断点的命令
+- ``catch <syscall name>`` 在某个syscall处停止
 - ``disas <func name>`` 反汇编函数
 - ``fin[ish]`` 跳出当前函数 / 循环
 - ``i`` info
@@ -55,6 +56,14 @@ gdb
         - ``g`` 表示八字节
     - 地址可以是内存地址或者是寄存器
 - ``thread <id>`` thread 切换
+- 常见设置项
+    - ``set environment <env>``
+    - ``set backtrace past-main on``
+    - ``set backtrace past-entry on``
+    - ``set pagination off``
+    - ``set disassembly-flavor intel``
+    - ``set follow-fork-mode child``
+    - ``set follow-exec-mode new``
 
 gdb-peda
 ----------------------------------------

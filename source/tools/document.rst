@@ -6,6 +6,10 @@
 - `reverse engineering reference manual <https://github.com/yellowbyte/reverse-engineering-reference-manual>`_
 - `x86-sok <https://github.com/junxzm1990/x86-sok>`_
 
+程序分析
+----------------------------------------
+- `Program Analysis Resources <https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678ddbef>`_ 
+
 硬件
 ----------------------------------------
 - `The Hackers Hardware Toolkit <https://github.com/yadox666/The-Hackers-Hardware-Toolkit>`_

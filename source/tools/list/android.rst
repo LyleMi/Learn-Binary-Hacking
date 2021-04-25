@@ -23,3 +23,7 @@ Android
 流量分析
 ----------------------------------------
 - `r0capture <https://github.com/r0ysue/r0capture>`_ 安卓应用层抓包通杀脚本
+
+应用市场
+----------------------------------------
+- `AuroraStore <https://gitlab.com/AuroraOSS/AuroraStore>`_  is an unofficial, FOSS client to Google's Play Store with an elegant design. Not only does Aurora Store download, update, and search for apps like the Play Store, it also empowers the user with new features.
