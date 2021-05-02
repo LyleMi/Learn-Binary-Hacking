@@ -4,6 +4,7 @@
 AFL系列
 ----------------------------------------
 - `afl <https://github.com/google/AFL>`_ american fuzzy lop - a security-oriented fuzzer
+- `Winnie-AFL <https://github.com/sslab-gatech/winnie>`_ a fork of WinAFL that supports fuzzing using a fork()-like API
 
 内核
 ----------------------------------------

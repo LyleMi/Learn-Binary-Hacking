@@ -6,25 +6,9 @@ syscall
    :caption: 目录:
 
    intro
-   open
-   read
-   write
-   close
-   dup
-   ioctl
-   fcntl
+   process/index
+   file/index
+   device/index
+   net/index
    mmap
-   ptrace
    signal
-   execve
-   fork
-   vfork
-   clone
-   socket
-   sockopt
-   bind
-   accept
-   select
-   send
-   recv
-   wait

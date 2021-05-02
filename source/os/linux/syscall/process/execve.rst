@@ -4,6 +4,7 @@ exec系列系统调用的原型如下：
 
 .. code-block:: cpp
 
+    #include <unistd.h>
     int execl(const char *path, const char *arg, ...);
     int execle(const char *path, const char *arg, ..., char * const envp[]);
     int execlp(const char *file, const char *arg, ...);

@@ -11,6 +11,10 @@
 - `QEMU, a Fast and Portable Dynamic Translator <https://static.usenix.org/event/usenix05/tech/freenix/full_papers/bellard/bellard.pdf>`_
 - `QEMU’s documentation <https://qemu.readthedocs.io/en/latest/>`_
 
+wiki
+----------------------------------------
+- `QEMU internals <https://airbus-seclab.github.io/qemu_blog/>`_
+
 Blog
 ----------------------------------------
 - `使用 QEMU 进行系统仿真 <https://www.ibm.com/developerworks/cn/linux/l-qemu/index.html>`_
