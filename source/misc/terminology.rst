@@ -97,6 +97,10 @@
 - 内存保护单元 (Memory Protection Unit, MPU)
 - 紧耦合内存 (Tightly Coupled Memory, TCM)
 
+漏洞利用
+----------------------------------------
+- 漏洞自动利用生成 (Automatic Exploit Generation, AEG)
+
 安全机制
 ----------------------------------------
 - WDAC (Windows Defender Application Control)

@@ -11,6 +11,7 @@ AFL系列
 - `kAFL <https://github.com/RUB-SysSec/kAFL>`_  Code for the USENIX 2017 paper: kAFL: Hardware-Assisted Feedback Fuzzing for OS Kernels
 - `syzkaller <https://github.com/google/syzkaller>`_ is an unsupervised coverage-guided kernel fuzzer
 - `VMI Kernel Fuzzer for Xen Project <https://github.com/intel/kernel-fuzzer-for-xen-project>`_
+- `trinity <https://github.com/kernelslacker/trinity>`_ Linux system call fuzzer
 
 密码学Fuzz
 ----------------------------------------

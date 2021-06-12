@@ -16,6 +16,7 @@ Malware Sample
 - `malware samples <https://github.com/InQuest/malware-samples>`_
 - `theZoo <https://github.com/ytisf/theZoo>`_
 - `MalwareSourceCode <https://github.com/vxunderground/MalwareSourceCode>`_  Collection of malware source code for a variety of platforms in an array of different programming languages
+- `Al-Khaser <https://github.com/LordNoteworthy/al-khaser>`_ Public malware techniques used in the wild: Virtual Machine, Emulation, Debuggers, Sandbox detection
 
 实验环境
 ----------------------------------------

@@ -14,9 +14,14 @@ rootkit
 ----------------------------------------
 - `EDRs <https://github.com/Mr-Un1k0d3r/EDRs>`_ This repo contains information about EDRs that can be useful during red team exercise
 
+代码混淆
+----------------------------------------
+- `ConfuserEx <https://github.com/mkaring/ConfuserEx>`_ free protector for .NET applications
+
 免杀
 ----------------------------------------
 - `BypassAntiVirus <https://github.com/TideSec/BypassAntiVirus>`_ 远控免杀系列文章及配套工具
+- `DefenderCheck <https://github.com/matterpreter/DefenderCheck>`_ Identifies the bytes that Microsoft Defender flags on.
 
 无文件马
 ----------------------------------------
