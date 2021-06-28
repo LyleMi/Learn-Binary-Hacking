@@ -13,7 +13,7 @@
 
 wiki
 ----------------------------------------
-- `QEMU internals <https://airbus-seclab.github.io/qemu_blog/>`_
+- `QEMU internals by airbus <https://airbus-seclab.github.io/qemu_blog/>`_
 
 Blog
 ----------------------------------------
