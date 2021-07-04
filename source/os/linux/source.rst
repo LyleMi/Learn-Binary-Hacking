@@ -81,25 +81,26 @@
     - 临时文件，重启后删除
 - /dev
     - /dev/cdrom => /dev/hdc
-    - /dev/console：控制台
+    - /dev/console: 控制台
     - /dev/cpu/<id>/msr
         - CPU msr信息
-    - /dev/fb[0-31]：framebuffer
-    - /dev/fd[0-7]：标准软驱
-    - /dev/hd[a-t]：IDE设备
-    - /dev/loop[0-7]：本地回环设备
-    - /dev/lp[0-3]：并口
-    - /dev/md[0-31]：软raid设备
+    - /dev/fb[0-31]: framebuffer
+    - /dev/fd[0-7]: 标准软驱
+    - /dev/hd[a-t]: IDE设备
+    - /dev/loop[0-7]: 本地回环设备
+    - /dev/lp[0-3]: 并口
+    - /dev/mem: 
+    - /dev/md[0-31]: 软raid设备
     - /dev/modem => /dev/ttyS[0-9]
-    - /dev/null：无限数据接收设备,相当于黑洞
+    - /dev/null: 无限数据接收设备,相当于黑洞
     - /dev/pilot => /dev/ttyS[0-9]
-    - /dev/ram[0-15]：内存
-    - /dev/random：随机数设备
-    - /dev/sd[a-z]：SCSI设备
-    - /dev/tty[0-63]：虚拟终端
-    - /dev/ttyS[0-3]：串口
-    - /dev/urandom：随机数设备
-    - /dev/zero：无限零资源
+    - /dev/ram[0-15]: 内存
+    - /dev/random: 随机数设备
+    - /dev/sd[a-z]: SCSI设备
+    - /dev/tty[0-63]: 虚拟终端
+    - /dev/ttyS[0-3]: 串口
+    - /dev/urandom: 随机数设备
+    - /dev/zero: 无限零资源
 - /proc
     - 伪文件系统，它只存在内存当中，而不占用外存空间
     - 以文件系统的方式为访问系统内核数据的操作提供接口

@@ -1,4 +1,4 @@
-漏洞利用基础
+内存管理
 ========================================
 
 
@@ -6,4 +6,7 @@
    :maxdepth: 2
    :caption: 目录:
 
-   shellcode
+   alloc
+   addr
+   stack
+   heap

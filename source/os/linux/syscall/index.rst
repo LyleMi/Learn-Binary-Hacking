@@ -10,5 +10,5 @@ syscall
    file/index
    device/index
    net/index
-   mmap
+   mem/index
    signal

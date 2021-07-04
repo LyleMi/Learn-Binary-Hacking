@@ -12,7 +12,7 @@ Linux
    device/index
    process/index
    io
-   mem
+   mem/index
    network/index
    sec/index
    syscall/index
