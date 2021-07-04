@@ -81,6 +81,7 @@
 ----------------------------------------
 - 基于内核的虚拟机 (Kernel-based Virtual Machine，KVM)
 - 虚拟机扩展 (Virtual Machine Extension, VMX)
+- 虚拟机自省 (Virtual Machine Introspection, VMI)
 
 程序分析
 ----------------------------------------
@@ -92,10 +93,12 @@
 - Guest物理地址 (Guest Physical Address, GPA)
 - Host虚拟地址 (Host Virtual Address, HVA)
 - Host物理地址 (Host Physical Address, HPA)
+- 中间物理地址 (Intermediate Phyical Address, IPA)
 - 内存管理单元 (Memory Management Unit, MMU)
 - 内存管理单元 (Paged Memory Management Unit, PMMU)
 - 内存保护单元 (Memory Protection Unit, MPU)
 - 紧耦合内存 (Tightly Coupled Memory, TCM)
+- 影子页表 (Shadow Page Table, SPT)
 
 漏洞利用
 ----------------------------------------
