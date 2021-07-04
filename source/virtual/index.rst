@@ -6,6 +6,7 @@
 
    basic
    tech
+   mem
    virtio
    vmware
    kvm/index

@@ -33,3 +33,4 @@ Blog
 漏洞利用
 ----------------------------------------
 - `qemu-vm-escape <https://github.com/0xKira/qemu-vm-escape>`_ exploit for CVE-2019-6778
+- `清道夫：误用“错误处理代码”导致的QEMU/KVM逃逸 <https://mp.weixin.qq.com/s/1KYTZynabBqzNjoJhe1bWw>`_
