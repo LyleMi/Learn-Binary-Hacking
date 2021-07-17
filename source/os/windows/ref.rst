@@ -7,6 +7,7 @@
 - `Windows NT Wiki <https://en.wikipedia.org/wiki/Windows_NT>`_
 - `AppLocker <https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview>`_
 - `Antimalware Scan Interface (AMSI) <https://docs.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal>`_
+- `Virtualization documentation <https://docs.microsoft.com/en-us/virtualization/>`_
 
 漏洞利用
 ----------------------------------------
