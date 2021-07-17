@@ -6,6 +6,7 @@
 
    basic
    tech
+   cpu
    mem
    virtio
    vmware
@@ -14,5 +15,6 @@
    qemu/index
    unicorn
    intel
+   sec
    detect
    misc
