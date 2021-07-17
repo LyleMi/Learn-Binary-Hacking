@@ -12,6 +12,7 @@
 符号执行
 ----------------------------------------
 - `Z3 <https://github.com/Z3Prover/z3>`_
+- `s2e <https://github.com/S2E/s2e>`_ A platform for multi-path program analysis with selective symbolic execution
 - `manticore <https://github.com/trailofbits/manticore>`_  Symbolic execution tool
 - `Triton <https://github.com/JonathanSalwan/Triton>`_ Dynamic Binary Analysis (DBA) framework
 

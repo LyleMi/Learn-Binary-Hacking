@@ -11,8 +11,10 @@
    exploit
    persistence
    firm
+   virtual
    android
    fuzz
+   sidechannel
    demo
    resources
    misc
