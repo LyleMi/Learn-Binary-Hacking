@@ -82,6 +82,7 @@
 - 基于内核的虚拟机 (Kernel-based Virtual Machine，KVM)
 - 虚拟机扩展 (Virtual Machine Extension, VMX)
 - 虚拟机自省 (Virtual Machine Introspection, VMI)
+- 硬件抽象层 (Hardware Abstraction Layer, HAL)
 
 程序分析
 ----------------------------------------

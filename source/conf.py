@@ -19,6 +19,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+from datetime import date
 
 
 # -- General configuration ------------------------------------------------
@@ -46,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'二进制安全学习笔记'
-copyright = u'2017-2020, lyle'
+copyright = u'2017-%d, lyle' % date.today().year
 author = u'lyle'
 
 # The version info for the project you're documenting, acts as replacement for
