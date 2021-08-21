@@ -9,6 +9,7 @@
    cpu
    mem
    virtio
+   libvirt
    vmware
    kvm/index
    xen

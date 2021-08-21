@@ -10,6 +10,7 @@
    bios
    memory
    disk
+   gpu
    bus
    device
    io

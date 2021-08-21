@@ -10,6 +10,7 @@
 - `Embedded Linux Wiki <https://elinux.org/Main_Page>`_
 - `namespaces Linux manual page <man7.org/linux/man-pages/man7/namespaces.7.html>`_
 - `ArchLinux Wiki <https://wiki.archlinux.org/index.php>`_
+- `Linux Kernel Defence Map <https://github.com/a13xp0p0v/linux-kernel-defence-map>`_
 
 文件系统
 ----------------------------------------
