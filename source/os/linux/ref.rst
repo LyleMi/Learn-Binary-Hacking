@@ -18,6 +18,8 @@
 - `Docker: About storage drivers <https://docs.docker.com/storage/storagedriver/>`_
 - `嵌入式文件系统简介(一) —— Linux MTD设备文件系统 <https://blog.51cto.com/13578681/2307925>`_
 - `Linux文件存储抽象VFS <https://blog.csdn.net/u010487568/article/details/79606141>`_
+- `The Linux Storage Stack Diagram <https://www.thomas-krenn.com/de/wikiDE/images/7/72/Linux-storage-stack-diagram_v4.10.svg>`_
+- `linux io过程自顶向下分析 <https://wjqwsp.github.io/2018/12/18/linux-io%E8%BF%87%E7%A8%8B%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E5%88%86%E6%9E%90/>`_
 
 OverlayFS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,6 +57,7 @@ jffs
 内核模块
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `Linux Kernel Module Sandbox <https://github.com/tpiekarski/lkm-sandbox>`_ Collection of Linux Kernel Modules and PoC to discover, learn and practice Linux Kernel Development
+- `lkmpg <https://github.com/sysprog21/lkmpg>`_ The Linux Kernel Module Programming Guide
 
 内核调试
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

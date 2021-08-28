@@ -99,6 +99,10 @@ Radare2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - `r2ghidra <https://github.com/radareorg/r2ghidra>`_ Deep ghidra decompiler and sleigh disassembler integration for radare2
 
+Golang逆向
+----------------------------------------
+- `redress <https://github.com/goretk/redress>`_ A tool for analyzing stripped Go binaries
+
 Diff
 ----------------------------------------
 - `diaphora <https://github.com/joxeankoret/diaphora>`_
