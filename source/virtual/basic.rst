@@ -164,6 +164,14 @@ CPU虚拟化
     - 缺点
         - 硬件实现不够优化，还有提高空间
 
+虚拟化抽象目标分类
+----------------------------------------
+- 指令集虚拟化 (ISA Level Virtualization)
+- 硬件抽象层虚拟化 (Hardware Abstraction Level Virtualization)
+- 操作系统层虚拟化 (OS Level Virtualization)
+- 运行库虚拟化 (Library Level Virtualization)
+- 语言层虚拟化 (Programming Language Level Virtualization)
+
 虚拟化技术应用
 ----------------------------------------
 

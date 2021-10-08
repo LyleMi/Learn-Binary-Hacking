@@ -11,4 +11,4 @@ OverlayFS是一种堆叠文件系统，它依赖并建立在其它的文件系�
 ----------------------------------------
 OverlayFS的主要机制涉及当两个文件系统提供同一名称的目录时目录访问的合并，分为upper层（读写层）和lower（只读层）。OverlayFS下的文件并不是upper层或者lower层文件的拷贝，而是记录了文件的层次信息。
 
-在OverlayFS中，会为每个文件分配一个ovl_entry变量，通过文件dentry的d_fsdata字段指向这个分配的ovl_entry变量。
+在OverlayFS中，会为每个文件分配一个 ``ovl_entry`` 变量，通过文件 ``dentry`` 的 ``d_fsdata`` 字段指向这个分配的 ``ovl_entry`` 变量。

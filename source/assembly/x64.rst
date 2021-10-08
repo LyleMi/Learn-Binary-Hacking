@@ -45,3 +45,7 @@ x64
 系统调用号
 ----------------------------------------
 需要注意的是，x86和x64架构下系统调用号并不相同。系统调用可在 ``/usr/include/asm/unistd.h`` 文件中查看。
+
+参考链接
+----------------------------------------
+- `Intel® 64 and IA-32 Architectures Software Developer Manuals <https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html>`_
