@@ -76,6 +76,11 @@
 - 复杂指令集运算 (Complex Instruction Set Computing, CISC)
 - 精简指令集运算 (Reduced Instruction Set Computing, RISC)
 - 显式并行指令集运算 (Explicitly Parallel Instruction Computing, EPIC)
+- 单指令单数据 (Single Instruction Single Data, SISD)
+- 单指令多数据 (Single Instruction Multiple Data, SIMD)
+- 单指令多线程 (Single Instruction Multiple Threads, SIMT)
+- 多指令单数据 (Multiple Instruction Single Data, MISD)
+- 多指令多数据 (Multiple Instruction Multiple Data, MIMD)
 
 虚拟化
 ----------------------------------------
@@ -83,6 +88,9 @@
 - 虚拟机扩展 (Virtual Machine Extension, VMX)
 - 虚拟机自省 (Virtual Machine Introspection, VMI)
 - 硬件抽象层 (Hardware Abstraction Layer, HAL)
+- 指令集扩展 (Software Guard Extensions, SGX)
+- 处理器保留内存 (Processor Reserved Memory, PRM)
+- 地址映射保护 (Enclave Page Cache Map, EPCM)
 
 程序分析
 ----------------------------------------

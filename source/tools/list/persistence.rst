@@ -30,3 +30,7 @@ rootkit
 后门
 ----------------------------------------
 - `The Backdoor Factory <https://github.com/secretsquirrel/the-backdoor-factory>`_ Patch PE, ELF, Mach-O binaries with shellcode
+
+进程注入
+----------------------------------------
+- `Windows process injection methods <https://github.com/odzhan/injection>`_

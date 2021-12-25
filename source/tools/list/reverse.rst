@@ -9,6 +9,10 @@
 - `LIEF <https://github.com/lief-project/LIEF>`_ Library to Instrument Executable Formats
 - `rizin <https://github.com/rizinorg/rizin>`_ UNIX-like reverse engineering framework and command-line toolset
 
+特征提取
+----------------------------------------
+- `binlex <https://github.com/c3rb3ru5d3d53c/binlex>`_ A Binary Genetic Traits Lexer
+
 .NET
 ----------------------------------------
 - `dnspy <https://github.com/0xd4d/dnspy>`_ .NET debugger and assembly editor

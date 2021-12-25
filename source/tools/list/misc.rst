@@ -6,6 +6,7 @@
 - `static GDB and GDBServer <https://github.com/hugsy/gdb-static>`_
 - `statically compiled tools like Nmap and Socat <https://github.com/ernw/static-toolbox>`_
 - `static binaries <https://github.com/andrew-d/static-binaries>`_
+- `Detect It Easy <https://github.com/horsicq/Detect-It-Easy>`_
 
 沙箱检测
 ----------------------------------------

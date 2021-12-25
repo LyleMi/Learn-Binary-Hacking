@@ -12,6 +12,7 @@ Windows
    mem
    iodriver
    fs
+   wsl
    fsenc
    network
    registry
