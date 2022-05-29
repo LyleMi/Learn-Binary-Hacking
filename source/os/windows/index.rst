@@ -7,14 +7,13 @@ Windows
 
    history
    concept
-   kernel
+   kernel/index
    dotnet
    services
    process
    mem
    iodriver
    fs
-   wsl
    fsenc
    network
    registry
