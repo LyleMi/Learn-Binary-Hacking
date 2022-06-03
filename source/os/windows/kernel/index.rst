@@ -8,4 +8,6 @@ Windows Kernel
    basic
    subsystem
    wsl
+   dll
+   executive
    misc
