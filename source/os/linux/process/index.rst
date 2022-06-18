@@ -7,6 +7,7 @@
 
    process
    thread
+   coroutine
    elfload
    elfrun
    dispatch

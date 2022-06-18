@@ -7,4 +7,7 @@
 
    process
    thread
+   dll
+   job
+   container
    struct

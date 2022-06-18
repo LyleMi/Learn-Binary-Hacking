@@ -25,6 +25,87 @@ CreateProcessInternal 实际调用 NtDll.dll 中的 NtCreateUserProcess ，对�
 - 开始运行初始线程。(除非进程创建的时候被挂起)
 - 在新进程和线程的上下文空间中，完成地址空间的初始化( 比如加载必需的DLL文件)并开始执行程序
 
+在第一步时，会对应设置进程的优先级，值可以为：
+
+- Idle or Low (4)
+- Below Normal (6)
+- Normal (8)
+- Above Normal (10)
+- High (13)
+- Real-time (24)
+
+如果没有设置该Flag，默认优先级为 Normal 。
+
+在第二步中，如果可执行文件是 bat / cmd 等特殊文件，会执行 cmd.exe ；如果是 Win16 (Windows 3.1) / DOS 可执行文件 / COM / pif 等，则会执行 NtVdm.exe ；其它条件下，会直接执行原本的 exe 文件。
+
+如果该进程设置了受保护的标志位，则检查签名也在这一步完成。
+
+第三步可以细分为：
+
+- 设置 EPROCESS 对象
+    - 如果没有显式设置，则继承父进程的属性、邮件及设置等
+    - 设置进程 exit status 为 STATUS_PENDING
+    - 存储父进程的ID
+    - 检查并申请进程运行所需的权限，创建 primary access token
+- 创建初始化进程空间
+    - 创建的空间包括：page directory / hyperspace page / VAD bitmap page / working set list
+- 初始化内核进程结构 KPROCESS
+    - 设置优先级
+- 完成进程地址空间的设置
+- 设置 PEB
+- 完成执行进程对象的设置
+
+在第四步时，Windows执行体对象已经建立，但是线程未初始化。此时会由 NtCreateThread 调用 PspCreateThread 完成线程的初始化。PspCreateThread 依赖于 PspAllocateThread 和 PspInsertThread 。PspAllocateThread 处理线程实际初始化的部分。PspInsertThread 处理线程句柄的创建、安全属性，而后调用 KeStartThread 将执行对象变为操作系统可以调度的线程。
+
+PspAllocateThread 实现了以下操作：
+
+- 创建并初始化线程执行对象
+- 设置线程创建时间、线程id (TID)
+- 初始化线程的堆栈和上下文
+- 创建 TEB 结构体
+- 将进程的开始地址存储到 ETHREAD 中
+- 调用 KeInitThread 设置 KTHREAD 结构体
+- 如果线程是 UMS 线程，调用 PspUmsInitThread 用于初始化 UMS 状态
+
+PspAllocateThread 操作结束后，NtCreateUserProcess 调用 PspInsertThread 进行以下操作:
+
+- 检查进程、线程是否已经终止或者线程是否已经启动，如果存在上述情况，取消线程创建
+- 调用 KeStartThread 初始化 KTHREAD 的线程对象
+- 在 non-x86 系统中，如果该线程是进程的第一个线程，将进程插入到 KiProcessListHead 中
+- 增加线程计数器，继承进程的IO优先级
+- 将线程插入到进程的线程列表
+- 如果线程是进程的第一个线程，进程注册的创建时回调将被调用
+
+NtCreateUserProcess 响应后， CreateProcessInternalW 进行子系统相关的操作。
+
+在这一步中，主要进行相关的检查，例如可执行文件头、证书（根据组策略）。收集一系列的信息并发送至 Csrss 。信息包括：
+
+- path name 与 SxS path name
+- 进程与线程句柄
+- 段句柄
+- access token 句柄
+- media 信息
+- PEB 地址
+- ...
+
+在收到信息后，Windows子系统进行以下的操作：
+
+- CsrCreateProcess 复制进程和线程句柄
+- 创建 Csrss 进程结构体 (CSR_PROCESS)
+- 创建 Csrss 线程结构体 (CSR_THREAD)
+- CsrCreateThread 将线程插入到线程列表
+- 将 Csrss 进程结构体插入 Windows 子系统的进程列表
+
+而后在第六步中，进程环境已经设置完成，线程所需要的资源都相应分配。Windows 子系统也对要运行的信息有所了解。在调用者没有额外设置 CREATE_SUSPENDED 标志位的情况下，线程已经可以对应启动了。
+
+在第七步中，线程真正开始执行。内核调用 KiStartUserThread ， KiStartUserThread 将线程的 IRQL 级别从 DPC (Deferred Procedure Call) 修改为 APC ，而后调用内核的线程初始化函数， PspUserThreadStartUp 。
+
+PspUserThreadStartUp 执行以下的操作：
+
+- 设置异常处理链
+- 设置 IRQL 级别为 PASSIVE_LEVEL
+- ...
+
 其他进程创建
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 除了正常的进程之外，还有一些其他类型的进程。例如UWP（Windows 应用），原生进程、内核模式进程、微进程(Pico Process)等。
