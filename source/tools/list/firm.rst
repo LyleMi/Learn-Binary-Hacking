@@ -11,6 +11,7 @@ IoT
 仿真
 ----------------------------------------
 - `firmadyne <https://github.com/firmadyne/firmadyne>`_ Platform for emulation and dynamic analysis of Linux-based firmware
+- `FirmAE <https://github.com/pr0v3rbs/FirmAE>`_ Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis
 - `frankenstein <https://github.com/seemoo-lab/frankenstein/>`_ Broadcom and Cypress firmware emulation for fuzzing and further full-stack debugging
 
 漏洞分析工具

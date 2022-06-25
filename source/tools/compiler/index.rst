@@ -7,5 +7,6 @@
 
    gcc
    clang
+   msvc
    cmake
    nasm

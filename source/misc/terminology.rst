@@ -43,6 +43,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - CPU (Central Process Unit)
 - GPU (Graphic Process Unit)
+- 张量处理单元 (Tensor Processing Unit, TPU)
 - 算术逻辑单元 (Arithmetic and Logic Unit, ALU)
 
 硬件接口
@@ -81,6 +82,10 @@
 - 单指令多线程 (Single Instruction Multiple Threads, SIMT)
 - 多指令单数据 (Multiple Instruction Single Data, MISD)
 - 多指令多数据 (Multiple Instruction Multiple Data, MIMD)
+
+可信计算
+----------------------------------------
+- TPM (Trusted Platform Modul )
 
 虚拟化
 ----------------------------------------
@@ -126,3 +131,9 @@
 - POSIX (Portable Operating System Interface)
 - GNU (GNU is Not Unix)
 - BSD (Berkeley Software Distribution)
+
+Windows
+----------------------------------------
+- COM (Component Object Model)
+- DDE (Dynamic Data Exchange)
+- OLE (Object Linking and Embedding)
