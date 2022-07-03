@@ -8,7 +8,7 @@ syscall
    intro
    process/index
    session/index
-   file/index
+   io/index
    device/index
    net/index
    mem/index

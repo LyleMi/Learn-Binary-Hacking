@@ -17,6 +17,7 @@ rootkit
 代码混淆
 ----------------------------------------
 - `ConfuserEx <https://github.com/mkaring/ConfuserEx>`_ free protector for .NET applications
+- `Mangle <https://github.com/optiv/Mangle>`_ a tool that manipulates aspects of compiled executables (.exe or DLL) to avoid detection from EDRs
 
 免杀
 ----------------------------------------

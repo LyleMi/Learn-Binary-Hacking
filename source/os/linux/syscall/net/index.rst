@@ -9,6 +9,5 @@
    sockopt
    bind
    accept
-   select
    send
    recv

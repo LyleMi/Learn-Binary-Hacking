@@ -3,3 +3,5 @@ write
 write的函数原型为 ``ssize_t write(int fd, void *buf, size_t nbytes);`` 。
 
 write()返回值通常与参数nbytes相同，否则可能出错。出错存在两种情况，返回-1时表示写操作失败，返回值小于nbytes时，只写入了部分数据。
+
+进程调用 write 时，write 更新内核空间中的页缓存，更新完毕后，向进程返回成功。此时只会写入数据到页缓存中，操作系统触发页回写后，才会真正把数据写入磁盘。
