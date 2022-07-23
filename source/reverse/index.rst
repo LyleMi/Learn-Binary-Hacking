@@ -12,3 +12,5 @@
    dll
    macho
    antidebug
+   taint
+   obfuscation
