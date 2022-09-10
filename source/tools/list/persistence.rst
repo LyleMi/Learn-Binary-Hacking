@@ -13,6 +13,7 @@ rootkit
 内核hook
 ----------------------------------------
 - `EDRs <https://github.com/Mr-Un1k0d3r/EDRs>`_ This repo contains information about EDRs that can be useful during red team exercise
+- `KDU <https://github.com/hfiref0x/KDU>`_ Kernel Driver Utility, 使用有漏洞的合法内核驱动完成操作
 
 代码混淆
 ----------------------------------------

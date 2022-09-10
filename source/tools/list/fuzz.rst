@@ -12,6 +12,7 @@ AFL系列
 - `syzkaller <https://github.com/google/syzkaller>`_ is an unsupervised coverage-guided kernel fuzzer
 - `VMI Kernel Fuzzer for Xen Project <https://github.com/intel/kernel-fuzzer-for-xen-project>`_
 - `trinity <https://github.com/kernelslacker/trinity>`_ Linux system call fuzzer
+- `SockFuzzer <https://github.com/googleprojectzero/SockFuzzer>`_
 
 密码学Fuzz
 ----------------------------------------

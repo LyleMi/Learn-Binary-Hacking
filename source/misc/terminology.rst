@@ -118,6 +118,13 @@
 ----------------------------------------
 - 漏洞自动利用生成 (Automatic Exploit Generation, AEG)
 
+安全防御
+----------------------------------------
+- 端点保护 (Endpoint Protection System, EPP)
+- 端点检测和响应 (Endpoint Detection and Response, EDR)
+- 数据泄露防护 (Data Leakage Prevention, DLP)
+- 数据泄露检测响应 (Data Detection and Response, DDR)
+
 安全机制
 ----------------------------------------
 - WDAC (Windows Defender Application Control)

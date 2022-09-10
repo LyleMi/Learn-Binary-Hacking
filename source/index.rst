@@ -19,6 +19,7 @@
    heap/index
    vulns/index
    malware/index
+   defense/index
    mitigations/index
    fuzz/index
    tools/index

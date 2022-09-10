@@ -43,15 +43,46 @@ sockaddr_un是unix环境下套接字的地址形式，这种方式也称为本�
 ----------------------------------------
 socket调用常用的函数有：socket/bind/listen/connect/accept/read/write/close等，其中部分函数的详细定义与分析见syscall部分。
 
+socket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+socket 函数的原型为 ``int socket(int domain, int type, int protocol);`` 。
+
+domain 用于指定通信协议族，常用的协议族有: 
+
+- AF_UNIX
+- AF_LOCAL
+- AF_INET (IPv4)
+- AF_INET6 (IPv6)
+- ...
+
+type 用于指定socket类型，常用的socket类型有: 
+
+- SOCK_STREAM (TCP)
+- SOCK_DGRAM (udP)
+- SOCK_SEQPACKET
+- SOCK_RAW
+- SOCK_RDM
+- SOCK_PACKET
+
+protocol 用于指定socket所使用的协议，一般设置为0，表示使用type中的默认协议。
+
 listen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-listen函数的原型为 ``int listen(int sockfd, int backlog);`` 。其中sockfd即socket描述符，backlog:为相应socket可以排队的最大连接个数，表示排队连接队列的长度。
+listen 函数的原型为 ``int listen(int sockfd, int backlog);`` 。其中sockfd即socket描述符，backlog:为相应socket可以排队的最大连接个数，表示排队连接队列的长度。
 
 服务器在调用socket()、bind()之后就会调用listen()来监听这个socket。
 
 connect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 connect函数的原型为 ``int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`` 。其中sockfd即socket描述符，addr是socket地址，addrlen为地址长度。
+
+在内核中，根据用户传入的 sockfd 查询对应的 socket 内核对象。
+
+在 socket 为 tcp ipv4 的类型时，调用位于 ``net/ipv4/tcp_ipv4.c`` 的 ``tcp_v4_connect`` 函数，随后调用 ``inet_hash_connect`` 函数选择端口。
+
+如果之前调用过 ``bind`` ，则设置到对应的端口。否则读取 ``net.ipv4.ip_local_port_range`` 内核参数获取端口范围。而后在可选择的端口范围中，不断随机选择端口，如果端口没有被占用，则使用对应的端口。这里是否占用是判断四元组（源IP、源端口、目的IP、目的端口）是否已经存在。
+
+这里需要注意的是，在大量发起连接时，端口被大量占用，上述的随机选择端口并检查是否被占用的流程会反复执行，造成较大的性能损耗。
 
 read / write
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

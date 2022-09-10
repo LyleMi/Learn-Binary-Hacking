@@ -35,3 +35,7 @@ Fuzz
 ----------------------------------------
 - `Awesome AFL <https://github.com/Microsvuln/Awesome-AFL>`_
 - `fuzzingbook <https://github.com/uds-se/fuzzingbook>`_  The Book "Generating Software Tests"
+
+游戏安全
+----------------------------------------
+- `awesome game security <https://github.com/gmh5225/awesome-game-security>`_

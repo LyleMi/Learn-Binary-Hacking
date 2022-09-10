@@ -8,6 +8,7 @@
    tech
    cpu
    mem
+   hypervisor
    virtio
    libvirt
    vmware
